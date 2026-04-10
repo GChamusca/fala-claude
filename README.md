@@ -118,6 +118,16 @@ objShell.ShellExecute "python", "C:\caminho\para\fala.py", "C:\caminho\para\", "
 - Microfone
 - API key do Groq (grátis em [console.groq.com](https://console.groq.com))
 
+## Apoie o projeto
+
+Se o Fala Claude te ajudou, considere fazer uma doação via Pix:
+
+**Chave Pix (aleatória):** `264f38bd-9988-4549-b052-65f2bd006583`
+
+<img src="pix-qr.png" alt="QR Code Pix" width="200">
+
+---
+
 ## Créditos
 
 Criado por [Gabriel Chamusca](https://github.com/GChamusca)
