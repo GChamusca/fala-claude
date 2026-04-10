@@ -1,6 +1,7 @@
 """
 Fala Claude — Voice-to-Claude via Groq Whisper
 F2 = start/stop recording + auto-send to Claude Code
+Works on Windows and macOS
 
 Setup: https://github.com/GChamusca/fala-claude
 """
@@ -10,9 +11,8 @@ import requests
 import tempfile
 import os
 import sys
+import platform
 import numpy as np
-import keyboard
-import pyautogui
 import pyperclip
 import time
 import threading
@@ -22,16 +22,46 @@ GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
 SAMPLE_RATE = 16000
 HOTKEY = "f2"
 LANGUAGE = "pt"  # pt, en, es, fr, de, etc.
+IS_MAC = platform.system() == "Darwin"
 # ─────────────────────────────────────────────────
 
 if not GROQ_KEY:
     print("Erro: GROQ_API_KEY nao encontrada.")
     print()
-    print("Configure a variavel de ambiente:")
-    print('  set GROQ_API_KEY=gsk_sua_key_aqui')
+    if IS_MAC:
+        print("Configure a variavel de ambiente:")
+        print('  export GROQ_API_KEY="gsk_sua_key_aqui"')
+        print()
+        print("Para persistir, adicione ao ~/.zshrc:")
+        print('  echo \'export GROQ_API_KEY="gsk_sua_key_aqui"\' >> ~/.zshrc')
+    else:
+        print("Configure a variavel de ambiente:")
+        print('  setx GROQ_API_KEY "gsk_sua_key_aqui"')
     print()
-    print("Ou crie uma key gratis em: https://console.groq.com/keys")
+    print("Crie uma key gratis em: https://console.groq.com/keys")
     sys.exit(1)
+
+# Import keyboard handler (different per OS)
+try:
+    import keyboard
+    USE_KEYBOARD_LIB = True
+except ImportError:
+    USE_KEYBOARD_LIB = False
+
+# macOS: keyboard lib needs sudo or doesn't work well
+# Use pynput as fallback
+if IS_MAC or not USE_KEYBOARD_LIB:
+    try:
+        from pynput import keyboard as pynput_kb
+        USE_PYNPUT = True
+    except ImportError:
+        print("Erro: instale pynput para macOS:")
+        print("  pip install pynput")
+        sys.exit(1)
+else:
+    USE_PYNPUT = False
+
+import pyautogui
 
 recording = False
 stream = None
@@ -88,7 +118,9 @@ def stop_and_transcribe():
                 print(f"   >> {text}")
                 time.sleep(0.3)
                 pyperclip.copy(text)
-                pyautogui.hotkey("ctrl", "v")
+                # macOS uses Cmd+V, Windows uses Ctrl+V
+                paste_key = "command" if IS_MAC else "ctrl"
+                pyautogui.hotkey(paste_key, "v")
                 time.sleep(0.1)
                 pyautogui.press("enter")
                 print("   Enviado!\n")
@@ -117,8 +149,27 @@ print("  ╚══════════════════════�
 print()
 print(f"  {HOTKEY.upper()} = gravar / parar + enviar")
 print(f"  Idioma: {LANGUAGE}")
+print(f"  Sistema: {'macOS' if IS_MAC else 'Windows'}")
 print("  Ctrl+C = sair")
 print()
 
-keyboard.add_hotkey(HOTKEY, on_hotkey, suppress=True)
-keyboard.wait()
+if USE_PYNPUT:
+    # macOS / pynput mode
+    hotkey_key = pynput_kb.Key.f2
+
+    def on_press(key):
+        if key == hotkey_key:
+            on_hotkey()
+
+    listener = pynput_kb.Listener(on_press=on_press)
+    listener.start()
+    print("  Esperando... (pynput mode)")
+    print()
+    try:
+        listener.join()
+    except KeyboardInterrupt:
+        pass
+else:
+    # Windows / keyboard lib mode
+    keyboard.add_hotkey(HOTKEY, on_hotkey, suppress=True)
+    keyboard.wait()

@@ -38,16 +38,29 @@ cd fala-claude
 
 ### 2. Rode o setup automático
 
+**Windows:**
 ```bash
 setup.bat
 ```
 
-Ele instala Python (se não tiver), as dependências, e pede sua API key do Groq.
+**macOS / Linux:**
+```bash
+chmod +x setup.sh
+./setup.sh
+```
+
+O setup instala as dependências e pede sua API key do Groq.
 
 ### 3. Ou faça manual
 
+**Windows:**
 ```bash
 pip install sounddevice soundfile requests keyboard pyperclip pyautogui numpy
+```
+
+**macOS:**
+```bash
+pip3 install sounddevice soundfile requests pynput pyperclip pyautogui numpy
 ```
 
 ### 4. Pegue sua API key (grátis)
@@ -56,18 +69,30 @@ pip install sounddevice soundfile requests keyboard pyperclip pyautogui numpy
 2. Vá em **API Keys** → **Create API Key**
 3. Configure a variável de ambiente:
 
+**Windows:**
 ```bash
 setx GROQ_API_KEY "gsk_sua_key_aqui"
 ```
 
+**macOS / Linux:**
+```bash
+echo 'export GROQ_API_KEY="gsk_sua_key_aqui"' >> ~/.zshrc
+source ~/.zshrc
+```
+
 ### 5. Rode
 
+**Windows (PowerShell como Admin):**
 ```bash
-# PowerShell como Administrador
 python fala.py
 ```
 
-**Precisa rodar como administrador** pra capturar a hotkey F2 globalmente.
+**macOS:**
+```bash
+python3 fala.py
+```
+
+> **macOS:** Na primeira vez, o sistema vai pedir permissão de **Acessibilidade** e **Microfone** em Preferências do Sistema. Aceite ambos para o F2 e a gravação funcionarem.
 
 ## Uso
 
