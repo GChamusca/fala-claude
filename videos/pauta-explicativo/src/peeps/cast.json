@@ -2,11 +2,11 @@
  "ana_computer": {
   "body": "Computer",
   "bodyOpts": {
-   "topColor": "#24456b",
+   "topColor": "#a8453a",
    "computerColor": "#e6dcc7",
    "skinColor": "#c68a5e"
   },
-  "head": "LongCurly",
+  "head": "LongBangs",
   "skin": "#c68a5e",
   "faces": [
    "Hectic",
@@ -19,11 +19,11 @@
  "ana_coffee": {
   "body": "Coffee",
   "bodyOpts": {
-   "topColor": "#24456b",
+   "topColor": "#a8453a",
    "cupColor": "#e8c873",
    "skinColor": "#c68a5e"
   },
-  "head": "LongCurly",
+  "head": "LongBangs",
   "skin": "#c68a5e",
   "faces": [
    "Calm",
@@ -50,7 +50,7 @@
  "analista": {
   "body": "Explaining",
   "bodyOpts": {
-   "topColor": "#a8453a",
+   "topColor": "#4b88a6",
    "skinColor": "#e2b48c"
   },
   "head": "Bun",
