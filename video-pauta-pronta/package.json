@@ -1,0 +1,21 @@
+{
+  "name": "video-pauta-pronta",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio",
+    "render:16x9": "remotion render src/index.ts PautaPronta16x9 out/pauta-pronta-16x9.mp4",
+    "render:9x16": "remotion render src/index.ts PautaPronta9x16 out/pauta-pronta-9x16.mp4"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.529",
+    "@remotion/cli": "^4.0.529",
+    "@remotion/google-fonts": "^4.0.529",
+    "@remotion/renderer": "^4.0.529",
+    "@types/react": "^18.3.31",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.529",
+    "typescript": "^5.9.3"
+  }
+}

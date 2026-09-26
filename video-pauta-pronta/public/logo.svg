@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 96" width="480" height="96">
+  <defs>
+    <style>
+      .pp-name { font-family: Georgia, 'Times New Roman', serif; font-size: 36px; font-weight: 400; }
+      .pp-by { font-family: Georgia, 'Times New Roman', serif; font-size: 18px; font-weight: 400; font-style: italic; }
+    </style>
+  </defs>
+  
+  <g transform="translate(8 24)">
+    <circle cx="28" cy="28" r="22" fill="#1a1610" transform="translate(4 4)"></circle>
+    <circle cx="28" cy="28" r="22" fill="#24456b"></circle>
+    <circle cx="36" cy="20" r="5" fill="#e8c873"></circle>
+  </g>
+  
+  <text x="78" y="60" class="pp-name" fill="#1a1610">Pauta Pronta</text>
+  <text x="78" y="84" class="pp-by" fill="#7a7461">by REP</text>
+</svg>
