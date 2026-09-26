@@ -1,10 +1,12 @@
 // Gera a narração de cada promo na ElevenLabs com tempo por palavra (para a legenda sincronizada).
 // Uso: XI_KEY=... node src/voice.mjs <voz> [promo ...]    (a chave nunca vai para o repositório)
 import fs from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { SCRIPTS } from './scripts.mjs';
 
 const VOICES = { raquel: 'GDzHdQOi6jjf8zaXhCYD', roberta: 'RGymW84CSmfVugnA5tvA', lucas: '7lu3ze7orhWaNeSPowWx', davi: '5p9IbzcK4R8rN1fpGdMF' };
 const [voice = 'raquel', ...only] = process.argv.slice(2);
+const TEMPO = { roberta: 1.07 }[voice] ?? 1; // Roberta fala mais pausado
 const KEY = process.env.XI_KEY;
 if (!KEY) throw new Error('defina XI_KEY');
 const ROOT = new URL('../', import.meta.url);
@@ -30,6 +32,11 @@ for (const [id, s] of Object.entries(SCRIPTS)) {
     cur.w += ch; cur.e = a.character_end_times_seconds[i];
   });
   if (cur) words.push(cur);
-  fs.writeFileSync(new URL(`assets/voice/${id}.json`, ROOT), JSON.stringify({ voice, text, words }, null, 1));
+  // acelera um pouco (ritmo de anúncio) e ajusta os tempos das palavras na mesma proporção
+  const mp3 = new URL(`assets/voice/${id}.mp3`, ROOT).pathname;
+  execFileSync('ffmpeg', ['-loglevel', 'error', '-y', '-i', mp3, '-filter:a', `atempo=${TEMPO}`, '-b:a', '128k', mp3 + '.tmp.mp3']);
+  fs.renameSync(mp3 + '.tmp.mp3', mp3);
+  words.forEach((w) => { w.s = +(w.s / TEMPO).toFixed(3); w.e = +(w.e / TEMPO).toFixed(3); });
+  fs.writeFileSync(new URL(`assets/voice/${id}.json`, ROOT), JSON.stringify({ voice, text, tempo: TEMPO, words }, null, 1));
   console.log(id, words.length, 'palavras,', words.at(-1).e.toFixed(2) + 's');
 }

@@ -52,76 +52,76 @@
 <script>
 (function(){
 const tl = gsap.timeline({ paused: true });
-tl.set('#p3s0', { opacity: 1 }, 0); tl.set('#p3s0', { opacity: 0 }, 5.08);
+tl.set('#p3s0', { opacity: 1 }, 0); tl.set('#p3s0', { opacity: 0 }, 4.69);
 tl.fromTo('#p3s0', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 0);
 { const h = document.querySelector('#p3s0-h'), o = { v: 52 };
 tl.fromTo(o, { v: 52 }, { v: 60, duration: 0.8, ease: 'power2.in', onUpdate: () => { const m = Math.round(o.v); h.textContent = m >= 60 ? '18:00' : '17:' + m; } }, 0);
 tl.fromTo('#p3s0-clock', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'expo.out' }, 0);
 tl.fromTo('#p3s0-clock', { x: 0 }, { x: 14, duration: 0.05, repeat: 5, yoyo: true, ease: 'sine.inOut' }, 0.8); tl.set('#p3s0-clock', { x: 0 }, 1.11);
 tl.fromTo('#p3s0-lab', { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.9);
-tl.fromTo('.p3s0-m', { scale: 0.5, opacity: 0, transformOrigin: '0% 100%' }, { scale: 1, opacity: 1, duration: 0.22, ease: 'back.out(2)', stagger: 0.74 }, 1.1); }
-tl.set('#p3s1', { opacity: 1 }, 5.08); tl.set('#p3s1', { opacity: 0 }, 6.02);
-tl.fromTo('#p3s1', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 5.08);
-{ tl.fromTo('#p3s1-box', { y: 400, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'expo.out' }, 5.08);
+tl.fromTo('.p3s0-m', { scale: 0.5, opacity: 0, transformOrigin: '0% 100%' }, { scale: 1, opacity: 1, duration: 0.22, ease: 'back.out(2)', stagger: 0.66 }, 1.1); }
+tl.set('#p3s1', { opacity: 1 }, 4.69); tl.set('#p3s1', { opacity: 0 }, 5.96);
+tl.fromTo('#p3s1', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 4.69);
+{ tl.fromTo('#p3s1-box', { y: 400, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'expo.out' }, 4.69);
 tl.set('.p3s1-ch', { opacity: 0 }, 0);
-tl.to('.p3s1-ch', { opacity: 1, duration: 0.01, stagger: 0.016 }, 5.28);
-tl.fromTo('#p3s1-hand', { x: 900, y: 1300, opacity: 0 }, { x: 280, y: 800, opacity: 1, duration: 0.3, ease: 'power3.out' }, 5.62);
-tl.to('#p3s1-btn', { scale: 0.93, duration: 0.08, yoyo: true, repeat: 1 }, 5.92); }
-tl.set('#p3s2', { opacity: 1 }, 6.02); tl.set('#p3s2', { opacity: 0 }, 10.37);
-tl.fromTo('#p3s2', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 6.02);
-{ tl.fromTo('#p3s2-ph', { y: 500, rotation: 6 }, { y: 0, rotation: 0, duration: 0.5, ease: 'expo.out' }, 6.02);
-tl.to('#p3s2-strip', { x: -560, duration: 0.35, ease: 'power3.inOut' }, 6.819999999999999);
-tl.to('#p3s2-strip', { x: -1120, duration: 0.35, ease: 'power3.inOut' }, 7.52);
-tl.fromTo('.p3s2-cite', { scale: 0, rotation: -12 }, { scale: 1, rotation: 0, duration: 0.3, ease: 'back.out(2.5)', stagger: 0.12 }, 9.27);
-tl.fromTo('#p3s2-badge', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'back.out(2.5)' }, 9.57); }
-tl.set('#p3s3', { opacity: 1 }, 10.37); 
-tl.fromTo('#p3s3', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 10.37);
-{ tl.fromTo('#p3s3-mark', { scale: 0, rotation: -120, transformOrigin: '50% 50%' }, { scale: 1, rotation: 0, duration: 0.5, ease: 'expo.out' }, 10.37);
-tl.fromTo('#p3s3-name', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' }, 10.52);
-tl.fromTo('#p3s3-btn', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(2)' }, 10.87);
-tl.fromTo('#p3s3-url', { opacity: 0 }, { opacity: 1, duration: 0.3 }, 11.17);
-tl.to('#p3s3-btn', { scale: 1.06, duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: 3 }, 11.569999999999999); }
+tl.to('.p3s1-ch', { opacity: 1, duration: 0.01, stagger: 0.032 }, 4.890000000000001);
+tl.fromTo('#p3s1-hand', { x: 900, y: 1300, opacity: 0 }, { x: 280, y: 800, opacity: 1, duration: 0.3, ease: 'power3.out' }, 5.56);
+tl.to('#p3s1-btn', { scale: 0.93, duration: 0.08, yoyo: true, repeat: 1 }, 5.86); }
+tl.set('#p3s2', { opacity: 1 }, 5.96); tl.set('#p3s2', { opacity: 0 }, 10.44);
+tl.fromTo('#p3s2', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 5.96);
+{ tl.fromTo('#p3s2-ph', { y: 500, rotation: 6 }, { y: 0, rotation: 0, duration: 0.5, ease: 'expo.out' }, 5.96);
+tl.to('#p3s2-strip', { x: -560, duration: 0.35, ease: 'power3.inOut' }, 6.76);
+tl.to('#p3s2-strip', { x: -1120, duration: 0.35, ease: 'power3.inOut' }, 7.46);
+tl.fromTo('.p3s2-cite', { scale: 0, rotation: -12 }, { scale: 1, rotation: 0, duration: 0.3, ease: 'back.out(2.5)', stagger: 0.12 }, 9.34);
+tl.fromTo('#p3s2-badge', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'back.out(2.5)' }, 9.64); }
+tl.set('#p3s3', { opacity: 1 }, 10.44); 
+tl.fromTo('#p3s3', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 10.44);
+{ tl.fromTo('#p3s3-mark', { scale: 0, rotation: -120, transformOrigin: '50% 50%' }, { scale: 1, rotation: 0, duration: 0.5, ease: 'expo.out' }, 10.44);
+tl.fromTo('#p3s3-name', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' }, 10.59);
+tl.fromTo('#p3s3-btn', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(2)' }, 10.94);
+tl.fromTo('#p3s3-url', { opacity: 0 }, { opacity: 1, duration: 0.3 }, 11.24);
+tl.to('#p3s3-btn', { scale: 1.06, duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: 3 }, 11.639999999999999); }
 // legenda: cada palavra entra quando é falada
-tl.set('#p3-cap0', { opacity: 1 }, 0.30); tl.set('#p3-cap0', { opacity: 0 }, 5.14);
+tl.set('#p3-cap0', { opacity: 1 }, 0.30); tl.set('#p3-cap0', { opacity: 0 }, 4.75);
 tl.fromTo('#p3-w0-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 0.35);
-tl.fromTo('#p3-w0-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 0.64);
-tl.fromTo('#p3-w0-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 0.83);
-tl.fromTo('#p3-w0-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 1.43);
-tl.fromTo('#p3-w0-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 1.63);
-tl.fromTo('#p3-w0-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 2.17);
-tl.fromTo('#p3-w0-6', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.03);
-tl.fromTo('#p3-w0-7', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.35);
-tl.fromTo('#p3-w0-8', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.50);
-tl.fromTo('#p3-w0-9', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.76);
-tl.fromTo('#p3-w0-10', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.99);
-tl.fromTo('#p3-w0-11', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.08);
-tl.fromTo('#p3-w0-12', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.33);
-tl.fromTo('#p3-w0-13', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.59);
-tl.set('#p3-cap1', { opacity: 1 }, 5.15); tl.set('#p3-cap1', { opacity: 0 }, 6.08);
-tl.fromTo('#p3-w1-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 5.20);
-tl.fromTo('#p3-w1-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 5.51);
-tl.fromTo('#p3-w1-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 5.63);
-tl.set('#p3-cap2', { opacity: 1 }, 6.09); tl.set('#p3-cap2', { opacity: 0 }, 10.43);
-tl.fromTo('#p3-w2-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 6.14);
-tl.fromTo('#p3-w2-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 6.43);
-tl.fromTo('#p3-w2-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 7.20);
-tl.fromTo('#p3-w2-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.01);
-tl.fromTo('#p3-w2-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.31);
-tl.fromTo('#p3-w2-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.41);
-tl.fromTo('#p3-w2-6', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 9.07);
-tl.fromTo('#p3-w2-7', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 9.49);
-tl.fromTo('#p3-w2-8', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 9.62);
-tl.set('#p3-cap3', { opacity: 1 }, 10.44); 
-tl.fromTo('#p3-w3-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 10.49);
-tl.fromTo('#p3-w3-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 10.91);
-tl.fromTo('#p3-w3-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 11.52);
-tl.fromTo('#p3-w3-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 11.98);
-tl.fromTo('#p3-w3-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 12.39);
-tl.fromTo('#p3-w3-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 12.99);
+tl.fromTo('#p3-w0-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 0.62);
+tl.fromTo('#p3-w0-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 0.81);
+tl.fromTo('#p3-w0-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 1.47);
+tl.fromTo('#p3-w0-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 1.60);
+tl.fromTo('#p3-w0-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 2.04);
+tl.fromTo('#p3-w0-6', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 2.87);
+tl.fromTo('#p3-w0-7', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.00);
+tl.fromTo('#p3-w0-8', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.09);
+tl.fromTo('#p3-w0-9', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.45);
+tl.fromTo('#p3-w0-10', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.60);
+tl.fromTo('#p3-w0-11', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.70);
+tl.fromTo('#p3-w0-12', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.00);
+tl.fromTo('#p3-w0-13', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.24);
+tl.set('#p3-cap1', { opacity: 1 }, 4.76); tl.set('#p3-cap1', { opacity: 0 }, 6.02);
+tl.fromTo('#p3-w1-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.81);
+tl.fromTo('#p3-w1-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 5.21);
+tl.fromTo('#p3-w1-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 5.34);
+tl.set('#p3-cap2', { opacity: 1 }, 6.03); tl.set('#p3-cap2', { opacity: 0 }, 10.50);
+tl.fromTo('#p3-w2-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 6.08);
+tl.fromTo('#p3-w2-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 6.55);
+tl.fromTo('#p3-w2-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 7.40);
+tl.fromTo('#p3-w2-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 7.90);
+tl.fromTo('#p3-w2-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.24);
+tl.fromTo('#p3-w2-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.35);
+tl.fromTo('#p3-w2-6', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.97);
+tl.fromTo('#p3-w2-7', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 9.43);
+tl.fromTo('#p3-w2-8', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 9.60);
+tl.set('#p3-cap3', { opacity: 1 }, 10.51); 
+tl.fromTo('#p3-w3-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 10.56);
+tl.fromTo('#p3-w3-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 11.07);
+tl.fromTo('#p3-w3-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 11.80);
+tl.fromTo('#p3-w3-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 12.36);
+tl.fromTo('#p3-w3-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 12.84);
+tl.fromTo('#p3-w3-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 13.36);
 // marca some no fecho; faixas de cor antes do fecho
-tl.to('#brand', { opacity: 0, duration: 0.2 }, 10.37);
-tl.to('#stripes div', { scaleX: 1, transformOrigin: '0% 50%', duration: 0.22, ease: 'power3.in', stagger: 0.03 }, 10.07);
-tl.to('#stripes div', { scaleX: 0, transformOrigin: '100% 50%', duration: 0.25, ease: 'power3.out', stagger: 0.03 }, 10.39);
+tl.to('#brand', { opacity: 0, duration: 0.2 }, 10.44);
+tl.to('#stripes div', { scaleX: 1, transformOrigin: '0% 50%', duration: 0.22, ease: 'power3.in', stagger: 0.03 }, 10.14);
+tl.to('#stripes div', { scaleX: 0, transformOrigin: '100% 50%', duration: 0.25, ease: 'power3.out', stagger: 0.03 }, 10.46);
 window.__timelines["p3"] = tl;
 })();
 </script>

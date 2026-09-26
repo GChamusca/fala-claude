@@ -51,81 +51,81 @@
 <script>
 (function(){
 const tl = gsap.timeline({ paused: true });
-tl.set('#p1s0', { opacity: 1 }, 0); tl.set('#p1s0', { opacity: 0 }, 3.15);
+tl.set('#p1s0', { opacity: 1 }, 0); tl.set('#p1s0', { opacity: 0 }, 3.26);
 tl.fromTo('#p1s0', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 0);
 { tl.fromTo('#p1s0-disc', { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'expo.out' }, 0);
 tl.fromTo('#p1s0-ana', { y: 700 }, { y: 0, duration: 0.45, ease: 'power3.out' }, 0);
-tl.fromTo('.p1s0-tab', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: 'back.out(2)', stagger: { each: 0.074, from: 'random' } }, 0.25);
+tl.fromTo('.p1s0-tab', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: 'back.out(2)', stagger: { each: 0.077, from: 'random' } }, 0.25);
 const o = { v: 1 }, el = document.querySelector('#p1s0-n');
-tl.fromTo(o, { v: 1 }, { v: 500, duration: 2.85, ease: 'power2.in', onUpdate: () => { el.textContent = Math.round(o.v); } }, 0.2);
+tl.fromTo(o, { v: 1 }, { v: 500, duration: 2.96, ease: 'power2.in', onUpdate: () => { el.textContent = Math.round(o.v); } }, 0.2);
 tl.fromTo('#p1s0-count', { scale: 0 }, { scale: 1, duration: 0.3, ease: 'back.out(2)' }, 0.2);
-tl.fromTo('#p1s0-count', { x: 0 }, { x: 12, duration: 0.05, repeat: 5, yoyo: true, ease: 'sine.inOut' }, 2.65); tl.set('#p1s0-count', { x: 0 }, 2.96); }
-tl.set('#p1s1', { opacity: 1 }, 3.15); tl.set('#p1s1', { opacity: 0 }, 7.35);
-tl.fromTo('#p1s1', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 3.15);
+tl.fromTo('#p1s0-count', { x: 0 }, { x: 12, duration: 0.05, repeat: 5, yoyo: true, ease: 'sine.inOut' }, 2.76); tl.set('#p1s0-count', { x: 0 }, 3.07); }
+tl.set('#p1s1', { opacity: 1 }, 3.26); tl.set('#p1s1', { opacity: 0 }, 7.26);
+tl.fromTo('#p1s1', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 3.26);
 { const bigEl = document.querySelector('#p1s1-big'), labEl = document.querySelector('#p1s1-lab');
-tl.fromTo('.p1s1-c', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: 'power3.out', stagger: { amount: 0.5, grid: [20, 10], from: 'center' } }, 3.15);
-for (let r = 0; r < 20; r++) tl.to('.p1s1-r' + r + ':not(.p1s1-s)', { backgroundColor: '#e6dcc7', borderColor: '#cfc6b3', duration: 0.12 }, 3.65 + r * 0.140);
-tl.to('.p1s1-s', { backgroundColor: '#24456b', scale: 1.2, duration: 0.2, ease: 'back.out(3)', stagger: 0.03 }, 6.45);
+tl.fromTo('.p1s1-c', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: 'power3.out', stagger: { amount: 0.5, grid: [20, 10], from: 'center' } }, 3.26);
+for (let r = 0; r < 20; r++) tl.to('.p1s1-r' + r + ':not(.p1s1-s)', { backgroundColor: '#e6dcc7', borderColor: '#cfc6b3', duration: 0.12 }, 3.76 + r * 0.130);
+tl.to('.p1s1-s', { backgroundColor: '#24456b', scale: 1.2, duration: 0.2, ease: 'back.out(3)', stagger: 0.03 }, 6.36);
 const o = { v: 0 };
-tl.fromTo(o, { v: 0 }, { v: 200, duration: 3.10, ease: 'power2.out', onUpdate: () => { bigEl.textContent = Math.round(o.v); } }, 3.35);
-tl.fromTo(['#p1s1-big', '#p1s1-lab'], { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'expo.out' }, 3.35);
-tl.to(['#p1s1-big', '#p1s1-lab'], { opacity: 0, scale: 1.3, duration: 0.25 }, 6.35); }
-tl.set('#p1s2', { opacity: 1 }, 7.35); tl.set('#p1s2', { opacity: 0 }, 10.12);
-tl.fromTo('#p1s2', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 7.35);
-{ tl.fromTo('#p1s2-ph', { y: 500, rotation: 6 }, { y: 0, rotation: 0, duration: 0.5, ease: 'expo.out' }, 7.35);
-tl.to('#p1s2-strip', { x: -560, duration: 0.35, ease: 'power3.inOut' }, 8.15);
-tl.to('#p1s2-strip', { x: -1120, duration: 0.35, ease: 'power3.inOut' }, 8.85);
-tl.fromTo('.p1s2-cite', { scale: 0, rotation: -12 }, { scale: 1, rotation: 0, duration: 0.3, ease: 'back.out(2.5)', stagger: 0.12 }, 9.02);
-tl.fromTo('#p1s2-badge', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'back.out(2.5)' }, 9.32); }
-tl.set('#p1s3', { opacity: 1 }, 10.12); 
-tl.fromTo('#p1s3', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 10.12);
-{ tl.fromTo('#p1s3-mark', { scale: 0, rotation: -120, transformOrigin: '50% 50%' }, { scale: 1, rotation: 0, duration: 0.5, ease: 'expo.out' }, 10.12);
-tl.fromTo('#p1s3-name', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' }, 10.27);
-tl.fromTo('#p1s3-btn', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(2)' }, 10.62);
-tl.fromTo('#p1s3-url', { opacity: 0 }, { opacity: 1, duration: 0.3 }, 10.92);
-tl.to('#p1s3-btn', { scale: 1.06, duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: 3 }, 11.319999999999999); }
+tl.fromTo(o, { v: 0 }, { v: 200, duration: 2.90, ease: 'power2.out', onUpdate: () => { bigEl.textContent = Math.round(o.v); } }, 3.46);
+tl.fromTo(['#p1s1-big', '#p1s1-lab'], { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'expo.out' }, 3.46);
+tl.to(['#p1s1-big', '#p1s1-lab'], { opacity: 0, scale: 1.3, duration: 0.25 }, 6.26); }
+tl.set('#p1s2', { opacity: 1 }, 7.26); tl.set('#p1s2', { opacity: 0 }, 9.98);
+tl.fromTo('#p1s2', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 7.26);
+{ tl.fromTo('#p1s2-ph', { y: 500, rotation: 6 }, { y: 0, rotation: 0, duration: 0.5, ease: 'expo.out' }, 7.26);
+tl.to('#p1s2-strip', { x: -560, duration: 0.35, ease: 'power3.inOut' }, 8.06);
+tl.to('#p1s2-strip', { x: -1120, duration: 0.35, ease: 'power3.inOut' }, 8.76);
+tl.fromTo('.p1s2-cite', { scale: 0, rotation: -12 }, { scale: 1, rotation: 0, duration: 0.3, ease: 'back.out(2.5)', stagger: 0.12 }, 8.88);
+tl.fromTo('#p1s2-badge', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'back.out(2.5)' }, 9.18); }
+tl.set('#p1s3', { opacity: 1 }, 9.98); 
+tl.fromTo('#p1s3', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 9.98);
+{ tl.fromTo('#p1s3-mark', { scale: 0, rotation: -120, transformOrigin: '50% 50%' }, { scale: 1, rotation: 0, duration: 0.5, ease: 'expo.out' }, 9.98);
+tl.fromTo('#p1s3-name', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' }, 10.13);
+tl.fromTo('#p1s3-btn', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(2)' }, 10.48);
+tl.fromTo('#p1s3-url', { opacity: 0 }, { opacity: 1, duration: 0.3 }, 10.780000000000001);
+tl.to('#p1s3-btn', { scale: 1.06, duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: 3 }, 11.18); }
 // legenda: cada palavra entra quando é falada
-tl.set('#p1-cap0', { opacity: 1 }, 0.30); tl.set('#p1-cap0', { opacity: 0 }, 3.21);
+tl.set('#p1-cap0', { opacity: 1 }, 0.30); tl.set('#p1-cap0', { opacity: 0 }, 3.32);
 tl.fromTo('#p1-w0-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 0.35);
-tl.fromTo('#p1-w0-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 0.62);
-tl.fromTo('#p1-w0-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 0.72);
-tl.fromTo('#p1-w0-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 1.02);
-tl.fromTo('#p1-w0-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 1.74);
-tl.fromTo('#p1-w0-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 2.07);
-tl.fromTo('#p1-w0-6', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 2.24);
-tl.fromTo('#p1-w0-7', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 2.54);
-tl.fromTo('#p1-w0-8', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 2.69);
-tl.set('#p1-cap1', { opacity: 1 }, 3.22); tl.set('#p1-cap1', { opacity: 0 }, 7.41);
-tl.fromTo('#p1-w1-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.27);
-tl.fromTo('#p1-w1-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.43);
-tl.fromTo('#p1-w1-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.76);
-tl.fromTo('#p1-w1-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.15);
-tl.fromTo('#p1-w1-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.35);
-tl.fromTo('#p1-w1-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.71);
-tl.fromTo('#p1-w1-6', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.91);
-tl.fromTo('#p1-w1-7', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 5.52);
-tl.fromTo('#p1-w1-8', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 6.03);
-tl.fromTo('#p1-w1-9', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 6.54);
-tl.fromTo('#p1-w1-10', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 6.66);
-tl.set('#p1-cap2', { opacity: 1 }, 7.42); tl.set('#p1-cap2', { opacity: 0 }, 10.18);
-tl.fromTo('#p1-w2-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 7.47);
-tl.fromTo('#p1-w2-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 7.68);
-tl.fromTo('#p1-w2-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.07);
-tl.fromTo('#p1-w2-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.19);
-tl.fromTo('#p1-w2-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.58);
-tl.fromTo('#p1-w2-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 9.24);
-tl.fromTo('#p1-w2-6', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 9.47);
-tl.set('#p1-cap3', { opacity: 1 }, 10.19); 
-tl.fromTo('#p1-w3-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 10.24);
-tl.fromTo('#p1-w3-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 10.53);
-tl.fromTo('#p1-w3-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 11.20);
-tl.fromTo('#p1-w3-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 11.66);
-tl.fromTo('#p1-w3-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 12.11);
-tl.fromTo('#p1-w3-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 12.54);
+tl.fromTo('#p1-w0-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 0.67);
+tl.fromTo('#p1-w0-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 0.79);
+tl.fromTo('#p1-w0-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 1.15);
+tl.fromTo('#p1-w0-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 1.82);
+tl.fromTo('#p1-w0-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 2.11);
+tl.fromTo('#p1-w0-6', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 2.26);
+tl.fromTo('#p1-w0-7', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 2.49);
+tl.fromTo('#p1-w0-8', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 2.67);
+tl.set('#p1-cap1', { opacity: 1 }, 3.33); tl.set('#p1-cap1', { opacity: 0 }, 7.32);
+tl.fromTo('#p1-w1-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.38);
+tl.fromTo('#p1-w1-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.49);
+tl.fromTo('#p1-w1-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.91);
+tl.fromTo('#p1-w1-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.27);
+tl.fromTo('#p1-w1-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.46);
+tl.fromTo('#p1-w1-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.80);
+tl.fromTo('#p1-w1-6', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.99);
+tl.fromTo('#p1-w1-7', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 5.61);
+tl.fromTo('#p1-w1-8', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 6.09);
+tl.fromTo('#p1-w1-9', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 6.60);
+tl.fromTo('#p1-w1-10', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 6.77);
+tl.set('#p1-cap2', { opacity: 1 }, 7.33); tl.set('#p1-cap2', { opacity: 0 }, 10.04);
+tl.fromTo('#p1-w2-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 7.38);
+tl.fromTo('#p1-w2-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 7.58);
+tl.fromTo('#p1-w2-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.01);
+tl.fromTo('#p1-w2-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.11);
+tl.fromTo('#p1-w2-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.41);
+tl.fromTo('#p1-w2-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.97);
+tl.fromTo('#p1-w2-6', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 9.32);
+tl.set('#p1-cap3', { opacity: 1 }, 10.05); 
+tl.fromTo('#p1-w3-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 10.10);
+tl.fromTo('#p1-w3-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 10.46);
+tl.fromTo('#p1-w3-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 11.01);
+tl.fromTo('#p1-w3-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 11.75);
+tl.fromTo('#p1-w3-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 12.24);
+tl.fromTo('#p1-w3-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 12.84);
 // marca some no fecho; faixas de cor antes do fecho
-tl.to('#brand', { opacity: 0, duration: 0.2 }, 10.12);
-tl.to('#stripes div', { scaleX: 1, transformOrigin: '0% 50%', duration: 0.22, ease: 'power3.in', stagger: 0.03 }, 9.82);
-tl.to('#stripes div', { scaleX: 0, transformOrigin: '100% 50%', duration: 0.25, ease: 'power3.out', stagger: 0.03 }, 10.14);
+tl.to('#brand', { opacity: 0, duration: 0.2 }, 9.98);
+tl.to('#stripes div', { scaleX: 1, transformOrigin: '0% 50%', duration: 0.22, ease: 'power3.in', stagger: 0.03 }, 9.68);
+tl.to('#stripes div', { scaleX: 0, transformOrigin: '100% 50%', duration: 0.25, ease: 'power3.out', stagger: 0.03 }, 10.00);
 window.__timelines["p1"] = tl;
 })();
 </script>
