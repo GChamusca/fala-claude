@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Documento de Validacao — Oferta de canetas emagrecedoras pelo SUS no Brasil e critérios de acesso</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  :root {
+    --pp-tomato: #c8341a;
+    --pp-ink: #1a1a1a;
+    --pp-ink-soft: #444;
+    --pp-ink-mute: #6b665d;
+    --pp-rule: #d4cfc3;
+    --pp-paper: #fdfaf3;
+    --pp-cream: #f6f1e4;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #ececec;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--pp-ink);
+    line-height: 1.45;
+  }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 14mm 14mm 12mm 14mm;
+    margin: 16mm auto;
+    background: var(--pp-paper);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+  }
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 2px solid var(--pp-ink);
+    padding-bottom: 4mm;
+    margin-bottom: 5mm;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+  }
+  .brand img { display: block; width: 48mm; max-height: 16mm; object-fit: contain; object-position: left center; }
+  .masthead-meta {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 7.5pt;
+    text-align: right;
+    color: var(--pp-ink-mute);
+    line-height: 1.3;
+  }
+  .doc-title {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 8pt;
+    color: var(--pp-ink-mute);
+    margin-bottom: 1.5mm;
+  }
+  .doc-headline {
+    font-size: 16pt;
+    line-height: 1.2;
+    margin: 0 0 3mm 0;
+    font-weight: 700;
+  }
+  .tags-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3mm;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 9pt;
+    color: var(--pp-ink-soft);
+    padding-bottom: 5mm;
+    border-bottom: 1px solid var(--pp-rule);
+    margin-bottom: 5mm;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2.2mm 3.2mm;
+    border-radius: 12px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 8.5pt;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .chip-tom { background: #fef0e8; color: #a83e1d; }
+  .chip-estilo { background: #eef4ea; color: #3f6b35; }
+  .chip-formato { background: #eaeff7; color: #31507d; }
+  .chip-qualidade { background: #f3ecfa; color: #5b3a8e; }
+  .hero {
+    margin-bottom: 6mm;
+  }
+  .hero-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 8pt;
+    color: var(--pp-ink-mute);
+    margin-bottom: 2mm;
+  }
+  .ai-disclosure {
+    display: inline-block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 7pt;
+    color: var(--pp-ink-mute);
+    background: transparent;
+    padding: 0;
+    margin: -1mm 0 2.5mm 0;
+  }
+  /* Single — mantém a proporção real da arte selecionada */
+  .hero-single {
+    display: flex;
+    justify-content: center;
+  }
+  .hero-single img {
+    width: 95mm;
+    max-height: 95mm;
+    height: auto;
+    object-fit: contain;
+    border: 1px solid var(--pp-rule);
+    background: var(--pp-cream);
+  }
+  /* Carrossel — grid de 4 slides */
+  .hero-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5mm;
+  }
+  .hero-grid .slide {
+    position: relative;
+  }
+  .hero-grid img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border: 1px solid var(--pp-rule);
+    background: var(--pp-cream);
+  }
+  .hero-grid .slide-num {
+    position: absolute;
+    top: 1.5mm; left: 1.5mm;
+    background: rgba(26,26,26,0.86);
+    color: white;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 7.5pt;
+    padding: 0.5mm 1.8mm;
+    border-radius: 1mm;
+  }
+  /* LinkedIn/Thread — 1 imagem hero retangular */
+  .hero-landscape img {
+    width: 100%;
+    max-height: 70mm;
+    height: auto;
+    object-fit: contain;
+    border: 1px solid var(--pp-rule);
+    background: var(--pp-cream);
+  }
+  .section {
+    margin-bottom: 5mm;
+  }
+  .section-title {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 8pt;
+    color: var(--pp-ink-mute);
+    margin-bottom: 2mm;
+  }
+  .section-body {
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: var(--pp-ink);
+  }
+  .section-body p { margin: 0; }
+  .visual-line {
+    font-size: 9.5pt;
+    color: var(--pp-ink-soft);
+    line-height: 1.4;
+    padding: 3mm 4mm;
+    background: var(--pp-cream);
+    border-left: 2px solid var(--pp-tomato);
+  }
+  .visual-line strong { color: var(--pp-ink); }
+  .caption-box {
+    font-family: Georgia, serif;
+    font-size: 10.5pt;
+    line-height: 1.6;
+    color: var(--pp-ink);
+    padding: 4mm 5mm;
+    background: white;
+    border: 1px solid var(--pp-rule);
+    border-left: 3px solid var(--pp-tomato);
+    white-space: pre-wrap;
+  }
+  .cobertura-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3mm;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+  .cobertura-row .stat {
+    text-align: center;
+    padding: 2.5mm 0;
+    background: var(--pp-cream);
+    border-radius: 1mm;
+  }
+  .cobertura-row .num {
+    font-size: 15pt;
+    font-weight: 700;
+    color: var(--pp-tomato);
+    line-height: 1;
+  }
+  .cobertura-row .lbl {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 6pt;
+    color: var(--pp-ink-mute);
+    margin-top: 1.5mm;
+  }
+  ol.fontes {
+    margin: 0;
+    padding-left: 4.5mm;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 8.5pt;
+    line-height: 1.5;
+    color: var(--pp-ink-soft);
+    columns: 2;
+    column-gap: 7mm;
+  }
+  ol.fontes li {
+    margin-bottom: 1.5mm;
+    break-inside: avoid;
+  }
+  .warnings {
+    background: #fdf3df;
+    border-left: 3px solid #c8841a;
+    padding: 3mm 4mm;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 8.5pt;
+    color: var(--pp-ink-soft);
+    margin-bottom: 5mm;
+  }
+  .warnings ul { margin: 1.5mm 0 0 0; padding-left: 4mm; }
+  .footer {
+    margin-top: 5mm;
+    padding-top: 3mm;
+    border-top: 1px solid var(--pp-rule);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 7pt;
+    color: var(--pp-ink-mute);
+    display: flex;
+    justify-content: space-between;
+    gap: 4mm;
+  }
+  .footer .hash {
+    font-family: 'Courier New', monospace;
+    text-align: right;
+  }
+  @media print {
+    @page { size: A4; margin: 0; }
+    html, body { background: white; }
+    .page {
+      width: 100%;
+      min-height: 0;
+      margin: 0;
+      padding: 12mm;
+      box-shadow: none;
+      page-break-after: avoid;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="masthead">
+      <div class="brand"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0ODAgOTYiIHdpZHRoPSI0ODAiIGhlaWdodD0iOTYiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAucHAtbmFtZSB7IGZvbnQtZmFtaWx5OiBHZW9yZ2lhLCAnVGltZXMgTmV3IFJvbWFuJywgc2VyaWY7IGZvbnQtc2l6ZTogMzZweDsgZm9udC13ZWlnaHQ6IDQwMDsgfQogICAgICAucHAtYnkgeyBmb250LWZhbWlseTogR2VvcmdpYSwgJ1RpbWVzIE5ldyBSb21hbicsIHNlcmlmOyBmb250LXNpemU6IDE4cHg7IGZvbnQtd2VpZ2h0OiA0MDA7IGZvbnQtc3R5bGU6IGl0YWxpYzsgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgCiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoOCAyNCkiPgogICAgPGNpcmNsZSBjeD0iMjgiIGN5PSIyOCIgcj0iMjIiIGZpbGw9IiMxYTE2MTAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQgNCkiPjwvY2lyY2xlPgogICAgPGNpcmNsZSBjeD0iMjgiIGN5PSIyOCIgcj0iMjIiIGZpbGw9IiMyNDQ1NmIiPjwvY2lyY2xlPgogICAgPGNpcmNsZSBjeD0iMzYiIGN5PSIyMCIgcj0iNSIgZmlsbD0iI2U4Yzg3MyI+PC9jaXJjbGU+CiAgPC9nPgogIAogIDx0ZXh0IHg9Ijc4IiB5PSI2MCIgY2xhc3M9InBwLW5hbWUiIGZpbGw9IiMxYTE2MTAiPlBhdXRhIFByb250YTwvdGV4dD4KICA8dGV4dCB4PSI3OCIgeT0iODQiIGNsYXNzPSJwcC1ieSIgZmlsbD0iIzdhNzQ2MSI+YnkgUkVQPC90ZXh0Pgo8L3N2Zz4K" alt="Pauta Pronta"></div>
+      <div class="masthead-meta">
+        Como o post foi montado<br>
+        26 de setembro de 2026 · Pedido d74f882a
+      </div>
+    </div>
+
+    <div class="doc-title">Tema</div>
+    <h1 class="doc-headline">Oferta de canetas emagrecedoras pelo SUS no Brasil e critérios de acesso</h1>
+
+    
+  <div class="tags-strip">
+    <span class="chip chip-tom">Tom: Explicador</span>
+    <span class="chip chip-estilo">Estilo: Ilustração</span>
+    <span class="chip chip-formato">Formato: Instagram (carrossel)</span>
+    <span class="chip chip-qualidade">Qualidade: Padrão</span>
+  </div>
+
+    
+    <div class="hero">
+      <div class="hero-label">Sua entrega · 4 slides</div>
+      <div class="ai-disclosure">* imagem gerada por IA</div>
+      <div class="hero-grid">
+        
+          <div class="slide">
+            <img src="https://pub-5295c9d4a3f24ed38f98f4e78fb66fbb.r2.dev/pautapronta/d74f882a-42df-47ff-9be1-b078bc4ee3e5/79ce81c5-ff81-4b8e-b1cd-3496a726a08a/attempt-2/carrossel-slide-01-ilustracao.png" alt="Slide 1">
+            <span class="slide-num">1/4</span>
+          </div>
+          <div class="slide">
+            <img src="https://pub-5295c9d4a3f24ed38f98f4e78fb66fbb.r2.dev/pautapronta/d74f882a-42df-47ff-9be1-b078bc4ee3e5/79ce81c5-ff81-4b8e-b1cd-3496a726a08a/attempt-2/carrossel-slide-02-ilustracao.png" alt="Slide 2">
+            <span class="slide-num">2/4</span>
+          </div>
+          <div class="slide">
+            <img src="https://pub-5295c9d4a3f24ed38f98f4e78fb66fbb.r2.dev/pautapronta/d74f882a-42df-47ff-9be1-b078bc4ee3e5/79ce81c5-ff81-4b8e-b1cd-3496a726a08a/attempt-2/carrossel-slide-03-ilustracao.png" alt="Slide 3">
+            <span class="slide-num">3/4</span>
+          </div>
+          <div class="slide">
+            <img src="https://pub-5295c9d4a3f24ed38f98f4e78fb66fbb.r2.dev/pautapronta/d74f882a-42df-47ff-9be1-b078bc4ee3e5/79ce81c5-ff81-4b8e-b1cd-3496a726a08a/attempt-2/carrossel-slide-04-ilustracao.png" alt="Slide 4">
+            <span class="slide-num">4/4</span>
+          </div>
+      </div>
+    </div>
+
+    
+  <div class="section">
+    <div class="section-title">Legenda pra publicar</div>
+    <div class="caption-box">Em setembro de 2026, o governo confirmou a intenção de distribuir as canetas emagrecedoras pelo SUS, mas sem data de início: a oferta não será imediata.<br><br>Segundo a Folha de S.Paulo, a Gazeta do Povo e A Tarde, a oferta depende de análise da Conitec (comissão de incorporação de tecnologias do SUS), de decisão do Ministério da Saúde e de definição de protocolo e financiamento. A Conitec se reúne em 7 de outubro.<br><br>Os critérios de acesso ainda não estão definidos; a discussão aponta IMC acima de 30 e prioridade para a fila da bariátrica.<br><br>Para quem paga caro hoje, o mercado já mudou: com o fim da patente da semaglutida em março de 2026 e novos registros aprovados pela Anvisa, o preço mensal caiu de R$ 1.700 a R$ 2.000 para R$ 300 a R$ 400 nas farmácias. A gratuidade, quando vier, seguirá critérios definidos em protocolo.</div>
+  </div>
+
+    
+  <div class="section">
+    <div class="section-title">Por que esse angulo</div>
+    <div class="section-body"><p class="angulo-label">A promessa e sua execução</p><p>O contraste entre o anúncio oficial de distribuição gratuita de canetas emagrecedoras pelo SUS e as etapas burocráticas que ainda precisam ser cumpridas, incluindo as divergências entre fontes sobre o estágio real do processo.</p></div>
+  </div>
+
+    
+  <div class="section">
+    <div class="section-title">Por que essa arte</div>
+    <div class="visual-line">A ilustração editorial em vetor traduz um tema técnico — protocolo, fila e preço — em metáfora visual acessível, sem apelo publicitário de medicamento. A paleta expressiva com contraste controlado e a tipografia integrada ao desenho garantem leitura rápida no feed e coerência entre os quatro slides da sequência.</div>
+  </div>
+
+    
+  <div class="section">
+    <div class="section-title">Cobertura editorial</div>
+    <div class="cobertura-row">
+      <div class="stat"><div class="num">29/08/2026 a 25/09/2026</div><div class="lbl">Período das fontes</div></div><div class="stat"><div class="num">200</div><div class="lbl">Matérias avaliadas para sua pesquisa</div></div><div class="stat"><div class="num">17</div><div class="lbl">Selecionadas para os recortes</div></div><div class="stat"><div class="num">13</div><div class="lbl">Fontes deste recorte</div></div>
+    </div>
+    <p style="font-size:8pt;color:var(--pp-ink-mute);margin:2mm 0 0;">Pesquisa encerrada por suficiência ou limite técnico; o universo localizado não foi integralmente avaliado.</p>
+  </div>
+
+    
+  <div class="section">
+    <div class="section-title">Citacoes na legenda (6)</div>
+    <p style="font-size:9pt;color:var(--pp-ink-mute);margin:0 0 3mm 0;">A legenda publica sai sem os numeros — eles ficam aqui como rastreabilidade de cada fato pra sua fonte original:</p>
+    <ol class="fontes"><li><strong>[2]</strong> Governo avalia levar ao SUS caneta emagrecedora prometida por Lula, mas oferta não seria imediata — <strong>Folha de S.Paulo</strong> <span style="color:#888;">(18/09/2026)</span> <a href="https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/equilibrioesaude/2026/09/governo-avalia-levar-ao-sus-caneta-emagrecedora-prometida-por-lula-mas-oferta-nao-seria-imediata.shtml" target="_blank" rel="noopener" style="color:var(--pp-accent,#1a56db);">ver materia</a></li><li><strong>[5]</strong> Lula promete canetas emagrecedoras, mas não sabe quanto custará, quem vai receber nem quando — <strong>Gazeta do Povo</strong> <span style="color:#888;">(24/09/2026)</span> <a href="https://www.gazetadopovo.com.br/eleicoes/2026/lula-promete-canetas-emagrecedoras-mas-nao-sabe-quanto-custara-quem-vai-receber-nem-quando/" target="_blank" rel="noopener" style="color:var(--pp-accent,#1a56db);">ver materia</a></li><li><strong>[7]</strong> SUS confirma distribuição gratuita de canetas emagrecedoras; entenda como será a oferta em 2026 — <strong>ND Mais SC</strong> <span style="color:#888;">(18/09/2026)</span> <a href="https://ndmais.com.br/saude/sus-confirma-oferta-gratuita-de-canetas-emagrecedoras/" target="_blank" rel="noopener" style="color:var(--pp-accent,#1a56db);">ver materia</a></li><li><strong>[3]</strong> Canetas emagrecedoras de graça no SUS ainda dependem de três etapas; entenda — <strong>A Tarde BA</strong> <span style="color:#888;">(18/09/2026)</span> <a href="https://atarde.com.br/politica/canetas-emagrecedoras-de-graca-no-sus-ainda-dependem-de-tres-etapas-entenda-1402644" target="_blank" rel="noopener" style="color:var(--pp-accent,#1a56db);">ver materia</a></li><li><strong>[4]</strong> Lula anuncia canetas emagrecedoras no SUS, mas medida tem 3 etapas — <strong>DCM</strong> <span style="color:#888;">(18/09/2026)</span> <a href="https://www.diariodocentrodomundo.com.br/lula-promete-canetas-obesidade-sus-aval-verba/" target="_blank" rel="noopener" style="color:var(--pp-accent,#1a56db);">ver materia</a></li><li><strong>[1]</strong> Caneta emagrecedora no SUS: entenda como o preço pode cair na farmácia — <strong>Estado de Minas</strong> <span style="color:#888;">(24/09/2026)</span> <a href="https://www.em.com.br/economia/2026/09/7507608-caneta-emagrecedora-no-sus-entenda-como-o-preco-pode-cair-na-farmacia.html" target="_blank" rel="noopener" style="color:var(--pp-accent,#1a56db);">ver materia</a></li></ol>
+  </div>
+  <div class="section">
+    <div class="section-title">Outras materias consideradas (13)</div>
+    <p style="font-size:9pt;color:var(--pp-ink-mute);margin:0 0 3mm 0;">Além das 6 matéria(s) citada(s), estas fontes também sustentam o recorte selecionado:</p>
+    <ol class="fontes"><li>Caneta emagrecedora no SUS: promessa anima farmacêuticas, mas está longe de virar realidade — <strong>NeoFeed</strong> <span style="color:#888;">(21/09/2026)</span></li><li>Como funcionam os genéricos de canetas emagrecedoras da EMS? Saiba mais sobre os medicamentos — <strong>Exame</strong> <span style="color:#888;">(08/09/2026)</span></li><li>Canetas emagrecedoras podem chegar ao SUS após estudos do Ministério da Saúde — <strong>Folha BV RR</strong> <span style="color:#888;">(19/09/2026)</span></li><li>Anvisa proíbe propaganda de caneta emagrecedora Semavy — <strong>Tribuna do Norte RN</strong> <span style="color:#888;">(25/09/2026)</span></li><li>SUS vai ofertar canetas emagrecedoras para pacientes com obesidade — <strong>Jornal do Commercio PE</strong> <span style="color:#888;">(18/09/2026)</span></li><li>Preço é o maior entrave para incorporação de canetas emagrecedoras no SUS — <strong>Metropoles</strong> <span style="color:#888;">(29/08/2026)</span></li><li>Lula diz que caneta emagrecedora no SUS não é ‘prêmio para quem é relaxado’ — <strong>Revista Oeste</strong> <span style="color:#888;">(18/09/2026)</span></li></ol>
+    
+  </div>
+
+    
+
+    <div class="footer">
+      <div>
+          Pauta Pronta by REP · pautapronta.com<br>
+        Documento de validacao editorial. Nao substitui sua revisao final antes de publicar.
+      </div>
+      <div class="hash">Hash<br>1e7e1ff0f04e3046</div>
+    </div>
+  </div>
+</body>
+</html>
