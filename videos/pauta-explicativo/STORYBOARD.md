@@ -13,7 +13,7 @@ music: calma, curiosa, editorial — piano/marimba leve com percussão suave (~1
 - **Paleta:** papel de fundo sempre; navy = acento (palavra-chave em itálico, selecionados, botão);
   manteiga = marca-texto e disco; verde/azul/rosa só em fato/contexto/divergência. Nada fora do frame.md.
 - **Personagem fio-condutor:** Ana (social media, cabelo cacheado, camisa navy). A "redação" do Pauta aparece
-  como três colegas desenhados: o Leitor (jornal, suéter manteiga), a Analista (listrado rosa) e o Editor (verde).
+  como três colegas desenhados: o Leitor (jornal, suéter manteiga), a Analista (listrado rosa) e a Editora (verde, cabelo ondulado).
   Todos Open Peeps com cabeça animável, troca de expressão e piscada.
 - **Gramática de movimento:** power3.out padrão, expo.out para chegadas rápidas, sine.inOut só em ambientes
   finitos. Revelação sequencial (nada despejado no início). Sem bounce, sem "respiração" preguiçosa em cartões,
@@ -69,7 +69,7 @@ Scene 3 (3.6–6.0s): cursor vai ao botão "Criar minha publicação →", cliqu
 
 ## Frame 4 — O editor pergunta o recorte
 
-- scene: conversa real com o editor; o Editor desenhado ao lado do chat
+- scene: conversa real com o editor; a Editora desenhada ao lado do chat
 - duration: 9s
 - transition_in: cut
 - type: feature_showcase

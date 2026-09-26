@@ -71,7 +71,7 @@ const CAST = [
   ['ana_computer', 'Ana', 'Social media. Fio condutor: começa aflita, termina tranquila.', C.butter],
   ['leitor', 'O Leitor', 'A pesquisa: lê a cobertura real, matéria por matéria.', C.cream],
   ['analista', 'A Analista', 'A análise: separa fato, contexto e divergência.', C.butter],
-  ['editor', 'O Editor', 'Pergunta o recorte que importa pra você.', C.cream],
+  ['editor', 'A Editora', 'Pergunta o recorte que importa pra você.', C.cream],
   ['ana_coffee', 'Ana, no fim', 'Confere o documento de validação e publica.', C.butter],
 ];
 const cast = CAST.map(([p, name, role, bg], i) => `<div style="display: flex; flex-direction: column; align-items: center; gap: 18px; width: 330px;">
