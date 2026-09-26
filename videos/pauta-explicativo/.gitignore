@@ -1,0 +1,6 @@
+node_modules/
+renders/
+snapshots/
+.hyperframes/
+src/peeps/.compose-entry.jsx
+src/peeps/.compose.cjs

@@ -1,0 +1,7 @@
+{
+  "ana_computer": {"body":"Computer","bodyOpts":{"topColor":"#24456b","computerColor":"#e6dcc7","skinColor":"#c68a5e"},"head":"LongCurly","skin":"#c68a5e","faces":["Hectic","Concerned","Calm","Smile","EyesClosed"]},
+  "ana_coffee": {"body":"Coffee","bodyOpts":{"topColor":"#24456b","cupColor":"#e8c873","skinColor":"#c68a5e"},"head":"LongCurly","skin":"#c68a5e","faces":["Calm","Smile","EyesClosed"]},
+  "leitor": {"body":"Paper","bodyOpts":{"topColor":"#e8c873","paperColor":"#f7f3ec","skinColor":"#8d5a3c"},"head":"ShortTwo","skin":"#8d5a3c","faces":["Driven","Serious","EyesClosed"],"acc":"Glasses"},
+  "analista": {"body":"Explaining","bodyOpts":{"topColor":"#a8453a","skinColor":"#e2b48c"},"head":"Bun","skin":"#e2b48c","faces":["Explaining","Smile","EyesClosed"]},
+  "editor": {"body":"PointingUp","bodyOpts":{"topColor":"#5a7d3f","skinColor":"#6b4330"},"head":"Afro","skin":"#6b4330","faces":["Calm","Smile","EyesClosed"],"beard":"Goatee"}
+}
