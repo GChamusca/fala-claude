@@ -30,5 +30,5 @@ tl.fromTo('#f02-line .w', { yPercent: 160 }, { yPercent: 0, duration: 0.7, ease:
 tl.fromTo('#f02-hl', { backgroundSize: '0% 46%' }, { backgroundSize: '100% 46%', duration: 0.6, ease: 'power2.out' }, 3.3);
 tl.fromTo('#f02-sub', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 3.8);
 `,
-  sfx: [['impact-bass-1', 0.8, 0.35], ['sparkle', 3.3, 0.35]],
+  sfx: [['logo-1', 0.8, 0.4], ['sparkle', 3.3, 0.35]],
 };

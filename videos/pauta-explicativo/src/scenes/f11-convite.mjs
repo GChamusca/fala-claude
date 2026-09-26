@@ -38,11 +38,11 @@ tl.fromTo('#f11-by', { opacity: 0 }, { opacity: 1, duration: 0.5 }, 4.3);
 tl.fromTo('#f11-btn', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }, 4.5);
 tl.fromTo('#f11-url', { opacity: 0 }, { opacity: 1, duration: 0.6 }, 5.0);
 // clique no botão
-tl.fromTo('#f11-hand', { x: 1500, y: 1000, opacity: 0 }, { x: 1180, y: 660, opacity: 1, duration: 0.9, ease: 'power3.inOut' }, 5.2);
+tl.fromTo('#f11-hand', { x: 1500, y: 1000, opacity: 0 }, { x: 936, y: 652, opacity: 1, duration: 0.9, ease: 'power3.inOut' }, 5.2);
 tl.to('#f11-btn', { scale: 0.95, duration: 0.1 }, 6.15);
 tl.to('#f11-btn', { scale: 1, duration: 0.3 }, 6.25);
 tl.to('#f11-hand', { scale: 0.86, duration: 0.1, transformOrigin: '30% 10%' }, 6.15);
 tl.to('#f11-hand', { scale: 1, duration: 0.2 }, 6.25);
 `,
-  sfx: [['impact-bass-1', 3.6, 0.35], ['click', 6.18, 0.6]],
+  sfx: [['logo-1', 3.6, 0.4], ['click', 6.18, 0.6]],
 };

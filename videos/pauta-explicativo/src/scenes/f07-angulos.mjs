@@ -39,7 +39,7 @@ tl.to('#f07-c1', { y: -26, boxShadow: '14px 14px 0 ${C.navy}', borderColor: '${C
 tl.to(['#f07-c0', '#f07-c2'], { opacity: 0.45, duration: 0.6 }, 2.5);
 tl.fromTo('#f07-quote', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }, 3.2);
 // clique em "Usar este ângulo"
-tl.fromTo('#f07-hand', { x: 1500, y: 1000, opacity: 0 }, { x: 850, y: 612, opacity: 1, duration: 1.0, ease: 'power3.inOut' }, 4.6);
+tl.fromTo('#f07-hand', { x: 1500, y: 1000, opacity: 0 }, { x: 838, y: 603, opacity: 1, duration: 1.0, ease: 'power3.inOut' }, 4.6);
 tl.to('#f07-hand', { scale: 0.86, duration: 0.1, transformOrigin: '30% 10%' }, 5.65);
 tl.to('#f07-hand', { scale: 1, duration: 0.2 }, 5.75);
 tl.to('#f07-btn', { scale: 0.94, duration: 0.1 }, 5.65);

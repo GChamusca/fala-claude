@@ -16,7 +16,7 @@
 @font-face{font-family:'Caveat';font-style:normal;font-weight:400 700;font-display:block;src:url('assets/fonts/caveat-Wnz6HAc5bAfYB2Q7aDYYmg8.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
 #root{position:absolute;inset:0;overflow:hidden;background:#f7f3ec;color:#0a0a0a;font-family:'Bricolage Grotesque',sans-serif;}
 #root .grain{position:absolute;inset:0;mix-blend-mode:multiply;opacity:.55;pointer-events:none;}
-#root .wm{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .04em .12em;margin:0 -.04em -.12em;}
+#root .wm{display:inline-block;overflow:hidden;vertical-align:top;padding:.2em .04em .14em;margin:-.2em -.04em -.14em;}
 #root .w{display:inline-block;}
 #root .mono{font-family:'JetBrains Mono',monospace;font-weight:500;text-transform:uppercase;letter-spacing:.16em;}
 #root .display{font-family:'Newsreader',serif;font-weight:400;letter-spacing:-.02em;}
@@ -64,7 +64,7 @@ tl.fromTo('#f11-by', { opacity: 0 }, { opacity: 1, duration: 0.5 }, 4.3);
 tl.fromTo('#f11-btn', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }, 4.5);
 tl.fromTo('#f11-url', { opacity: 0 }, { opacity: 1, duration: 0.6 }, 5.0);
 // clique no botão
-tl.fromTo('#f11-hand', { x: 1500, y: 1000, opacity: 0 }, { x: 1180, y: 660, opacity: 1, duration: 0.9, ease: 'power3.inOut' }, 5.2);
+tl.fromTo('#f11-hand', { x: 1500, y: 1000, opacity: 0 }, { x: 936, y: 652, opacity: 1, duration: 0.9, ease: 'power3.inOut' }, 5.2);
 tl.to('#f11-btn', { scale: 0.95, duration: 0.1 }, 6.15);
 tl.to('#f11-btn', { scale: 1, duration: 0.3 }, 6.25);
 tl.to('#f11-hand', { scale: 0.86, duration: 0.1, transformOrigin: '30% 10%' }, 6.15);

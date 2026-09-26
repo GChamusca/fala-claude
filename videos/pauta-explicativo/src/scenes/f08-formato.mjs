@@ -15,14 +15,14 @@ export default {
 #f08-lines{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:visible;}
 #f08-phone{position:absolute;left:${PHONE.x}px;top:${PHONE.y}px;width:${PHONE.w}px;height:${PHONE.h}px;box-sizing:border-box;border:5px solid ${C.ink};border-radius:60px;background:${C.ink};box-shadow:12px 12px 0 ${C.butterDeep};overflow:hidden;}
 #f08-screen{position:absolute;left:14px;top:14px;right:14px;bottom:14px;border-radius:46px;background:${C.cream};overflow:hidden;display:flex;align-items:center;justify-content:center;}
-#f08-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-#f08-wait{font-size:20px;color:${C.mute};}
+#f08-img{position:relative;display:block;width:100%;height:auto;}
+#f08-wait{position:absolute;left:0;right:0;top:48%;text-align:center;font-size:20px;color:${C.mute};}
 `,
   html: `
 
 ${header('f08', '06 · Formato, estilo e tom', 'No seu formato.', 'No seu tom.')}
 ${OPTS.map(([k, v, y], i) => `<div id="f08-o${i}" class="f08-opt" style="top:${y}px;"><span class="mono">${k}</span><b>${v}</b><i>✓</i></div>`).join('')}
-<svg id="f08-lines" viewBox="0 0 1920 1080" aria-hidden="true">${OPTS.map(([, , y], i) => `<path id="f08-l${i}" d="${path(y)}" fill="none" stroke="${C.ink}" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"></path><path id="f08-d${i}" d="${path(y)}" fill="none" stroke="${C.navy}" stroke-width="16" stroke-linecap="round"></path>`).join('')}</svg>
+<svg id="f08-lines" viewBox="0 0 1920 1080" aria-hidden="true">${OPTS.map(([, , y], i) => `<path id="f08-l${i}" d="${path(y)}" fill="none" stroke="${C.ink}" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round" opacity="0"></path><path id="f08-d${i}" d="${path(y)}" fill="none" stroke="${C.navy}" stroke-width="16" stroke-linecap="round" opacity="0"></path>`).join('')}</svg>
 <div id="f08-phone"><div id="f08-screen"><span id="f08-wait" class="mono">montando…</span><img id="f08-img" src="assets/slides/slide-1.jpg" alt="Slide 1 do carrossel"></div></div>
 `,
   js: `

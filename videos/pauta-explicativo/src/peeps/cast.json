@@ -48,9 +48,9 @@
   "acc": "Glasses"
  },
  "analista": {
-  "body": "Explaining",
+  "body": "ButtonShirt",
   "bodyOpts": {
-   "topColor": "#4b88a6",
+   "topColor": "#fffdf8",
    "skinColor": "#e2b48c"
   },
   "head": "Bun",
@@ -59,7 +59,8 @@
    "Explaining",
    "Smile",
    "EyesClosed"
-  ]
+  ],
+  "acc": "Glasses"
  },
  "editor": {
   "body": "PointingUp",

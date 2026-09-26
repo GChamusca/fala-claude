@@ -47,7 +47,7 @@ export const BASE_CSS = `
 ${FONT_FACES}
 #root{position:absolute;inset:0;overflow:hidden;background:${C.paper};color:${C.ink};font-family:'Bricolage Grotesque',sans-serif;}
 #root .grain{position:absolute;inset:0;mix-blend-mode:multiply;opacity:.55;pointer-events:none;}
-#root .wm{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .04em .12em;margin:0 -.04em -.12em;}
+#root .wm{display:inline-block;overflow:hidden;vertical-align:top;padding:.2em .04em .14em;margin:-.2em -.04em -.14em;}
 #root .w{display:inline-block;}
 #root .mono{font-family:'JetBrains Mono',monospace;font-weight:500;text-transform:uppercase;letter-spacing:.16em;}
 #root .display{font-family:'Newsreader',serif;font-weight:400;letter-spacing:-.02em;}

@@ -13,7 +13,7 @@ export default {
 #f03-input{margin-top:30px;height:104px;box-sizing:border-box;padding:0 30px;display:flex;align-items:center;border:3px solid ${C.ink};border-radius:20px;background:#fffdf8;box-shadow:6px 6px 0 ${C.ink};font-size:46px;font-weight:500;}
 #f03-caret{display:inline-block;width:4px;height:52px;margin-left:4px;background:${C.navy};}
 #f03-btn{margin-top:34px;display:inline-flex;padding:24px 40px;border-radius:999px;background:${C.navy};color:${C.paper};font-size:34px;font-weight:700;box-shadow:6px 6px 0 ${C.ink};}
-#f03-ripple{position:absolute;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;border:4px solid ${C.butter};left:1215px;top:822px;}
+#f03-ripple{position:absolute;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;border:4px solid ${C.butter};left:1059px;top:723px;}
 #f03-hand{position:absolute;left:0;top:0;}
 `,
   html: `
@@ -42,7 +42,7 @@ tl.to('.f03-ch', { opacity: 1, duration: 0.01, stagger: 0.095 }, 1.2);
 for (let i = 0; i < 6; i++) { tl.set('#f03-caret', { opacity: 0 }, 3.4 + i * 0.5); tl.set('#f03-caret', { opacity: 1 }, 3.65 + i * 0.5); }
 ${blinkJs('f03', 'Calm', 2.6)}
 // mão vai ao botão e clica
-tl.fromTo('#f03-hand', { x: 1560, y: 1000, opacity: 0 }, { x: 1190, y: 800, opacity: 1, duration: 1.0, ease: 'power3.inOut' }, 3.3);
+tl.fromTo('#f03-hand', { x: 1560, y: 1000, opacity: 0 }, { x: 1035, y: 719, opacity: 1, duration: 1.0, ease: 'power3.inOut' }, 3.3);
 tl.to('#f03-hand', { scale: 0.86, duration: 0.1, ease: 'power2.in', transformOrigin: '30% 10%' }, 4.35);
 tl.to('#f03-hand', { scale: 1, duration: 0.2, ease: 'power2.out' }, 4.45);
 tl.to('#f03-btn', { scale: 0.95, duration: 0.1, ease: 'power2.in' }, 4.35);

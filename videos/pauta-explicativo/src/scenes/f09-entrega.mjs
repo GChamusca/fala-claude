@@ -24,8 +24,9 @@ export default {
 #f09-bars b{display:block;height:10px;border-radius:5px;background:${C.creamDeep};margin-top:10px;}
 #f09-prog{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:${C.cream};}
 #f09-ring{width:210px;height:210px;}
-#f09-pct{position:absolute;top:calc(50% - 60px);font-family:'Newsreader',serif;font-size:62px;}
-#f09-plab{margin-top:150px;font-size:18px;color:${C.mute};text-align:center;}
+#f09-rw{position:relative;width:210px;height:210px;}
+#f09-pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-size:54px;}
+#f09-plab{margin-top:6px;font-size:18px;color:${C.mute};text-align:center;}
 #f09-cap{position:absolute;left:760px;top:300px;width:1040px;box-sizing:border-box;padding:34px 40px;border:3px solid ${C.ink};border-radius:26px;background:${C.paper};box-shadow:10px 10px 0 ${C.ink};}
 #f09-cap .mono{font-size:19px;color:${C.mute};}
 #f09-cap p{margin:14px 0 0;font-family:'Newsreader',serif;font-size:33px;line-height:1.38;}
@@ -41,7 +42,7 @@ ${header('f09', '07 · Entrega', 'Texto, arte e legenda.', 'Prontos pra revisar.
   <div id="f09-view"><div id="f09-strip">${[1, 2, 3, 4].map((n) => `<img src="assets/slides/slide-${n}.jpg" alt="Slide ${n} do carrossel">`).join('')}</div></div>
   <div id="f09-dots">${[0, 1, 2, 3].map((i) => `<i id="f09-dot${i}"${i ? '' : ' class="on"'}></i>`).join('')}</div>
   <div id="f09-bars"><b style="width:92%"></b><b style="width:70%"></b></div>
-  <div id="f09-prog"><svg id="f09-ring" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="${C.creamDeep}" stroke-width="10"></circle><circle id="f09-arc" cx="60" cy="60" r="52" fill="none" stroke="${C.navy}" stroke-width="10" stroke-linecap="round" transform="rotate(-90 60 60)"></circle></svg><div id="f09-pct">0%</div><div id="f09-plab" class="mono">Montando sua<br>publicação</div></div>
+  <div id="f09-prog"><div id="f09-rw"><svg id="f09-ring" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="${C.creamDeep}" stroke-width="10"></circle><circle id="f09-arc" cx="60" cy="60" r="52" fill="none" stroke="${C.navy}" stroke-width="10" stroke-linecap="round" transform="rotate(-90 60 60)"></circle></svg><div id="f09-pct">0%</div></div><div id="f09-plab" class="mono">Montando sua<br>publicação</div></div>
 </div></div>
 <div id="f09-cap"><span class="mono">Legenda editorial</span>${CAPTION.map((c, i) => `<p id="f09-p${i}">${c}</p>`).join('')}</div>
 <div id="f09-acts"><div class="f09-a">Mais curta</div><div class="f09-a">Mais detalhada</div><div class="f09-a pri">Pedir um ajuste</div></div>
