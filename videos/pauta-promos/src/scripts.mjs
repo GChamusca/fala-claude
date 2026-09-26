@@ -1,7 +1,7 @@
 // Roteiros dos promos de 15s (conversão). Cada linha: o que a voz fala e a "cena" que a acompanha.
 // As palavras entre *asteriscos* ganham destaque manteiga na legenda.
 export const SIGN = { say: 'Poste mais. Poste melhor. Pauta Pronta.', shot: 'fecho' };
-export const SIGN_R = { say: 'Pauta Pronta. Com a inteligência do REP.', shot: 'fecho' };
+export const SIGN_R = { say: 'Pauta Pronta. Com a inteligência do REP.', shot: 'fechorep' };
 export const SIGN_I ={ say: 'Pauta Pronta. A apuração vem antes do post.', shot: 'fecho' };
 
 export const SCRIPTS = {
@@ -36,8 +36,8 @@ export const SCRIPTS = {
     title: 'Sem pauta: o Radar',
     lines: [
       { say: 'Quando você fica sabendo do assunto, todo mundo já postou.', shot: 'atrasado' },
-      { say: 'O Radar do Pauta Pronta mostra o que está crescendo agora…', shot: 'radar' },
-      { say: 'e transforma em pauta num clique.', shot: 'clique' },
+      { say: 'O Radar do Pauta Pronta mostra o que está crescendo agora…', shot: 'ppradar' },
+      { say: 'e transforma em pauta num clique.', shot: 'ppclique' },
       SIGN,
     ],
   },
@@ -76,7 +76,7 @@ export const SCRIPTS = {
     title: 'Quem está falando',
     hl: /opinar|cobrindo|puxou|cresceu|cem|apuração/i,
     lines: [
-      { say: 'Antes de opinar, saiba quem está cobrindo.', shot: 'radar' },
+      { say: 'Antes de opinar, saiba quem está cobrindo.', shot: 'ppbolhas' },
       { say: 'UOL, Metrópoles, CNN, Folha: veja quem puxou o assunto…', shot: 'quem' },
       { say: 'e o que cresceu cem por cento hoje.', shot: 'cresceu' },
       SIGN_I,
@@ -98,7 +98,7 @@ export const SCRIPTS = {
     title: 'O motor: REP',
     hl: /REP|setecentas|mil|cem|trinta|classificações|inteligência/i,
     lines: [
-      { say: 'Por trás do Pauta Pronta existe o REP.', shot: 'rep' },
+      { say: 'Por trás do Pauta Pronta existe o REP.', shot: 'repradar' },
       { say: 'Mais de setecentas mil matérias, de mais de cem veículos.', shot: 'acervo' },
       { say: 'Cada uma ganha mais de trinta classificações.', shot: 'etiquetas' },
       SIGN_R,
@@ -108,7 +108,7 @@ export const SCRIPTS = {
     title: 'A análise cruzada',
     hl: /cruza|fato|declaração|hipótese|lacuna|acusa|apoia|investiga|inteligência/i,
     lines: [
-      { say: 'O REP não só lê as matérias. Ele cruza.', shot: 'cruza' },
+      { say: 'O REP não só lê as matérias. Ele cruza.', shot: 'repmergulho' },
       { say: 'Separa fato de declaração, de hipótese e de lacuna.', shot: 'matriz' },
       { say: 'Mostra quem acusa, quem apoia, quem investiga.', shot: 'teia' },
       SIGN_R,

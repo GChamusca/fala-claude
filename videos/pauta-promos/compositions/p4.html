@@ -14,10 +14,13 @@
 #root{position:absolute;inset:0;overflow:hidden;background:#f7f3ec;color:#0a0a0a;font-family:'Bricolage Grotesque',sans-serif;}
 #root .shot{position:absolute;inset:0;opacity:0;}
 #root .peep-svg{display:block;height:100%;width:auto;overflow:visible;}
+#brand-rep{position:absolute;left:60px;top:80px;z-index:20;opacity:0;}
 #brand{position:absolute;left:60px;top:84px;display:flex;align-items:center;gap:14px;font-family:'Newsreader',serif;font-size:40px;z-index:20;}
 .cap{position:absolute;left:50px;right:50px;top:1240px;text-align:center;font-weight:800;font-size:82px;line-height:1.14;letter-spacing:-1px;opacity:0;z-index:20;}
 .cw{display:inline-block;padding:0 6px;border-radius:14px;}
 .cw.hl{background:#e8c873;box-shadow:5px 5px 0 #0a0a0a;border:3px solid #0a0a0a;}
+.cap.dark{color:#f0eadf;}
+.cap.dark .cw.hl{background:#b19a60;color:#111820;border-color:#111820;box-shadow:5px 5px 0 #0a0e13;}
 #stripes{position:absolute;inset:0;display:flex;flex-direction:column;z-index:30;pointer-events:none;}
 #stripes div{flex:1;transform:scaleX(0);}
 .p4s0-p{position:absolute;left:90px;width:900px;height:180px;box-sizing:border-box;padding:22px 26px;border:3px solid #0a0a0a;border-radius:24px;background:#f7f3ec;box-shadow:8px 8px 0 #0a0a0a;display:flex;gap:22px;align-items:center;}
@@ -26,13 +29,12 @@
 .p4s0-p span{display:block;margin-top:8px;font-family:'Newsreader',serif;font-size:34px;line-height:1.1;}
 .p4s0-p em{margin-left:auto;align-self:flex-start;font-style:normal;font-family:'JetBrains Mono',monospace;font-size:20px;color:#a8453a;}
 #p4s0-you{position:absolute;left:0;right:0;top:1000px;text-align:center;font-family:'Caveat',cursive;font-weight:700;font-size:90px;color:#a8453a;transform:rotate(-2deg);}
-.p4s1-b{position:absolute;box-sizing:border-box;border-radius:50%;background:#24456b;color:#f7f3ec;border:4px solid #0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 22px;font-family:'Newsreader',serif;line-height:1.1;}
-.p4s1-b small{display:block;margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:20px;}
-.p4s1-b i{position:absolute;right:0;top:4%;padding:5px 12px;border-radius:999px;background:#e8c873;color:#0a0a0a;border:3px solid #0a0a0a;font-style:normal;font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:600;}
-#p4s1-tag{position:absolute;left:0;right:0;top:170px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:28px;letter-spacing:.2em;color:#24456b;}
-#p4s2-b{position:absolute;left:315px;top:300px;width:450px;height:450px;box-sizing:border-box;border-radius:50%;background:#24456b;color:#f7f3ec;border:5px solid #e8c873;box-shadow:0 0 0 8px #0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 50px;font-family:'Newsreader',serif;font-size:50px;line-height:1.1;}
-#p4s2-go{position:absolute;left:140px;top:840px;padding:30px 40px;border-radius:20px;background:#24456b;color:#f7f3ec;font-family:'JetBrains Mono',monospace;font-size:32px;letter-spacing:.08em;box-shadow:8px 8px 0 #0a0a0a;}
-#p4s2-ok{position:absolute;left:250px;top:1030px;padding:18px 34px;border-radius:999px;background:#5a7d3f;color:#f7f3ec;border:3px solid #0a0a0a;font-family:'JetBrains Mono',monospace;font-size:30px;box-shadow:6px 6px 0 #0a0a0a;}
+#p4s1-v{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;}
+#p4s1-cov{position:absolute;left:0;right:0;top:1130px;bottom:0;background:linear-gradient(to bottom, rgba(247,243,236,0), #f7f3ec 110px);}
+#p4s1-tap{position:absolute;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;border:6px solid #24456b;background:rgba(36,69,107,.18);opacity:0;}
+#p4s2-v{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;}
+#p4s2-cov{position:absolute;left:0;right:0;top:1130px;bottom:0;background:linear-gradient(to bottom, rgba(247,243,236,0), #f7f3ec 110px);}
+#p4s2-tap{position:absolute;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;border:6px solid #24456b;background:rgba(36,69,107,.18);opacity:0;}
 #p4s3-lock{position:absolute;left:0;right:0;top:360px;display:flex;flex-direction:column;align-items:center;gap:20px;}
 #p4s3-name{font-family:'Newsreader',serif;font-size:150px;line-height:.95;letter-spacing:-4px;}
 #p4s3-cta{position:absolute;left:0;right:0;top:880px;display:flex;justify-content:center;}
@@ -40,10 +42,10 @@
 #p4s3-btn span{display:block;font-size:30px;color:#e8c873;font-weight:600;}
 #p4s3-url{position:absolute;left:0;right:0;top:1100px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:38px;letter-spacing:.2em;}</style>
 <div id="root" data-composition-id="p4" data-width="1080" data-height="1920">
-<div id="brand"><svg width="54" height="54" viewBox="4 4 54 54" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="#0a0a0a"></circle><circle cx="28" cy="28" r="22" fill="#24456b"></circle><circle cx="36" cy="20" r="5" fill="#e8c873"></circle></svg>Pauta Pronta</div>
+<div id="brand-rep"><span style="display:inline-flex;align-items:center;gap:14px;"><img src="assets/rep/crow-creme.png" alt="" style="height:50px;width:auto;display:block;"><b style="font-family:'Segoe UI',Arial,'Liberation Sans',sans-serif;font-weight:700;font-size:35px;letter-spacing:-.02em;line-height:1;color:#f0eadf;">REP</b></span></div><div id="brand"><svg width="54" height="54" viewBox="4 4 54 54" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="#0a0a0a"></circle><circle cx="28" cy="28" r="22" fill="#24456b"></circle><circle cx="36" cy="20" r="5" fill="#e8c873"></circle></svg>Pauta Pronta</div>
 <div class="shot" id="p4s0"><div class="p4s0-p" style="top:190px;"><i style="background:#24456b"></i><div><b>@portal_da_hora</b><span>Canetas emagrecedoras no SUS: o que se sabe</span></div><em>há 3 h</em></div><div class="p4s0-p" style="top:390px;"><i style="background:#a8453a"></i><div><b>@concorrente</b><span>Canetas emagrecedoras no SUS: o que se sabe</span></div><em>há 2 h</em></div><div class="p4s0-p" style="top:590px;"><i style="background:#5a7d3f"></i><div><b>@agencia.mais</b><span>Canetas emagrecedoras no SUS: o que se sabe</span></div><em>há 1 h</em></div><div class="p4s0-p" style="top:790px;"><i style="background:#4b88a6"></i><div><b>@todo.mundo</b><span>Canetas emagrecedoras no SUS: o que se sabe</span></div><em>há 40 min</em></div><div id="p4s0-you">e você: ainda nem começou</div></div>
-<div class="shot" id="p4s1"><div id="p4s1-tag">RADAR · EM ALTA AGORA</div><div class="p4s1-b" id="p4s1-b0" style="left:365px;top:385px;width:350px;height:350px;font-size:35px;">Soberania e combate às facções<small>237 matérias</small><i>↑100%</i></div><div class="p4s1-b" id="p4s1-b1" style="left:110px;top:180px;width:300px;height:300px;font-size:30px;">STF valida reajuste do Bolsa Família<small>452 matérias</small><i>↓71%</i></div><div class="p4s1-b" id="p4s1-b2" style="left:690px;top:190px;width:280px;height:280px;font-size:28px;">Empate em Minas, vantagem em SP<small>213 matérias</small><i>↑72%</i></div><div class="p4s1-b" id="p4s1-b3" style="left:100px;top:720px;width:260px;height:260px;font-size:26px;">Mensagens ampliam crise no STF<small>165 matérias</small><i>↑61%</i></div><div class="p4s1-b" id="p4s1-b4" style="left:725px;top:695px;width:250px;height:250px;font-size:25px;">Casa Branca barra jornalistas<small>109 matérias</small><i>↑100%</i></div><div class="p4s1-b" id="p4s1-b5" style="left:460px;top:930px;width:200px;height:200px;font-size:20px;">Greve nacional dos Correios<small>45 matérias</small><i>↑99%</i></div></div>
-<div class="shot" id="p4s2"><div id="p4s2-b">Soberania e combate às facções<small style="font-family:'JetBrains Mono',monospace;font-size:24px;margin-top:10px;">237 matérias · ↑100%</small></div><div id="p4s2-go">GERAR PAUTA SOBRE ESTE ASSUNTO →</div><div id="p4s2-ok">✓ pauta criada</div><div id="p4s2-hand" style="position:absolute;left:0;top:0;"><svg id="p4s2-hs" width="58" height="64" viewBox="0 0 34 38" style="position:absolute;left:0;top:0;overflow:visible;" aria-hidden="true"><path d="M14 4.5c0-1.4 1.1-2.5 2.5-2.5S19 3.1 19 4.5V15l.9-.3c1.2-.4 2.5.2 2.9 1.4l.1.3 1-.2c1.3-.2 2.5.6 2.8 1.9l.1.4.7-.1c1.4-.2 2.6.8 2.7 2.2l.3 5.6c.2 3.4-1.4 6.6-4.2 8.5l-.6.4c-1 .7-2.2 1-3.4 1h-4.8c-2 0-3.9-1-5-2.7l-5-7.5c-.8-1.2-.5-2.8.7-3.6 1.1-.7 2.5-.5 3.3.5L14 22V4.5z" fill="#ffffff" stroke="#0a0a0a" stroke-width="1.8" stroke-linejoin="round"></path></svg></div></div>
+<div class="shot" id="p4s1"><video class="clip" id="p4s1-v" src="assets/rep/pp-radar.mp4" muted playsinline data-start="3.71" data-duration="3.21" data-media-start="0.2"></video><div id="p4s1-cov"></div></div>
+<div class="shot" id="p4s2"><video class="clip" id="p4s2-v" src="assets/rep/pp-radar.mp4" muted playsinline data-start="6.92" data-duration="1.88" data-media-start="3.1"></video><div id="p4s2-cov"></div><div id="p4s2-tap" style="left:543px;top:504px;"></div></div>
 <div class="shot" id="p4s3"><div id="p4s3-lock"><svg id="p4s3-mark" width="200" height="200" viewBox="4 4 54 54" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="#0a0a0a"></circle><circle cx="28" cy="28" r="22" fill="#24456b"></circle><circle cx="36" cy="20" r="5" fill="#e8c873"></circle></svg><div id="p4s3-name">Pauta Pronta</div></div><div id="p4s3-cta"><div id="p4s3-btn">Teste grátis<span>uma pauta, sem cartão</span></div></div><div id="p4s3-url">pautapronta.com</div></div>
 <div class="cap" id="p4-cap0"><span class="cw" id="p4-w0-0">Quando</span> <span class="cw" id="p4-w0-1">você</span> <span class="cw" id="p4-w0-2">fica</span> <span class="cw" id="p4-w0-3">sabendo</span> <span class="cw" id="p4-w0-4">do</span> <span class="cw" id="p4-w0-5">assunto,</span> <span class="cw" id="p4-w0-6">todo</span> <span class="cw" id="p4-w0-7">mundo</span> <span class="cw" id="p4-w0-8">já</span> <span class="cw" id="p4-w0-9">postou.</span></div><div class="cap" id="p4-cap1"><span class="cw" id="p4-w1-0">O</span> <span class="cw" id="p4-w1-1">Radar</span> <span class="cw" id="p4-w1-2">do</span> <span class="cw" id="p4-w1-3">Pauta</span> <span class="cw" id="p4-w1-4">Pronta</span> <span class="cw" id="p4-w1-5">mostra</span> <span class="cw" id="p4-w1-6">o</span> <span class="cw" id="p4-w1-7">que</span> <span class="cw" id="p4-w1-8">está</span> <span class="cw hl" id="p4-w1-9">crescendo</span> <span class="cw hl" id="p4-w1-10">agora…</span></div><div class="cap" id="p4-cap2"><span class="cw" id="p4-w2-0">e</span> <span class="cw" id="p4-w2-1">transforma</span> <span class="cw" id="p4-w2-2">em</span> <span class="cw" id="p4-w2-3">pauta</span> <span class="cw" id="p4-w2-4">num</span> <span class="cw hl" id="p4-w2-5">clique.</span></div><div class="cap" id="p4-cap3"><span class="cw hl" id="p4-w3-0">Poste</span> <span class="cw hl" id="p4-w3-1">mais.</span> <span class="cw hl" id="p4-w3-2">Poste</span> <span class="cw hl" id="p4-w3-3">melhor.</span> <span class="cw" id="p4-w3-4">Pauta</span> <span class="cw" id="p4-w3-5">Pronta.</span></div>
 <div id="stripes"><div style="background:#24456b"></div><div style="background:#e8c873"></div><div style="background:#a8453a"></div><div style="background:#5a7d3f"></div><div style="background:#4b88a6"></div></div>
@@ -57,16 +59,10 @@ tl.fromTo('#p4s0', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' 
 tl.fromTo('#p4s0-you', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'back.out(2)' }, 2.71); }
 tl.set('#p4s1', { opacity: 1 }, 3.71); tl.set('#p4s1', { opacity: 0 }, 6.92);
 tl.fromTo('#p4s1', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 3.71);
-{ tl.fromTo('.p4s1-b', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(1.8)', stagger: 0.1 }, 3.71);
-tl.fromTo('#p4s1-tag', { opacity: 0 }, { opacity: 1, duration: 0.3 }, 3.71);
-tl.to('#p4s1-b0', { scale: 1.1, duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: 3 }, 4.71); }
+{  }
 tl.set('#p4s2', { opacity: 1 }, 6.92); tl.set('#p4s2', { opacity: 0 }, 8.8);
 tl.fromTo('#p4s2', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 6.92);
-{ tl.fromTo('#p4s2-b', { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'expo.out' }, 6.92);
-tl.fromTo('#p4s2-go', { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: 'expo.out' }, 7.07);
-tl.fromTo('#p4s2-hand', { x: 900, y: 1400 }, { x: 520, y: 880, duration: 0.45, ease: 'power3.out' }, 7.22);
-tl.to('#p4s2-go', { scale: 0.93, duration: 0.08, yoyo: true, repeat: 1 }, 7.72);
-tl.fromTo('#p4s2-ok', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(2.5)' }, 7.92); }
+{ tl.fromTo('#p4s2-tap', { scale: 0.4, opacity: 0.95 }, { scale: 1.5, opacity: 0, duration: 0.6, ease: 'power2.out' }, 7.04); }
 tl.set('#p4s3', { opacity: 1 }, 8.8); 
 tl.fromTo('#p4s3', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 8.8);
 { tl.fromTo('#p4s3-mark', { scale: 0, rotation: -120, transformOrigin: '50% 50%' }, { scale: 1, rotation: 0, duration: 0.5, ease: 'expo.out' }, 8.8);
@@ -112,6 +108,11 @@ tl.fromTo('#p4-w3-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, sca
 tl.fromTo('#p4-w3-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 10.89);
 tl.fromTo('#p4-w3-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 11.45);
 tl.fromTo('#p4-w3-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 11.86);
+// marca: some sobre as gravações (elas já trazem a interface real) e fica creme nas cenas escuras do REP
+tl.set('#brand', { opacity: 1 }, 0); tl.set('#brand-rep', { opacity: 0 }, 0);
+tl.set('#brand', { opacity: 0 }, 3.71); tl.set('#brand-rep', { opacity: 0 }, 3.71);
+tl.set('#brand', { opacity: 0 }, 6.92); tl.set('#brand-rep', { opacity: 0 }, 6.92);
+tl.set('#brand', { opacity: 1 }, 8.8); tl.set('#brand-rep', { opacity: 0 }, 8.8);
 // marca some no fecho; faixas de cor antes do fecho
 tl.to('#brand', { opacity: 0, duration: 0.2 }, 8.8);
 tl.to('#stripes div', { scaleX: 1, transformOrigin: '0% 50%', duration: 0.22, ease: 'power3.in', stagger: 0.03 }, 8.50);

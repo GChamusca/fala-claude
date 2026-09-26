@@ -14,42 +14,54 @@
 #root{position:absolute;inset:0;overflow:hidden;background:#f7f3ec;color:#0a0a0a;font-family:'Bricolage Grotesque',sans-serif;}
 #root .shot{position:absolute;inset:0;opacity:0;}
 #root .peep-svg{display:block;height:100%;width:auto;overflow:visible;}
+#brand-rep{position:absolute;left:60px;top:80px;z-index:20;opacity:0;}
 #brand{position:absolute;left:60px;top:84px;display:flex;align-items:center;gap:14px;font-family:'Newsreader',serif;font-size:40px;z-index:20;}
 .cap{position:absolute;left:50px;right:50px;top:1240px;text-align:center;font-weight:800;font-size:82px;line-height:1.14;letter-spacing:-1px;opacity:0;z-index:20;}
 .cw{display:inline-block;padding:0 6px;border-radius:14px;}
 .cw.hl{background:#e8c873;box-shadow:5px 5px 0 #0a0a0a;border:3px solid #0a0a0a;}
+.cap.dark{color:#f0eadf;}
+.cap.dark .cw.hl{background:#b19a60;color:#111820;border-color:#111820;box-shadow:5px 5px 0 #0a0e13;}
 #stripes{position:absolute;inset:0;display:flex;flex-direction:column;z-index:30;pointer-events:none;}
 #stripes div{flex:1;transform:scaleX(0);}
-#e1s0-w{position:absolute;left:0;right:0;top:250px;text-align:center;font-family:'Newsreader',serif;font-size:400px;line-height:1;letter-spacing:-6px;color:#24456b;text-shadow:14px 14px 0 #e8c873;}
-#e1s0-full{position:absolute;left:0;right:0;top:700px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:38px;letter-spacing:.2em;text-transform:uppercase;}
-#e1s0-sub{position:absolute;left:120px;right:120px;top:800px;text-align:center;font-family:'Newsreader',serif;font-size:50px;line-height:1.15;}
-.e1s0-l{display:inline-block;}
-#e1s1-big{position:absolute;left:0;right:0;top:200px;text-align:center;font-family:'Newsreader',serif;font-size:230px;line-height:1;color:#24456b;letter-spacing:-8px;text-shadow:10px 10px 0 #e8c873;}
-#e1s1-lab{position:absolute;left:0;right:0;top:450px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:34px;letter-spacing:.16em;text-transform:uppercase;}
-#e1s1-chips{position:absolute;left:60px;right:60px;top:560px;display:flex;flex-wrap:wrap;justify-content:center;gap:18px;}
-.e1s1-o{padding:14px 24px;border-radius:999px;background:#f7f3ec;border:3px solid #0a0a0a;box-shadow:5px 5px 0 #0a0a0a;font-size:32px;font-weight:700;}
-.e1s1-o.more{background:#a8453a;color:#f7f3ec;font-family:'JetBrains Mono',monospace;font-weight:600;}
-#e1s1-stats{position:absolute;left:0;right:0;top:960px;display:flex;justify-content:center;gap:24px;}
-#e1s1-stats span{padding:16px 26px;border:3px solid #0a0a0a;border-radius:18px;background:#e8c873;font-family:'JetBrains Mono',monospace;font-size:30px;font-weight:600;box-shadow:6px 6px 0 #0a0a0a;}
-#e1s2-card{position:absolute;left:170px;top:190px;width:740px;box-sizing:border-box;padding:26px 30px;border:4px solid #0a0a0a;border-radius:20px;background:#fffdf8;box-shadow:10px 10px 0 #0a0a0a;z-index:2;}
-#e1s2-card i{display:block;font-style:normal;font-family:'JetBrains Mono',monospace;font-size:20px;letter-spacing:.1em;color:#24456b;}
-#e1s2-card b{display:block;margin-top:8px;font-family:'Newsreader',serif;font-weight:400;font-size:44px;line-height:1.1;}
-#e1s2-grid{position:absolute;left:50px;right:50px;top:470px;display:flex;flex-wrap:wrap;justify-content:center;gap:16px;}
-.e1s2-t{white-space:nowrap;padding:12px 20px;border-radius:999px;border:3px solid #0a0a0a;background:#e8c873;font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:600;box-shadow:4px 4px 0 #0a0a0a;}
-#e1s2-n{position:absolute;left:0;right:0;top:1060px;text-align:center;font-family:'Newsreader',serif;font-size:84px;line-height:1;color:#24456b;}
+#e1s0-v{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;}
+#e1s0-cov{position:absolute;left:0;right:0;top:1130px;bottom:0;background:linear-gradient(to bottom, rgba(17,24,32,0), #111820 110px);}
+#e1s0-tap{position:absolute;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;border:6px solid #c6b278;background:rgba(198,178,120,.25);opacity:0;}
+#e1s1-k{position:absolute;left:0;right:0;top:200px;text-align:center;font-family:'Segoe UI',Arial,'Liberation Sans',sans-serif;font-weight:600;font-size:28px;letter-spacing:.24em;color:#b19a60;}
+#e1s1-big{position:absolute;left:0;right:0;top:250px;text-align:center;font-family:Georgia,'Liberation Serif',serif;font-size:210px;line-height:1;color:#c6b278;letter-spacing:-4px;font-feature-settings:"onum" 1;}
+#e1s1-lab{position:absolute;left:0;right:0;top:480px;text-align:center;font-family:'Segoe UI',Arial,'Liberation Sans',sans-serif;font-size:30px;color:#aaa79e;}
+#e1s1-chips{position:absolute;left:60px;right:60px;top:580px;display:flex;flex-wrap:wrap;justify-content:center;gap:16px;}
+.e1s1-o{padding:14px 24px;border-radius:999px;border:1.5px solid rgba(240,234,223,.22);background:#18212b;color:#f0eadf;font-family:'Segoe UI',Arial,'Liberation Sans',sans-serif;font-size:30px;font-weight:600;}
+.e1s1-o.more{border-color:#b19a60;color:#b19a60;}
+#e1s1-stats{position:absolute;left:90px;right:90px;top:960px;display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+#e1s1-stats div{padding:18px 24px;border:1.5px solid rgba(240,234,223,.22);border-radius:18px;background:#18212b;}
+#e1s1-stats b{display:block;font-family:Georgia,'Liberation Serif',serif;font-weight:400;font-size:64px;line-height:1;color:#c6b278;}
+#e1s1-stats span{display:block;margin-top:6px;font-family:'Segoe UI',Arial,'Liberation Sans',sans-serif;font-size:22px;letter-spacing:.14em;text-transform:uppercase;color:#8e9089;}
+#e1s2-card{position:absolute;left:150px;top:190px;width:780px;box-sizing:border-box;padding:26px 32px;border:1.5px solid rgba(240,234,223,.22);border-radius:18px;background:#18212b;z-index:2;}
+#e1s2-card i{display:block;font-style:normal;font-family:'Segoe UI',Arial,'Liberation Sans',sans-serif;font-weight:600;font-size:20px;letter-spacing:.2em;color:#b19a60;}
+#e1s2-card b{display:block;margin-top:10px;font-family:Georgia,'Liberation Serif',serif;font-weight:500;font-size:44px;line-height:1.12;color:#f0eadf;}
+#e1s2-grid{position:absolute;left:50px;right:50px;top:470px;display:flex;flex-wrap:wrap;justify-content:center;gap:14px;}
+.e1s2-t{white-space:nowrap;padding:12px 22px;border-radius:999px;border:1.5px solid rgba(240,234,223,.22);background:#202a34;color:#f0eadf;font-family:'Segoe UI',Arial,'Liberation Sans',sans-serif;font-size:28px;font-weight:600;}
+.e1s2-t.g{border-color:rgba(177,154,96,.6);color:#c6b278;}
+.e1s2-t.h{border-color:rgba(235,234,228,.96);background:#ddd8cb;color:#111820;}
+#e1s2-n{position:absolute;left:0;right:0;top:1050px;text-align:center;font-family:Georgia,'Liberation Serif',serif;font-size:84px;line-height:1;color:#f0eadf;}
+#e1s2-n em{font-style:normal;color:#c6b278;}
 #e1s3-lock{position:absolute;left:0;right:0;top:360px;display:flex;flex-direction:column;align-items:center;gap:20px;}
 #e1s3-name{font-family:'Newsreader',serif;font-size:150px;line-height:.95;letter-spacing:-4px;}
 #e1s3-cta{position:absolute;left:0;right:0;top:880px;display:flex;justify-content:center;}
 #e1s3-btn{padding:34px 48px;border-radius:999px;background:#24456b;color:#f7f3ec;font-size:46px;font-weight:700;box-shadow:10px 10px 0 #0a0a0a;text-align:center;line-height:1.2;}
 #e1s3-btn span{display:block;font-size:30px;color:#e8c873;font-weight:600;}
-#e1s3-url{position:absolute;left:0;right:0;top:1100px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:38px;letter-spacing:.2em;}</style>
+#e1s3-url{position:absolute;left:0;right:0;top:1100px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:38px;letter-spacing:.2em;}
+#e1s3-rep{position:absolute;left:0;right:0;top:250px;display:flex;justify-content:center;}
+#e1s3-rep > div{display:inline-flex;align-items:center;gap:22px;padding:18px 30px 18px 34px;border-radius:999px;background:#111820;box-shadow:8px 8px 0 #e8c873;}
+#e1s3-rep i{font-style:normal;font-family:'Segoe UI',Arial,'Liberation Sans',sans-serif;font-size:24px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#b19a60;}
+#e1s3-lock{top:420px !important;}</style>
 <div id="root" data-composition-id="e1" data-width="1080" data-height="1920">
-<div id="brand"><svg width="54" height="54" viewBox="4 4 54 54" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="#0a0a0a"></circle><circle cx="28" cy="28" r="22" fill="#24456b"></circle><circle cx="36" cy="20" r="5" fill="#e8c873"></circle></svg>Pauta Pronta</div>
-<div class="shot" id="e1s0"><div id="e1s0-w"><span class="e1s0-l">R</span><span class="e1s0-l">E</span><span class="e1s0-l">P</span></div><div id="e1s0-full">Radar de Eventos Públicos</div><div id="e1s0-sub">o mapa de como os assuntos se formam na imprensa brasileira</div></div>
-<div class="shot" id="e1s1"><div id="e1s1-big">0</div><div id="e1s1-lab">matérias no acervo</div><div id="e1s1-chips"><span class="e1s1-o">G1</span><span class="e1s1-o">CNN Brasil</span><span class="e1s1-o">UOL</span><span class="e1s1-o">Folha</span><span class="e1s1-o">Estadão</span><span class="e1s1-o">Metrópoles</span><span class="e1s1-o">O Globo</span><span class="e1s1-o">Valor</span><span class="e1s1-o">O Antagonista</span><span class="e1s1-o">Gazeta do Povo</span><span class="e1s1-o more">+92</span></div><div id="e1s1-stats"><span>102 veículos</span><span>115 feeds</span></div></div>
-<div class="shot" id="e1s2"><div id="e1s2-card"><i>FOLHA DE S.PAULO</i><b>Governo avalia levar ao SUS caneta prometida por Lula</b></div><div id="e1s2-grid"><span class="e1s2-t" style="">categoria</span><span class="e1s2-t" style="background:#f7f3ec;">tipo de matéria</span><span class="e1s2-t" style="background:#4b88a6;color:#f7f3ec;">relevância</span><span class="e1s2-t" style="">protagonista</span><span class="e1s2-t" style="background:#f7f3ec;">ação principal</span><span class="e1s2-t" style="background:#4b88a6;color:#f7f3ec;">objeto</span><span class="e1s2-t" style="">escopo</span><span class="e1s2-t" style="background:#f7f3ec;">entidades</span><span class="e1s2-t" style="background:#4b88a6;color:#f7f3ec;">papel de cada ator</span><span class="e1s2-t" style="">trecho de evidência</span><span class="e1s2-t" style="background:#f7f3ec;">tópico canônico</span><span class="e1s2-t" style="background:#4b88a6;color:#f7f3ec;">subtema</span><span class="e1s2-t" style="">âncora narrativa</span><span class="e1s2-t" style="background:#f7f3ec;">matérias similares</span><span class="e1s2-t" style="background:#4b88a6;color:#f7f3ec;">confiança</span><span class="e1s2-t" style="">categoria secundária</span></div><div id="e1s2-n">+30 classificações</div></div>
-<div class="shot" id="e1s3"><div id="e1s3-lock"><svg id="e1s3-mark" width="200" height="200" viewBox="4 4 54 54" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="#0a0a0a"></circle><circle cx="28" cy="28" r="22" fill="#24456b"></circle><circle cx="36" cy="20" r="5" fill="#e8c873"></circle></svg><div id="e1s3-name">Pauta Pronta</div></div><div id="e1s3-cta"><div id="e1s3-btn">Teste grátis<span>uma pauta, sem cartão</span></div></div><div id="e1s3-url">pautapronta.com</div></div>
-<div class="cap" id="e1-cap0"><span class="cw" id="e1-w0-0">Por</span> <span class="cw" id="e1-w0-1">trás</span> <span class="cw" id="e1-w0-2">do</span> <span class="cw" id="e1-w0-3">Pauta</span> <span class="cw" id="e1-w0-4">Pronta</span> <span class="cw" id="e1-w0-5">existe</span> <span class="cw" id="e1-w0-6">o</span> <span class="cw hl" id="e1-w0-7">REP.</span></div><div class="cap" id="e1-cap1"><span class="cw" id="e1-w1-0">Mais</span> <span class="cw" id="e1-w1-1">de</span> <span class="cw hl" id="e1-w1-2">setecentas</span> <span class="cw hl" id="e1-w1-3">mil</span> <span class="cw" id="e1-w1-4">matérias,</span> <span class="cw" id="e1-w1-5">de</span> <span class="cw" id="e1-w1-6">mais</span> <span class="cw" id="e1-w1-7">de</span> <span class="cw hl" id="e1-w1-8">cem</span> <span class="cw" id="e1-w1-9">veículos.</span></div><div class="cap" id="e1-cap2"><span class="cw" id="e1-w2-0">Cada</span> <span class="cw" id="e1-w2-1">uma</span> <span class="cw" id="e1-w2-2">ganha</span> <span class="cw" id="e1-w2-3">mais</span> <span class="cw" id="e1-w2-4">de</span> <span class="cw hl" id="e1-w2-5">trinta</span> <span class="cw hl" id="e1-w2-6">classificações.</span></div><div class="cap" id="e1-cap3"><span class="cw" id="e1-w3-0">Pauta</span> <span class="cw" id="e1-w3-1">Pronta.</span> <span class="cw" id="e1-w3-2">Com</span> <span class="cw" id="e1-w3-3">a</span> <span class="cw hl" id="e1-w3-4">inteligência</span> <span class="cw" id="e1-w3-5">do</span> <span class="cw hl" id="e1-w3-6">REP.</span></div>
+<div id="brand-rep"><span style="display:inline-flex;align-items:center;gap:14px;"><img src="assets/rep/crow-creme.png" alt="" style="height:50px;width:auto;display:block;"><b style="font-family:'Segoe UI',Arial,'Liberation Sans',sans-serif;font-weight:700;font-size:35px;letter-spacing:-.02em;line-height:1;color:#f0eadf;">REP</b></span></div><div id="brand"><svg width="54" height="54" viewBox="4 4 54 54" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="#0a0a0a"></circle><circle cx="28" cy="28" r="22" fill="#24456b"></circle><circle cx="36" cy="20" r="5" fill="#e8c873"></circle></svg>Pauta Pronta</div>
+<div class="shot" id="e1s0" style="background:#111820"><video class="clip" id="e1s0-v" src="assets/rep/rep-radar.mp4" muted playsinline data-start="0" data-duration="2.80" data-media-start="0"></video><div id="e1s0-cov"></div></div>
+<div class="shot" id="e1s1" style="background:#111820"><div id="e1s1-k">REP · TOTAL INDEXADO</div><div id="e1s1-big">0</div><div id="e1s1-lab">matérias no banco de notícias do REP</div><div id="e1s1-chips"><span class="e1s1-o">G1</span><span class="e1s1-o">CNN Brasil</span><span class="e1s1-o">UOL</span><span class="e1s1-o">Folha</span><span class="e1s1-o">Estadão</span><span class="e1s1-o">Metrópoles</span><span class="e1s1-o">O Globo</span><span class="e1s1-o">Valor</span><span class="e1s1-o">O Antagonista</span><span class="e1s1-o">Gazeta do Povo</span><span class="e1s1-o more">+92</span></div><div id="e1s1-stats"><div><b>102</b><span>veículos</span></div><div><b>115</b><span>feeds</span></div></div></div>
+<div class="shot" id="e1s2" style="background:#111820"><div id="e1s2-card"><i>FOLHA DE S.PAULO</i><b>Governo avalia levar ao SUS caneta prometida por Lula</b></div><div id="e1s2-grid"><span class="e1s2-t">categoria</span><span class="e1s2-t g">tipo de matéria</span><span class="e1s2-t h">relevância</span><span class="e1s2-t">protagonista</span><span class="e1s2-t g">ação principal</span><span class="e1s2-t h">objeto</span><span class="e1s2-t">escopo</span><span class="e1s2-t g">entidades</span><span class="e1s2-t h">papel de cada ator</span><span class="e1s2-t">trecho de evidência</span><span class="e1s2-t g">tópico canônico</span><span class="e1s2-t h">subtema</span><span class="e1s2-t">âncora narrativa</span><span class="e1s2-t g">matérias similares</span><span class="e1s2-t h">confiança</span><span class="e1s2-t">categoria secundária</span></div><div id="e1s2-n"><em>+30</em> classificações</div></div>
+<div class="shot" id="e1s3"><div id="e1s3-rep"><div><i>com a inteligência do</i><span style="display:inline-flex;align-items:center;gap:18px;"><img src="assets/rep/crow-creme.png" alt="" style="height:64px;width:auto;display:block;"><b style="font-family:'Segoe UI',Arial,'Liberation Sans',sans-serif;font-weight:700;font-size:45px;letter-spacing:-.02em;line-height:1;color:#f0eadf;">REP</b></span></div></div><div id="e1s3-lock"><svg id="e1s3-mark" width="200" height="200" viewBox="4 4 54 54" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="#0a0a0a"></circle><circle cx="28" cy="28" r="22" fill="#24456b"></circle><circle cx="36" cy="20" r="5" fill="#e8c873"></circle></svg><div id="e1s3-name">Pauta Pronta</div></div><div id="e1s3-cta"><div id="e1s3-btn">Teste grátis<span>uma pauta, sem cartão</span></div></div><div id="e1s3-url">pautapronta.com</div></div>
+<div class="cap dark" id="e1-cap0"><span class="cw" id="e1-w0-0">Por</span> <span class="cw" id="e1-w0-1">trás</span> <span class="cw" id="e1-w0-2">do</span> <span class="cw" id="e1-w0-3">Pauta</span> <span class="cw" id="e1-w0-4">Pronta</span> <span class="cw" id="e1-w0-5">existe</span> <span class="cw" id="e1-w0-6">o</span> <span class="cw hl" id="e1-w0-7">REP.</span></div><div class="cap dark" id="e1-cap1"><span class="cw" id="e1-w1-0">Mais</span> <span class="cw" id="e1-w1-1">de</span> <span class="cw hl" id="e1-w1-2">setecentas</span> <span class="cw hl" id="e1-w1-3">mil</span> <span class="cw" id="e1-w1-4">matérias,</span> <span class="cw" id="e1-w1-5">de</span> <span class="cw" id="e1-w1-6">mais</span> <span class="cw" id="e1-w1-7">de</span> <span class="cw hl" id="e1-w1-8">cem</span> <span class="cw" id="e1-w1-9">veículos.</span></div><div class="cap dark" id="e1-cap2"><span class="cw" id="e1-w2-0">Cada</span> <span class="cw" id="e1-w2-1">uma</span> <span class="cw" id="e1-w2-2">ganha</span> <span class="cw" id="e1-w2-3">mais</span> <span class="cw" id="e1-w2-4">de</span> <span class="cw hl" id="e1-w2-5">trinta</span> <span class="cw hl" id="e1-w2-6">classificações.</span></div><div class="cap" id="e1-cap3"><span class="cw" id="e1-w3-0">Pauta</span> <span class="cw" id="e1-w3-1">Pronta.</span> <span class="cw" id="e1-w3-2">Com</span> <span class="cw" id="e1-w3-3">a</span> <span class="cw hl" id="e1-w3-4">inteligência</span> <span class="cw" id="e1-w3-5">do</span> <span class="cw hl" id="e1-w3-6">REP.</span></div>
 <div id="stripes"><div style="background:#24456b"></div><div style="background:#e8c873"></div><div style="background:#a8453a"></div><div style="background:#5a7d3f"></div><div style="background:#4b88a6"></div></div>
 </div>
 <script>
@@ -57,19 +69,17 @@
 const tl = gsap.timeline({ paused: true });
 tl.set('#e1s0', { opacity: 1 }, 0); tl.set('#e1s0', { opacity: 0 }, 2.8);
 tl.fromTo('#e1s0', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 0);
-{ tl.fromTo('.e1s0-l', { y: 300, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'back.out(2)', stagger: 0.1 }, 0);
-tl.fromTo('#e1s0-full', { opacity: 0, scaleX: 1.4 }, { opacity: 1, scaleX: 1, duration: 0.5, ease: 'power3.out' }, 0.4);
-tl.fromTo('#e1s0-sub', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }, 0.8); }
+{  }
 tl.set('#e1s1', { opacity: 1 }, 2.8); tl.set('#e1s1', { opacity: 0 }, 6.77);
 tl.fromTo('#e1s1', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 2.8);
 { const el = document.querySelector('#e1s1-big'), o = { v: 0 };
 tl.fromTo(o, { v: 0 }, { v: 773856, duration: 3.57, ease: 'power3.out', onUpdate: () => { el.textContent = Math.round(o.v).toLocaleString('pt-BR'); } }, 2.9);
-tl.fromTo(['#e1s1-big', '#e1s1-lab'], { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'expo.out' }, 2.8);
-tl.fromTo('.e1s1-o', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: 'back.out(2.5)', stagger: 0.252 }, 3.1999999999999997);
-tl.fromTo('#e1s1-stats span', { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: 'back.out(2)', stagger: 0.12 }, 5.97); }
+tl.fromTo(['#e1s1-k', '#e1s1-big', '#e1s1-lab'], { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'expo.out', stagger: 0.06 }, 2.8);
+tl.fromTo('.e1s1-o', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: 'back.out(2)', stagger: 0.252 }, 3.1999999999999997);
+tl.fromTo('#e1s1-stats div', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: 'power3.out', stagger: 0.12 }, 5.97); }
 tl.set('#e1s2', { opacity: 1 }, 6.77); tl.set('#e1s2', { opacity: 0 }, 9.88);
 tl.fromTo('#e1s2', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 6.77);
-{ tl.fromTo('#e1s2-card', { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(2)' }, 6.77);
+{ tl.fromTo('#e1s2-card', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(2)' }, 6.77);
 tl.fromTo('.e1s2-t', { y: -200, scale: 0, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(1.8)', stagger: 0.126 }, 7.069999999999999);
 tl.fromTo('#e1s2-n', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(2.5)' }, 9.18); }
 tl.set('#e1s3', { opacity: 1 }, 9.88); 
@@ -78,7 +88,8 @@ tl.fromTo('#e1s3', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' 
 tl.fromTo('#e1s3-name', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' }, 10.030000000000001);
 tl.fromTo('#e1s3-btn', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(2)' }, 10.38);
 tl.fromTo('#e1s3-url', { opacity: 0 }, { opacity: 1, duration: 0.3 }, 10.680000000000001);
-tl.to('#e1s3-btn', { scale: 1.06, duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: 3 }, 11.08); }
+tl.to('#e1s3-btn', { scale: 1.06, duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: 3 }, 11.08);
+tl.fromTo('#e1s3-rep > div', { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'back.out(2)' }, 10.48); }
 // legenda: cada palavra entra quando é falada
 tl.set('#e1-cap0', { opacity: 1 }, 0.30); tl.set('#e1-cap0', { opacity: 0 }, 2.86);
 tl.fromTo('#e1-w0-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 0.35);
@@ -116,6 +127,11 @@ tl.fromTo('#e1-w3-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, sca
 tl.fromTo('#e1-w3-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 11.59);
 tl.fromTo('#e1-w3-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 12.11);
 tl.fromTo('#e1-w3-6', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 12.26);
+// marca: some sobre as gravações (elas já trazem a interface real) e fica creme nas cenas escuras do REP
+tl.set('#brand', { opacity: 0 }, 0); tl.set('#brand-rep', { opacity: 0 }, 0);
+tl.set('#brand', { opacity: 0 }, 2.8); tl.set('#brand-rep', { opacity: 1 }, 2.8);
+tl.set('#brand', { opacity: 0 }, 6.77); tl.set('#brand-rep', { opacity: 1 }, 6.77);
+tl.set('#brand', { opacity: 1 }, 9.88); tl.set('#brand-rep', { opacity: 0 }, 9.88);
 // marca some no fecho; faixas de cor antes do fecho
 tl.to('#brand', { opacity: 0, duration: 0.2 }, 9.88);
 tl.to('#stripes div', { scaleX: 1, transformOrigin: '0% 50%', duration: 0.22, ease: 'power3.in', stagger: 0.03 }, 9.58);
