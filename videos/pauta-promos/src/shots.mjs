@@ -21,15 +21,21 @@ const R = { bg: '#111820', panel: '#18212b', raise: '#202a34', ink: '#f0eadf', i
 const RS = "Georgia,'Liberation Serif',serif", RU = "'Segoe UI',Arial,'Liberation Sans',sans-serif";
 const CROW = (h, c = 'creme') => `<img src="assets/rep/crow-${c}.png" alt="" style="height:${h}px;width:auto;display:block;">`;
 const REPLOCK = (h, c = 'creme') => `<span style="display:inline-flex;align-items:center;gap:${Math.round(h * 0.28)}px;">${CROW(h, c)}<b style="font-family:${RU};font-weight:700;font-size:${Math.round(h * 0.7)}px;letter-spacing:-.02em;line-height:1;color:${c === 'ink' ? R.bg : R.ink};">REP</b></span>`;
-// gravação real em tela cheia; a faixa de baixo cobre a interface e segura a legenda. tap = { at, x, y } marca o toque.
-const footage = (src, media, dark, tap) => (p, t0, t1) => ({
-  dark, footage: true,
-  css: `#${p}-v{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;}
+// gravação real em tela cheia; a faixa de baixo cobre a interface e segura a legenda.
+// media = segundo da gravação onde a cena começa (número, ou função da duração da cena);
+// tap = { at, x, y } marca o toque. Clique nas gravações: REP em 6,98 s, Pauta Pronta em 6,50 s.
+const REP_CLICK = 6.98, PP_CLICK = 6.5;
+const footage = (src, mediaOf, dark, tap) => (p, t0, t1) => {
+  const len = t1 - t0, media = +(typeof mediaOf === 'function' ? mediaOf(len) : mediaOf).toFixed(2);
+  return {
+    dark, footage: true,
+    css: `#${p}-v{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;}
 #${p}-cov{position:absolute;left:0;right:0;top:1130px;bottom:0;background:linear-gradient(to bottom, ${dark ? 'rgba(17,24,32,0)' : 'rgba(247,243,236,0)'}, ${dark ? R.bg : C.paper} 110px);}
 #${p}-tap{position:absolute;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;border:6px solid ${dark ? R.goldBri : C.navy};background:${dark ? 'rgba(198,178,120,.25)' : 'rgba(36,69,107,.18)'};opacity:0;}`,
-  html: `<video class="clip" id="${p}-v" src="assets/rep/${src}.mp4" muted playsinline data-start="${t0}" data-duration="${(t1 - t0 + 0.25).toFixed(2)}" data-media-start="${media}"></video><div id="${p}-cov"></div>${tap ? `<div id="${p}-tap" style="left:${tap.x}px;top:${tap.y}px;"></div>` : ''}`,
-  js: (a) => tap ? `tl.fromTo('#${p}-tap', { scale: 0.4, opacity: 0.95 }, { scale: 1.5, opacity: 0, duration: 0.6, ease: 'power2.out' }, ${(a + tap.at - media).toFixed(2)});` : '',
-});
+    html: `<video class="clip" id="${p}-v" src="assets/rep/${src}.mp4" muted playsinline data-start="${t0}" data-duration="${(len + 0.25).toFixed(2)}" data-media-start="${media}"></video><div id="${p}-cov"></div>${tap ? `<div id="${p}-tap" style="left:${tap.x}px;top:${tap.y}px;"></div>` : ''}`,
+    js: (a) => tap ? `tl.fromTo('#${p}-tap', { scale: 0.4, opacity: 0.95 }, { scale: 1.5, opacity: 0, duration: 0.6, ease: 'power2.out' }, ${(a + tap.at - media).toFixed(2)});` : '',
+  };
+};
 
 export { REPLOCK };
 export const SHOTS = {
@@ -462,12 +468,15 @@ tl.fromTo('.${p}-lb:nth-of-type(${i + 1})', { scale: 0, opacity: 0 }, { scale: 1
 
   // ——— gravações reais (Playwright, 1080×1920) ———
   // Radar público do REP (rep-brasil.com): bolhas vivas; o clique acontece em 2,98 s da gravação
-  repradar: footage('rep-radar', 0, true),
-  repmergulho: footage('rep-radar', 1.7, true, { at: 2.98, x: 555, y: 595 }),
-  // Radar dentro do Pauta Pronta (painel logado): o clique acontece em 3,22 s da gravação
-  ppradar: footage('pp-radar', 0.2, false),
-  ppbolhas: footage('pp-radar', 1.6, false),
-  ppclique: footage('pp-radar', 3.1, false, { at: 3.22, x: 543, y: 504 }),
+  // e1: só bolhas vivas, termina antes do clique
+  repradar: footage('rep-radar', (len) => Math.max(0, REP_CLICK - 0.8 - len), true),
+  // e2: o toque acontece 1,3 s depois do início da cena e a bolha mergulha
+  repmergulho: footage('rep-radar', REP_CLICK - 1.3, true, { at: REP_CLICK, x: 555, y: 595 }),
+  // p4: bolhas até o instante do toque; a cena seguinte (ppclique) continua exatamente dali
+  ppradar: footage('pp-radar', (len) => Math.max(1.8, PP_CLICK - 0.35 - len), false),
+  // i3: só bolhas, sem clique
+  ppbolhas: footage('pp-radar', (len) => Math.max(1.8, PP_CLICK - 0.8 - len), false),
+  ppclique: footage('pp-radar', PP_CLICK - 0.35, false, { at: PP_CLICK, x: 542, y: 503 }),
 
 
   // colar o link
