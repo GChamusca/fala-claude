@@ -1,0 +1,51 @@
+// Roteiros dos promos de 15s (conversão). Cada linha: o que a voz fala e a "cena" que a acompanha.
+// As palavras entre *asteriscos* ganham destaque manteiga na legenda.
+export const SIGN = { say: 'Poste mais. Poste melhor. Pauta Pronta.', shot: 'fecho' };
+
+export const SCRIPTS = {
+  p1: {
+    title: 'As 500 abas',
+    lines: [
+      { say: 'Chega de abrir quinhentas abas pra fazer um post.', shot: 'abas' },
+      { say: 'O Pauta Pronta lê tudo por você: duzentas matérias em minutos.', shot: 'leitura' },
+      { say: 'E entrega o post pronto. Com fonte.', shot: 'entrega' },
+      SIGN,
+    ],
+  },
+  p2: {
+    title: 'O medo de errar',
+    lines: [
+      { say: 'Você postou… e depois descobriu que a notícia não era bem assim.', shot: 'erro' },
+      { say: 'No Pauta Pronta, cada informação vem com a matéria de origem.', shot: 'validacao' },
+      { say: 'Você confere antes de publicar.', shot: 'confere' },
+      SIGN,
+    ],
+  },
+  p3: {
+    title: 'O cliente cobrando',
+    lines: [
+      { say: 'Seis da tarde. O assunto explodiu. E o cliente quer o post pra ontem.', shot: 'cobranca' },
+      { say: 'Traga o tema.', shot: 'tema' },
+      { say: 'Em minutos: texto, arte e legenda, prontos pra revisar.', shot: 'entrega' },
+      SIGN,
+    ],
+  },
+  p4: {
+    title: 'Sem pauta: o Radar',
+    lines: [
+      { say: 'Quando você fica sabendo do assunto, todo mundo já postou.', shot: 'atrasado' },
+      { say: 'O Radar do Pauta Pronta mostra o que está crescendo agora…', shot: 'radar' },
+      { say: 'e transforma em pauta num clique.', shot: 'clique' },
+      SIGN,
+    ],
+  },
+  p5: {
+    title: 'Contra a IA genérica',
+    lines: [
+      { say: 'IA genérica inventa.', shot: 'inventa' },
+      { say: 'O Pauta Pronta lê a cobertura real e cita cada fonte.', shot: 'leitura' },
+      { say: 'Nada de achismo: cada fato com a matéria de origem.', shot: 'validacao' },
+      SIGN,
+    ],
+  },
+};
