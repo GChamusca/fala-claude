@@ -1,6 +1,6 @@
 ---
 format: 1920x1080
-duration: 94s
+duration: 104s
 message: "O Pauta Pronta lê a cobertura real, analisa e entrega o post pronto, com cada fato ligado à fonte."
 arc: Hook (excesso) → Promessa → Demo (tema → recorte → pesquisa → análise → ângulos → formato → entrega → validação) → Resultado → CTA
 audience: quem publica sobre atualidades (social medias, comunicadores, jornalistas, criadores, marcas)
@@ -66,6 +66,18 @@ Scene 3 (3.0–6.0s): "Pesquisa, analisa e entrega o post pronto." com "com font
 Scene 1 (0.0–1.0s): painel "Sobre o que você quer publicar?" assenta no centro-direita; Ana (calma) no disco navy à esquerda.
 Scene 2 (1.0–3.6s): o texto digita letra a letra com cursor.
 Scene 3 (3.6–6.0s): cursor vai ao botão "Criar minha publicação →", clique com onda; rótulo "01 · TEMA" + frase "Você traz o tema. Ou um link."
+
+## Frame 3b — Ou pelo Radar
+
+- scene: nuvem de bolhas do Radar com assuntos em alta (volume, tendência); clique em "Soberania e combate às facções"; painel com quem moveu; "Gerar pauta sobre este assunto"
+- duration: 9.5s
+- transition_in: cut
+- type: feature_showcase
+- blueprint: constellation-hub (Adapt) + cursor-ui-demo
+- src: compositions/f03b-radar.html
+- status: animated
+
+O Pauta também traz a pauta: não espera só a pessoa chegar com a ideia.
 
 ## Frame 4 — O editor pergunta o recorte
 

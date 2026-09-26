@@ -40,6 +40,7 @@ const ROWS = [
   ['01', 'Mil manchetes', '0:00', 'Grade infinita de manchetes reais; Ana aflita no computador. “Mil manchetes. Mil versões. Qual vira o seu post?”', 'A dor: excesso e versões que se contradizem.'],
   ['02', 'A promessa', '0:08', 'Faixas nas cores da marca revelam o logo. “Pesquisa, analisa e entrega o post pronto. Com fonte.”', 'O valor aparece já na 2ª cena.'],
   ['03', 'Você traz o tema', '0:14', 'Caixa /criar grande; “Canetas emagrecedoras” digitado letra a letra; clique.', 'Começar é simples.'],
+  ['03b', 'Ou pelo Radar', '0:20', 'Bolhas dos assuntos em alta; clique no mais quente; quem moveu; “Gerar pauta sobre este assunto”.', 'O Pauta também traz a pauta até você.'],
   ['04', 'O editor pergunta', '0:20', 'Conversa real: o editor pergunta o recorte; Ana escolhe “Preços e acesso”.', 'Não é gerador genérico: é editorial.'],
   ['05', 'A redação lê', '0:29', 'O Leitor + 200 matérias em grade; a varredura carimba 17; 13 fontes; nomes dos veículos.', 'Prova da pesquisa, com números reais.'],
   ['06', 'Análise', '0:41', 'Trechos voam para Fato, Contexto e Divergência; DCM × A Tarde em choque.', 'Prova da análise.'],

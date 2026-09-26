@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8" /><title>f03b-radar</title></head>
+<body>
+<template>
+<style>
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:200 800;font-display:block;src:url('assets/fonts/newsreader-v26-cY9AfjOCX1hbuyalUrK4397yjA.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:200 800;font-display:block;src:url('assets/fonts/newsreader-v26-cY9AfjOCX1hbuyalUrK439DyjJBG.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Newsreader';font-style:italic;font-weight:200 800;font-display:block;src:url('assets/fonts/newsreader-v26-cY9CfjOCX1hbuyalUrK439vCjohC.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Newsreader';font-style:italic;font-weight:200 800;font-display:block;src:url('assets/fonts/newsreader-v26-cY9CfjOCX1hbuyalUrK439vCgIhCFpY.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:200 800;font-display:block;src:url('assets/fonts/bricolagegrotesque-v9-3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInE.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:200 800;font-display:block;src:url('assets/fonts/bricolagegrotesque-v9-3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGGInHEVA.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:block;src:url('assets/fonts/jetbrainsmono-v24-tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:block;src:url('assets/fonts/jetbrainsmono-v24-tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx7cwhsk.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:400 700;font-display:block;src:url('assets/fonts/caveat-Wnz6HAc5bAfYB2Q7ZjYY.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:400 700;font-display:block;src:url('assets/fonts/caveat-Wnz6HAc5bAfYB2Q7aDYYmg8.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+#root{position:absolute;inset:0;overflow:hidden;background:#f7f3ec;color:#0a0a0a;font-family:'Bricolage Grotesque',sans-serif;}
+#root .grain{position:absolute;inset:0;mix-blend-mode:multiply;opacity:.55;pointer-events:none;}
+#root .wm{display:inline-block;overflow:hidden;vertical-align:top;padding:.2em .04em .14em;margin:-.2em -.04em -.14em;}
+#root .w{display:inline-block;}
+#root .mono{font-family:'JetBrains Mono',monospace;font-weight:500;text-transform:uppercase;letter-spacing:.16em;}
+#root .display{font-family:'Newsreader',serif;font-weight:400;letter-spacing:-.02em;}
+#root .display em{font-style:italic;color:#24456b;}
+#root .peep-svg{display:block;height:100%;width:auto;overflow:visible;}
+
+#f3r-panel{position:absolute;left:120px;top:250px;width:1100px;height:780px;box-sizing:border-box;border:3px solid #0a0a0a;border-radius:28px;background:#f7f3ec;box-shadow:12px 12px 0 #0a0a0a;overflow:hidden;}
+#f3r-bar{position:absolute;left:0;right:0;top:0;height:74px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;border-bottom:2px solid #cfc6b3;background:#efe7d8;}
+#f3r-bar .mono{font-size:18px;}
+#f3r-pills{display:flex;gap:6px;}
+#f3r-pills span{padding:6px 12px;border-radius:8px;font-size:16px;}
+#f3r-pills .on{background:#e6dcc7;color:#24456b;}
+.f3r-b{position:absolute;box-sizing:border-box;border-radius:50%;background:#24456b;color:#f7f3ec;border:3px solid #0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 16px;font-family:'Newsreader',serif;line-height:1.1;}
+.f3r-b.lt{background:#efe7d8;color:#0a0a0a;}
+.f3r-b small{display:block;margin-top:6px;font-family:'JetBrains Mono',monospace;font-size:14px;opacity:.85;}
+.f3r-b i{position:absolute;right:4%;top:6%;padding:3px 8px;border-radius:999px;background:#f7f3ec;color:#0a0a0a;border:2px solid #0a0a0a;font-style:normal;font-family:'JetBrains Mono',monospace;font-size:13px;}
+#f3r-ring{position:absolute;border-radius:50%;border:6px solid #e8c873;box-sizing:border-box;}
+#f3r-stats{position:absolute;left:1290px;top:270px;width:520px;}
+.f3r-s{padding:22px 0;border-bottom:2px solid #cfc6b3;}
+.f3r-s .mono{font-size:18px;color:#6b665d;}
+.f3r-s b{display:block;font-family:'Newsreader',serif;font-weight:400;font-size:84px;line-height:1;margin-top:6px;}
+#f3r-detail{position:absolute;left:1270px;top:250px;width:560px;box-sizing:border-box;padding:30px 32px;border:3px solid #0a0a0a;border-radius:26px;background:#efe7d8;box-shadow:10px 10px 0 #0a0a0a;}
+#f3r-detail .mono{font-size:16px;color:#a8453a;}
+#f3r-detail h3{margin:8px 0 0;font-family:'Newsreader',serif;font-weight:400;font-size:40px;line-height:1.1;}
+#f3r-nums{display:flex;gap:30px;margin-top:18px;font-family:'Newsreader',serif;font-size:44px;}
+#f3r-nums span{font-family:'JetBrains Mono',monospace;font-size:14px;color:#6b665d;margin-left:8px;text-transform:uppercase;letter-spacing:.14em;}
+#f3r-moved{margin-top:18px;}
+#f3r-moved .mono{color:#24456b;}
+.f3r-m{display:grid;grid-template-columns:200px minmax(0,1fr) 36px;align-items:center;gap:12px;margin-top:10px;font-family:'Newsreader',serif;font-size:24px;}
+.f3r-m em{display:block;height:8px;border-radius:4px;background:#e6dcc7;}
+.f3r-m em b{display:block;height:8px;border-radius:4px;background:#24456b;}
+.f3r-m span{font-family:'JetBrains Mono',monospace;font-size:16px;text-align:right;}
+#f3r-go{margin-top:26px;display:inline-flex;padding:18px 26px;border-radius:14px;background:#24456b;color:#f7f3ec;font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.1em;text-transform:uppercase;box-shadow:6px 6px 0 #0a0a0a;}
+#f3r-ripple{position:absolute;left:1532px;top:770px;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;border:4px solid #e8c873;}
+</style>
+<div id="root" data-composition-id="f03b-radar" data-width="1920" data-height="1080">
+
+<div id="f3r-eyebrow" class="mono" style="position:absolute;left:120px;top:92px;font-size:24px;color:#24456b;">01 · Ou pelo Radar</div>
+<div id="f3r-title" class="display" style="position:absolute;left:112px;top:130px;font-size:84px;line-height:1.05;white-space:nowrap;"><span class="wm"><span class="w">Sem</span></span> <span class="wm"><span class="w">ideia?</span></span> <em><span class="wm"><span class="w">O</span></span> <span class="wm"><span class="w">Radar</span></span> <span class="wm"><span class="w">mostra</span></span> <span class="wm"><span class="w">o</span></span> <span class="wm"><span class="w">que</span></span> <span class="wm"><span class="w">está</span></span> <span class="wm"><span class="w">em</span></span> <span class="wm"><span class="w">alta.</span></span></em></div>
+<div id="f3r-panel">
+  <div id="f3r-bar"><span class="mono" style="color:#24456b;">Radar · todos os assuntos</span><div id="f3r-pills" class="mono"><span>Agora</span><span>24H</span><span class="on">7D</span><span>30D</span></div></div>
+  <div id="f3r-b0" class="f3r-b" style="left:138px;top:108px;width:264px;height:264px;font-size:26px;">STF valida reajuste do Bolsa Família<small>452 mat.</small><i>↓71%</i></div><div id="f3r-b1" class="f3r-b" style="left:461px;top:106px;width:168px;height:168px;font-size:17px;">Casa Branca barra jornalistas<small>109 mat.</small><i>↑100%</i></div><div id="f3r-b2" class="f3r-b" style="left:705px;top:125px;width:210px;height:210px;font-size:21px;">Relatoria indefinida trava pedidos de prisão<small>233 mat.</small><i>↓41%</i></div><div id="f3r-b3" class="f3r-b lt" style="left:17px;top:382px;width:136px;height:136px;font-size:14px;">Greve nacional dos Correios<small>45 mat.</small><i>↑99%</i></div><div id="f3r-b4" class="f3r-b" style="left:419px;top:304px;width:212px;height:212px;font-size:21px;">Soberania e combate às facções<small>237 mat.</small><i>↑100%</i></div><div id="f3r-b5" class="f3r-b" style="left:860px;top:355px;width:190px;height:190px;font-size:19px;">Mensagens ampliam crise no STF<small>165 mat.</small><i>↑61%</i></div><div id="f3r-b6" class="f3r-b" style="left:183px;top:528px;width:194px;height:194px;font-size:19px;">Prisão enfraquece grupo político<small>182 mat.</small><i>↓63%</i></div><div id="f3r-b7" class="f3r-b" style="left:653px;top:523px;width:204px;height:204px;font-size:20px;">Empate em Minas, vantagem em São Paulo<small>213 mat.</small><i>↑72%</i></div><div id="f3r-b8" class="f3r-b lt" style="left:925px;top:600px;width:140px;height:140px;font-size:14px;">TSE mira rede e deepfake eleitoral<small>53 mat.</small><i>↑74%</i></div>
+  <div id="f3r-ring" style="left:405px;top:290px;width:240px;height:240px;"></div>
+</div>
+<div id="f3r-stats">
+  <div class="f3r-s"><span class="mono">Matérias hoje</span><b id="f3r-n1">0</b></div>
+  <div class="f3r-s"><span class="mono">Últimos 7 dias</span><b id="f3r-n2">0</b></div>
+  <div class="f3r-s"><span class="mono">Veículos acompanhados</span><b id="f3r-n3">0</b></div>
+</div>
+<div id="f3r-detail">
+  <span class="mono">Assunto em alta · ↑100%</span>
+  <h3>Lula prepara discurso na ONU com soberania e facções</h3>
+  <div id="f3r-nums">229<span>matérias</span> 48<span>veículos</span></div>
+  <div id="f3r-moved"><span class="mono">Quem moveu</span><div class="f3r-m">UOL Notícias<em><b style="width:100%"></b></em><span>30</span></div><div class="f3r-m">Metrópoles<em><b style="width:60%"></b></em><span>18</span></div><div class="f3r-m">Brasil 247<em><b style="width:60%"></b></em><span>18</span></div><div class="f3r-m">CNN Brasil<em><b style="width:43%"></b></em><span>13</span></div><div class="f3r-m">Folha de S.Paulo<em><b style="width:37%"></b></em><span>11</span></div></div>
+  <div id="f3r-go">Gerar pauta sobre este assunto →</div>
+</div>
+<div id="f3r-ripple"></div>
+<div id="f3r-hand" style="position:absolute;left:0;top:0;"><svg id="f3r-hand-svg" width="58" height="64" viewBox="0 0 34 38" style="position:absolute;left:0;top:0;overflow:visible;" aria-hidden="true"><path d="M14 4.5c0-1.4 1.1-2.5 2.5-2.5S19 3.1 19 4.5V15l.9-.3c1.2-.4 2.5.2 2.9 1.4l.1.3 1-.2c1.3-.2 2.5.6 2.8 1.9l.1.4.7-.1c1.4-.2 2.6.8 2.7 2.2l.3 5.6c.2 3.4-1.4 6.6-4.2 8.5l-.6.4c-1 .7-2.2 1-3.4 1h-4.8c-2 0-3.9-1-5-2.7l-5-7.5c-.8-1.2-.5-2.8.7-3.6 1.1-.7 2.5-.5 3.3.5L14 22V4.5z" fill="#ffffff" stroke="#0a0a0a" stroke-width="1.8" stroke-linejoin="round"></path></svg></div>
+
+</div>
+<script>
+(function(){
+const tl = gsap.timeline({ paused: true });
+
+tl.fromTo('#f3r-eyebrow', { x: -24, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, 0.05);
+tl.fromTo('#f3r-title .w', { yPercent: 160 }, { yPercent: 0, duration: 0.8, ease: 'power3.out', stagger: 0.07 }, 0.2);
+tl.fromTo('#f3r-panel', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 0.25);
+tl.fromTo('.f3r-b', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.7, ease: 'power3.out', stagger: 0.09 }, 0.7);
+tl.fromTo('.f3r-b i', { scale: 0 }, { scale: 1, duration: 0.3, ease: 'power3.out', stagger: 0.09 }, 1.3);
+// deriva suave (finita) das bolhas
+tl.to('#f3r-b0', { y: -6, duration: 3.2, ease: 'sine.inOut' }, 1.5);
+tl.to('#f3r-b1', { y: 9, duration: 3.2, ease: 'sine.inOut' }, 1.5);
+tl.to('#f3r-b2', { y: -12, duration: 3.2, ease: 'sine.inOut' }, 1.5);
+tl.to('#f3r-b3', { y: 6, duration: 3.2, ease: 'sine.inOut' }, 1.5);
+tl.to('#f3r-b4', { y: -9, duration: 3.2, ease: 'sine.inOut' }, 1.5);
+tl.to('#f3r-b5', { y: 12, duration: 3.2, ease: 'sine.inOut' }, 1.5);
+tl.to('#f3r-b6', { y: -6, duration: 3.2, ease: 'sine.inOut' }, 1.5);
+tl.to('#f3r-b7', { y: 9, duration: 3.2, ease: 'sine.inOut' }, 1.5);
+tl.to('#f3r-b8', { y: -12, duration: 3.2, ease: 'sine.inOut' }, 1.5);
+tl.fromTo('#f3r-stats .f3r-s', { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: 'power3.out', stagger: 0.12 }, 0.9);
+const cnt = (id, to, t, fmt) => { const o = { v: 0 }, el = document.querySelector(id); tl.fromTo(o, { v: 0 }, { v: to, duration: 1.8, ease: 'power2.out', onUpdate: () => { el.textContent = Math.round(o.v).toLocaleString('pt-BR'); } }, t); };
+cnt('#f3r-n1', 5374, 1.1); cnt('#f3r-n2', 37435, 1.2); cnt('#f3r-n3', 102, 1.3);
+// clique no assunto em alta
+const H = { x: 621, y: 656 };
+tl.fromTo('#f3r-hand', { x: 1500, y: 1060, opacity: 0 }, { x: H.x, y: H.y, opacity: 1, duration: 1.0, ease: 'power3.inOut' }, 3.6);
+tl.to('#f3r-hand', { scale: 0.86, duration: 0.1, transformOrigin: '30% 10%' }, 4.6);
+tl.to('#f3r-hand', { scale: 1, duration: 0.2 }, 4.7);
+tl.fromTo('#f3r-ring', { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'power3.out' }, 4.65);
+tl.to('#f3r-b4', { scale: 1.06, duration: 0.5, ease: 'power3.out' }, 4.65);
+tl.to(["#f3r-b0","#f3r-b1","#f3r-b2","#f3r-b3","#f3r-b5","#f3r-b6","#f3r-b7","#f3r-b8"], { opacity: 0.25, duration: 0.5 }, 4.7);
+// o painel do assunto entra no lugar dos números
+tl.to('#f3r-stats', { x: 40, opacity: 0, duration: 0.4, ease: 'power3.in' }, 4.8);
+tl.fromTo('#f3r-detail', { x: 80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }, 5.1);
+tl.fromTo('.f3r-m em b', { scaleX: 0, transformOrigin: '0% 50%' }, { scaleX: 1, duration: 0.6, ease: 'power3.out', stagger: 0.1 }, 5.6);
+// gerar pauta
+tl.to('#f3r-hand', { x: 1508, y: 766, duration: 0.9, ease: 'power3.inOut' }, 6.6);
+tl.to('#f3r-go', { scale: 0.95, duration: 0.1 }, 7.6);
+tl.to('#f3r-go', { scale: 1, duration: 0.25 }, 7.7);
+tl.to('#f3r-hand', { scale: 0.86, duration: 0.1 }, 7.6);
+tl.to('#f3r-hand', { scale: 1, duration: 0.2 }, 7.7);
+tl.fromTo('#f3r-ripple', { scale: 0, opacity: 1 }, { scale: 4, opacity: 0, duration: 0.7, ease: 'power2.out' }, 7.65);
+
+window.__timelines["f03b-radar"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

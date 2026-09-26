@@ -5,7 +5,7 @@ import { subcomp, C, GRAIN } from './lib.mjs';
 
 const ROOT = new URL('../', import.meta.url);
 const SFX_DIR = `${process.env.HOME}/.claude/skills/media-use/audio/assets/sfx`;
-const ORDER = ['f01-hook', 'f02-promessa', 'f03-tema', 'f04-recorte', 'f05-pesquisa', 'f06-analise', 'f07-angulos', 'f08-formato', 'f09-entrega', 'f10-validacao', 'f11-convite']
+const ORDER = ['f01-hook', 'f02-promessa', 'f03-tema', 'f03b-radar', 'f04-recorte', 'f05-pesquisa', 'f06-analise', 'f07-angulos', 'f08-formato', 'f09-entrega', 'f10-validacao', 'f11-convite']
   .filter((id) => fs.existsSync(new URL(`scenes/${id}.mjs`, import.meta.url)));
 
 // efeitos agudos mais baixos (pedido do usuário)
@@ -32,7 +32,7 @@ scenes.forEach((s, i) => {
   t += s.duration;
 });
 const total = +t.toFixed(2);
-const MUSIC = process.env.MUSIC || 'assets/music/trilha-1.mp3';
+const MUSIC = process.env.MUSIC || 'assets/music/trilha-1-longa.mp3';
 if (fs.existsSync(new URL(MUSIC, ROOT))) audio.unshift(`    <audio id="bgm" src="${MUSIC}" data-start="0" data-duration="${total}" data-track-index="9" data-volume="0.45"></audio>`);
 
 fs.writeFileSync(new URL('index.html', ROOT), `<!doctype html>
