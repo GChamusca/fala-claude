@@ -8,6 +8,8 @@ const SFX_DIR = `${process.env.HOME}/.claude/skills/media-use/audio/assets/sfx`;
 const ORDER = ['f01-hook', 'f02-promessa', 'f03-tema', 'f04-recorte', 'f05-pesquisa', 'f06-analise', 'f07-angulos', 'f08-formato', 'f09-entrega', 'f10-validacao', 'f11-convite']
   .filter((id) => fs.existsSync(new URL(`scenes/${id}.mjs`, import.meta.url)));
 
+// efeitos agudos mais baixos (pedido do usuário)
+const SOFT = { sparkle: 0.45, chime: 0.5, ping: 0.5, click: 0.6, 'click-soft': 0.7, pop: 0.6, 'logo-1': 0.7, typing: 0.7 };
 const only = process.argv.slice(2);
 const ids = only.length ? only : ORDER;
 const scenes = [];
@@ -25,7 +27,7 @@ scenes.forEach((s, i) => {
   (s.sfx || []).forEach(([name, at, vol], k) => {
     const src = `assets/sfx/${name}.mp3`;
     if (!fs.existsSync(new URL(src, ROOT))) fs.copyFileSync(`${SFX_DIR}/${name}.mp3`, new URL(src, ROOT));
-    audio.push(`    <audio id="sfx-${s.id}-${k}" src="${src}" data-start="${(t + at).toFixed(2)}" data-track-index="${10 + (k % 6)}" data-volume="${vol}"></audio>`);
+    audio.push(`    <audio id="sfx-${s.id}-${k}" src="${src}" data-start="${(t + at).toFixed(2)}" data-track-index="${10 + (k % 6)}" data-volume="${(vol * (SOFT[name] ?? 0.8)).toFixed(2)}"></audio>`);
   });
   t += s.duration;
 });
