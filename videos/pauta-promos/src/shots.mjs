@@ -176,7 +176,7 @@ tl.fromTo('#${p}-you', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, durat
       css: `.${p}-b{position:absolute;box-sizing:border-box;border-radius:50%;background:${C.navy};color:${C.paper};border:4px solid ${C.ink};display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 22px;font-family:'Newsreader',serif;line-height:1.1;}
 .${p}-b small{display:block;margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:20px;}
 .${p}-b i{position:absolute;right:0;top:4%;padding:5px 12px;border-radius:999px;background:${C.butter};color:${C.ink};border:3px solid ${C.ink};font-style:normal;font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:600;}
-#${p}-tag{position:absolute;left:0;right:0;top:170px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:28px;letter-spacing:.2em;color:${C.navy};}`,
+#${p}-tag{position:absolute;left:0;right:0;top:170px;z-index:3;text-align:center;font-family:'JetBrains Mono',monospace;font-size:28px;letter-spacing:.2em;color:${C.navy};}`,
       html: `<div id="${p}-tag">RADAR · EM ALTA AGORA</div>${B.map(([t, n, tr, cx, cy, r], i) => `<div class="${p}-b" id="${p}-b${i}" style="left:${cx - r}px;top:${cy - r}px;width:${2 * r}px;height:${2 * r}px;font-size:${Math.round(r * 0.2)}px;">${t}<small>${n} matérias</small><i>${tr}</i></div>`).join('')}`,
       js: (t0, t1) => `tl.fromTo('.${p}-b', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(1.8)', stagger: 0.1 }, ${t0});
 tl.fromTo('#${p}-tag', { opacity: 0 }, { opacity: 1, duration: 0.3 }, ${t0});
@@ -208,6 +208,129 @@ tl.fromTo('#${p}-ok', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration
 tl.fromTo('#${p}-src', { scale: 0 }, { scale: 1, duration: 0.25, ease: 'back.out(3)' }, ${t0 + 0.5});
 tl.fromTo('#${p}-stamp', { scale: 2.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: 'power4.in' }, ${t0 + 0.9});
 ${shake('#' + p + '-card', t0 + 1.12, 16)}`,
+  }),
+
+  // ——— série Inteligência ———
+
+  // a base: contador de matérias + veículos acompanhados
+  base: (p) => {
+    const outlets = ['UOL', 'Folha', 'Metrópoles', 'CNN Brasil', 'Brasil 247', 'Gazeta do Povo', 'Estado de Minas', 'A Tarde', 'DCM', 'ND Mais'];
+    return {
+      css: `#${p}-big{position:absolute;left:0;right:0;top:200px;text-align:center;font-family:'Newsreader',serif;font-size:260px;line-height:1;color:${C.navy};letter-spacing:-8px;text-shadow:10px 10px 0 ${C.butter};}
+#${p}-lab{position:absolute;left:0;right:0;top:480px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:34px;letter-spacing:.16em;text-transform:uppercase;}
+#${p}-chips{position:absolute;left:60px;right:60px;top:600px;display:flex;flex-wrap:wrap;justify-content:center;gap:18px;}
+.${p}-o{padding:16px 26px;border-radius:999px;background:${C.paper};border:3px solid ${C.ink};box-shadow:5px 5px 0 ${C.ink};font-size:34px;font-weight:700;}
+.${p}-o.more{background:${C.rose};color:${C.paper};font-family:'JetBrains Mono',monospace;font-weight:600;}`,
+      html: `<div id="${p}-big">0</div><div id="${p}-lab">matérias lidas hoje</div><div id="${p}-chips">${outlets.map((o) => `<span class="${p}-o">${o}</span>`).join('')}<span class="${p}-o more">+92 veículos</span></div>`,
+      js: (t0, t1) => `const el = document.querySelector('#${p}-big'), o = { v: 0 };
+tl.fromTo(o, { v: 0 }, { v: 5374, duration: ${(t1 - t0 - 0.6).toFixed(2)}, ease: 'power2.out', onUpdate: () => { el.textContent = Math.round(o.v).toLocaleString('pt-BR'); } }, ${t0 + 0.1});
+tl.fromTo(['#${p}-big', '#${p}-lab'], { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'expo.out' }, ${t0});
+tl.fromTo('.${p}-o', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: 'back.out(2.5)', stagger: ${((t1 - t0 - 1.0) / 11).toFixed(3)} }, ${t0 + 0.5});`,
+    };
+  },
+
+  // folga: Ana tranquila, zero abas
+  folga: (p) => ({
+    css: `#${p}-pill{position:absolute;left:0;right:0;top:220px;display:flex;justify-content:center;}
+#${p}-pill span{padding:16px 34px;border-radius:999px;background:${C.grass};color:${C.paper};border:3px solid ${C.ink};font-family:'JetBrains Mono',monospace;font-size:44px;font-weight:600;box-shadow:6px 6px 0 ${C.ink};}`,
+    html: `${disc(p + '-disc', 220, 470, 640, C.butter)}${person(p + '-ana', 'ana_coffee', 170, 380, 780)}<div id="${p}-pill"><span>0 abas abertas</span></div>`,
+    js: (t0, t1) => `tl.fromTo('#${p}-disc', { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'expo.out' }, ${t0});
+tl.fromTo('#${p}-ana', { y: 700 }, { y: 0, duration: 0.45, ease: 'power3.out' }, ${t0});
+${face(p + '-ana', 'Calm', 'Smile', t0 + 0.5)}
+tl.fromTo('#${p}-pill span', { scale: 0, rotation: -10 }, { scale: 1, rotation: 0, duration: 0.35, ease: 'back.out(2.5)' }, ${t0 + 0.3});`,
+  }),
+
+  // um assunto absorvendo matérias
+  assunto: (p) => ({
+    css: `#${p}-card{position:absolute;left:140px;top:430px;width:800px;box-sizing:border-box;padding:44px;border:4px solid ${C.ink};border-radius:30px;background:${C.navy};color:${C.paper};box-shadow:12px 12px 0 ${C.ink};text-align:center;z-index:2;}
+#${p}-card b{display:block;font-family:'Newsreader',serif;font-weight:400;font-size:72px;line-height:1.05;}
+#${p}-card span{display:inline-block;margin-top:24px;padding:10px 22px;border-radius:999px;background:${C.butter};color:${C.ink};font-family:'JetBrains Mono',monospace;font-size:30px;font-weight:600;}
+.${p}-n{position:absolute;width:260px;box-sizing:border-box;padding:12px 16px;border:3px solid ${C.ink};border-radius:12px;background:${C.paper};box-shadow:5px 5px 0 ${C.ink};font-family:'Newsreader',serif;font-size:22px;line-height:1.15;}
+.${p}-n i{display:block;font-style:normal;font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:${C.navy};margin-bottom:6px;}`,
+    html: `${NEWS.map(([v, t], i) => `<div class="${p}-n" id="${p}-n${i}" style="left:${[40, 780, 60, 760, 400, 420][i]}px;top:${[190, 220, 900, 930, 170, 1000][i]}px;"><i>${v}</i>${t}</div>`).join('')}<div id="${p}-card"><b>Canetas emagrecedoras no SUS</b><span><b id="${p}-c" style="display:inline;font:inherit;">0</b> matérias</span></div>`,
+    js: (t0, t1) => `tl.fromTo('#${p}-card', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'back.out(1.8)' }, ${t0});
+tl.fromTo('.${p}-n', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: 'back.out(2)', stagger: 0.08 }, ${t0 + 0.2});
+${NEWS.map((_, i) => `tl.to('#${p}-n${i}', { x: ${410 - [40, 780, 60, 760, 400, 420][i]}, y: ${560 - [190, 220, 900, 930, 170, 1000][i]}, scale: 0.3, opacity: 0, duration: 0.35, ease: 'power3.in' }, ${(t1 - 1.1 + i * 0.1).toFixed(2)});`).join('\n')}
+const el = document.querySelector('#${p}-c'), o = { v: 0 };
+tl.fromTo(o, { v: 0 }, { v: 24, duration: ${(t1 - t0 - 0.5).toFixed(2)}, ease: 'power1.inOut', onUpdate: () => { el.textContent = Math.round(o.v); } }, ${t0 + 0.2});
+tl.to('#${p}-card', { scale: 1.06, duration: 0.12, yoyo: true, repeat: 1 }, ${(t1 - 0.4).toFixed(2)});`,
+  }),
+
+  // três ângulos do mesmo assunto
+  angulos: (p) => {
+    const A = [['RECOMENDADO', 'A promessa e sua execução', 13, C.butter], ['ALTERNATIVA', 'O que já mudou no mercado', 4, C.paper], ['ALTERNATIVA', 'Próximos passos e prazos', 7, C.paper]];
+    return {
+      css: `#${p}-t{position:absolute;left:0;right:0;top:180px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:28px;letter-spacing:.2em;color:${C.navy};}
+.${p}-a{position:absolute;left:90px;width:900px;box-sizing:border-box;padding:28px 34px;border:4px solid ${C.ink};border-radius:26px;box-shadow:10px 10px 0 ${C.ink};}
+.${p}-a i{display:block;font-style:normal;font-family:'JetBrains Mono',monospace;font-size:22px;letter-spacing:.14em;color:${C.navy};}
+.${p}-a b{display:block;margin-top:10px;font-family:'Newsreader',serif;font-weight:400;font-size:54px;line-height:1.05;}
+.${p}-a span{position:absolute;right:28px;top:24px;font-family:'JetBrains Mono',monospace;font-size:22px;}`,
+      html: `<div id="${p}-t">1 ASSUNTO · 3 ÂNGULOS</div>${A.map(([k, t, n, bg], i) => `<div class="${p}-a" id="${p}-a${i}" style="top:${250 + i * 290}px;background:${bg};transform:rotate(${[-1.5, 1, -0.5][i]}deg);"><i>${k}</i><b>${t}</b><span>${n} matérias</span></div>`).join('')}`,
+      js: (t0, t1) => `tl.fromTo('#${p}-t', { opacity: 0 }, { opacity: 1, duration: 0.3 }, ${t0});
+${A.map((_, i) => `tl.fromTo('#${p}-a${i}', { x: ${i % 2 ? 1100 : -1100} }, { x: 0, duration: 0.4, ease: 'expo.out' }, ${(t0 + 0.1 + i * (t1 - t0 - 0.6) / 3).toFixed(2)});`).join('\n')}`,
+    };
+  },
+
+  // quantas matérias sustentam cada ângulo + clique
+  escolhe: (p) => {
+    const A = [['A promessa e sua execução', 13], ['Próximos passos e prazos', 7], ['O que já mudou no mercado', 4]];
+    return {
+      css: `#${p}-t{position:absolute;left:0;right:0;top:190px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:28px;letter-spacing:.2em;color:${C.navy};}
+.${p}-r{position:absolute;left:90px;width:900px;}
+.${p}-r b{display:block;font-family:'Newsreader',serif;font-weight:400;font-size:44px;margin-bottom:12px;}
+.${p}-bar{height:70px;border:3px solid ${C.ink};border-radius:14px;background:${C.navy};box-shadow:6px 6px 0 ${C.ink};transform-origin:0 50%;display:flex;align-items:center;justify-content:flex-end;padding-right:20px;box-sizing:border-box;color:${C.paper};font-family:'JetBrains Mono',monospace;font-size:30px;font-weight:600;}
+#${p}-go{position:absolute;left:230px;top:1000px;padding:26px 44px;border-radius:999px;background:${C.butter};border:3px solid ${C.ink};box-shadow:8px 8px 0 ${C.ink};font-size:40px;font-weight:700;}`,
+      html: `<div id="${p}-t">MATÉRIAS QUE SUSTENTAM CADA ÂNGULO</div>${A.map(([t, n], i) => `<div class="${p}-r" style="top:${280 + i * 220}px;"><b>${t}</b><div class="${p}-bar" id="${p}-bar${i}" style="width:${Math.round(260 + n * 48)}px;${i ? `background:${C.sky};` : ''}">${n}</div></div>`).join('')}<div id="${p}-go">Usar este ângulo ✓</div><div id="${p}-hand" style="position:absolute;left:0;top:0;">${HAND(p + '-hs')}</div>`,
+      js: (t0, t1) => `tl.fromTo('#${p}-t', { opacity: 0 }, { opacity: 1, duration: 0.3 }, ${t0});
+tl.fromTo('.${p}-bar', { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: 'expo.out', stagger: 0.18 }, ${t0 + 0.1});
+tl.fromTo('#${p}-go', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(2.5)' }, ${t0 + 0.9});
+tl.fromTo('#${p}-hand', { x: 900, y: 1500, opacity: 0 }, { x: 520, y: 1040, opacity: 1, duration: 0.4, ease: 'power3.out' }, ${(t1 - 0.9).toFixed(2)});
+tl.to('#${p}-go', { scale: 0.93, duration: 0.08, yoyo: true, repeat: 1 }, ${(t1 - 0.45).toFixed(2)});
+tl.to('#${p}-go', { backgroundColor: '${C.grass}', color: '${C.paper}', duration: 0.1 }, ${(t1 - 0.35).toFixed(2)});`,
+    };
+  },
+
+  // quem moveu o assunto (dados reais do Radar)
+  quem: (p) => {
+    const Q = [['UOL', 30], ['Metrópoles', 18], ['Brasil 247', 18], ['CNN Brasil', 13], ['Folha', 11]];
+    return {
+      css: `#${p}-t{position:absolute;left:0;right:0;top:190px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:28px;letter-spacing:.2em;color:${C.navy};}
+#${p}-s{position:absolute;left:0;right:0;top:240px;text-align:center;font-family:'Newsreader',serif;font-size:46px;}
+.${p}-row{position:absolute;left:90px;display:flex;align-items:center;gap:22px;}
+.${p}-row b{width:260px;text-align:right;font-size:40px;}
+.${p}-bar{height:90px;border:3px solid ${C.ink};border-radius:14px;box-shadow:6px 6px 0 ${C.ink};transform-origin:0 50%;}
+.${p}-row em{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:36px;font-weight:600;}`,
+      html: `<div id="${p}-t">QUEM MOVEU O ASSUNTO</div><div id="${p}-s">Soberania e combate às facções</div>${Q.map(([v, n], i) => `<div class="${p}-row" style="top:${350 + i * 150}px;"><b>${v}</b><div class="${p}-bar" style="width:${n * 17}px;background:${[C.navy, C.sky, C.sky, C.sky, C.sky][i]};"></div><em>${n}</em></div>`).join('')}`,
+      js: (t0, t1) => `tl.fromTo(['#${p}-t', '#${p}-s'], { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.3 }, ${t0});
+tl.fromTo('.${p}-row', { x: -300, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: 'expo.out', stagger: 0.12 }, ${t0 + 0.1});
+tl.fromTo('.${p}-bar', { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: 'expo.out', stagger: 0.12 }, ${t0 + 0.25});`,
+    };
+  },
+
+  // cresceu 100% hoje: linha subindo
+  cresceu: (p) => ({
+    css: `#${p}-big{position:absolute;left:0;right:0;top:190px;text-align:center;font-family:'Newsreader',serif;font-size:250px;line-height:1;color:${C.grass};letter-spacing:-6px;text-shadow:8px 8px 0 ${C.ink};}
+#${p}-svg{position:absolute;left:90px;top:520px;width:900px;height:520px;}
+#${p}-lab{position:absolute;left:90px;right:90px;top:1070px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:28px;letter-spacing:.1em;}`,
+    html: `<div id="${p}-big">↑<span id="${p}-n">0</span>%</div><svg id="${p}-svg" viewBox="0 0 900 520"><line x1="0" y1="500" x2="900" y2="500" stroke="${C.ink}" stroke-width="4"/><polyline id="${p}-ln" points="0,470 150,455 300,460 450,400 600,300 750,160 880,40" fill="none" stroke="${C.navy}" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/><circle id="${p}-dot" cx="880" cy="40" r="24" fill="${C.butter}" stroke="${C.ink}" stroke-width="5" opacity="0"/></svg><div id="${p}-lab">237 MATÉRIAS · EM ALTA AGORA</div>`,
+    js: (t0, t1) => `tl.fromTo('#${p}-ln', { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: ${(t1 - t0 - 0.6).toFixed(2)}, ease: 'power2.in' }, ${t0 + 0.1});
+tl.fromTo('#${p}-dot', { opacity: 0, scale: 0, transformOrigin: '50% 50%' }, { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(3)' }, ${(t1 - 0.5).toFixed(2)});
+const el = document.querySelector('#${p}-n'), o = { v: 0 };
+tl.fromTo(o, { v: 0 }, { v: 100, duration: ${(t1 - t0 - 0.5).toFixed(2)}, ease: 'power2.in', onUpdate: () => { el.textContent = Math.round(o.v); } }, ${t0 + 0.1});
+tl.fromTo('#${p}-big', { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'expo.out' }, ${t0});
+tl.fromTo('#${p}-lab', { opacity: 0 }, { opacity: 1, duration: 0.3 }, ${t0 + 0.4});`,
+  }),
+
+  // prompt em branco, cursor piscando
+  prompt: (p) => ({
+    css: `#${p}-box{position:absolute;left:70px;top:520px;width:940px;height:300px;box-sizing:border-box;padding:40px;border:3px solid ${C.ink};border-radius:30px;background:#fffdf8;box-shadow:12px 12px 0 ${C.ink};font-size:48px;color:#a9a39a;}
+#${p}-car{display:inline-block;width:5px;height:60px;background:${C.ink};vertical-align:middle;margin-right:10px;}
+#${p}-send{position:absolute;right:30px;bottom:30px;width:90px;height:90px;border-radius:50%;background:#d8d2c7;}
+#${p}-note{position:absolute;left:0;right:0;top:300px;text-align:center;font-family:'Caveat',cursive;font-weight:700;font-size:100px;color:${C.rose};transform:rotate(-3deg);}`,
+    html: `<div id="${p}-note">e agora?</div><div id="${p}-box"><span id="${p}-car"></span>Pergunte qualquer coisa<div id="${p}-send"></div></div>`,
+    js: (t0, t1) => `tl.fromTo('#${p}-box', { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'expo.out' }, ${t0});
+tl.fromTo('#${p}-car', { opacity: 1 }, { opacity: 0, duration: 0.01, repeat: ${Math.floor((t1 - t0) / 0.45)}, yoyo: true, repeatDelay: 0.44 }, ${t0 + 0.2});
+tl.fromTo('#${p}-note', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'back.out(2)' }, ${(t0 + (t1 - t0) * 0.55).toFixed(2)});`,
   }),
 
   // fecho: logo + CTA

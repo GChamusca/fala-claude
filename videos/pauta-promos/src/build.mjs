@@ -10,7 +10,7 @@ const ROOT = new URL('../', import.meta.url);
 const S = SCRIPTS[id];
 const V = JSON.parse(fs.readFileSync(new URL(`assets/voice/${id}.json`, ROOT), 'utf8'));
 const DUR = 15, VO = 0.35;
-const HL = /quinhentas|abas|duzentas|minutos|fonte|origem|ontem|explodiu|crescendo|clique|inventa|achismo|publicar|revisar|poste|mais\.|melhor|assim|agora|tema/i;
+const HL = S.hl || /quinhentas|abas|duzentas|minutos|fonte|origem|ontem|explodiu|crescendo|clique|inventa|achismo|publicar|revisar|poste|mais\.|melhor|assim|agora|tema/i;
 
 // distribui as palavras da narração pelas linhas do roteiro
 let k = 0;

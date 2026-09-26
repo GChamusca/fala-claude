@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="UTF-8" /><title>i3</title></head><body>
+<template>
+<style>@font-face{font-family:'Newsreader';font-style:normal;font-weight:200 800;font-display:block;src:url('assets/fonts/newsreader-v26-cY9AfjOCX1hbuyalUrK4397yjA.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:200 800;font-display:block;src:url('assets/fonts/newsreader-v26-cY9AfjOCX1hbuyalUrK439DyjJBG.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Newsreader';font-style:italic;font-weight:200 800;font-display:block;src:url('assets/fonts/newsreader-v26-cY9CfjOCX1hbuyalUrK439vCjohC.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Newsreader';font-style:italic;font-weight:200 800;font-display:block;src:url('assets/fonts/newsreader-v26-cY9CfjOCX1hbuyalUrK439vCgIhCFpY.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:200 800;font-display:block;src:url('assets/fonts/bricolagegrotesque-v9-3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInE.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:200 800;font-display:block;src:url('assets/fonts/bricolagegrotesque-v9-3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGGInHEVA.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:block;src:url('assets/fonts/jetbrainsmono-v24-tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:block;src:url('assets/fonts/jetbrainsmono-v24-tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx7cwhsk.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:400 700;font-display:block;src:url('assets/fonts/caveat-Wnz6HAc5bAfYB2Q7ZjYY.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:400 700;font-display:block;src:url('assets/fonts/caveat-Wnz6HAc5bAfYB2Q7aDYYmg8.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+#root{position:absolute;inset:0;overflow:hidden;background:#f7f3ec;color:#0a0a0a;font-family:'Bricolage Grotesque',sans-serif;}
+#root .shot{position:absolute;inset:0;opacity:0;}
+#root .peep-svg{display:block;height:100%;width:auto;overflow:visible;}
+#brand{position:absolute;left:60px;top:84px;display:flex;align-items:center;gap:14px;font-family:'Newsreader',serif;font-size:40px;z-index:20;}
+.cap{position:absolute;left:50px;right:50px;top:1240px;text-align:center;font-weight:800;font-size:82px;line-height:1.14;letter-spacing:-1px;opacity:0;z-index:20;}
+.cw{display:inline-block;padding:0 6px;border-radius:14px;}
+.cw.hl{background:#e8c873;box-shadow:5px 5px 0 #0a0a0a;border:3px solid #0a0a0a;}
+#stripes{position:absolute;inset:0;display:flex;flex-direction:column;z-index:30;pointer-events:none;}
+#stripes div{flex:1;transform:scaleX(0);}
+.i3s0-b{position:absolute;box-sizing:border-box;border-radius:50%;background:#24456b;color:#f7f3ec;border:4px solid #0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 22px;font-family:'Newsreader',serif;line-height:1.1;}
+.i3s0-b small{display:block;margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:20px;}
+.i3s0-b i{position:absolute;right:0;top:4%;padding:5px 12px;border-radius:999px;background:#e8c873;color:#0a0a0a;border:3px solid #0a0a0a;font-style:normal;font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:600;}
+#i3s0-tag{position:absolute;left:0;right:0;top:170px;z-index:3;text-align:center;font-family:'JetBrains Mono',monospace;font-size:28px;letter-spacing:.2em;color:#24456b;}
+#i3s1-t{position:absolute;left:0;right:0;top:190px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:28px;letter-spacing:.2em;color:#24456b;}
+#i3s1-s{position:absolute;left:0;right:0;top:240px;text-align:center;font-family:'Newsreader',serif;font-size:46px;}
+.i3s1-row{position:absolute;left:90px;display:flex;align-items:center;gap:22px;}
+.i3s1-row b{width:260px;text-align:right;font-size:40px;}
+.i3s1-bar{height:90px;border:3px solid #0a0a0a;border-radius:14px;box-shadow:6px 6px 0 #0a0a0a;transform-origin:0 50%;}
+.i3s1-row em{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:36px;font-weight:600;}
+#i3s2-big{position:absolute;left:0;right:0;top:190px;text-align:center;font-family:'Newsreader',serif;font-size:250px;line-height:1;color:#5a7d3f;letter-spacing:-6px;text-shadow:8px 8px 0 #0a0a0a;}
+#i3s2-svg{position:absolute;left:90px;top:520px;width:900px;height:520px;}
+#i3s2-lab{position:absolute;left:90px;right:90px;top:1070px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:28px;letter-spacing:.1em;}
+#i3s3-lock{position:absolute;left:0;right:0;top:360px;display:flex;flex-direction:column;align-items:center;gap:20px;}
+#i3s3-name{font-family:'Newsreader',serif;font-size:150px;line-height:.95;letter-spacing:-4px;}
+#i3s3-cta{position:absolute;left:0;right:0;top:880px;display:flex;justify-content:center;}
+#i3s3-btn{padding:34px 48px;border-radius:999px;background:#24456b;color:#f7f3ec;font-size:46px;font-weight:700;box-shadow:10px 10px 0 #0a0a0a;text-align:center;line-height:1.2;}
+#i3s3-btn span{display:block;font-size:30px;color:#e8c873;font-weight:600;}
+#i3s3-url{position:absolute;left:0;right:0;top:1100px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:38px;letter-spacing:.2em;}</style>
+<div id="root" data-composition-id="i3" data-width="1080" data-height="1920">
+<div id="brand"><svg width="54" height="54" viewBox="4 4 54 54" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="#0a0a0a"></circle><circle cx="28" cy="28" r="22" fill="#24456b"></circle><circle cx="36" cy="20" r="5" fill="#e8c873"></circle></svg>Pauta Pronta</div>
+<div class="shot" id="i3s0"><div id="i3s0-tag">RADAR · EM ALTA AGORA</div><div class="i3s0-b" id="i3s0-b0" style="left:365px;top:385px;width:350px;height:350px;font-size:35px;">Soberania e combate às facções<small>237 matérias</small><i>↑100%</i></div><div class="i3s0-b" id="i3s0-b1" style="left:110px;top:180px;width:300px;height:300px;font-size:30px;">STF valida reajuste do Bolsa Família<small>452 matérias</small><i>↓71%</i></div><div class="i3s0-b" id="i3s0-b2" style="left:690px;top:190px;width:280px;height:280px;font-size:28px;">Empate em Minas, vantagem em SP<small>213 matérias</small><i>↑72%</i></div><div class="i3s0-b" id="i3s0-b3" style="left:100px;top:720px;width:260px;height:260px;font-size:26px;">Mensagens ampliam crise no STF<small>165 matérias</small><i>↑61%</i></div><div class="i3s0-b" id="i3s0-b4" style="left:725px;top:695px;width:250px;height:250px;font-size:25px;">Casa Branca barra jornalistas<small>109 matérias</small><i>↑100%</i></div><div class="i3s0-b" id="i3s0-b5" style="left:460px;top:930px;width:200px;height:200px;font-size:20px;">Greve nacional dos Correios<small>45 matérias</small><i>↑99%</i></div></div>
+<div class="shot" id="i3s1"><div id="i3s1-t">QUEM MOVEU O ASSUNTO</div><div id="i3s1-s">Soberania e combate às facções</div><div class="i3s1-row" style="top:350px;"><b>UOL</b><div class="i3s1-bar" style="width:510px;background:#24456b;"></div><em>30</em></div><div class="i3s1-row" style="top:500px;"><b>Metrópoles</b><div class="i3s1-bar" style="width:306px;background:#4b88a6;"></div><em>18</em></div><div class="i3s1-row" style="top:650px;"><b>Brasil 247</b><div class="i3s1-bar" style="width:306px;background:#4b88a6;"></div><em>18</em></div><div class="i3s1-row" style="top:800px;"><b>CNN Brasil</b><div class="i3s1-bar" style="width:221px;background:#4b88a6;"></div><em>13</em></div><div class="i3s1-row" style="top:950px;"><b>Folha</b><div class="i3s1-bar" style="width:187px;background:#4b88a6;"></div><em>11</em></div></div>
+<div class="shot" id="i3s2"><div id="i3s2-big">↑<span id="i3s2-n">0</span>%</div><svg id="i3s2-svg" viewBox="0 0 900 520"><line x1="0" y1="500" x2="900" y2="500" stroke="#0a0a0a" stroke-width="4"/><polyline id="i3s2-ln" points="0,470 150,455 300,460 450,400 600,300 750,160 880,40" fill="none" stroke="#24456b" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/><circle id="i3s2-dot" cx="880" cy="40" r="24" fill="#e8c873" stroke="#0a0a0a" stroke-width="5" opacity="0"/></svg><div id="i3s2-lab">237 MATÉRIAS · EM ALTA AGORA</div></div>
+<div class="shot" id="i3s3"><div id="i3s3-lock"><svg id="i3s3-mark" width="200" height="200" viewBox="4 4 54 54" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="#0a0a0a"></circle><circle cx="28" cy="28" r="22" fill="#24456b"></circle><circle cx="36" cy="20" r="5" fill="#e8c873"></circle></svg><div id="i3s3-name">Pauta Pronta</div></div><div id="i3s3-cta"><div id="i3s3-btn">Teste grátis<span>uma pauta, sem cartão</span></div></div><div id="i3s3-url">pautapronta.com</div></div>
+<div class="cap" id="i3-cap0"><span class="cw" id="i3-w0-0">Antes</span> <span class="cw" id="i3-w0-1">de</span> <span class="cw hl" id="i3-w0-2">opinar,</span> <span class="cw" id="i3-w0-3">saiba</span> <span class="cw" id="i3-w0-4">quem</span> <span class="cw" id="i3-w0-5">está</span> <span class="cw hl" id="i3-w0-6">cobrindo.</span></div><div class="cap" id="i3-cap1"><span class="cw" id="i3-w1-0">UOL,</span> <span class="cw" id="i3-w1-1">Metrópoles,</span> <span class="cw" id="i3-w1-2">CNN,</span> <span class="cw" id="i3-w1-3">Folha:</span> <span class="cw" id="i3-w1-4">veja</span> <span class="cw" id="i3-w1-5">quem</span> <span class="cw hl" id="i3-w1-6">puxou</span> <span class="cw" id="i3-w1-7">o</span> <span class="cw" id="i3-w1-8">assunto…</span></div><div class="cap" id="i3-cap2"><span class="cw" id="i3-w2-0">e</span> <span class="cw" id="i3-w2-1">o</span> <span class="cw" id="i3-w2-2">que</span> <span class="cw hl" id="i3-w2-3">cresceu</span> <span class="cw hl" id="i3-w2-4">cem</span> <span class="cw" id="i3-w2-5">por</span> <span class="cw" id="i3-w2-6">cento</span> <span class="cw" id="i3-w2-7">hoje.</span></div><div class="cap" id="i3-cap3"><span class="cw" id="i3-w3-0">Pauta</span> <span class="cw" id="i3-w3-1">Pronta.</span> <span class="cw" id="i3-w3-2">A</span> <span class="cw hl" id="i3-w3-3">apuração</span> <span class="cw" id="i3-w3-4">vem</span> <span class="cw" id="i3-w3-5">antes</span> <span class="cw" id="i3-w3-6">do</span> <span class="cw" id="i3-w3-7">post.</span></div>
+<div id="stripes"><div style="background:#24456b"></div><div style="background:#e8c873"></div><div style="background:#a8453a"></div><div style="background:#5a7d3f"></div><div style="background:#4b88a6"></div></div>
+</div>
+<script>
+(function(){
+const tl = gsap.timeline({ paused: true });
+tl.set('#i3s0', { opacity: 1 }, 0); tl.set('#i3s0', { opacity: 0 }, 2.81);
+tl.fromTo('#i3s0', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 0);
+{ tl.fromTo('.i3s0-b', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(1.8)', stagger: 0.1 }, 0);
+tl.fromTo('#i3s0-tag', { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0);
+tl.to('#i3s0-b0', { scale: 1.1, duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: 3 }, 1); }
+tl.set('#i3s1', { opacity: 1 }, 2.81); tl.set('#i3s1', { opacity: 0 }, 8.12);
+tl.fromTo('#i3s1', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 2.81);
+{ tl.fromTo(['#i3s1-t', '#i3s1-s'], { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.3 }, 2.81);
+tl.fromTo('.i3s1-row', { x: -300, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: 'expo.out', stagger: 0.12 }, 2.91);
+tl.fromTo('.i3s1-bar', { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: 'expo.out', stagger: 0.12 }, 3.06); }
+tl.set('#i3s2', { opacity: 1 }, 8.12); tl.set('#i3s2', { opacity: 0 }, 10.36);
+tl.fromTo('#i3s2', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 8.12);
+{ tl.fromTo('#i3s2-ln', { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.64, ease: 'power2.in' }, 8.219999999999999);
+tl.fromTo('#i3s2-dot', { opacity: 0, scale: 0, transformOrigin: '50% 50%' }, { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(3)' }, 9.86);
+const el = document.querySelector('#i3s2-n'), o = { v: 0 };
+tl.fromTo(o, { v: 0 }, { v: 100, duration: 1.74, ease: 'power2.in', onUpdate: () => { el.textContent = Math.round(o.v); } }, 8.219999999999999);
+tl.fromTo('#i3s2-big', { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'expo.out' }, 8.12);
+tl.fromTo('#i3s2-lab', { opacity: 0 }, { opacity: 1, duration: 0.3 }, 8.52); }
+tl.set('#i3s3', { opacity: 1 }, 10.36); 
+tl.fromTo('#i3s3', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 10.36);
+{ tl.fromTo('#i3s3-mark', { scale: 0, rotation: -120, transformOrigin: '50% 50%' }, { scale: 1, rotation: 0, duration: 0.5, ease: 'expo.out' }, 10.36);
+tl.fromTo('#i3s3-name', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' }, 10.51);
+tl.fromTo('#i3s3-btn', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(2)' }, 10.86);
+tl.fromTo('#i3s3-url', { opacity: 0 }, { opacity: 1, duration: 0.3 }, 11.16);
+tl.to('#i3s3-btn', { scale: 1.06, duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: 3 }, 11.559999999999999); }
+// legenda: cada palavra entra quando é falada
+tl.set('#i3-cap0', { opacity: 1 }, 0.30); tl.set('#i3-cap0', { opacity: 0 }, 2.87);
+tl.fromTo('#i3-w0-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 0.35);
+tl.fromTo('#i3-w0-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 0.60);
+tl.fromTo('#i3-w0-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 0.71);
+tl.fromTo('#i3-w0-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 1.37);
+tl.fromTo('#i3-w0-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 1.67);
+tl.fromTo('#i3-w0-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 1.89);
+tl.fromTo('#i3-w0-6', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 2.13);
+tl.set('#i3-cap1', { opacity: 1 }, 2.88); tl.set('#i3-cap1', { opacity: 0 }, 8.18);
+tl.fromTo('#i3-w1-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 2.93);
+tl.fromTo('#i3-w1-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.77);
+tl.fromTo('#i3-w1-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.85);
+tl.fromTo('#i3-w1-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 5.68);
+tl.fromTo('#i3-w1-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 6.36);
+tl.fromTo('#i3-w1-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 6.88);
+tl.fromTo('#i3-w1-6', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 7.08);
+tl.fromTo('#i3-w1-7', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 7.42);
+tl.fromTo('#i3-w1-8', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 7.51);
+tl.set('#i3-cap2', { opacity: 1 }, 8.19); tl.set('#i3-cap2', { opacity: 0 }, 10.42);
+tl.fromTo('#i3-w2-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.24);
+tl.fromTo('#i3-w2-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.31);
+tl.fromTo('#i3-w2-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.37);
+tl.fromTo('#i3-w2-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.48);
+tl.fromTo('#i3-w2-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.95);
+tl.fromTo('#i3-w2-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 9.21);
+tl.fromTo('#i3-w2-6', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 9.38);
+tl.fromTo('#i3-w2-7', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 9.84);
+tl.set('#i3-cap3', { opacity: 1 }, 10.43); 
+tl.fromTo('#i3-w3-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 10.48);
+tl.fromTo('#i3-w3-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 11.12);
+tl.fromTo('#i3-w3-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 11.84);
+tl.fromTo('#i3-w3-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 11.99);
+tl.fromTo('#i3-w3-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 12.61);
+tl.fromTo('#i3-w3-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 12.89);
+tl.fromTo('#i3-w3-6', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 13.21);
+tl.fromTo('#i3-w3-7', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 13.45);
+// marca some no fecho; faixas de cor antes do fecho
+tl.to('#brand', { opacity: 0, duration: 0.2 }, 10.36);
+tl.to('#stripes div', { scaleX: 1, transformOrigin: '0% 50%', duration: 0.22, ease: 'power3.in', stagger: 0.03 }, 10.06);
+tl.to('#stripes div', { scaleX: 0, transformOrigin: '100% 50%', duration: 0.25, ease: 'power3.out', stagger: 0.03 }, 10.38);
+window.__timelines["i3"] = tl;
+})();
+</script>
+</template>
+</body></html>
