@@ -53,9 +53,9 @@ export const SCRIPTS = {
   // Série "Inteligência": posiciona pela apuração (base, ângulos, análise), não pelo post.
   i1: {
     title: 'A base',
-    hl: /cinco|mil|cem|nenhuma|importa|fonte|apuração/i,
+    hl: /milhares|cem|nenhuma|importa|fonte|apuração/i,
     lines: [
-      { say: 'Todo dia, a gente lê mais de cinco mil matérias, de mais de cem veículos.', shot: 'base' },
+      { say: 'Todo dia, a gente lê milhares de matérias, de mais de cem veículos.', shot: 'base' },
       { say: 'Você não precisa ler nenhuma.', shot: 'folga' },
       { say: 'Pergunta o assunto e recebe o que importa. Com fonte.', shot: 'validacao' },
       SIGN_I,
