@@ -54,64 +54,68 @@
 <script>
 (function(){
 const tl = gsap.timeline({ paused: true });
-tl.set('#r3s0', { opacity: 1 }, 0); tl.set('#r3s0', { opacity: 0 }, 3.5);
-tl.fromTo('#r3s0', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 0);
-{ tl.fromTo('.r3s0-m', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(1.8)', stagger: 0.78 }, 0); }
-tl.set('#r3s1', { opacity: 1 }, 3.5); tl.set('#r3s1', { opacity: 0 }, 5.39);
-tl.fromTo('#r3s1', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 3.5);
-{ tl.fromTo('#r3s1-veil', { opacity: 0 }, { opacity: 0.85, duration: 0.3 }, 3.7);
-tl.fromTo('#r3s1-big', { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'back.out(2)' }, 3.8);
-tl.to('.r3s1-m', { scale: 0.92, duration: 1.89, ease: 'none' }, 3.5); }
-tl.set('#r3s2', { opacity: 1 }, 5.39); tl.set('#r3s2', { opacity: 0 }, 7.07);
-tl.fromTo('#r3s2', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 5.39);
-{ tl.fromTo('#r3s2-disc', { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'expo.out' }, 5.39);
-tl.fromTo('#r3s2-ph', { y: 600, rotation: 8 }, { y: 0, rotation: 0, duration: 0.45, ease: 'expo.out' }, 5.39);
-tl.fromTo('.r3s2-row', { x: 400, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: 'back.out(2)', stagger: 0.14 }, 5.739999999999999); }
-tl.set('#r3s3', { opacity: 1 }, 7.07); 
-tl.fromTo('#r3s3', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 7.07);
-{ tl.fromTo('#r3s3-mark', { scale: 0, rotation: -120, transformOrigin: '50% 50%' }, { scale: 1, rotation: 0, duration: 0.5, ease: 'expo.out' }, 7.07);
-tl.fromTo('#r3s3-name', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' }, 7.220000000000001);
-tl.fromTo('#r3s3-btn', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(2)' }, 7.57);
-tl.fromTo('#r3s3-url', { opacity: 0 }, { opacity: 1, duration: 0.3 }, 7.87);
-tl.to('#r3s3-btn', { scale: 1.06, duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: 3 }, 8.27);
-tl.fromTo('#r3s3-rep > div', { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'back.out(2)' }, 7.67); }
-// legenda: cada palavra entra quando é falada
-tl.set('#r3-cap0', { opacity: 1 }, 0.30); tl.set('#r3-cap0', { opacity: 0 }, 3.56);
-tl.fromTo('#r3-w0-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 0.35);
-tl.fromTo('#r3-w0-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 1.12);
-tl.fromTo('#r3-w0-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 2.07);
-tl.fromTo('#r3-w0-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 2.67);
-tl.fromTo('#r3-w0-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 2.82);
-tl.set('#r3-cap1', { opacity: 1 }, 3.57); tl.set('#r3-cap1', { opacity: 0 }, 5.45);
-tl.fromTo('#r3-w1-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.62);
-tl.fromTo('#r3-w1-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.12);
-tl.fromTo('#r3-w1-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.26);
-tl.fromTo('#r3-w1-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.35);
-tl.fromTo('#r3-w1-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.50);
-tl.fromTo('#r3-w1-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.90);
-tl.set('#r3-cap2', { opacity: 1 }, 5.46); tl.set('#r3-cap2', { opacity: 0 }, 7.13);
-tl.fromTo('#r3-w2-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 5.51);
-tl.fromTo('#r3-w2-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 6.02);
-tl.fromTo('#r3-w2-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 6.28);
-tl.fromTo('#r3-w2-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 6.41);
-tl.fromTo('#r3-w2-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 6.67);
-tl.set('#r3-cap3', { opacity: 1 }, 7.14); 
-tl.fromTo('#r3-w3-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 7.19);
-tl.fromTo('#r3-w3-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 7.60);
-tl.fromTo('#r3-w3-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.18);
-tl.fromTo('#r3-w3-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.35);
-tl.fromTo('#r3-w3-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.40);
-tl.fromTo('#r3-w3-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.97);
-tl.fromTo('#r3-w3-6', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 9.10);
+tl.set('#r3s0', { opacity: 1 }, 0); tl.set('#r3s0', { opacity: 0 }, 4.46);
+
+tl.fromTo('#r3s0', { scale: 1.05 }, { scale: 1, duration: 0.6, ease: 'power3.out' }, 0);
+{ tl.fromTo('.r3s0-m', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(1.8)', stagger: 0.96 }, 0); }
+tl.set('#r3s1', { opacity: 1 }, 4.26); tl.set('#r3s1', { opacity: 0 }, 7.26);
+tl.fromTo('#r3s1', { opacity: 0 }, { opacity: 1, duration: 0.2, ease: 'none' }, 4.26);
+tl.fromTo('#r3s1', { scale: 1.05 }, { scale: 1, duration: 0.6, ease: 'power3.out' }, 4.26);
+{ tl.fromTo('#r3s1-veil', { opacity: 0 }, { opacity: 0.85, duration: 0.3 }, 4.46);
+tl.fromTo('#r3s1-big', { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'back.out(2)' }, 4.56);
+tl.to('.r3s1-m', { scale: 0.92, duration: 2.80, ease: 'none' }, 4.26); }
+tl.set('#r3s2', { opacity: 1 }, 7.06); tl.set('#r3s2', { opacity: 0 }, 10.47);
+tl.fromTo('#r3s2', { opacity: 0 }, { opacity: 1, duration: 0.2, ease: 'none' }, 7.06);
+tl.fromTo('#r3s2', { scale: 1.05 }, { scale: 1, duration: 0.6, ease: 'power3.out' }, 7.06);
+{ tl.fromTo('#r3s2-disc', { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'expo.out' }, 7.06);
+tl.fromTo('#r3s2-ph', { y: 600, rotation: 8 }, { y: 0, rotation: 0, duration: 0.45, ease: 'expo.out' }, 7.06);
+tl.fromTo('.r3s2-row', { x: 400, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: 'back.out(2)', stagger: 0.14 }, 7.409999999999999); }
+tl.set('#r3s3', { opacity: 1 }, 10.27); 
+tl.fromTo('#r3s3', { opacity: 0 }, { opacity: 1, duration: 0.2, ease: 'none' }, 10.27);
+tl.fromTo('#r3s3', { scale: 1.05 }, { scale: 1, duration: 0.6, ease: 'power3.out' }, 10.27);
+{ tl.fromTo('#r3s3-mark', { scale: 0, rotation: -120, transformOrigin: '50% 50%' }, { scale: 1, rotation: 0, duration: 0.5, ease: 'expo.out' }, 10.27);
+tl.fromTo('#r3s3-name', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' }, 10.42);
+tl.fromTo('#r3s3-btn', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(2)' }, 10.77);
+tl.fromTo('#r3s3-url', { opacity: 0 }, { opacity: 1, duration: 0.3 }, 11.07);
+tl.to('#r3s3-btn', { scale: 1.06, duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: 3 }, 11.469999999999999);
+tl.fromTo('#r3s3-rep > div', { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'back.out(2)' }, 10.87); }
+// legenda: cada palavra entra quando é falada; a frase fica até o corte da cena
+tl.set('#r3-cap0', { opacity: 1 }, 0.30); tl.set('#r3-cap0', { opacity: 0 }, 4.26);
+tl.fromTo('#r3-w0-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 0.35);
+tl.fromTo('#r3-w0-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 1.12);
+tl.fromTo('#r3-w0-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 2.07);
+tl.fromTo('#r3-w0-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 2.67);
+tl.fromTo('#r3-w0-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 2.82);
+tl.set('#r3-cap1', { opacity: 1 }, 4.51); tl.set('#r3-cap1', { opacity: 0 }, 7.06);
+tl.fromTo('#r3-w1-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 4.56);
+tl.fromTo('#r3-w1-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 5.06);
+tl.fromTo('#r3-w1-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 5.2);
+tl.fromTo('#r3-w1-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 5.29);
+tl.fromTo('#r3-w1-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 5.44);
+tl.fromTo('#r3-w1-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 5.83);
+tl.set('#r3-cap2', { opacity: 1 }, 7.31); tl.set('#r3-cap2', { opacity: 0 }, 10.27);
+tl.fromTo('#r3-w2-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 7.36);
+tl.fromTo('#r3-w2-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 7.87);
+tl.fromTo('#r3-w2-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 8.13);
+tl.fromTo('#r3-w2-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 8.26);
+tl.fromTo('#r3-w2-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 8.52);
+tl.set('#r3-cap3', { opacity: 1 }, 10.52); 
+tl.fromTo('#r3-w3-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 10.57);
+tl.fromTo('#r3-w3-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 10.98);
+tl.fromTo('#r3-w3-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 11.56);
+tl.fromTo('#r3-w3-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 11.73);
+tl.fromTo('#r3-w3-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 11.78);
+tl.fromTo('#r3-w3-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 12.35);
+tl.fromTo('#r3-w3-6', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 12.48);
 // marca: some sobre as gravações (elas já trazem a interface real) e fica creme nas cenas escuras do REP
 tl.set('#brand', { opacity: 1 }, 0); tl.set('#brand-rep', { opacity: 0 }, 0);
-tl.set('#brand', { opacity: 1 }, 3.5); tl.set('#brand-rep', { opacity: 0 }, 3.5);
-tl.set('#brand', { opacity: 1 }, 5.39); tl.set('#brand-rep', { opacity: 0 }, 5.39);
-tl.set('#brand', { opacity: 1 }, 7.07); tl.set('#brand-rep', { opacity: 0 }, 7.07);
+tl.set('#brand', { opacity: 1 }, 4.26); tl.set('#brand-rep', { opacity: 0 }, 4.26);
+tl.set('#brand', { opacity: 1 }, 7.06); tl.set('#brand-rep', { opacity: 0 }, 7.06);
+tl.set('#brand', { opacity: 1 }, 10.27); tl.set('#brand-rep', { opacity: 0 }, 10.27);
 // marca some no fecho; faixas de cor antes do fecho
-tl.to('#brand', { opacity: 0, duration: 0.2 }, 7.07);
-tl.to('#stripes div', { scaleX: 1, transformOrigin: '0% 50%', duration: 0.22, ease: 'power3.in', stagger: 0.03 }, 6.77);
-tl.to('#stripes div', { scaleX: 0, transformOrigin: '100% 50%', duration: 0.25, ease: 'power3.out', stagger: 0.03 }, 7.09);
+tl.to('#brand', { opacity: 0, duration: 0.2 }, 10.27);
+tl.to('#stripes div', { scaleX: 1, transformOrigin: '0% 50%', duration: 0.22, ease: 'power3.in', stagger: 0.03 }, 9.97);
+tl.to('#stripes div', { scaleX: 0, transformOrigin: '100% 50%', duration: 0.25, ease: 'power3.out', stagger: 0.03 }, 10.29);
 window.__timelines["r3"] = tl;
 })();
 </script>

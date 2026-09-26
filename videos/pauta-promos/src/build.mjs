@@ -1,4 +1,4 @@
-// Monta um promo vertical (1080×1920, 15s): cenas cortadas no ritmo da narração + legenda palavra por palavra.
+// Monta um promo vertical (1080×1920, ~15–20s): cenas cortadas no ritmo da narração + legenda palavra por palavra.
 // Uso: node src/build.mjs p1 [trilha]   → escreve compositions/<id>.html e index.html
 import fs from 'node:fs';
 import { C, FONT_FACES } from '../../pauta-explicativo/src/lib.mjs';
@@ -9,16 +9,31 @@ const [id = 'p1', music = 'promo-1'] = process.argv.slice(2);
 const ROOT = new URL('../', import.meta.url);
 const S = SCRIPTS[id];
 const V = JSON.parse(fs.readFileSync(new URL(`assets/voice/${id}.json`, ROOT), 'utf8'));
-const VO = 0.35;
-// até 15s; roteiros curtos terminam ~2,6s depois da última palavra (fecho sem tempo morto)
-const DUR = Math.min(15, Math.ceil(VO + V.words.at(-1).e + 2.6));
 const HL = S.hl || /quinhentas|abas|duzentas|minutos|fonte|origem|ontem|explodiu|crescendo|clique|inventa|achismo|publicar|revisar|poste|mais\.|melhor|assim|agora|tema/i;
+
+// Ritmo: cada cena fica na tela o tempo da fala + folga, nunca menos que o mínimo de leitura
+// da própria cena (quanto mais texto/dados na tela, maior). A narração é fatiada por frase e
+// reposicionada, então entra uma pausa natural entre as falas.
+const LEAD = 0.3;
+const MIN = { abas: 3.4, leitura: 3.6, entrega: 3.8, erro: 3.8, validacao: 4.4, confere: 3.2, cobranca: 4, tema: 2.8, atrasado: 3.8, inventa: 3.4, prompt: 3, base: 4, folga: 2.8, assunto: 3.4, angulos: 4.2, escolhe: 4.2, quem: 4.2, cresceu: 3.4, rep: 3.2, acervo: 4, etiquetas: 4.5, cruza: 3, matriz: 4.5, teia: 4.4, link: 3.2, busca: 4, umlado: 3.2, cobertura: 4.2, mesas: 3.6, redacao: 2.8, mao: 3.2, ppradar: 3.8, ppbolhas: 3.2, ppclique: 3.2, repradar: 3.4, repmergulho: 3.8 };
 
 // distribui as palavras da narração pelas linhas do roteiro
 let k = 0;
 const lines = S.lines.map((l) => { const n = l.say.split(/\s+/).length; const ws = V.words.slice(k, k + n); k += n; return { ...l, ws }; });
-lines.forEach((l, i) => { l.t0 = i === 0 ? 0 : +(VO + l.ws[0].s - 0.12).toFixed(2); });
-lines.forEach((l, i) => { l.t1 = i < lines.length - 1 ? lines[i + 1].t0 : DUR; });
+const last = lines.length - 1;
+let t = 0;
+lines.forEach((l, i) => {
+  l.segS = Math.max(0, l.ws[0].s - 0.08);
+  l.segE = i < last ? lines[i + 1].ws[0].s - 0.08 : V.words.at(-1).e + 0.4;
+  const speech = l.ws.at(-1).e - l.ws[0].s, lead = i === 0 ? 0.35 : LEAD;
+  l.t0 = +t.toFixed(2);
+  l.off = l.t0 + lead - l.ws[0].s; // tempo no vídeo = tempo na narração + off
+  t += i === last ? Math.max(3.8, lead + speech + 1.9) : Math.max(MIN[l.shot] ?? 3.2, lead + speech + 0.7);
+  l.t1 = +t.toFixed(2);
+});
+const DUR = Math.ceil(t);
+lines[last].t1 = DUR;
+const at = (l, s) => +(s + l.off).toFixed(2);
 
 const P = (i) => `${id}s${i}`;
 const shots = lines.map((l, i) => SHOTS[l.shot](P(i), l.t0, l.t1));
@@ -46,13 +61,13 @@ ${shots.map((s, i) => `<div class="shot" id="${P(i)}"${s.dark ? ' style="backgro
 ${caption}
 <div id="stripes">${[C.navy, C.butter, C.rose, C.grass, C.sky].map((c) => `<div style="background:${c}"></div>`).join('')}</div>`;
 
-const last = lines.length - 1;
-const js = `${lines.map((l, i) => `tl.set('#${P(i)}', { opacity: 1 }, ${l.t0}); ${i < last ? `tl.set('#${P(i)}', { opacity: 0 }, ${l.t1});` : ''}
-tl.fromTo('#${P(i)}', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, ${l.t0});
+const js = `${lines.map((l, i) => `tl.set('#${P(i)}', { opacity: 1 }, ${l.t0}); ${i < last ? `tl.set('#${P(i)}', { opacity: 0 }, ${(l.t1 + 0.2).toFixed(2)});` : ''}
+${i ? `tl.fromTo('#${P(i)}', { opacity: 0 }, { opacity: 1, duration: 0.2, ease: 'none' }, ${l.t0});` : ''}
+tl.fromTo('#${P(i)}', { scale: 1.05 }, { scale: 1, duration: 0.6, ease: 'power3.out' }, ${l.t0});
 { ${shots[i].js(l.t0, l.t1)} }`).join('\n')}
-// legenda: cada palavra entra quando é falada
-${lines.map((l, i) => `tl.set('#${id}-cap${i}', { opacity: 1 }, ${Math.max(0, (VO + l.ws[0].s - 0.05)).toFixed(2)}); ${i < last ? `tl.set('#${id}-cap${i}', { opacity: 0 }, ${(VO + lines[i + 1].ws[0].s - 0.06).toFixed(2)});` : ''}
-${l.ws.map((w, j) => `tl.fromTo('#${id}-w${i}-${j}', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, ${(VO + w.s).toFixed(2)});`).join('\n')}`).join('\n')}
+// legenda: cada palavra entra quando é falada; a frase fica até o corte da cena
+${lines.map((l, i) => `tl.set('#${id}-cap${i}', { opacity: 1 }, ${(at(l, l.ws[0].s) - 0.05).toFixed(2)}); ${i < last ? `tl.set('#${id}-cap${i}', { opacity: 0 }, ${l.t1});` : ''}
+${l.ws.map((w, j) => `tl.fromTo('#${id}-w${i}-${j}', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, ${at(l, w.s)});`).join('\n')}`).join('\n')}
 // marca: some sobre as gravações (elas já trazem a interface real) e fica creme nas cenas escuras do REP
 ${lines.map((l, i) => `tl.set('#brand', { opacity: ${shots[i].footage || shots[i].dark ? 0 : 1} }, ${l.t0}); tl.set('#brand-rep', { opacity: ${!shots[i].footage && shots[i].dark ? 1 : 0} }, ${l.t0});`).join('\n')}
 // marca some no fecho; faixas de cor antes do fecho
@@ -92,8 +107,8 @@ fs.writeFileSync(new URL('index.html', ROOT), `<!doctype html>
   <body>
     <div id="stage" data-composition-id="main" data-start="0" data-duration="${DUR}" data-width="1080" data-height="1920">
     <div id="slot-${id}" data-composition-id="${id}" data-composition-src="compositions/${id}.html" data-start="0" data-duration="${DUR}" data-track-index="1" data-width="1080" data-height="1920"></div>
-    <audio id="vo" src="assets/voice/${id}.mp3" data-start="${VO}" data-track-index="10" data-volume="1"></audio>
-    <audio id="bgm" src="assets/music/${music}.mp3" data-start="0" data-duration="${DUR}" data-track-index="9" data-volume="0.2"></audio>
+${lines.map((l, i) => `    <audio id="vo${i}" src="assets/voice/${id}.mp3" data-start="${at(l, l.segS)}" data-media-start="${l.segS.toFixed(2)}" data-duration="${(l.segE - l.segS).toFixed(2)}" data-track-index="${30 + i}" data-volume="1"></audio>`).join('\n')}
+    <audio id="bgm" src="assets/music/${music}-long.mp3" data-start="0" data-duration="${DUR}" data-track-index="9" data-volume="0.2" data-fade-out="1.2"></audio>
     <audio id="sfx-logo" src="assets/sfx/logo-1.mp3" data-start="${lines[last].t0}" data-track-index="11" data-volume="0.3"></audio>
 ${cuts}
     </div>

@@ -27,7 +27,7 @@ const footage = (src, media, dark, tap) => (p, t0, t1) => ({
   css: `#${p}-v{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;}
 #${p}-cov{position:absolute;left:0;right:0;top:1130px;bottom:0;background:linear-gradient(to bottom, ${dark ? 'rgba(17,24,32,0)' : 'rgba(247,243,236,0)'}, ${dark ? R.bg : C.paper} 110px);}
 #${p}-tap{position:absolute;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;border:6px solid ${dark ? R.goldBri : C.navy};background:${dark ? 'rgba(198,178,120,.25)' : 'rgba(36,69,107,.18)'};opacity:0;}`,
-  html: `<video class="clip" id="${p}-v" src="assets/rep/${src}.mp4" muted playsinline data-start="${t0}" data-duration="${(t1 - t0).toFixed(2)}" data-media-start="${media}"></video><div id="${p}-cov"></div>${tap ? `<div id="${p}-tap" style="left:${tap.x}px;top:${tap.y}px;"></div>` : ''}`,
+  html: `<video class="clip" id="${p}-v" src="assets/rep/${src}.mp4" muted playsinline data-start="${t0}" data-duration="${(t1 - t0 + 0.25).toFixed(2)}" data-media-start="${media}"></video><div id="${p}-cov"></div>${tap ? `<div id="${p}-tap" style="left:${tap.x}px;top:${tap.y}px;"></div>` : ''}`,
   js: (a) => tap ? `tl.fromTo('#${p}-tap', { scale: 0.4, opacity: 0.95 }, { scale: 1.5, opacity: 0, duration: 0.6, ease: 'power2.out' }, ${(a + tap.at - media).toFixed(2)});` : '',
 });
 

@@ -14,10 +14,13 @@
 #root{position:absolute;inset:0;overflow:hidden;background:#f7f3ec;color:#0a0a0a;font-family:'Bricolage Grotesque',sans-serif;}
 #root .shot{position:absolute;inset:0;opacity:0;}
 #root .peep-svg{display:block;height:100%;width:auto;overflow:visible;}
+#brand-rep{position:absolute;left:60px;top:80px;z-index:20;opacity:0;}
 #brand{position:absolute;left:60px;top:84px;display:flex;align-items:center;gap:14px;font-family:'Newsreader',serif;font-size:40px;z-index:20;}
 .cap{position:absolute;left:50px;right:50px;top:1240px;text-align:center;font-weight:800;font-size:82px;line-height:1.14;letter-spacing:-1px;opacity:0;z-index:20;}
 .cw{display:inline-block;padding:0 6px;border-radius:14px;}
 .cw.hl{background:#e8c873;box-shadow:5px 5px 0 #0a0a0a;border:3px solid #0a0a0a;}
+.cap.dark{color:#f0eadf;}
+.cap.dark .cw.hl{background:#b19a60;color:#111820;border-color:#111820;box-shadow:5px 5px 0 #0a0e13;}
 #stripes{position:absolute;inset:0;display:flex;flex-direction:column;z-index:30;pointer-events:none;}
 #stripes div{flex:1;transform:scaleX(0);}
 #p2s0-post{position:absolute;left:110px;top:200px;width:860px;box-sizing:border-box;border:3px solid #0a0a0a;border-radius:30px;background:#fffdf8;box-shadow:12px 12px 0 #0a0a0a;overflow:hidden;}
@@ -42,7 +45,7 @@
 #p2s3-btn span{display:block;font-size:30px;color:#e8c873;font-weight:600;}
 #p2s3-url{position:absolute;left:0;right:0;top:1100px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:38px;letter-spacing:.2em;}</style>
 <div id="root" data-composition-id="p2" data-width="1080" data-height="1920">
-<div id="brand"><svg width="54" height="54" viewBox="4 4 54 54" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="#0a0a0a"></circle><circle cx="28" cy="28" r="22" fill="#24456b"></circle><circle cx="36" cy="20" r="5" fill="#e8c873"></circle></svg>Pauta Pronta</div>
+<div id="brand-rep"><span style="display:inline-flex;align-items:center;gap:14px;"><img src="assets/rep/crow-creme.png" alt="" style="height:50px;width:auto;display:block;"><b style="font-family:'Segoe UI',Arial,'Liberation Sans',sans-serif;font-weight:700;font-size:35px;letter-spacing:-.02em;line-height:1;color:#f0eadf;">REP</b></span></div><div id="brand"><svg width="54" height="54" viewBox="4 4 54 54" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="#0a0a0a"></circle><circle cx="28" cy="28" r="22" fill="#24456b"></circle><circle cx="36" cy="20" r="5" fill="#e8c873"></circle></svg>Pauta Pronta</div>
 <div class="shot" id="p2s0"><div id="p2s0-post"><header><i></i>seu_perfil</header><div id="p2s0-img">“SUS já distribui canetas emagrecedoras de graça”</div><div style="padding:20px 26px;font-size:26px;color:#6b665d;">♡ 12 &nbsp; 💬 48 comentários</div></div>
 <div class="p2s0-cm" style="top:760px;left:120px;"><b>@marina.jor</b>fonte?</div><div class="p2s0-cm" style="top:865px;left:180px;"><b>@leitor_atento</b>isso tá errado…</div><div class="p2s0-cm" style="top:970px;left:120px;"><b>@ana.lu</b>não foi isso que o ministério disse</div><div class="p2s0-cm" style="top:1075px;left:180px;"><b>@pedro_c</b>apaga isso 😬</div><div id="p2s0-stamp">NÃO ERA BEM ASSIM</div></div>
 <div class="shot" id="p2s1"><div id="p2s1-doc"><span class="mono">DOCUMENTO DE VALIDAÇÃO</span>Segundo a <span class="p2s1-hl">Folha</span><span class="p2s1-sup">[2]</span> e a <span class="p2s1-hl">Gazeta do Povo</span><span class="p2s1-sup">[5]</span>, a oferta pelo SUS ainda depende da Conitec.</div>
@@ -56,74 +59,83 @@
 <script>
 (function(){
 const tl = gsap.timeline({ paused: true });
-tl.set('#p2s0', { opacity: 1 }, 0); tl.set('#p2s0', { opacity: 0 }, 4.32);
-tl.fromTo('#p2s0', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 0);
+tl.set('#p2s0', { opacity: 1 }, 0); tl.set('#p2s0', { opacity: 0 }, 5.14);
+
+tl.fromTo('#p2s0', { scale: 1.05 }, { scale: 1, duration: 0.6, ease: 'power3.out' }, 0);
 { tl.fromTo('#p2s0-post', { y: 300, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'expo.out' }, 0);
-tl.fromTo('.p2s0-cm', { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: 'power3.out', stagger: 0.68 }, 0.8);
-tl.fromTo('#p2s0-stamp', { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: 'power4.in' }, 3.52);
-tl.fromTo('#p2s0-post', { x: 0 }, { x: 14, duration: 0.05, repeat: 5, yoyo: true, ease: 'sine.inOut' }, 3.7700000000000005); tl.set('#p2s0-post', { x: 0 }, 4.08); }
-tl.set('#p2s1', { opacity: 1 }, 4.32); tl.set('#p2s1', { opacity: 0 }, 7.87);
-tl.fromTo('#p2s1', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 4.32);
-{ tl.fromTo('#p2s1-doc', { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'expo.out' }, 4.32);
-tl.fromTo('.p2s1-hl', { backgroundSize: '0% 44%' }, { backgroundSize: '100% 44%', duration: 0.35, ease: 'power2.out', stagger: 0.35 }, 4.82);
-tl.fromTo('.p2s1-src', { x: 400, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: 'expo.out', stagger: 0.35 }, 5.42); }
-tl.set('#p2s2', { opacity: 1 }, 7.87); tl.set('#p2s2', { opacity: 0 }, 10.25);
-tl.fromTo('#p2s2', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 7.87);
-{ tl.fromTo('#p2s2-disc', { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'expo.out' }, 7.87);
-tl.fromTo('#p2s2-ana', { y: 700 }, { y: 0, duration: 0.45, ease: 'power3.out' }, 7.87);
-tl.set('#p2s2-ana .pf-Calm', { opacity: 0 }, 8.47); tl.set('#p2s2-ana .pf-Smile', { opacity: 1 }, 8.47);
-tl.fromTo('#p2s2-note', { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'back.out(2)' }, 8.07);
-tl.fromTo('#p2s2-check', { scale: 0, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.35, ease: 'back.out(3)' }, 8.67); }
-tl.set('#p2s3', { opacity: 1 }, 10.25); 
-tl.fromTo('#p2s3', { scale: 1.1 }, { scale: 1, duration: 0.45, ease: 'expo.out' }, 10.25);
-{ tl.fromTo('#p2s3-mark', { scale: 0, rotation: -120, transformOrigin: '50% 50%' }, { scale: 1, rotation: 0, duration: 0.5, ease: 'expo.out' }, 10.25);
-tl.fromTo('#p2s3-name', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' }, 10.4);
-tl.fromTo('#p2s3-btn', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(2)' }, 10.75);
-tl.fromTo('#p2s3-url', { opacity: 0 }, { opacity: 1, duration: 0.3 }, 11.05);
-tl.to('#p2s3-btn', { scale: 1.06, duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: 3 }, 11.45); }
-// legenda: cada palavra entra quando é falada
-tl.set('#p2-cap0', { opacity: 1 }, 0.30); tl.set('#p2-cap0', { opacity: 0 }, 4.38);
-tl.fromTo('#p2-w0-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 0.35);
-tl.fromTo('#p2-w0-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 0.72);
-tl.fromTo('#p2-w0-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 1.51);
-tl.fromTo('#p2-w0-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 1.59);
-tl.fromTo('#p2-w0-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 1.89);
-tl.fromTo('#p2-w0-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 2.41);
-tl.fromTo('#p2-w0-6', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 2.56);
-tl.fromTo('#p2-w0-7', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 2.65);
-tl.fromTo('#p2-w0-8', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.17);
-tl.fromTo('#p2-w0-9', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.40);
-tl.fromTo('#p2-w0-10', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.62);
-tl.fromTo('#p2-w0-11', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 3.85);
-tl.set('#p2-cap1', { opacity: 1 }, 4.39); tl.set('#p2-cap1', { opacity: 0 }, 7.93);
-tl.fromTo('#p2-w1-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.44);
-tl.fromTo('#p2-w1-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 4.87);
-tl.fromTo('#p2-w1-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 5.18);
-tl.fromTo('#p2-w1-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 5.70);
-tl.fromTo('#p2-w1-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 5.94);
-tl.fromTo('#p2-w1-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 6.59);
-tl.fromTo('#p2-w1-6', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 6.74);
-tl.fromTo('#p2-w1-7', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 6.93);
-tl.fromTo('#p2-w1-8', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 7.03);
-tl.fromTo('#p2-w1-9', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 7.25);
-tl.fromTo('#p2-w1-10', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 7.38);
-tl.set('#p2-cap2', { opacity: 1 }, 7.94); tl.set('#p2-cap2', { opacity: 0 }, 10.31);
-tl.fromTo('#p2-w2-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 7.99);
-tl.fromTo('#p2-w2-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.41);
-tl.fromTo('#p2-w2-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 8.94);
-tl.fromTo('#p2-w2-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 9.27);
-tl.fromTo('#p2-w2-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 9.38);
-tl.set('#p2-cap3', { opacity: 1 }, 10.32); 
-tl.fromTo('#p2-w3-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 10.37);
-tl.fromTo('#p2-w3-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 10.83);
-tl.fromTo('#p2-w3-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 11.34);
-tl.fromTo('#p2-w3-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 11.90);
-tl.fromTo('#p2-w3-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 12.39);
-tl.fromTo('#p2-w3-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: 'back.out(3)' }, 12.89);
+tl.fromTo('.p2s0-cm', { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: 'power3.out', stagger: 0.84 }, 0.8);
+tl.fromTo('#p2s0-stamp', { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: 'power4.in' }, 4.14);
+tl.fromTo('#p2s0-post', { x: 0 }, { x: 14, duration: 0.05, repeat: 5, yoyo: true, ease: 'sine.inOut' }, 4.390000000000001); tl.set('#p2s0-post', { x: 0 }, 4.7); }
+tl.set('#p2s1', { opacity: 1 }, 4.94); tl.set('#p2s1', { opacity: 0 }, 9.60);
+tl.fromTo('#p2s1', { opacity: 0 }, { opacity: 1, duration: 0.2, ease: 'none' }, 4.94);
+tl.fromTo('#p2s1', { scale: 1.05 }, { scale: 1, duration: 0.6, ease: 'power3.out' }, 4.94);
+{ tl.fromTo('#p2s1-doc', { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'expo.out' }, 4.94);
+tl.fromTo('.p2s1-hl', { backgroundSize: '0% 44%' }, { backgroundSize: '100% 44%', duration: 0.35, ease: 'power2.out', stagger: 0.35 }, 5.44);
+tl.fromTo('.p2s1-src', { x: 400, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: 'expo.out', stagger: 0.35 }, 6.040000000000001); }
+tl.set('#p2s2', { opacity: 1 }, 9.4); tl.set('#p2s2', { opacity: 0 }, 12.91);
+tl.fromTo('#p2s2', { opacity: 0 }, { opacity: 1, duration: 0.2, ease: 'none' }, 9.4);
+tl.fromTo('#p2s2', { scale: 1.05 }, { scale: 1, duration: 0.6, ease: 'power3.out' }, 9.4);
+{ tl.fromTo('#p2s2-disc', { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'expo.out' }, 9.4);
+tl.fromTo('#p2s2-ana', { y: 700 }, { y: 0, duration: 0.45, ease: 'power3.out' }, 9.4);
+tl.set('#p2s2-ana .pf-Calm', { opacity: 0 }, 10); tl.set('#p2s2-ana .pf-Smile', { opacity: 1 }, 10);
+tl.fromTo('#p2s2-note', { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'back.out(2)' }, 9.6);
+tl.fromTo('#p2s2-check', { scale: 0, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.35, ease: 'back.out(3)' }, 10.200000000000001); }
+tl.set('#p2s3', { opacity: 1 }, 12.71); 
+tl.fromTo('#p2s3', { opacity: 0 }, { opacity: 1, duration: 0.2, ease: 'none' }, 12.71);
+tl.fromTo('#p2s3', { scale: 1.05 }, { scale: 1, duration: 0.6, ease: 'power3.out' }, 12.71);
+{ tl.fromTo('#p2s3-mark', { scale: 0, rotation: -120, transformOrigin: '50% 50%' }, { scale: 1, rotation: 0, duration: 0.5, ease: 'expo.out' }, 12.71);
+tl.fromTo('#p2s3-name', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' }, 12.860000000000001);
+tl.fromTo('#p2s3-btn', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(2)' }, 13.21);
+tl.fromTo('#p2s3-url', { opacity: 0 }, { opacity: 1, duration: 0.3 }, 13.510000000000002);
+tl.to('#p2s3-btn', { scale: 1.06, duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: 3 }, 13.91); }
+// legenda: cada palavra entra quando é falada; a frase fica até o corte da cena
+tl.set('#p2-cap0', { opacity: 1 }, 0.30); tl.set('#p2-cap0', { opacity: 0 }, 4.94);
+tl.fromTo('#p2-w0-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 0.35);
+tl.fromTo('#p2-w0-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 0.72);
+tl.fromTo('#p2-w0-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 1.51);
+tl.fromTo('#p2-w0-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 1.59);
+tl.fromTo('#p2-w0-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 1.89);
+tl.fromTo('#p2-w0-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 2.41);
+tl.fromTo('#p2-w0-6', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 2.56);
+tl.fromTo('#p2-w0-7', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 2.65);
+tl.fromTo('#p2-w0-8', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 3.17);
+tl.fromTo('#p2-w0-9', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 3.4);
+tl.fromTo('#p2-w0-10', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 3.62);
+tl.fromTo('#p2-w0-11', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 3.85);
+tl.set('#p2-cap1', { opacity: 1 }, 5.19); tl.set('#p2-cap1', { opacity: 0 }, 9.4);
+tl.fromTo('#p2-w1-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 5.24);
+tl.fromTo('#p2-w1-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 5.68);
+tl.fromTo('#p2-w1-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 5.99);
+tl.fromTo('#p2-w1-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 6.51);
+tl.fromTo('#p2-w1-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 6.74);
+tl.fromTo('#p2-w1-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 7.4);
+tl.fromTo('#p2-w1-6', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 7.55);
+tl.fromTo('#p2-w1-7', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 7.73);
+tl.fromTo('#p2-w1-8', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 7.84);
+tl.fromTo('#p2-w1-9', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 8.06);
+tl.fromTo('#p2-w1-10', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 8.18);
+tl.set('#p2-cap2', { opacity: 1 }, 9.65); tl.set('#p2-cap2', { opacity: 0 }, 12.71);
+tl.fromTo('#p2-w2-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 9.7);
+tl.fromTo('#p2-w2-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 10.12);
+tl.fromTo('#p2-w2-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 10.65);
+tl.fromTo('#p2-w2-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 10.98);
+tl.fromTo('#p2-w2-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 11.08);
+tl.set('#p2-cap3', { opacity: 1 }, 12.96); 
+tl.fromTo('#p2-w3-0', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 13.01);
+tl.fromTo('#p2-w3-1', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 13.47);
+tl.fromTo('#p2-w3-2', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 13.98);
+tl.fromTo('#p2-w3-3', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 14.54);
+tl.fromTo('#p2-w3-4', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 15.03);
+tl.fromTo('#p2-w3-5', { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, 15.53);
+// marca: some sobre as gravações (elas já trazem a interface real) e fica creme nas cenas escuras do REP
+tl.set('#brand', { opacity: 1 }, 0); tl.set('#brand-rep', { opacity: 0 }, 0);
+tl.set('#brand', { opacity: 1 }, 4.94); tl.set('#brand-rep', { opacity: 0 }, 4.94);
+tl.set('#brand', { opacity: 1 }, 9.4); tl.set('#brand-rep', { opacity: 0 }, 9.4);
+tl.set('#brand', { opacity: 1 }, 12.71); tl.set('#brand-rep', { opacity: 0 }, 12.71);
 // marca some no fecho; faixas de cor antes do fecho
-tl.to('#brand', { opacity: 0, duration: 0.2 }, 10.25);
-tl.to('#stripes div', { scaleX: 1, transformOrigin: '0% 50%', duration: 0.22, ease: 'power3.in', stagger: 0.03 }, 9.95);
-tl.to('#stripes div', { scaleX: 0, transformOrigin: '100% 50%', duration: 0.25, ease: 'power3.out', stagger: 0.03 }, 10.27);
+tl.to('#brand', { opacity: 0, duration: 0.2 }, 12.71);
+tl.to('#stripes div', { scaleX: 1, transformOrigin: '0% 50%', duration: 0.22, ease: 'power3.in', stagger: 0.03 }, 12.41);
+tl.to('#stripes div', { scaleX: 0, transformOrigin: '100% 50%', duration: 0.25, ease: 'power3.out', stagger: 0.03 }, 12.73);
 window.__timelines["p2"] = tl;
 })();
 </script>
