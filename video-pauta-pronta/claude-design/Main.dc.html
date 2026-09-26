@@ -9,291 +9,242 @@
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&amp;family=Caveat:wght@500;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&amp;family=Caveat:wght@500;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&amp;display=swap">
 <style>
-body{margin:0;background:#f7f3ec;font-family:"Bricolage Grotesque",system-ui,sans-serif;color:#0a0a0a}
+body{margin:0;background:#0b1422;font-family:"Bricolage Grotesque",system-ui,sans-serif;color:#0a0a0a}
 a{color:#24456b}a:hover{color:#1a3350}
 .mono{font-family:"JetBrains Mono",monospace;letter-spacing:.16em;text-transform:uppercase}
 .disp{font-family:Newsreader,Georgia,serif}
 .hand{font-family:Caveat,cursive}
-.pp-grid{background-image:linear-gradient(rgba(10,10,10,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(10,10,10,.045) 1px,transparent 1px);background-size:56px 56px}
-.pp-ctl{appearance:none;border:1.5px solid #0a0a0a;background:#f7f3ec;color:#0a0a0a;border-radius:100px;height:48px;min-width:48px;padding:0 16px;display:flex;align-items:center;justify-content:center;gap:10px;font:600 15px "Bricolage Grotesque",system-ui,sans-serif;cursor:pointer;box-shadow:4px 4px 0 #0a0a0a}
-.pp-ctl:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #0a0a0a}
-.pp-play{appearance:none;border:1.5px solid #24456b;background:#24456b;color:#f7f3ec;border-radius:100px;height:84px;padding:0 42px 0 34px;display:flex;align-items:center;gap:16px;font:700 28px "Bricolage Grotesque",system-ui,sans-serif;cursor:pointer;box-shadow:8px 8px 0 #0a0a0a}
-.pp-play:hover{transform:translate(-2px,-2px);box-shadow:10px 10px 0 #0a0a0a}
+.kt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-weight:500;letter-spacing:-2.5px;line-height:1.04}
+.kt span{display:inline-block;margin:0 .13em}
+.ui{position:absolute;box-sizing:border-box;background:#f7f3ec;border:2px solid #0a0a0a;border-radius:28px;overflow:hidden}
+.pp-ctl{appearance:none;border:1.5px solid #f7f3ec;background:rgba(10,20,34,.6);color:#f7f3ec;border-radius:100px;height:46px;min-width:46px;padding:0 14px;display:flex;align-items:center;justify-content:center;gap:8px;font:600 14px "Bricolage Grotesque",system-ui,sans-serif;cursor:pointer}
+.pp-ctl:hover{background:#24456b}
+.pp-play{appearance:none;border:1.5px solid #e8c873;background:#24456b;color:#f7f3ec;border-radius:100px;height:84px;padding:0 42px 0 34px;display:flex;align-items:center;gap:16px;font:700 28px "Bricolage Grotesque",system-ui,sans-serif;cursor:pointer;box-shadow:0 0 0 6px rgba(232,200,115,.18),0 0 60px rgba(232,200,115,.35)}
+.pp-play:hover{background:#1a3350}
 </style>
 </helmet>
 <div style="position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #f7f3ec;">
 
-  <!-- ░ ambient backdrop -->
-  <div class="pp-grid" style="position: absolute; inset: -56px; transform: {{v.gridT}}; -webkit-mask-image: radial-gradient(75% 65% at 50% 45%, #000, transparent); mask-image: radial-gradient(75% 65% at 50% 45%, #000, transparent);"></div>
-  <div style="position: absolute; inset: 0; background: radial-gradient(55% 45% at {{v.glowX}}% 118%, rgba(232,200,115,.42), transparent 70%), radial-gradient(40% 35% at 8% -10%, rgba(36,69,107,.10), transparent 70%);"></div>
+  <!-- ░░ BACKGROUNDS: paper (light) and night-navy (dark) -->
+  <div style="position: absolute; inset: 0; background: radial-gradient(60% 55% at {{v.lgX}}% 110%, rgba(232,200,115,.55), transparent 70%), radial-gradient(50% 45% at 10% -5%, rgba(36,69,107,.14), transparent 70%), #f7f3ec;"></div>
+  <div style="position: absolute; inset: 0; opacity: {{v.dark}}; background: radial-gradient(55% 45% at {{v.dgX}}% 112%, rgba(232,200,115,.55), rgba(232,200,115,0) 70%), radial-gradient(70% 60% at 50% 120%, rgba(36,69,107,.9), transparent 75%), linear-gradient(180deg, #070d17, #0e1a2c);"></div>
 
-  <!-- ░ HOOK 0–3.8 s -->
-  <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: {{v.hook.o}}; transform: {{v.hook.t}}; filter: {{v.hook.f}};">
-    <div style="width: 1480px;">
-      <div class="mono" style="display: flex; align-items: center; gap: 12px; font-size: 20px; color: #24456b; margin-bottom: 34px; opacity: {{v.hk0.o}}; transform: {{v.hk0.t}}; filter: {{v.hk0.f}};"><span style="width: 10px; height: 10px; border-radius: 50%; background: #e8c873; box-shadow: 0 0 0 5px rgba(232,200,115,.25);"></span>Pauta Pronta · by REP</div>
-      <div class="disp" style="font-size: 124px; line-height: 1.0; letter-spacing: -3px;">
-        <div style="overflow: hidden; padding-bottom: 8px;"><div style="opacity: {{v.hk1.o}}; transform: {{v.hk1.t}}; filter: {{v.hk1.f}};">Seu próximo post</div></div>
-        <div style="overflow: hidden; padding-bottom: 8px;"><div style="opacity: {{v.hk2.o}}; transform: {{v.hk2.t}}; filter: {{v.hk2.f}};">nasce da <span style="position: relative; white-space: nowrap;"><span style="position: absolute; left: -10px; right: -10px; top: 22%; bottom: 2%; background: #e8c873; border-radius: 6px; transform-origin: left center; transform: scaleX({{v.hkHl}}) skewX(-6deg);"></span><span style="position: relative; font-style: italic;">cobertura real.</span></span></div></div>
+  <!-- ░░ S0 · problem hook (dark) -->
+  <div style="position: absolute; inset: 0; opacity: {{v.s0.o}}; transform: {{v.s0.t}}; filter: {{v.s0.f}};">
+    <div class="ui" style="left: 1180px; top: 90px; width: 560px; height: 300px; opacity: .55; filter: blur(5px); transform: perspective(1400px) rotateY(-18deg) rotateX(8deg) translateY({{v.hb0}}px); box-shadow: 0 0 60px rgba(232,200,115,.25);"><div class="mono" style="margin: 30px; font-size: 13px; color: #24456b;">● Pauta nova</div><div style="margin: 0 30px; height: 80px; border: 2px solid #0a0a0a; border-radius: 16px;"></div></div>
+    <div class="ui" style="left: 120px; top: 640px; width: 620px; height: 330px; opacity: .45; filter: blur(7px); transform: perspective(1400px) rotateY(20deg) rotateX(10deg) translateY({{v.hb1}}px);"><div class="disp" style="margin: 34px; font-size: 30px;">Governo avalia levar ao SUS caneta emagrecedora…</div></div>
+    <div class="ui" style="left: 1260px; top: 690px; width: 460px; height: 260px; opacity: .35; filter: blur(10px); transform: perspective(1400px) rotateY(-24deg) translateY({{v.hb2}}px);"></div>
+    <div class="ui" style="left: 200px; top: 110px; width: 420px; height: 240px; opacity: .3; filter: blur(12px); transform: perspective(1400px) rotateY(26deg) translateY({{v.hb3}}px);"></div>
+    <div style="position: absolute; left: 0; right: 0; top: 400px; text-align: center; font-size: 96px; font-weight: 500; letter-spacing: -3px; line-height: 1.12; color: #f7f3ec;">
+      <div>{{v.hk1}}<span style="display: inline-block; width: 5px; height: 84px; margin-left: 6px; vertical-align: -10px; background: #e8c873; opacity: {{v.hkc1}};"></span></div>
+      <div><span style="color: #f7f3ec;">{{v.hk2a}}</span><span class="disp" style="font-style: italic; font-weight: 400; color: #e8c873; letter-spacing: -1px;">{{v.hk2b}}</span><span style="display: inline-block; width: 5px; height: 84px; margin-left: 6px; vertical-align: -10px; background: #e8c873; opacity: {{v.hkc2}};"></span></div>
+    </div>
+  </div>
+  <!-- whip card between hook and brand -->
+  <div class="ui" style="left: {{v.whipX}}px; top: 380px; width: 900px; height: 320px; opacity: {{v.whipO}}; filter: blur(22px); transform: skewX(-12deg) scaleX(1.4);"></div>
+
+  <!-- ░░ S1 · brand reveal (dark) -->
+  <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: {{v.s1.o}}; transform: {{v.s1.t}}; filter: {{v.s1.f}};">
+    <div style="position: absolute; left: 50%; top: 50%; width: 900px; height: 900px; margin: -520px 0 0 -450px; border-radius: 50%; background: radial-gradient(circle, rgba(232,200,115,.22), transparent 62%); transform: scale({{v.bGlow}});"></div>
+    <div style="display: flex; align-items: center; gap: 26px; opacity: {{v.bLogo.o}}; transform: {{v.bLogo.t}}; filter: {{v.bLogo.f}};">
+      <svg width="132" height="132" viewBox="4 4 54 54" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="#000000" opacity=".55"></circle><circle cx="28" cy="28" r="22" fill="#24456b" stroke="#f7f3ec" stroke-width="1.2"></circle><circle cx="36" cy="20" r="{{v.bDot}}" fill="#e8c873"></circle><circle cx="36" cy="20" r="{{v.bRing}}" fill="none" stroke="#e8c873" stroke-width="1" opacity="{{v.bRingO}}"></circle></svg>
+      <div style="overflow: hidden;"><div class="disp" style="font-size: 132px; line-height: .95; letter-spacing: -3px; color: #f7f3ec; clip-path: {{v.bWord}};">Pauta Pronta</div></div>
+    </div>
+    <div style="margin-top: 44px; height: 76px; border-radius: 100px; border: 1.5px solid rgba(232,200,115,.85); background: rgba(10,20,34,.55); box-shadow: 0 0 0 6px rgba(232,200,115,.10), 0 0 70px rgba(232,200,115,.35), inset 0 0 24px rgba(232,200,115,.18); display: flex; align-items: center; justify-content: center; overflow: hidden; width: {{v.pillW}}px; opacity: {{v.pill.o}}; transform: {{v.pill.t}};">
+      <div style="position: relative; width: 100%; height: 76px;">
+        <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 30px; color: #f7f3ec; white-space: nowrap; opacity: {{v.pillA}};"><span style="color: #e8c873;">✦</span>by REP</div>
+        <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 30px; color: #f7f3ec; white-space: nowrap; opacity: {{v.pillB}};"><span style="color: #e8c873;">✦</span>Inteligência editorial: do tema ao post, com fontes reais</div>
       </div>
-      <div style="overflow: hidden; margin-top: 30px;"><div style="font-size: 64px; font-weight: 500; letter-spacing: -1.5px; color: #24456b; opacity: {{v.hk3.o}}; transform: {{v.hk3.t}}; filter: {{v.hk3.f}};">Não de um prompt em branco.</div></div>
     </div>
   </div>
 
-  <!-- ░ step caption chip (above the window) -->
-  <div style="position: absolute; left: 190px; top: 30px; height: 60px; overflow: hidden;">
-    <div style="display: flex; align-items: center; gap: 16px; height: 60px; opacity: {{v.chip.o}}; transform: {{v.chip.t}}; filter: {{v.chip.f}};">
-      <div class="mono" style="height: 40px; min-width: 56px; padding: 0 12px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; background: #24456b; color: #e8c873; border-radius: 100px; font-size: 18px; letter-spacing: .08em; box-shadow: 4px 4px 0 #0a0a0a;">{{v.chipN}}</div>
-      <div class="disp" style="font-size: 40px; letter-spacing: -.5px; white-space: nowrap;">{{v.chipTitle}}</div>
-      <div style="font-size: 20px; color: #6b665d; white-space: nowrap;">{{v.chipSub}}</div>
-    </div>
+  <!-- ░░ KINETIC LINES -->
+  <div class="kt" style="font-size: 104px; color: #f7f3ec; opacity: {{v.k1.o}}; transform: {{v.k1.t}};">
+    <div><span style="opacity: {{v.k1w0.o}}; filter: {{v.k1w0.f}}; transform: {{v.k1w0.t}};">Traga</span><span style="opacity: {{v.k1w1.o}}; filter: {{v.k1w1.f}}; transform: {{v.k1w1.t}};">um</span><span style="opacity: {{v.k1w2.o}}; filter: {{v.k1w2.f}}; transform: {{v.k1w2.t}};">tema,</span></div>
+    <div><span style="opacity: {{v.k1w3.o}}; filter: {{v.k1w3.f}}; transform: {{v.k1w3.t}}; color: #c9d2de;">um link</span><span style="opacity: {{v.k1w4.o}}; filter: {{v.k1w4.f}}; transform: {{v.k1w4.t}}; color: #c9d2de;">ou uma</span><span class="disp" style="font-style: italic; font-weight: 400; letter-spacing: -1px; color: #e8c873; opacity: {{v.k1w5.o}}; filter: {{v.k1w5.f}}; transform: {{v.k1w5.t}};">ideia.</span></div>
+  </div>
+  <div class="kt" style="font-size: 104px; color: #0a0a0a; opacity: {{v.k2.o}}; transform: {{v.k2.t}};">
+    <div><span style="opacity: {{v.k2w0.o}}; filter: {{v.k2w0.f}}; transform: {{v.k2w0.t}};">O editor</span><span style="opacity: {{v.k2w1.o}}; filter: {{v.k2w1.f}}; transform: {{v.k2w1.t}};">afina</span></div>
+    <div><span style="opacity: {{v.k2w2.o}}; filter: {{v.k2w2.f}}; transform: {{v.k2w2.t}};">o</span><span class="disp" style="font-style: italic; font-weight: 400; letter-spacing: -1px; color: #24456b; opacity: {{v.k2w3.o}}; filter: {{v.k2w3.f}}; transform: {{v.k2w3.t}};">recorte</span><span style="opacity: {{v.k2w4.o}}; filter: {{v.k2w4.f}}; transform: {{v.k2w4.t}};">com você.</span></div>
+  </div>
+  <div class="kt" style="font-size: 104px; color: #f7f3ec; opacity: {{v.k3.o}}; transform: {{v.k3.t}};">
+    <div><span style="opacity: {{v.k3w0.o}}; filter: {{v.k3w0.f}}; transform: {{v.k3w0.t}};">A redação</span><span style="opacity: {{v.k3w1.o}}; filter: {{v.k3w1.f}}; transform: {{v.k3w1.t}};">cruza</span></div>
+    <div><span style="opacity: {{v.k3w2.o}}; filter: {{v.k3w2.f}}; transform: {{v.k3w2.t}};">a cobertura</span><span class="disp" style="font-style: italic; font-weight: 400; letter-spacing: -1px; color: #e8c873; opacity: {{v.k3w3.o}}; filter: {{v.k3w3.f}}; transform: {{v.k3w3.t}};">real.</span></div>
+  </div>
+  <div class="kt" style="font-size: 110px; color: #0a0a0a; opacity: {{v.k4.o}}; transform: {{v.k4.t}};">
+    <div><span style="opacity: {{v.k4w0.o}}; filter: {{v.k4w0.f}}; transform: {{v.k4w0.t}};">Você</span><span style="opacity: {{v.k4w1.o}}; filter: {{v.k4w1.f}}; transform: {{v.k4w1.t}};">escolhe</span><span style="opacity: {{v.k4w2.o}}; filter: {{v.k4w2.f}}; transform: {{v.k4w2.t}};">o</span><span class="disp" style="font-style: italic; font-weight: 400; letter-spacing: -1px; color: #24456b; opacity: {{v.k4w3.o}}; filter: {{v.k4w3.f}}; transform: {{v.k4w3.t}};">ângulo.</span></div>
+  </div>
+  <div class="kt" style="font-size: 110px; color: #f7f3ec; opacity: {{v.k5.o}}; transform: {{v.k5.t}};">
+    <div><span style="opacity: {{v.k5w0.o}}; filter: {{v.k5w0.f}}; transform: {{v.k5w0.t}};">Minutos</span><span class="disp" style="font-style: italic; font-weight: 400; letter-spacing: -1px; color: #e8c873; opacity: {{v.k5w1.o}}; filter: {{v.k5w1.f}}; transform: {{v.k5w1.t}};">depois…</span></div>
+  </div>
+  <div class="kt" style="font-size: 110px; color: #0a0a0a; opacity: {{v.k6.o}}; transform: {{v.k6.t}};">
+    <div style="display: flex; align-items: center; justify-content: center;"><span style="opacity: {{v.k6w0.o}}; filter: {{v.k6w0.f}}; transform: {{v.k6w0.t}};">Hora de</span><svg width="96" height="96" viewBox="-50 -50 100 100" aria-hidden="true" style="margin: 0 10px; transform: rotate({{v.starR}}deg) scale({{v.starS}});"><path d="M0,-46 C6,-10 10,-6 46,0 C10,6 6,10 0,46 C-6,10 -10,6 -46,0 C-10,-6 -6,-10 0,-46 Z" fill="#e8c873" stroke="#0a0a0a" stroke-width="2.5"></path></svg><span class="disp" style="font-style: italic; font-weight: 400; letter-spacing: -1px; color: #24456b; opacity: {{v.k6w1.o}}; filter: {{v.k6w1.f}}; transform: {{v.k6w1.t}};">conferir.</span></div>
+  </div>
+  <div class="kt" style="font-size: 120px; color: #0a0a0a; opacity: {{v.k7.o}}; transform: {{v.k7.t}};">
+    <div><span style="opacity: {{v.k7w0.o}}; filter: {{v.k7w0.f}}; transform: {{v.k7w0.t}};">Fontes reais.</span></div>
+    <div><span class="disp" style="font-style: italic; font-weight: 400; letter-spacing: -1px; color: #24456b; opacity: {{v.k7w1.o}}; filter: {{v.k7w1.f}}; transform: {{v.k7w1.t}};">Decisão sua.</span></div>
   </div>
 
-  <!-- ░ APP WINDOW -->
-  <div style="position: absolute; left: 190px; top: 110px; width: 1540px; height: 880px; border-radius: 24px; border: 2px solid #0a0a0a; background: #f7f3ec; overflow: hidden; box-shadow: 8px 8px 0 #0a0a0a, 0 50px 90px -40px rgba(26,51,80,.5); transform-origin: 50% 55%; opacity: {{v.win.o}}; transform: {{v.win.t}}; filter: {{v.win.f}};">
-    <!-- header -->
-    <div style="position: absolute; left: 0; top: 0; right: 0; height: 76px; display: flex; align-items: center; padding: 0 28px; box-sizing: border-box; border-bottom: 1px solid rgba(26,22,16,.18); background: linear-gradient(180deg, #efe7d8, #f7f3ec);">
-      <svg width="40" height="40" viewBox="4 4 54 54" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="#1a1610"></circle><circle cx="28" cy="28" r="22" fill="#24456b"></circle><circle cx="36" cy="20" r="5" fill="#e8c873"></circle></svg>
-      <div style="margin-left: 12px;"><div class="disp" style="font-size: 26px; line-height: 1;">Pauta Pronta</div><div class="disp" style="font-size: 13px; font-style: italic; color: #6b665d;">by REP</div></div>
-      <div style="position: relative; margin-left: auto; display: flex; align-items: center; height: 40px;">
-        <div style="position: absolute; top: 0; height: 40px; border-radius: 100px; background: #24456b; left: {{v.stepX}}px; width: {{v.stepW}}px;"></div>
-        <div class="mono" style="position: relative; width: 120px; text-align: center; font-size: 13px; color: {{v.sc0}};">Ideia</div>
-        <div class="mono" style="position: relative; width: 140px; text-align: center; font-size: 13px; color: {{v.sc1}};">Recorte</div>
-        <div class="mono" style="position: relative; width: 150px; text-align: center; font-size: 13px; color: {{v.sc2}};">Pesquisa</div>
-        <div class="mono" style="position: relative; width: 130px; text-align: center; font-size: 13px; color: {{v.sc3}};">Ângulo</div>
-        <div class="mono" style="position: relative; width: 140px; text-align: center; font-size: 13px; color: {{v.sc4}};">Entrega</div>
-      </div>
+  <!-- ░░ S3 · input close-up (light, 3D) -->
+  <div class="ui" style="left: 260px; top: 220px; width: 1400px; height: 640px; box-shadow: 0 0 0 1.5px rgba(232,200,115,.6), 0 0 90px rgba(232,200,115,.35), 0 80px 140px -50px rgba(10,20,34,.55); transform-origin: 50% 50%; opacity: {{v.p3.o}}; transform: {{v.p3.t}};">
+    <div style="height: 64px; display: flex; align-items: center; gap: 12px; padding: 0 28px; border-bottom: 1px solid rgba(26,22,16,.18); background: linear-gradient(180deg, #efe7d8, #f7f3ec);"><svg width="34" height="34" viewBox="4 4 54 54" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="#1a1610"></circle><circle cx="28" cy="28" r="22" fill="#24456b"></circle><circle cx="36" cy="20" r="5" fill="#e8c873"></circle></svg><span class="disp" style="font-size: 24px;">Pauta Pronta</span><span class="mono" style="margin-left: auto; font-size: 12px; color: #6b665d;">pautapronta.com/criar</span></div>
+    <div class="mono" style="position: absolute; left: 0; right: 0; top: 104px; text-align: center; font-size: 14px; color: #24456b;">● Pauta nova · rascunho</div>
+    <div class="disp" style="position: absolute; left: 0; right: 0; top: 132px; text-align: center; font-size: 68px; letter-spacing: -1.5px;">Sobre o que você quer publicar?</div>
+    <div style="position: absolute; left: 200px; top: 250px; width: 1000px; height: 180px; box-sizing: border-box; padding: 34px 36px; border: 2px solid #0a0a0a; border-radius: 22px; background: #f7f3ec; box-shadow: {{v.inSh}};">
+      <div style="position: relative; font-size: 62px; font-weight: 500; letter-spacing: -1px; white-space: nowrap; height: 76px;"><span style="position: absolute; left: 0; top: 0; color: #b3ad9f; opacity: {{v.inPh}};">Tema, link ou ideia…</span>{{v.inTxt}}<span style="display: inline-block; width: 4px; height: 62px; margin-left: 4px; vertical-align: -8px; background: #24456b; opacity: {{v.inCaret}};"></span></div>
+      <div class="mono" style="position: absolute; right: 30px; bottom: 16px; font-size: 13px; color: #6b665d; letter-spacing: .06em;">{{v.inCount}} / 280</div>
     </div>
-
-    <!-- content: 1540 × 804 -->
-    <div style="position: absolute; left: 0; top: 76px; width: 1540px; height: 804px; overflow: hidden;">
-
-      <!-- ▸ SCENE 1 · input -->
-      <div style="position: absolute; inset: 0; opacity: {{v.s1.o}}; transform: {{v.s1.t}}; filter: {{v.s1.f}};">
-        <div class="mono" style="position: absolute; left: 0; right: 0; top: 62px; text-align: center; font-size: 15px; color: #24456b; opacity: {{v.i0.o}}; transform: {{v.i0.t}};">● Pauta nova · rascunho</div>
-        <div class="disp" style="position: absolute; left: 0; right: 0; top: 96px; text-align: center; font-size: 70px; letter-spacing: -1.5px; opacity: {{v.i1.o}}; transform: {{v.i1.t}}; filter: {{v.i1.f}};">Sobre o que você quer publicar?</div>
-        <div style="position: absolute; left: 0; right: 0; top: 196px; text-align: center; font-size: 22px; color: #6b665d; opacity: {{v.i2.o}}; transform: {{v.i2.t}};">A redação pesquisa a cobertura recente e recomenda um recorte. Você confirma antes da versão pronta.</div>
-        <div style="position: absolute; left: 320px; top: 262px; width: 900px; height: 176px; box-sizing: border-box; padding: 26px 30px; border: 2px solid #0a0a0a; border-radius: 20px; background: #f7f3ec; box-shadow: {{v.inBoxSh}}; opacity: {{v.i3.o}}; transform: {{v.i3.t}};">
-          <div style="position: relative; height: 70px; font-size: 44px; font-weight: 500; letter-spacing: -.5px; white-space: nowrap;">
-            <span style="position: absolute; left: 0; top: 0; color: #a39d90; opacity: {{v.inPh}};">Sobre qual assunto você quer publicar?</span>
-            <span>{{v.inTxt}}</span><span style="display: inline-block; width: 3px; height: 46px; margin-left: 3px; vertical-align: -6px; background: #24456b; opacity: {{v.inCaret}};"></span>
-          </div>
-          <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed #cfc6b3; padding-top: 16px; margin-top: 18px;">
-            <div style="font-size: 17px; color: #2a2622;">Colar um link</div>
-            <div class="mono" style="font-size: 14px; color: #6b665d; letter-spacing: .06em;">{{v.inCount}} / 280</div>
-          </div>
-        </div>
-        <div style="position: absolute; left: 570px; top: 462px; width: 400px; height: 76px; border-radius: 100px; background: {{v.btn1Bg}}; border: 1.5px solid #24456b; color: #f7f3ec; display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 24px; font-weight: 700; box-shadow: {{v.btn1Sh}}; opacity: {{v.i4.o}}; transform: {{v.btn1T}};">Criar minha publicação <span style="font-size: 26px;">→</span></div>
-        <div style="position: absolute; left: 320px; top: 590px; width: 900px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid rgba(26,22,16,.18); border-radius: 14px; overflow: hidden; background: #efe7d8;">
-          <div style="padding: 18px 20px; opacity: {{v.i5.o}}; transform: {{v.i5.t}};"><div class="mono" style="font-size: 12px; color: #24456b;">Conversa</div><div style="font-size: 16px; margin-top: 6px; color: #2a2622;">Escreva a ideia e refine o recorte.</div></div>
-          <div style="padding: 18px 20px; border-left: 1px solid rgba(26,22,16,.18); opacity: {{v.i6.o}}; transform: {{v.i6.t}};"><div class="mono" style="font-size: 12px; color: #24456b;">Link</div><div style="font-size: 16px; margin-top: 6px; color: #2a2622;">Cole uma matéria como ponto de partida.</div></div>
-          <div style="padding: 18px 20px; border-left: 1px solid rgba(26,22,16,.18); opacity: {{v.i7.o}}; transform: {{v.i7.t}};"><div class="mono" style="font-size: 12px; color: #24456b;">Radar</div><div style="font-size: 16px; margin-top: 6px; color: #2a2622;">Descubra assuntos em cobertura real.</div></div>
-        </div>
-      </div>
-
-      <!-- ▸ SCENE 2 · editorial chat -->
-      <div style="position: absolute; inset: 0; opacity: {{v.s2.o}}; transform: {{v.s2.t}}; filter: {{v.s2.f}};">
-        <div class="mono" style="position: absolute; left: 270px; top: 14px; font-size: 13px; color: #24456b;">● Refinamento editorial</div>
-        <div class="disp" style="position: absolute; left: 270px; top: 34px; font-size: 38px; letter-spacing: -.5px;">Vamos afinar o recorte antes de buscar a cobertura.</div>
-        <div style="position: absolute; left: 270px; top: 84px; width: 1000px; height: 600px; border: 1px solid rgba(26,22,16,.18); border-radius: 14px; background: #f7f3ec; overflow: hidden; box-shadow: 0 18px 48px rgba(20,18,14,.10);">
-          <div style="height: 50px; display: flex; align-items: center; gap: 12px; padding: 0 20px; border-bottom: 1px solid rgba(26,22,16,.18); background: linear-gradient(180deg, #efe7d8, #f7f3ec);">
-            <span style="width: 10px; height: 10px; border-radius: 50%; background: #e8c873; box-shadow: 0 0 0 {{v.live}}px rgba(232,200,115,.28);"></span>
-            <span class="mono" style="font-size: 12px;">Assistente editorial</span>
-            <span class="mono" style="margin-left: auto; font-size: 12px; color: #24456b;">{{v.chatState}}</span>
-          </div>
-          <div style="position: relative; height: 392px; background: #efe7d8;">
-            <div style="position: absolute; right: 24px; top: 16px; max-width: 420px; padding: 12px 16px; border-radius: 10px; background: #0a0a0a; color: #f7f3ec; opacity: {{v.b1.o}}; transform: {{v.b1.t}};"><div class="mono" style="font-size: 10px; color: #c8bfa3;">Você</div><div class="disp" style="font-size: 22px; margin-top: 4px;">Canetas emagrecedoras</div></div>
-            <div style="position: absolute; left: 24px; top: 80px; width: 660px; min-height: 60px; padding: 14px 18px; box-sizing: border-box; border-radius: 10px; border: 1px solid rgba(26,22,16,.18); background: #f7f3ec; opacity: {{v.b2.o}}; transform: {{v.b2.t}};">
-              <div class="mono" style="font-size: 10px; color: #6b665d;">Assistente editorial</div>
-              <div class="disp" style="font-size: 21px; line-height: 1.38; margin-top: 6px; min-height: 29px;">{{v.a1}}<span style="opacity: {{v.d1}}; letter-spacing: 4px; color: #6b665d;">{{v.dots}}</span></div>
-            </div>
-            <div style="position: absolute; right: 24px; top: 226px; width: 560px; padding: 12px 16px; box-sizing: border-box; border-radius: 10px; background: #0a0a0a; color: #f7f3ec; opacity: {{v.b3.o}}; transform: {{v.b3.t}};"><div class="mono" style="font-size: 10px; color: #c8bfa3;">Você</div><div class="disp" style="font-size: 21px; line-height: 1.35; margin-top: 4px;">Preços e acesso: quem pode receber pelo SUS, quando começa e o que muda pra quem paga caro hoje.</div></div>
-            <div style="position: absolute; left: 24px; top: 328px; width: 660px; padding: 12px 18px; box-sizing: border-box; border-radius: 10px; border: 1px solid rgba(26,22,16,.18); background: #f7f3ec; opacity: {{v.b4.o}}; transform: {{v.b4.t}};">
-              <div class="disp" style="font-size: 21px; line-height: 1.38; min-height: 29px;">{{v.a2}}<span style="opacity: {{v.d2}}; letter-spacing: 4px; color: #6b665d;">{{v.dots}}</span></div>
-            </div>
-          </div>
-          <div style="position: relative; height: 158px; padding: 16px 20px; box-sizing: border-box;">
-            <div style="position: relative; height: 76px; box-sizing: border-box; padding: 12px 16px; border: 1.5px solid {{v.taBorder}}; border-radius: 10px; font-size: 21px; line-height: 1.35; color: #0a0a0a; background: #f7f3ec; overflow: hidden;">
-              <span style="position: absolute; left: 16px; top: 12px; color: #a39d90; font-style: italic; opacity: {{v.taPh}};" class="disp">Escreva sua resposta…</span><span>{{v.reply}}</span><span style="display: inline-block; width: 2px; height: 24px; margin-left: 2px; vertical-align: -5px; background: #24456b; opacity: {{v.taCaret}};"></span>
-            </div>
-            <div class="mono" style="position: absolute; left: 20px; top: 110px; font-size: 12px; color: #6b665d; letter-spacing: .06em;">{{v.taCount}}/1000</div>
-            <div style="position: absolute; right: 20px; top: 102px; width: 140px; height: 44px; border-radius: 100px; background: #24456b; color: #f7f3ec; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 17px; font-weight: 700; box-shadow: {{v.sendSh}}; transform: {{v.sendT}};">Enviar →</div>
-          </div>
-        </div>
-        <div style="position: absolute; left: 270px; top: 714px; font-size: 17px; color: #2a2622; text-decoration: underline; text-underline-offset: 4px;">Trocar tema</div>
-        <div class="mono" style="position: absolute; right: 270px; top: 718px; font-size: 12px; color: #6b665d; opacity: {{v.hint}};">Continue a conversa pra liberar a busca</div>
-        <div style="position: absolute; left: 930px; top: 700px; width: 340px; height: 54px; border-radius: 100px; background: {{v.buscarBg}}; border: 1.5px solid #24456b; color: #f7f3ec; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 19px; font-weight: 700; box-shadow: {{v.buscarSh}}; opacity: {{v.bus.o}}; transform: {{v.bus.t}};">Buscar matérias agora →</div>
-      </div>
-
-      <!-- ▸ SCENE 3 · research -->
-      <div style="position: absolute; inset: 0; opacity: {{v.s3.o}}; transform: {{v.s3.t}}; filter: {{v.s3.f}};">
-        <div class="mono" style="position: absolute; left: 60px; top: 30px; font-size: 13px; color: #24456b; display: flex; align-items: center; gap: 10px;"><span style="width: 16px; height: 16px; border-radius: 50%; border: 2px solid #24456b; border-top-color: transparent; transform: rotate({{v.spin}}deg);"></span>Buscando cobertura</div>
-        <div class="disp" style="position: absolute; left: 60px; top: 54px; font-size: 46px; letter-spacing: -.8px; opacity: {{v.r0.o}}; transform: {{v.r0.t}}; filter: {{v.r0.f}};">A redação está cruzando fontes sobre o seu recorte.</div>
-        <div style="position: absolute; left: 60px; top: 122px; font-size: 19px; color: #2a2622; opacity: {{v.r1.o}};"><b>Recorte:</b> o que muda no acesso às canetas emagrecedoras com a oferta pelo SUS.</div>
-        <div style="position: absolute; left: 60px; top: 170px; width: 1420px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px;">
-          <div style="padding: 16px 22px; border-radius: 14px; background: #efe7d8; border: 1px solid rgba(26,22,16,.18); opacity: {{v.r2.o}}; transform: {{v.r2.t}};"><div class="mono" style="font-size: 12px; color: #6b665d;">Matérias avaliadas para sua pesquisa</div><div class="mono" style="font-size: 44px; letter-spacing: 0; margin-top: 4px; color: #0a0a0a;">{{v.n1}}</div></div>
-          <div style="padding: 16px 22px; border-radius: 14px; background: #efe7d8; border: 1px solid rgba(26,22,16,.18); opacity: {{v.r3.o}}; transform: {{v.r3.t}};"><div class="mono" style="font-size: 12px; color: #6b665d;">Selecionadas para os recortes</div><div class="mono" style="font-size: 44px; letter-spacing: 0; margin-top: 4px; color: #0a0a0a;">{{v.n2}}</div></div>
-          <div style="padding: 16px 22px; border-radius: 14px; background: #efe7d8; border: 1px solid rgba(26,22,16,.18); opacity: {{v.r4.o}}; transform: {{v.r4.t}};"><div class="mono" style="font-size: 12px; color: #6b665d;">Fontes deste recorte</div><div class="mono" style="font-size: 44px; letter-spacing: 0; margin-top: 4px; color: #24456b;">{{v.n3}}</div></div>
-        </div>
-        <div style="position: absolute; left: 60px; top: 300px; width: 1420px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px;">
-          <div style="position: relative; height: 200px; padding: 20px 22px; box-sizing: border-box; border: 2px solid #0a0a0a; border-radius: 14px; background: #f7f3ec; box-shadow: 4px 4px 0 #0a0a0a; overflow: hidden; opacity: {{v.src0.o}}; transform: {{v.src0.t}}; filter: {{v.src0.f}};"><div class="mono" style="font-size: 12px; color: #24456b;">Folha de S.Paulo · 18/09</div><div class="disp" style="font-size: 25px; line-height: 1.22; margin-top: 10px;">Governo avalia levar ao SUS caneta emagrecedora prometida por Lula, mas oferta não seria imediata</div><div style="position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(232,200,115,.45), transparent); transform: translateX({{v.scan0}}%);"></div><div class="mono" style="position: absolute; right: 14px; top: 14px; font-size: 11px; padding: 4px 8px; border-radius: 100px; background: #24456b; color: #f7f3ec; letter-spacing: .1em; opacity: {{v.ok0.o}}; transform: {{v.ok0.t}};">✓ Lida</div></div>
-          <div style="position: relative; height: 200px; padding: 20px 22px; box-sizing: border-box; border: 2px solid #0a0a0a; border-radius: 14px; background: #f7f3ec; box-shadow: 4px 4px 0 #0a0a0a; overflow: hidden; opacity: {{v.src1.o}}; transform: {{v.src1.t}}; filter: {{v.src1.f}};"><div class="mono" style="font-size: 12px; color: #24456b;">Gazeta do Povo · 24/09</div><div class="disp" style="font-size: 25px; line-height: 1.22; margin-top: 10px;">Lula promete canetas emagrecedoras, mas não sabe quanto custará, quem vai receber nem quando</div><div style="position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(232,200,115,.45), transparent); transform: translateX({{v.scan1}}%);"></div><div class="mono" style="position: absolute; right: 14px; top: 14px; font-size: 11px; padding: 4px 8px; border-radius: 100px; background: #24456b; color: #f7f3ec; letter-spacing: .1em; opacity: {{v.ok1.o}}; transform: {{v.ok1.t}};">✓ Lida</div></div>
-          <div style="position: relative; height: 200px; padding: 20px 22px; box-sizing: border-box; border: 2px solid #0a0a0a; border-radius: 14px; background: #f7f3ec; box-shadow: 4px 4px 0 #0a0a0a; overflow: hidden; opacity: {{v.src2.o}}; transform: {{v.src2.t}}; filter: {{v.src2.f}};"><div class="mono" style="font-size: 12px; color: #24456b;">ND Mais · 18/09</div><div class="disp" style="font-size: 25px; line-height: 1.22; margin-top: 10px;">SUS confirma distribuição gratuita de canetas emagrecedoras; entenda como será a oferta</div><div style="position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(232,200,115,.45), transparent); transform: translateX({{v.scan2}}%);"></div><div class="mono" style="position: absolute; right: 14px; top: 14px; font-size: 11px; padding: 4px 8px; border-radius: 100px; background: #24456b; color: #f7f3ec; letter-spacing: .1em; opacity: {{v.ok2.o}}; transform: {{v.ok2.t}};">✓ Lida</div></div>
-          <div style="position: relative; height: 200px; padding: 20px 22px; box-sizing: border-box; border: 2px solid #0a0a0a; border-radius: 14px; background: #f7f3ec; box-shadow: 4px 4px 0 #0a0a0a; overflow: hidden; opacity: {{v.src3.o}}; transform: {{v.src3.t}}; filter: {{v.src3.f}};"><div class="mono" style="font-size: 12px; color: #24456b;">A Tarde · 18/09</div><div class="disp" style="font-size: 25px; line-height: 1.22; margin-top: 10px;">Canetas emagrecedoras de graça no SUS ainda dependem de três etapas; entenda</div><div style="position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(232,200,115,.45), transparent); transform: translateX({{v.scan3}}%);"></div><div class="mono" style="position: absolute; right: 14px; top: 14px; font-size: 11px; padding: 4px 8px; border-radius: 100px; background: #24456b; color: #f7f3ec; letter-spacing: .1em; opacity: {{v.ok3.o}}; transform: {{v.ok3.t}};">✓ Lida</div></div>
-          <div style="position: relative; height: 200px; padding: 20px 22px; box-sizing: border-box; border: 2px solid #0a0a0a; border-radius: 14px; background: #f7f3ec; box-shadow: 4px 4px 0 #0a0a0a; overflow: hidden; opacity: {{v.src4.o}}; transform: {{v.src4.t}}; filter: {{v.src4.f}};"><div class="mono" style="font-size: 12px; color: #24456b;">Estado de Minas · 24/09</div><div class="disp" style="font-size: 25px; line-height: 1.22; margin-top: 10px;">Caneta emagrecedora no SUS: entenda como o preço pode cair na farmácia</div><div style="position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(232,200,115,.45), transparent); transform: translateX({{v.scan4}}%);"></div><div class="mono" style="position: absolute; right: 14px; top: 14px; font-size: 11px; padding: 4px 8px; border-radius: 100px; background: #24456b; color: #f7f3ec; letter-spacing: .1em; opacity: {{v.ok4.o}}; transform: {{v.ok4.t}};">✓ Lida</div></div>
-          <div style="position: relative; height: 200px; padding: 20px 22px; box-sizing: border-box; border: 2px solid #0a0a0a; border-radius: 14px; background: #f7f3ec; box-shadow: 4px 4px 0 #0a0a0a; overflow: hidden; opacity: {{v.src5.o}}; transform: {{v.src5.t}}; filter: {{v.src5.f}};"><div class="mono" style="font-size: 12px; color: #24456b;">DCM · 18/09</div><div class="disp" style="font-size: 25px; line-height: 1.22; margin-top: 10px;">Lula anuncia canetas emagrecedoras no SUS, mas medida tem 3 etapas</div><div style="position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(232,200,115,.45), transparent); transform: translateX({{v.scan5}}%);"></div><div class="mono" style="position: absolute; right: 14px; top: 14px; font-size: 11px; padding: 4px 8px; border-radius: 100px; background: #24456b; color: #f7f3ec; letter-spacing: .1em; opacity: {{v.ok5.o}}; transform: {{v.ok5.t}};">✓ Lida</div></div>
-        </div>
-      </div>
-
-      <!-- ▸ SCENE 4 · angles + format -->
-      <div style="position: absolute; inset: 0; opacity: {{v.s4.o}}; transform: {{v.s4.t}}; filter: {{v.s4.f}};">
-        <div class="mono" style="position: absolute; left: 40px; top: 30px; font-size: 13px; color: #24456b;">● Recomendado pra esse tema · 13 matérias</div>
-        <div style="position: absolute; left: 40px; top: 70px; width: 820px; height: 260px; box-sizing: border-box; padding: 20px 24px; border-radius: 14px; background: #f7f3ec; border: {{v.ac0.bd}}; box-shadow: {{v.ac0.sh}}; opacity: {{v.ac0.o}}; transform: {{v.ac0.t}};">
-          <div style="display: flex; align-items: center; gap: 10px;"><span class="mono" style="font-size: 11px; padding: 4px 9px; border-radius: 100px; background: #e8c873; color: #0a0a0a; letter-spacing: .12em;">Recomendado</span><span class="mono" style="font-size: 12px; color: #6b665d;">13 matérias</span></div>
-          <div class="disp" style="font-size: 36px; margin-top: 10px; letter-spacing: -.4px;">A promessa e sua execução</div>
-          <div style="font-size: 17px; line-height: 1.4; color: #2a2622; margin-top: 6px; max-width: 700px;">O contraste entre o anúncio de distribuição gratuita e as etapas que ainda precisam ser cumpridas.</div>
-          <div style="margin-top: 14px; padding: 10px 14px; border-left: 3px solid #24456b; background: #efe7d8; border-radius: 0 8px 8px 0; opacity: {{v.quote.o}}; transform: {{v.quote.t}};"><span class="mono" style="font-size: 10px; color: #24456b;">Trecho que apoia · Folha de S.Paulo</span><div class="disp" style="font-size: 17px; font-style: italic; margin-top: 3px;">“O Ministério da Saúde avalia pedir o uso de canetas emagrecedoras no SUS para a Conitec.”</div></div>
-          <div style="position: absolute; right: 18px; top: 18px; width: 38px; height: 38px; border-radius: 50%; background: #24456b; color: #f7f3ec; display: flex; align-items: center; justify-content: center; font-size: 22px; opacity: {{v.chk0.o}}; transform: {{v.chk0.t}};">✓</div>
-        </div>
-        <div style="position: absolute; left: 40px; top: 350px; width: 820px; height: 120px; box-sizing: border-box; padding: 18px 24px; border-radius: 14px; background: {{v.ac1.bg}}; border: {{v.ac1.bd}}; box-shadow: {{v.ac1.sh}}; opacity: {{v.ac1.o}}; transform: {{v.ac1.t}};"><span class="mono" style="font-size: 11px; color: #6b665d;">Alternativa · 7 matérias</span><div class="disp" style="font-size: 30px; margin-top: 6px;">Próximos passos e prazos</div><div style="font-size: 16px; color: #2a2622; margin-top: 2px;">O cronograma da Conitec, a decisão do Ministério e o protocolo clínico.</div></div>
-        <div style="position: absolute; left: 40px; top: 490px; width: 820px; height: 120px; box-sizing: border-box; padding: 18px 24px; border-radius: 14px; background: {{v.ac2.bg}}; border: {{v.ac2.bd}}; box-shadow: {{v.ac2.sh}}; opacity: {{v.ac2.o}}; transform: {{v.ac2.t}};"><span class="mono" style="font-size: 11px; color: #6b665d;">Alternativa · 4 matérias</span><div class="disp" style="font-size: 30px; margin-top: 6px;">O que já mudou no mercado</div><div style="font-size: 16px; color: #2a2622; margin-top: 2px;">Fim da patente, genéricos e o preço para quem paga hoje.</div></div>
-        <div style="position: absolute; left: 40px; top: 640px; font-size: 15px; color: #6b665d; opacity: {{v.ac2.o}};">Uma mesma matéria pode sustentar mais de um ângulo.</div>
-
-        <div style="position: absolute; left: 900px; top: 26px; width: 600px; opacity: {{v.fp.o}}; transform: {{v.fp.t}};">
-          <div class="mono" style="font-size: 13px; color: #24456b;">● Como você quer entregar</div>
-          <div class="mono" style="font-size: 11px; color: #6b665d; margin-top: 20px;">Formato do post</div>
-          <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 20px; margin-top: 10px;">
-            <div style="height: 70px; box-sizing: border-box; padding: 0 18px; display: flex; align-items: center; border-radius: 14px; border: 1.5px solid #cfc6b3; background: #f7f3ec; font-size: 18px;">Post único Instagram</div>
-            <div style="height: 70px; box-sizing: border-box; padding: 0 18px; display: flex; align-items: center; justify-content: space-between; border-radius: 14px; border: {{v.f1.bd}}; background: {{v.f1.bg}}; box-shadow: {{v.f1.sh}}; transform: {{v.f1.t}}; font-size: 18px; font-weight: 600;">Carrossel Instagram<span style="font-size: 18px; color: #24456b; opacity: {{v.f1.c}};">✓</span></div>
-            <div style="height: 70px; box-sizing: border-box; padding: 0 18px; display: flex; align-items: center; border-radius: 14px; border: 1.5px solid #cfc6b3; background: #f7f3ec; font-size: 18px;">Post longo LinkedIn</div>
-            <div style="height: 70px; box-sizing: border-box; padding: 0 18px; display: flex; align-items: center; border-radius: 14px; border: 1.5px solid #cfc6b3; background: #f7f3ec; font-size: 18px;">Thread no X</div>
-          </div>
-          <div class="mono" style="font-size: 11px; color: #6b665d; margin-top: 22px;">Estilo visual</div>
-          <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 15px; margin-top: 10px;">
-            <div style="height: 56px; display: flex; align-items: center; padding: 0 16px; border-radius: 12px; border: 1.5px solid #cfc6b3; font-size: 17px;">Editorial</div>
-            <div style="height: 56px; display: flex; align-items: center; padding: 0 16px; border-radius: 12px; border: 1.5px solid #cfc6b3; font-size: 17px;">Fotográfico</div>
-            <div style="height: 56px; display: flex; align-items: center; padding: 0 16px; border-radius: 12px; border: 1.5px solid #cfc6b3; font-size: 17px;">Tipográfico</div>
-            <div style="height: 56px; display: flex; align-items: center; padding: 0 16px; border-radius: 12px; border: 1.5px solid #cfc6b3; font-size: 17px;">Infográfico</div>
-            <div style="height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; border-radius: 12px; border: {{v.f2.bd}}; background: {{v.f2.bg}}; box-shadow: {{v.f2.sh}}; transform: {{v.f2.t}}; font-size: 17px; font-weight: 600;">Ilustração<span style="color: #24456b; opacity: {{v.f2.c}};">✓</span></div>
-            <div style="height: 56px; display: flex; align-items: center; padding: 0 16px; border-radius: 12px; border: 1.5px solid #cfc6b3; font-size: 17px;">Cinemático</div>
-          </div>
-          <div class="mono" style="font-size: 11px; color: #6b665d; margin-top: 22px;">Tom da publicação</div>
-          <div style="display: flex; gap: 12px; margin-top: 10px;">
-            <div style="height: 44px; display: flex; align-items: center; padding: 0 16px; border-radius: 100px; border: 1.5px solid #cfc6b3; font-size: 16px;">Jornalístico</div>
-            <div style="height: 44px; display: flex; align-items: center; padding: 0 16px; border-radius: 100px; border: 1.5px solid #cfc6b3; font-size: 16px;">Analítico</div>
-            <div style="height: 44px; display: flex; align-items: center; padding: 0 16px; border-radius: 100px; border: 1.5px solid {{v.f3.bdc}}; background: {{v.f3.bg}}; color: {{v.f3.fg}}; transform: {{v.f3.t}}; font-size: 16px; font-weight: 600;">Explicador</div>
-            <div style="height: 44px; display: flex; align-items: center; padding: 0 16px; border-radius: 100px; border: 1.5px solid #cfc6b3; font-size: 16px;">Investigativo</div>
-          </div>
-        </div>
-        <div style="position: absolute; left: 900px; top: 690px; width: 600px; height: 80px; border-radius: 100px; background: {{v.genBg}}; border: 1.5px solid #24456b; color: #f7f3ec; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; box-shadow: {{v.genSh}}; opacity: {{v.fp.o}}; transform: {{v.genT}};">Gerar minha versão · 3 créditos</div>
-      </div>
-
-      <!-- ▸ SCENE 5 · generation -->
-      <div style="position: absolute; inset: 0; opacity: {{v.s5.o}}; transform: {{v.s5.t}}; filter: {{v.s5.f}};">
-        <div class="mono" style="position: absolute; left: 60px; top: 26px; font-size: 13px; color: #24456b;">● Geração ao vivo · pedido d74f88</div>
-        <div class="disp" style="position: absolute; left: 60px; top: 50px; font-size: 44px; letter-spacing: -.6px;">A redação está trabalhando sua pauta.</div>
-        <div style="position: absolute; left: 60px; top: 140px; width: 560px; display: flex; flex-direction: column; gap: 14px;">
-          <div style="display: flex; align-items: center; gap: 16px; font-size: 21px; color: {{v.g0.c}};"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15" fill="{{v.g0.fill}}" stroke="#24456b" stroke-width="2"></circle><path d="M10 17.5 L15 22 L24 12.5" fill="none" stroke="#f7f3ec" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="24" stroke-dashoffset="{{v.g0.dash}}"></path></svg>Recuperando fontes do recorte</div>
-          <div style="display: flex; align-items: center; gap: 16px; font-size: 21px; color: {{v.g1.c}};"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15" fill="{{v.g1.fill}}" stroke="#24456b" stroke-width="2"></circle><path d="M10 17.5 L15 22 L24 12.5" fill="none" stroke="#f7f3ec" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="24" stroke-dashoffset="{{v.g1.dash}}"></path></svg>Lendo a cobertura · cruzando ângulos</div>
-          <div style="display: flex; align-items: center; gap: 16px; font-size: 21px; color: {{v.g2.c}};"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15" fill="{{v.g2.fill}}" stroke="#24456b" stroke-width="2"></circle><path d="M10 17.5 L15 22 L24 12.5" fill="none" stroke="#f7f3ec" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="24" stroke-dashoffset="{{v.g2.dash}}"></path></svg>Fechando o ângulo recomendado</div>
-          <div style="display: flex; align-items: center; gap: 16px; font-size: 21px; color: {{v.g3.c}};"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15" fill="{{v.g3.fill}}" stroke="#24456b" stroke-width="2"></circle><path d="M10 17.5 L15 22 L24 12.5" fill="none" stroke="#f7f3ec" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="24" stroke-dashoffset="{{v.g3.dash}}"></path></svg>Escrevendo o texto da pauta</div>
-          <div style="display: flex; align-items: center; gap: 16px; font-size: 21px; color: {{v.g4.c}};"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15" fill="{{v.g4.fill}}" stroke="#24456b" stroke-width="2"></circle><path d="M10 17.5 L15 22 L24 12.5" fill="none" stroke="#f7f3ec" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="24" stroke-dashoffset="{{v.g4.dash}}"></path></svg>Direção visual</div>
-          <div style="display: flex; align-items: center; gap: 16px; font-size: 21px; color: {{v.g5.c}};"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15" fill="{{v.g5.fill}}" stroke="#24456b" stroke-width="2"></circle><path d="M10 17.5 L15 22 L24 12.5" fill="none" stroke="#f7f3ec" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="24" stroke-dashoffset="{{v.g5.dash}}"></path></svg>Gerando as artes</div>
-          <div style="display: flex; align-items: center; gap: 16px; font-size: 21px; color: {{v.g6.c}};"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15" fill="{{v.g6.fill}}" stroke="#24456b" stroke-width="2"></circle><path d="M10 17.5 L15 22 L24 12.5" fill="none" stroke="#f7f3ec" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="24" stroke-dashoffset="{{v.g6.dash}}"></path></svg>Documento de validação</div>
-        </div>
-        <div style="position: absolute; left: 680px; top: 140px; width: 800px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px;">
-          <div style="position: relative; height: 225px; border-radius: 10px; overflow: hidden; border: 1.5px solid #0a0a0a; background: #e6dcc7;"><div style="position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, rgba(247,243,236,.7) 50%, transparent 70%); transform: translateX({{v.shim}}%);"></div><img src="/_blob/e39ece9c429165ffc8e2098f4684f250" alt="Slide 1 gerado" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: {{v.tl0.o}}; filter: {{v.tl0.f}}; clip-path: {{v.tl0.c}};"></div>
-          <div style="position: relative; height: 225px; border-radius: 10px; overflow: hidden; border: 1.5px solid #0a0a0a; background: #e6dcc7;"><div style="position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, rgba(247,243,236,.7) 50%, transparent 70%); transform: translateX({{v.shim}}%);"></div><img src="/_blob/5bc807e55cc5f87b740df68c7d3d8df7" alt="Slide 2 gerado" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: {{v.tl1.o}}; filter: {{v.tl1.f}}; clip-path: {{v.tl1.c}};"></div>
-          <div style="position: relative; height: 225px; border-radius: 10px; overflow: hidden; border: 1.5px solid #0a0a0a; background: #e6dcc7;"><div style="position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, rgba(247,243,236,.7) 50%, transparent 70%); transform: translateX({{v.shim}}%);"></div><img src="/_blob/4fdd48e9a24b959113fba7241f6c7f68" alt="Slide 3 gerado" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: {{v.tl2.o}}; filter: {{v.tl2.f}}; clip-path: {{v.tl2.c}};"></div>
-          <div style="position: relative; height: 225px; border-radius: 10px; overflow: hidden; border: 1.5px solid #0a0a0a; background: #e6dcc7;"><div style="position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, rgba(247,243,236,.7) 50%, transparent 70%); transform: translateX({{v.shim}}%);"></div><img src="/_blob/a4555c6454d8d9d0c3d705e155a022f6" alt="Slide 4 gerado" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: {{v.tl3.o}}; filter: {{v.tl3.f}}; clip-path: {{v.tl3.c}};"></div>
-        </div>
-        <div class="mono" style="position: absolute; left: 680px; top: 398px; font-size: 12px; color: #6b665d;">Texto da pauta · em redação</div>
-        <div class="disp" style="position: absolute; left: 680px; top: 426px; width: 800px; font-size: 25px; line-height: 1.42;">{{v.cap}}<span style="display: inline-block; width: 2px; height: 26px; margin-left: 2px; vertical-align: -4px; background: #24456b; opacity: {{v.capCaret}};"></span></div>
-        <div style="position: absolute; left: 60px; right: 60px; top: 724px; height: 8px; border-radius: 100px; background: #e6dcc7; overflow: hidden;"><div style="height: 8px; width: {{v.prog}}%; background: #24456b; border-radius: 100px;"></div></div>
-        <div class="mono" style="position: absolute; left: 60px; top: 744px; font-size: 12px; color: #6b665d;">Escrevendo · desenhando · checando</div>
-      </div>
-
-      <!-- ▸ SCENE 6 · validation document -->
-      <div style="position: absolute; inset: 0; opacity: {{v.s6.o}}; transform: {{v.s6.t}}; filter: {{v.s6.f}};">
-        <div class="mono" style="position: absolute; left: 60px; top: 26px; font-size: 13px; color: #24456b;">● Documento de validação · como o post foi montado</div>
-        <div class="disp" style="position: absolute; left: 60px; top: 50px; font-size: 44px; letter-spacing: -.6px;">Cada fato ligado à sua fonte.</div>
-        <div class="mono" style="position: absolute; left: 60px; top: 124px; font-size: 11px; color: #6b665d;">Sua entrega · 4 slides</div>
-        <div style="position: absolute; left: 60px; top: 150px; display: flex; gap: 12px; opacity: {{v.th}};">
-          <img src="/_blob/e39ece9c429165ffc8e2098f4684f250" alt="Slide 1" style="width: 150px; height: 187px; object-fit: cover; border-radius: 10px; border: 2px solid #0a0a0a; box-shadow: 4px 4px 0 #0a0a0a;">
-          <img src="/_blob/5bc807e55cc5f87b740df68c7d3d8df7" alt="Slide 2" style="width: 150px; height: 187px; object-fit: cover; border-radius: 10px; border: 2px solid #0a0a0a; box-shadow: 4px 4px 0 #0a0a0a;">
-          <img src="/_blob/4fdd48e9a24b959113fba7241f6c7f68" alt="Slide 3" style="width: 150px; height: 187px; object-fit: cover; border-radius: 10px; border: 2px solid #0a0a0a; box-shadow: 4px 4px 0 #0a0a0a;">
-          <img src="/_blob/a4555c6454d8d9d0c3d705e155a022f6" alt="Slide 4" style="width: 150px; height: 187px; object-fit: cover; border-radius: 10px; border: 2px solid #0a0a0a; box-shadow: 4px 4px 0 #0a0a0a;">
-        </div>
-        <div class="mono" style="position: absolute; left: 60px; top: 360px; font-size: 11px; color: #6b665d;">Legenda pra publicar</div>
-        <div style="position: absolute; left: 60px; top: 386px; width: 680px; box-sizing: border-box; padding: 20px 24px; border-left: 3px solid #a8453a; background: #ffffff; border-radius: 0 10px 10px 0; font-family: Newsreader, Georgia, serif; font-size: 23px; line-height: 1.45;">Em setembro de 2026, o governo confirmou a intenção de distribuir as canetas emagrecedoras pelo SUS, mas sem data de início: a oferta não será imediata.<br><br>Segundo a <span style="background: {{v.hlA}}; border-radius: 4px; padding: 0 2px;">Folha de S.Paulo</span>, a <span style="background: {{v.hlB}}; border-radius: 4px; padding: 0 2px;">Gazeta do Povo</span> e <span style="background: {{v.hlC}}; border-radius: 4px; padding: 0 2px;">A Tarde</span>, a oferta depende da Conitec, de decisão do Ministério da Saúde e de protocolo e financiamento.</div>
-        <div class="mono" style="position: absolute; left: 800px; top: 124px; font-size: 11px; color: #6b665d;">Citações na legenda (6)</div>
-        <div style="position: absolute; left: 800px; top: 150px; width: 680px; display: flex; flex-direction: column; gap: 12px;">
-          <div style="position: relative; padding: 14px 18px; border-radius: 12px; border: 1px solid rgba(26,22,16,.18); background: #f7f3ec; overflow: hidden; opacity: {{v.ct0.o}}; transform: {{v.ct0.t}};"><div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{v.ct0.w}}%; background: rgba(232,200,115,.55);"></div><div style="position: relative; font-size: 19px; line-height: 1.3;"><b class="mono" style="letter-spacing: 0; color: #24456b;">[2]</b> Governo avalia levar ao SUS caneta emagrecedora prometida por Lula</div><div class="mono" style="position: relative; font-size: 12px; color: #6b665d; margin-top: 6px;">Folha de S.Paulo · 18/09/2026 · ver matéria ↗</div></div>
-          <div style="position: relative; padding: 14px 18px; border-radius: 12px; border: 1px solid rgba(26,22,16,.18); background: #f7f3ec; overflow: hidden; opacity: {{v.ct1.o}}; transform: {{v.ct1.t}};"><div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{v.ct1.w}}%; background: rgba(232,200,115,.55);"></div><div style="position: relative; font-size: 19px; line-height: 1.3;"><b class="mono" style="letter-spacing: 0; color: #24456b;">[5]</b> Lula promete canetas emagrecedoras, mas não sabe quanto custará</div><div class="mono" style="position: relative; font-size: 12px; color: #6b665d; margin-top: 6px;">Gazeta do Povo · 24/09/2026 · ver matéria ↗</div></div>
-          <div style="position: relative; padding: 14px 18px; border-radius: 12px; border: 1px solid rgba(26,22,16,.18); background: #f7f3ec; overflow: hidden; opacity: {{v.ct2.o}}; transform: {{v.ct2.t}};"><div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{v.ct2.w}}%; background: rgba(232,200,115,.55);"></div><div style="position: relative; font-size: 19px; line-height: 1.3;"><b class="mono" style="letter-spacing: 0; color: #24456b;">[3]</b> Canetas de graça no SUS ainda dependem de três etapas</div><div class="mono" style="position: relative; font-size: 12px; color: #6b665d; margin-top: 6px;">A Tarde · 18/09/2026 · ver matéria ↗</div></div>
-          <div style="position: relative; padding: 14px 18px; border-radius: 12px; border: 1px solid rgba(26,22,16,.18); background: #f7f3ec; overflow: hidden; opacity: {{v.ct3.o}}; transform: {{v.ct3.t}};"><div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{v.ct3.w}}%; background: rgba(232,200,115,.55);"></div><div style="position: relative; font-size: 19px; line-height: 1.3;"><b class="mono" style="letter-spacing: 0; color: #24456b;">[7]</b> SUS confirma distribuição gratuita de canetas emagrecedoras</div><div class="mono" style="position: relative; font-size: 12px; color: #6b665d; margin-top: 6px;">ND Mais · 18/09/2026 · ver matéria ↗</div></div>
-          <div style="position: relative; padding: 14px 18px; border-radius: 12px; border: 1px solid rgba(26,22,16,.18); background: #f7f3ec; overflow: hidden; opacity: {{v.ct4.o}}; transform: {{v.ct4.t}};"><div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{v.ct4.w}}%; background: rgba(232,200,115,.55);"></div><div style="position: relative; font-size: 19px; line-height: 1.3;"><b class="mono" style="letter-spacing: 0; color: #24456b;">[4]</b> Lula anuncia canetas no SUS, mas medida tem 3 etapas</div><div class="mono" style="position: relative; font-size: 12px; color: #6b665d; margin-top: 6px;">DCM · 18/09/2026 · ver matéria ↗</div></div>
-          <div style="position: relative; padding: 14px 18px; border-radius: 12px; border: 1px solid rgba(26,22,16,.18); background: #f7f3ec; overflow: hidden; opacity: {{v.ct5.o}}; transform: {{v.ct5.t}};"><div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{v.ct5.w}}%; background: rgba(232,200,115,.55);"></div><div style="position: relative; font-size: 19px; line-height: 1.3;"><b class="mono" style="letter-spacing: 0; color: #24456b;">[1]</b> Caneta emagrecedora no SUS: como o preço pode cair na farmácia</div><div class="mono" style="position: relative; font-size: 12px; color: #6b665d; margin-top: 6px;">Estado de Minas · 24/09/2026 · ver matéria ↗</div></div>
-        </div>
-        <div class="hand" style="position: absolute; left: 1080px; top: 728px; font-size: 46px; font-weight: 700; color: #a8453a; transform: rotate(-4deg); opacity: {{v.note.o}};"><span style="display: inline-block; clip-path: {{v.note.c}};">cada fato → sua fonte ✓</span></div>
-      </div>
-    </div>
-
-    <!-- cursor (window coords) -->
-    <div style="position: absolute; left: {{v.rx}}px; top: {{v.ry}}px; width: 72px; height: 72px; border-radius: 50%; border: 3px solid #24456b; background: rgba(232,200,115,.35); box-sizing: border-box; opacity: {{v.rO}}; transform: scale({{v.rS}});"></div>
-    <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true" style="position: absolute; left: {{v.cx}}px; top: {{v.cy}}px; opacity: {{v.cO}}; transform-origin: 3px 2px; transform: scale({{v.cS}}); filter: drop-shadow(0 4px 8px rgba(0,0,0,.3));"><path d="M3 2 L3 19 L7.6 14.9 L10.6 21.4 L13.4 20.1 L10.5 13.8 L16.8 13.8 Z" fill="#0a0a0a" stroke="#ffffff" stroke-width="1.6" stroke-linejoin="round"></path></svg>
+    <div style="position: absolute; left: 480px; top: 474px; width: 440px; height: 84px; border-radius: 100px; background: #24456b; color: #f7f3ec; display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 27px; font-weight: 700; box-shadow: {{v.b3.sh}}; transform: {{v.b3.t}};">Criar minha publicação →</div>
+    <div style="position: absolute; left: 700px; top: 516px; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; border: 3px solid #e8c873; opacity: {{v.b3r.o}}; transform: scale({{v.b3r.s}});"></div>
+    <svg width="54" height="60" viewBox="0 0 34 38" aria-hidden="true" style="position: absolute; left: {{v.h3.x}}px; top: {{v.h3.y}}px; opacity: {{v.h3.o}}; transform-origin: 16px 2px; transform: scale({{v.h3.s}}); filter: drop-shadow(0 8px 10px rgba(0,0,0,.25));"><path d="M14 4.5c0-1.4 1.1-2.5 2.5-2.5S19 3.1 19 4.5V15l.9-.3c1.2-.4 2.5.2 2.9 1.4l.1.3 1-.2c1.3-.2 2.5.6 2.8 1.9l.1.4.7-.1c1.4-.2 2.6.8 2.7 2.2l.3 5.6c.2 3.4-1.4 6.6-4.2 8.5l-.6.4c-1 .7-2.2 1-3.4 1h-4.8c-2 0-3.9-1-5-2.7l-5-7.5c-.8-1.2-.5-2.8.7-3.6 1.1-.7 2.5-.5 3.3.5L14 22V4.5z" fill="#ffffff" stroke="#0a0a0a" stroke-width="1.8" stroke-linejoin="round"></path></svg>
   </div>
 
-  <!-- ░ DROP · the four real slides burst out -->
-  <div style="position: absolute; inset: 0; pointer-events: none; opacity: {{v.dim}}; background: radial-gradient(80% 70% at 50% 55%, rgba(247,243,236,.55), rgba(247,243,236,.92));"></div>
-  <div class="disp" style="position: absolute; left: 0; right: 0; top: 64px; text-align: center; font-size: 92px; letter-spacing: -2px; opacity: {{v.dh.o}}; transform: {{v.dh.t}}; filter: {{v.dh.f}};">Carrossel pronto para <span style="font-style: italic; color: #24456b;">publicar.</span></div>
-  <div class="mono" style="position: absolute; left: 0; right: 0; top: 184px; text-align: center; font-size: 22px; color: #24456b; opacity: {{v.dt.o}}; transform: {{v.dt.t}};">Arte · legenda · fontes · validação</div>
-  <div style="position: absolute; left: {{v.p0.x}}px; top: {{v.p0.y}}px; width: {{v.p0.s}}px; height: {{v.p0.s}}px; background: {{v.p0.c}}; border-radius: 2px; opacity: {{v.p0.o}}; transform: rotate({{v.p0.r}}deg);"></div>
-  <div style="position: absolute; left: {{v.p1.x}}px; top: {{v.p1.y}}px; width: {{v.p1.s}}px; height: {{v.p1.s}}px; background: {{v.p1.c}}; border-radius: 2px; opacity: {{v.p1.o}}; transform: rotate({{v.p1.r}}deg);"></div>
-  <div style="position: absolute; left: {{v.p2.x}}px; top: {{v.p2.y}}px; width: {{v.p2.s}}px; height: {{v.p2.s}}px; background: {{v.p2.c}}; border-radius: 2px; opacity: {{v.p2.o}}; transform: rotate({{v.p2.r}}deg);"></div>
-  <div style="position: absolute; left: {{v.p3.x}}px; top: {{v.p3.y}}px; width: {{v.p3.s}}px; height: {{v.p3.s}}px; background: {{v.p3.c}}; border-radius: 2px; opacity: {{v.p3.o}}; transform: rotate({{v.p3.r}}deg);"></div>
-  <div style="position: absolute; left: {{v.p4.x}}px; top: {{v.p4.y}}px; width: {{v.p4.s}}px; height: {{v.p4.s}}px; background: {{v.p4.c}}; border-radius: 2px; opacity: {{v.p4.o}}; transform: rotate({{v.p4.r}}deg);"></div>
-  <div style="position: absolute; left: {{v.p5.x}}px; top: {{v.p5.y}}px; width: {{v.p5.s}}px; height: {{v.p5.s}}px; background: {{v.p5.c}}; border-radius: 2px; opacity: {{v.p5.o}}; transform: rotate({{v.p5.r}}deg);"></div>
-  <div style="position: absolute; left: {{v.p6.x}}px; top: {{v.p6.y}}px; width: {{v.p6.s}}px; height: {{v.p6.s}}px; background: {{v.p6.c}}; border-radius: 2px; opacity: {{v.p6.o}}; transform: rotate({{v.p6.r}}deg);"></div>
-  <div style="position: absolute; left: {{v.p7.x}}px; top: {{v.p7.y}}px; width: {{v.p7.s}}px; height: {{v.p7.s}}px; background: {{v.p7.c}}; border-radius: 2px; opacity: {{v.p7.o}}; transform: rotate({{v.p7.r}}deg);"></div>
-  <div style="position: absolute; left: {{v.p8.x}}px; top: {{v.p8.y}}px; width: {{v.p8.s}}px; height: {{v.p8.s}}px; background: {{v.p8.c}}; border-radius: 2px; opacity: {{v.p8.o}}; transform: rotate({{v.p8.r}}deg);"></div>
-  <div style="position: absolute; left: {{v.p9.x}}px; top: {{v.p9.y}}px; width: {{v.p9.s}}px; height: {{v.p9.s}}px; background: {{v.p9.c}}; border-radius: 2px; opacity: {{v.p9.o}}; transform: rotate({{v.p9.r}}deg);"></div>
-  <div style="position: absolute; left: {{v.p10.x}}px; top: {{v.p10.y}}px; width: {{v.p10.s}}px; height: {{v.p10.s}}px; background: {{v.p10.c}}; border-radius: 2px; opacity: {{v.p10.o}}; transform: rotate({{v.p10.r}}deg);"></div>
-  <div style="position: absolute; left: {{v.p11.x}}px; top: {{v.p11.y}}px; width: {{v.p11.s}}px; height: {{v.p11.s}}px; background: {{v.p11.c}}; border-radius: 2px; opacity: {{v.p11.o}}; transform: rotate({{v.p11.r}}deg);"></div>
-  <div style="position: absolute; left: {{v.p12.x}}px; top: {{v.p12.y}}px; width: {{v.p12.s}}px; height: {{v.p12.s}}px; background: {{v.p12.c}}; border-radius: 2px; opacity: {{v.p12.o}}; transform: rotate({{v.p12.r}}deg);"></div>
-  <div style="position: absolute; left: {{v.p13.x}}px; top: {{v.p13.y}}px; width: {{v.p13.s}}px; height: {{v.p13.s}}px; background: {{v.p13.c}}; border-radius: 2px; opacity: {{v.p13.o}}; transform: rotate({{v.p13.r}}deg);"></div>
-  <div style="position: absolute; left: {{v.p14.x}}px; top: {{v.p14.y}}px; width: {{v.p14.s}}px; height: {{v.p14.s}}px; background: {{v.p14.c}}; border-radius: 2px; opacity: {{v.p14.o}}; transform: rotate({{v.p14.r}}deg);"></div>
-  <div style="position: absolute; left: {{v.p15.x}}px; top: {{v.p15.y}}px; width: {{v.p15.s}}px; height: {{v.p15.s}}px; background: {{v.p15.c}}; border-radius: 2px; opacity: {{v.p15.o}}; transform: rotate({{v.p15.r}}deg);"></div>
-  <div style="position: absolute; left: {{v.p16.x}}px; top: {{v.p16.y}}px; width: {{v.p16.s}}px; height: {{v.p16.s}}px; background: {{v.p16.c}}; border-radius: 2px; opacity: {{v.p16.o}}; transform: rotate({{v.p16.r}}deg);"></div>
-  <div style="position: absolute; left: {{v.p17.x}}px; top: {{v.p17.y}}px; width: {{v.p17.s}}px; height: {{v.p17.s}}px; background: {{v.p17.c}}; border-radius: 2px; opacity: {{v.p17.o}}; transform: rotate({{v.p17.r}}deg);"></div>
-  <!-- the four slides travel: generation tiles → hero fan → validation thumbnails -->
-  <div style="position: absolute; left: {{v.fs0.x}}px; top: {{v.fs0.y}}px; width: {{v.fs0.w}}px; height: {{v.fs0.h}}px; border-radius: {{v.fs0.r}}px; overflow: hidden; border: 2px solid #0a0a0a; box-shadow: {{v.fs0.sh}}; opacity: {{v.fs0.o}}; transform: {{v.fs0.t}}; z-index: {{v.fs0.z}};"><img src="/_blob/e39ece9c429165ffc8e2098f4684f250" alt="Slide 1: Canetas emagrecedoras no SUS, anunciadas, ainda sem data" style="width: 100%; height: 100%; object-fit: cover; display: block;"><div style="position: absolute; inset: 0; background: linear-gradient(115deg, transparent {{v.fs0.l0}}%, rgba(255,255,255,.4) {{v.fs0.l1}}%, transparent {{v.fs0.l2}}%);"></div></div>
-  <div style="position: absolute; left: {{v.fs1.x}}px; top: {{v.fs1.y}}px; width: {{v.fs1.w}}px; height: {{v.fs1.h}}px; border-radius: {{v.fs1.r}}px; overflow: hidden; border: 2px solid #0a0a0a; box-shadow: {{v.fs1.sh}}; opacity: {{v.fs1.o}}; transform: {{v.fs1.t}}; z-index: {{v.fs1.z}};"><img src="/_blob/5bc807e55cc5f87b740df68c7d3d8df7" alt="Slide 2: Anúncio de setembro, o que já existe" style="width: 100%; height: 100%; object-fit: cover; display: block;"><div style="position: absolute; inset: 0; background: linear-gradient(115deg, transparent {{v.fs1.l0}}%, rgba(255,255,255,.4) {{v.fs1.l1}}%, transparent {{v.fs1.l2}}%);"></div></div>
-  <div style="position: absolute; left: {{v.fs2.x}}px; top: {{v.fs2.y}}px; width: {{v.fs2.w}}px; height: {{v.fs2.h}}px; border-radius: {{v.fs2.r}}px; overflow: hidden; border: 2px solid #0a0a0a; box-shadow: {{v.fs2.sh}}; opacity: {{v.fs2.o}}; transform: {{v.fs2.t}}; z-index: {{v.fs2.z}};"><img src="/_blob/4fdd48e9a24b959113fba7241f6c7f68" alt="Slide 3: O caminho até a oferta pelo SUS" style="width: 100%; height: 100%; object-fit: cover; display: block;"><div style="position: absolute; inset: 0; background: linear-gradient(115deg, transparent {{v.fs2.l0}}%, rgba(255,255,255,.4) {{v.fs2.l1}}%, transparent {{v.fs2.l2}}%);"></div></div>
-  <div style="position: absolute; left: {{v.fs3.x}}px; top: {{v.fs3.y}}px; width: {{v.fs3.w}}px; height: {{v.fs3.h}}px; border-radius: {{v.fs3.r}}px; overflow: hidden; border: 2px solid #0a0a0a; box-shadow: {{v.fs3.sh}}; opacity: {{v.fs3.o}}; transform: {{v.fs3.t}}; z-index: {{v.fs3.z}};"><img src="/_blob/a4555c6454d8d9d0c3d705e155a022f6" alt="Slide 4: Para quem paga caro" style="width: 100%; height: 100%; object-fit: cover; display: block;"><div style="position: absolute; inset: 0; background: linear-gradient(115deg, transparent {{v.fs3.l0}}%, rgba(255,255,255,.4) {{v.fs3.l1}}%, transparent {{v.fs3.l2}}%);"></div></div>
+  <!-- ░░ S5 · editorial chat close-up (light, 3D) -->
+  <div class="ui" style="left: 310px; top: 150px; width: 1300px; height: 780px; box-shadow: 0 0 0 1.5px rgba(232,200,115,.6), 0 0 90px rgba(232,200,115,.3), 0 80px 140px -50px rgba(10,20,34,.55); opacity: {{v.p5.o}}; transform: {{v.p5.t}};">
+    <div style="height: 60px; display: flex; align-items: center; gap: 12px; padding: 0 26px; border-bottom: 1px solid rgba(26,22,16,.18); background: linear-gradient(180deg, #efe7d8, #f7f3ec);"><span style="width: 12px; height: 12px; border-radius: 50%; background: #e8c873; box-shadow: 0 0 0 {{v.live}}px rgba(232,200,115,.3);"></span><span class="mono" style="font-size: 14px;">Assistente editorial</span><span class="mono" style="margin-left: auto; font-size: 13px; color: #24456b;">{{v.chatState}}</span></div>
+    <div style="position: relative; height: 470px; background: #efe7d8;">
+      <div style="position: absolute; right: 30px; top: 22px; padding: 14px 20px; border-radius: 14px; background: #0a0a0a; color: #f7f3ec;"><div class="mono" style="font-size: 11px; color: #c8bfa3;">Você</div><div class="disp" style="font-size: 30px; margin-top: 4px;">Canetas emagrecedoras</div></div>
+      <div style="position: absolute; left: 30px; top: 120px; width: 820px; padding: 18px 22px; box-sizing: border-box; border-radius: 14px; border: 1px solid rgba(26,22,16,.18); background: #f7f3ec; box-shadow: 0 16px 40px -18px rgba(10,20,34,.35); opacity: {{v.c1.o}}; transform: {{v.c1.t}};"><div class="mono" style="font-size: 11px; color: #6b665d;">Assistente editorial</div><div class="disp" style="font-size: 29px; line-height: 1.34; margin-top: 6px; min-height: 39px;">{{v.a1}}<span style="color: #6b665d; letter-spacing: 4px; opacity: {{v.d1}};">{{v.dots}}</span></div></div>
+      <div style="position: absolute; right: 30px; top: 300px; width: 720px; padding: 14px 20px; box-sizing: border-box; border-radius: 14px; background: #0a0a0a; color: #f7f3ec; opacity: {{v.c2.o}}; transform: {{v.c2.t}};"><div class="mono" style="font-size: 11px; color: #c8bfa3;">Você</div><div class="disp" style="font-size: 27px; line-height: 1.3; margin-top: 4px;">Preços e acesso: quem pode receber pelo SUS e o que muda pra quem paga caro.</div></div>
+      <div style="position: absolute; left: 30px; top: 408px; width: 720px; padding: 12px 20px; box-sizing: border-box; border-radius: 14px; border: 1px solid rgba(26,22,16,.18); background: #f7f3ec; opacity: {{v.c3.o}}; transform: {{v.c3.t}};"><div class="disp" style="font-size: 27px; line-height: 1.3; min-height: 35px;">{{v.a2}}<span style="color: #6b665d; letter-spacing: 4px; opacity: {{v.d2}};">{{v.dots}}</span></div></div>
+    </div>
+    <div style="position: absolute; left: 30px; top: 560px; width: 940px; height: 100px; box-sizing: border-box; padding: 18px 22px; border-radius: 14px; border: 2px solid {{v.taBd}}; background: #f7f3ec; font-size: 29px; line-height: 1.3; overflow: hidden;"><span class="disp" style="position: absolute; left: 22px; top: 18px; font-style: italic; color: #b3ad9f; opacity: {{v.taPh}};">Escreva sua resposta…</span>{{v.reply}}<span style="display: inline-block; width: 3px; height: 30px; margin-left: 2px; vertical-align: -5px; background: #24456b; opacity: {{v.taCaret}};"></span></div>
+    <div style="position: absolute; left: 1000px; top: 580px; width: 260px; height: 64px; border-radius: 100px; background: #24456b; color: #f7f3ec; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; box-shadow: {{v.b5.sh}}; transform: {{v.b5.t}};">Enviar →</div>
+    <div class="mono" style="position: absolute; left: 32px; top: 684px; font-size: 13px; color: #6b665d;">Continue a conversa pra liberar a busca</div>
+    <svg width="54" height="60" viewBox="0 0 34 38" aria-hidden="true" style="position: absolute; left: {{v.h5.x}}px; top: {{v.h5.y}}px; opacity: {{v.h5.o}}; transform-origin: 16px 2px; transform: scale({{v.h5.s}}); filter: drop-shadow(0 8px 10px rgba(0,0,0,.25));"><path d="M14 4.5c0-1.4 1.1-2.5 2.5-2.5S19 3.1 19 4.5V15l.9-.3c1.2-.4 2.5.2 2.9 1.4l.1.3 1-.2c1.3-.2 2.5.6 2.8 1.9l.1.4.7-.1c1.4-.2 2.6.8 2.7 2.2l.3 5.6c.2 3.4-1.4 6.6-4.2 8.5l-.6.4c-1 .7-2.2 1-3.4 1h-4.8c-2 0-3.9-1-5-2.7l-5-7.5c-.8-1.2-.5-2.8.7-3.6 1.1-.7 2.5-.5 3.3.5L14 22V4.5z" fill="#ffffff" stroke="#0a0a0a" stroke-width="1.8" stroke-linejoin="round"></path></svg>
+  </div>
 
-  <!-- ░ flash -->
-  <div style="position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen; background: radial-gradient(circle at 50% 50%, #fffaf0, rgba(232,200,115,.65) 40%, transparent 72%); opacity: {{v.flash}};"></div>
+  <!-- ░░ S7 · research (dark) -->
+  <div style="position: absolute; inset: 0; opacity: {{v.s7.o}};">
+    <div style="position: absolute; left: {{v.sc0.x}}px; top: {{v.sc0.y}}px; width: 440px; padding: 22px 26px; box-sizing: border-box; border-radius: 18px; background: rgba(247,243,236,.08); border: 1px solid rgba(247,243,236,.22); box-shadow: 0 0 40px rgba(232,200,115,.12); color: #f7f3ec; opacity: {{v.sc0.o}}; filter: {{v.sc0.f}}; transform: {{v.sc0.t}};"><div class="mono" style="font-size: 13px; color: #e8c873;">Folha de S.Paulo · 18/09</div><div class="disp" style="font-size: 27px; line-height: 1.25; margin-top: 10px;">Governo avalia levar ao SUS caneta emagrecedora prometida por Lula, mas oferta não seria imediata</div></div>
+    <div style="position: absolute; left: {{v.sc1.x}}px; top: {{v.sc1.y}}px; width: 440px; padding: 22px 26px; box-sizing: border-box; border-radius: 18px; background: rgba(247,243,236,.08); border: 1px solid rgba(247,243,236,.22); color: #f7f3ec; opacity: {{v.sc1.o}}; filter: {{v.sc1.f}}; transform: {{v.sc1.t}};"><div class="mono" style="font-size: 13px; color: #e8c873;">Gazeta do Povo · 24/09</div><div class="disp" style="font-size: 27px; line-height: 1.25; margin-top: 10px;">Lula promete canetas emagrecedoras, mas não sabe quanto custará</div></div>
+    <div style="position: absolute; left: {{v.sc2.x}}px; top: {{v.sc2.y}}px; width: 440px; padding: 22px 26px; box-sizing: border-box; border-radius: 18px; background: rgba(247,243,236,.08); border: 1px solid rgba(247,243,236,.22); color: #f7f3ec; opacity: {{v.sc2.o}}; filter: {{v.sc2.f}}; transform: {{v.sc2.t}};"><div class="mono" style="font-size: 13px; color: #e8c873;">A Tarde · 18/09</div><div class="disp" style="font-size: 27px; line-height: 1.25; margin-top: 10px;">Canetas de graça no SUS ainda dependem de três etapas</div></div>
+    <div style="position: absolute; left: {{v.sc3.x}}px; top: {{v.sc3.y}}px; width: 440px; padding: 22px 26px; box-sizing: border-box; border-radius: 18px; background: rgba(247,243,236,.08); border: 1px solid rgba(247,243,236,.22); color: #f7f3ec; opacity: {{v.sc3.o}}; filter: {{v.sc3.f}}; transform: {{v.sc3.t}};"><div class="mono" style="font-size: 13px; color: #e8c873;">ND Mais · 18/09</div><div class="disp" style="font-size: 27px; line-height: 1.25; margin-top: 10px;">SUS confirma distribuição gratuita de canetas emagrecedoras</div></div>
+    <div style="position: absolute; left: {{v.sc4.x}}px; top: {{v.sc4.y}}px; width: 440px; padding: 22px 26px; box-sizing: border-box; border-radius: 18px; background: rgba(247,243,236,.08); border: 1px solid rgba(247,243,236,.22); color: #f7f3ec; opacity: {{v.sc4.o}}; filter: {{v.sc4.f}}; transform: {{v.sc4.t}};"><div class="mono" style="font-size: 13px; color: #e8c873;">Estado de Minas · 24/09</div><div class="disp" style="font-size: 27px; line-height: 1.25; margin-top: 10px;">Caneta emagrecedora no SUS: como o preço pode cair na farmácia</div></div>
+    <div style="position: absolute; left: {{v.sc5.x}}px; top: {{v.sc5.y}}px; width: 440px; padding: 22px 26px; box-sizing: border-box; border-radius: 18px; background: rgba(247,243,236,.08); border: 1px solid rgba(247,243,236,.22); color: #f7f3ec; opacity: {{v.sc5.o}}; filter: {{v.sc5.f}}; transform: {{v.sc5.t}};"><div class="mono" style="font-size: 13px; color: #e8c873;">DCM · 18/09</div><div class="disp" style="font-size: 27px; line-height: 1.25; margin-top: 10px;">Lula anuncia canetas no SUS, mas medida tem 3 etapas</div></div>
+    <!-- counter ring -->
+    <div style="position: absolute; left: {{v.ringX}}px; top: 540px; width: 0; height: 0; opacity: {{v.ring.o}}; transform: {{v.ring.t}};">
+      <svg width="480" height="480" viewBox="-240 -240 480 480" aria-hidden="true" style="position: absolute; left: -240px; top: -240px;"><circle r="200" fill="rgba(10,20,34,.55)" stroke="rgba(247,243,236,.14)" stroke-width="14"></circle><circle r="200" fill="none" stroke="#e8c873" stroke-width="14" stroke-linecap="round" stroke-dasharray="1257" stroke-dashoffset="{{v.ringOff}}" transform="rotate(-90)" style="filter: drop-shadow(0 0 14px rgba(232,200,115,.7));"></circle></svg>
+      <div class="disp" style="position: absolute; left: -240px; width: 480px; top: -118px; text-align: center; font-size: 170px; line-height: 1; color: #f7f3ec; letter-spacing: -4px; opacity: {{v.nA}};">{{v.cnt}}</div>
+      <div class="disp" style="position: absolute; left: -240px; width: 480px; top: -118px; text-align: center; font-size: 170px; line-height: 1; color: #e8c873; letter-spacing: -4px; opacity: {{v.nB}};">13</div>
+      <div class="mono" style="position: absolute; left: -240px; width: 480px; top: 76px; text-align: center; font-size: 16px; color: #c9d2de; opacity: {{v.nA}};">matérias avaliadas</div>
+      <div class="mono" style="position: absolute; left: -240px; width: 480px; top: 76px; text-align: center; font-size: 16px; color: #e8c873; opacity: {{v.nB}};">fontes no recorte</div>
+    </div>
+    <!-- scanner brackets on the focused source -->
+    <svg width="560" height="300" viewBox="0 0 560 300" aria-hidden="true" style="position: absolute; left: {{v.brX}}px; top: {{v.brY}}px; opacity: {{v.brO}}; overflow: visible;">
+      <path d="M0 40 V0 H40 M520 0 H560 V40 M560 260 V300 H520 M40 300 H0 V260" fill="none" stroke="#e8c873" stroke-width="4" style="filter: drop-shadow(0 0 8px rgba(232,200,115,.8));"></path>
+      <rect x="12" y="{{v.scanY}}" width="536" height="26" fill="url(#scanG)"></rect><defs><linearGradient id="scanG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8c873" stop-opacity="0"></stop><stop offset="1" stop-color="#e8c873" stop-opacity=".35"></stop></linearGradient></defs>
+    </svg>
+  </div>
 
-  <!-- ░ END CARD 42–48 s -->
-  <div style="position: absolute; inset: 0; opacity: {{v.endO}};">
+  <!-- ░░ S9 · angles & recipe (light, 3D) -->
+  <div class="ui" style="left: 210px; top: 150px; width: 1500px; height: 800px; background: transparent; border: none; overflow: visible; opacity: {{v.p9.o}}; transform: {{v.p9.t}};">
+    <div style="position: absolute; left: 30px; top: 100px; width: 440px; height: 380px; box-sizing: border-box; padding: 28px; border-radius: 22px; background: #f7f3ec; border: 2px solid {{v.ag0.bd}}; box-shadow: {{v.ag0.sh}}; opacity: {{v.ag0.o}}; filter: {{v.ag0.f}}; transform: {{v.ag0.t}};"><span class="mono" style="font-size: 12px; color: #6b665d;">Alternativa · 7 matérias</span><div class="disp" style="font-size: 44px; line-height: 1.05; margin-top: 16px;">Próximos passos e prazos</div><div style="font-size: 21px; color: #2a2622; margin-top: 16px;">O cronograma da Conitec, a decisão do Ministério e o protocolo clínico.</div></div>
+    <div style="position: absolute; left: 530px; top: 100px; width: 440px; height: 380px; box-sizing: border-box; padding: 28px; border-radius: 22px; background: #f7f3ec; border: 2px solid {{v.ag1.bd}}; box-shadow: {{v.ag1.sh}}; opacity: {{v.ag1.o}}; transform: {{v.ag1.t}}; z-index: 5;"><span class="mono" style="font-size: 12px; padding: 5px 10px; border-radius: 100px; background: #e8c873; letter-spacing: .12em;">Recomendado</span><span class="mono" style="font-size: 12px; color: #6b665d; margin-left: 8px;">13 matérias</span><div class="disp" style="font-size: 44px; line-height: 1.05; margin-top: 16px;">A promessa e sua execução</div><div style="font-size: 21px; color: #2a2622; margin-top: 16px;">O anúncio de distribuição gratuita e as etapas que ainda faltam.</div><div style="margin-top: 16px; padding: 10px 14px; border-left: 3px solid #24456b; background: #efe7d8; border-radius: 0 10px 10px 0; opacity: {{v.agQ.o}}; transform: {{v.agQ.t}};"><span class="mono" style="font-size: 10px; color: #24456b;">Folha de S.Paulo</span><div class="disp" style="font-size: 18px; font-style: italic;">“O Ministério da Saúde avalia pedir o uso de canetas no SUS para a Conitec.”</div></div><div style="position: absolute; right: 18px; top: 18px; width: 44px; height: 44px; border-radius: 50%; background: #24456b; color: #f7f3ec; display: flex; align-items: center; justify-content: center; font-size: 24px; opacity: {{v.agC.o}}; transform: {{v.agC.t}};">✓</div></div>
+    <div style="position: absolute; left: 1030px; top: 100px; width: 440px; height: 380px; box-sizing: border-box; padding: 28px; border-radius: 22px; background: #f7f3ec; border: 2px solid {{v.ag2.bd}}; box-shadow: {{v.ag2.sh}}; opacity: {{v.ag2.o}}; filter: {{v.ag2.f}}; transform: {{v.ag2.t}};"><span class="mono" style="font-size: 12px; color: #6b665d;">Alternativa · 4 matérias</span><div class="disp" style="font-size: 44px; line-height: 1.05; margin-top: 16px;">O que já mudou no mercado</div><div style="font-size: 21px; color: #2a2622; margin-top: 16px;">Fim da patente, genéricos e o preço para quem paga hoje.</div></div>
+    <div style="position: absolute; left: 0; right: 0; top: 560px; display: flex; justify-content: center; align-items: center; gap: 22px;">
+      <div style="height: 70px; padding: 0 28px; display: flex; align-items: center; gap: 12px; border-radius: 100px; font-size: 26px; font-weight: 600; border: 2px solid #0a0a0a; background: {{v.pl0.bg}}; color: {{v.pl0.fg}}; box-shadow: 5px 5px 0 #0a0a0a; opacity: {{v.pl0.o}}; transform: {{v.pl0.t}};">Carrossel Instagram<span style="opacity: {{v.pl0.c}}; color: #e8c873;">✓</span></div>
+      <div style="font-size: 34px; color: #6b665d; opacity: {{v.pl1.o}};">+</div>
+      <div style="height: 70px; padding: 0 28px; display: flex; align-items: center; gap: 12px; border-radius: 100px; font-size: 26px; font-weight: 600; border: 2px solid #0a0a0a; background: {{v.pl1.bg}}; color: {{v.pl1.fg}}; box-shadow: 5px 5px 0 #0a0a0a; opacity: {{v.pl1.o}}; transform: {{v.pl1.t}};">Ilustração<span style="opacity: {{v.pl1.c}}; color: #e8c873;">✓</span></div>
+      <div style="font-size: 34px; color: #6b665d; opacity: {{v.pl2.o}};">+</div>
+      <div style="height: 70px; padding: 0 28px; display: flex; align-items: center; gap: 12px; border-radius: 100px; font-size: 26px; font-weight: 600; border: 2px solid #0a0a0a; background: {{v.pl2.bg}}; color: {{v.pl2.fg}}; box-shadow: 5px 5px 0 #0a0a0a; opacity: {{v.pl2.o}}; transform: {{v.pl2.t}};">Explicador<span style="opacity: {{v.pl2.c}}; color: #e8c873;">✓</span></div>
+    </div>
+    <div style="position: absolute; left: 500px; top: 680px; width: 500px; height: 84px; border-radius: 100px; background: #24456b; color: #f7f3ec; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700; box-shadow: {{v.b9.sh}}, 0 0 60px rgba(232,200,115,.35); opacity: {{v.b9o}}; transform: {{v.b9.t}};">Gerar minha versão</div>
+    <svg width="54" height="60" viewBox="0 0 34 38" aria-hidden="true" style="position: absolute; z-index: 9; left: {{v.h9.x}}px; top: {{v.h9.y}}px; opacity: {{v.h9.o}}; transform-origin: 16px 2px; transform: scale({{v.h9.s}}); filter: drop-shadow(0 8px 10px rgba(0,0,0,.25));"><path d="M14 4.5c0-1.4 1.1-2.5 2.5-2.5S19 3.1 19 4.5V15l.9-.3c1.2-.4 2.5.2 2.9 1.4l.1.3 1-.2c1.3-.2 2.5.6 2.8 1.9l.1.4.7-.1c1.4-.2 2.6.8 2.7 2.2l.3 5.6c.2 3.4-1.4 6.6-4.2 8.5l-.6.4c-1 .7-2.2 1-3.4 1h-4.8c-2 0-3.9-1-5-2.7l-5-7.5c-.8-1.2-.5-2.8.7-3.6 1.1-.7 2.5-.5 3.3.5L14 22V4.5z" fill="#ffffff" stroke="#0a0a0a" stroke-width="1.8" stroke-linejoin="round"></path></svg>
+  </div>
+
+  <!-- ░░ S11 · generation ring (dark) -->
+  <div style="position: absolute; inset: 0; opacity: {{v.s11.o}};">
+    <img src="/_blob/e39ece9c429165ffc8e2098f4684f250" alt="" style="position: absolute; left: {{v.o0.x}}px; top: {{v.o0.y}}px; width: 180px; height: 225px; object-fit: cover; border-radius: 12px; opacity: {{v.o0.o}}; filter: {{v.o0.f}}; transform: {{v.o0.t}};">
+    <img src="/_blob/5bc807e55cc5f87b740df68c7d3d8df7" alt="" style="position: absolute; left: {{v.o1.x}}px; top: {{v.o1.y}}px; width: 180px; height: 225px; object-fit: cover; border-radius: 12px; opacity: {{v.o1.o}}; filter: {{v.o1.f}}; transform: {{v.o1.t}};">
+    <img src="/_blob/4fdd48e9a24b959113fba7241f6c7f68" alt="" style="position: absolute; left: {{v.o2.x}}px; top: {{v.o2.y}}px; width: 180px; height: 225px; object-fit: cover; border-radius: 12px; opacity: {{v.o2.o}}; filter: {{v.o2.f}}; transform: {{v.o2.t}};">
+    <img src="/_blob/a4555c6454d8d9d0c3d705e155a022f6" alt="" style="position: absolute; left: {{v.o3.x}}px; top: {{v.o3.y}}px; width: 180px; height: 225px; object-fit: cover; border-radius: 12px; opacity: {{v.o3.o}}; filter: {{v.o3.f}}; transform: {{v.o3.t}};">
+    <div style="position: absolute; left: 960px; top: 470px; width: 0; height: 0; transform: {{v.gr.t}};">
+      <svg width="440" height="440" viewBox="-220 -220 440 440" aria-hidden="true" style="position: absolute; left: -220px; top: -220px;"><circle r="170" fill="rgba(10,20,34,.6)" stroke="rgba(247,243,236,.12)" stroke-width="12"></circle><circle r="170" fill="none" stroke="#e8c873" stroke-width="12" stroke-linecap="round" stroke-dasharray="1068" stroke-dashoffset="{{v.grOff}}" transform="rotate(-90)" style="filter: drop-shadow(0 0 16px rgba(232,200,115,.75));"></circle><path d="M-62 4 L-18 46 L66 -44" fill="none" stroke="#e8c873" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="190" stroke-dashoffset="{{v.grChk}}"></path></svg>
+      <div class="mono" style="position: absolute; left: -200px; width: 400px; top: -30px; text-align: center; font-size: 56px; letter-spacing: 0; color: #f7f3ec; opacity: {{v.grPctO}};">{{v.grPct}}%</div>
+    </div>
+    <div class="disp" style="position: absolute; left: 0; right: 0; top: 720px; text-align: center; font-size: 56px; color: #f7f3ec; letter-spacing: -1px; opacity: {{v.gs.o}}; filter: {{v.gs.f}}; transform: {{v.gs.t}};">{{v.gsTxt}}</div>
+    <div class="disp" style="position: absolute; left: 0; right: 0; top: 720px; text-align: center; font-size: 64px; font-style: italic; color: #e8c873; letter-spacing: -1px; opacity: {{v.gd.o}}; filter: {{v.gd.f}}; transform: {{v.gd.t}};">Pauta pronta.</div>
+  </div>
+
+  <!-- ░░ S12 · drop · 3D carousel of the real slides -->
+  <div style="position: absolute; inset: 0; opacity: {{v.s12.o}};">
+    <div class="disp" style="position: absolute; left: 0; right: 0; top: 60px; text-align: center; font-size: 96px; letter-spacing: -2.5px; opacity: {{v.dh.o}}; filter: {{v.dh.f}}; transform: {{v.dh.t}};">Carrossel pronto para <span style="font-style: italic; color: #24456b;">publicar.</span></div>
+    <div class="mono" style="position: absolute; left: 0; right: 0; top: 186px; text-align: center; font-size: 22px; color: #24456b; opacity: {{v.dt.o}}; transform: {{v.dt.t}};">Arte · legenda · fontes · documento de validação</div>
+    <div style="position: absolute; left: 960px; top: 640px; width: 0; height: 0; perspective: 2200px; perspective-origin: 0 -120px;">
+      <div style="position: absolute; left: 0; top: 0; transform-style: preserve-3d; transform: {{v.car}};">
+        <div style="position: absolute; left: -190px; top: -238px; width: 380px; height: 475px; border-radius: 16px; overflow: hidden; border: 2px solid #0a0a0a; box-shadow: 0 30px 60px -20px rgba(10,20,34,.45); -webkit-box-reflect: below 14px linear-gradient(transparent 68%, rgba(0,0,0,.22)); backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: rotateY(0deg) translateZ(560px);"><img src="/_blob/e39ece9c429165ffc8e2098f4684f250" alt="Slide 1: Canetas emagrecedoras no SUS, anunciadas, ainda sem data" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+        <div style="position: absolute; left: -190px; top: -238px; width: 380px; height: 475px; border-radius: 16px; overflow: hidden; border: 2px solid #0a0a0a; box-shadow: 0 30px 60px -20px rgba(10,20,34,.45); -webkit-box-reflect: below 14px linear-gradient(transparent 68%, rgba(0,0,0,.22)); backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: rotateY(90deg) translateZ(560px);"><img src="/_blob/5bc807e55cc5f87b740df68c7d3d8df7" alt="Slide 2: Anúncio de setembro, o que já existe" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+        <div style="position: absolute; left: -190px; top: -238px; width: 380px; height: 475px; border-radius: 16px; overflow: hidden; border: 2px solid #0a0a0a; box-shadow: 0 30px 60px -20px rgba(10,20,34,.45); -webkit-box-reflect: below 14px linear-gradient(transparent 68%, rgba(0,0,0,.22)); backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: rotateY(180deg) translateZ(560px);"><img src="/_blob/4fdd48e9a24b959113fba7241f6c7f68" alt="Slide 3: O caminho até a oferta pelo SUS" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+        <div style="position: absolute; left: -190px; top: -238px; width: 380px; height: 475px; border-radius: 16px; overflow: hidden; border: 2px solid #0a0a0a; box-shadow: 0 30px 60px -20px rgba(10,20,34,.45); -webkit-box-reflect: below 14px linear-gradient(transparent 68%, rgba(0,0,0,.22)); backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: rotateY(270deg) translateZ(560px);"><img src="/_blob/a4555c6454d8d9d0c3d705e155a022f6" alt="Slide 4: Para quem paga caro" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+      </div>
+    </div>
+  </div>
+  <!-- confetti -->
+  <div style="position: absolute; left: {{v.q0.x}}px; top: {{v.q0.y}}px; width: {{v.q0.s}}px; height: {{v.q0.s}}px; background: {{v.q0.c}}; border-radius: 2px; opacity: {{v.q0.o}}; transform: rotate({{v.q0.r}}deg);"></div>
+  <div style="position: absolute; left: {{v.q1.x}}px; top: {{v.q1.y}}px; width: {{v.q1.s}}px; height: {{v.q1.s}}px; background: {{v.q1.c}}; border-radius: 2px; opacity: {{v.q1.o}}; transform: rotate({{v.q1.r}}deg);"></div>
+  <div style="position: absolute; left: {{v.q2.x}}px; top: {{v.q2.y}}px; width: {{v.q2.s}}px; height: {{v.q2.s}}px; background: {{v.q2.c}}; border-radius: 2px; opacity: {{v.q2.o}}; transform: rotate({{v.q2.r}}deg);"></div>
+  <div style="position: absolute; left: {{v.q3.x}}px; top: {{v.q3.y}}px; width: {{v.q3.s}}px; height: {{v.q3.s}}px; background: {{v.q3.c}}; border-radius: 2px; opacity: {{v.q3.o}}; transform: rotate({{v.q3.r}}deg);"></div>
+  <div style="position: absolute; left: {{v.q4.x}}px; top: {{v.q4.y}}px; width: {{v.q4.s}}px; height: {{v.q4.s}}px; background: {{v.q4.c}}; border-radius: 2px; opacity: {{v.q4.o}}; transform: rotate({{v.q4.r}}deg);"></div>
+  <div style="position: absolute; left: {{v.q5.x}}px; top: {{v.q5.y}}px; width: {{v.q5.s}}px; height: {{v.q5.s}}px; background: {{v.q5.c}}; border-radius: 2px; opacity: {{v.q5.o}}; transform: rotate({{v.q5.r}}deg);"></div>
+  <div style="position: absolute; left: {{v.q6.x}}px; top: {{v.q6.y}}px; width: {{v.q6.s}}px; height: {{v.q6.s}}px; background: {{v.q6.c}}; border-radius: 2px; opacity: {{v.q6.o}}; transform: rotate({{v.q6.r}}deg);"></div>
+  <div style="position: absolute; left: {{v.q7.x}}px; top: {{v.q7.y}}px; width: {{v.q7.s}}px; height: {{v.q7.s}}px; background: {{v.q7.c}}; border-radius: 2px; opacity: {{v.q7.o}}; transform: rotate({{v.q7.r}}deg);"></div>
+  <div style="position: absolute; left: {{v.q8.x}}px; top: {{v.q8.y}}px; width: {{v.q8.s}}px; height: {{v.q8.s}}px; background: {{v.q8.c}}; border-radius: 2px; opacity: {{v.q8.o}}; transform: rotate({{v.q8.r}}deg);"></div>
+  <div style="position: absolute; left: {{v.q9.x}}px; top: {{v.q9.y}}px; width: {{v.q9.s}}px; height: {{v.q9.s}}px; background: {{v.q9.c}}; border-radius: 2px; opacity: {{v.q9.o}}; transform: rotate({{v.q9.r}}deg);"></div>
+  <div style="position: absolute; left: {{v.q10.x}}px; top: {{v.q10.y}}px; width: {{v.q10.s}}px; height: {{v.q10.s}}px; background: {{v.q10.c}}; border-radius: 2px; opacity: {{v.q10.o}}; transform: rotate({{v.q10.r}}deg);"></div>
+  <div style="position: absolute; left: {{v.q11.x}}px; top: {{v.q11.y}}px; width: {{v.q11.s}}px; height: {{v.q11.s}}px; background: {{v.q11.c}}; border-radius: 2px; opacity: {{v.q11.o}}; transform: rotate({{v.q11.r}}deg);"></div>
+  <div style="position: absolute; left: {{v.q12.x}}px; top: {{v.q12.y}}px; width: {{v.q12.s}}px; height: {{v.q12.s}}px; background: {{v.q12.c}}; border-radius: 2px; opacity: {{v.q12.o}}; transform: rotate({{v.q12.r}}deg);"></div>
+  <div style="position: absolute; left: {{v.q13.x}}px; top: {{v.q13.y}}px; width: {{v.q13.s}}px; height: {{v.q13.s}}px; background: {{v.q13.c}}; border-radius: 2px; opacity: {{v.q13.o}}; transform: rotate({{v.q13.r}}deg);"></div>
+  <div style="position: absolute; left: {{v.q14.x}}px; top: {{v.q14.y}}px; width: {{v.q14.s}}px; height: {{v.q14.s}}px; background: {{v.q14.c}}; border-radius: 2px; opacity: {{v.q14.o}}; transform: rotate({{v.q14.r}}deg);"></div>
+  <div style="position: absolute; left: {{v.q15.x}}px; top: {{v.q15.y}}px; width: {{v.q15.s}}px; height: {{v.q15.s}}px; background: {{v.q15.c}}; border-radius: 2px; opacity: {{v.q15.o}}; transform: rotate({{v.q15.r}}deg);"></div>
+  <div style="position: absolute; left: {{v.q16.x}}px; top: {{v.q16.y}}px; width: {{v.q16.s}}px; height: {{v.q16.s}}px; background: {{v.q16.c}}; border-radius: 2px; opacity: {{v.q16.o}}; transform: rotate({{v.q16.r}}deg);"></div>
+  <div style="position: absolute; left: {{v.q17.x}}px; top: {{v.q17.y}}px; width: {{v.q17.s}}px; height: {{v.q17.s}}px; background: {{v.q17.c}}; border-radius: 2px; opacity: {{v.q17.o}}; transform: rotate({{v.q17.r}}deg);"></div>
+
+  <!-- ░░ S14 · validation document close-up (light, 3D) -->
+  <div class="ui" style="left: 210px; top: 130px; width: 1500px; height: 820px; background: #ffffff; box-shadow: 0 0 0 1.5px rgba(232,200,115,.6), 0 0 90px rgba(232,200,115,.3), 0 80px 140px -50px rgba(10,20,34,.55); opacity: {{v.p14.o}}; transform: {{v.p14.t}};">
+    <div style="position: absolute; left: 60px; top: 44px; display: flex; align-items: center; gap: 12px;"><svg width="30" height="30" viewBox="4 4 54 54" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="#1a1610"></circle><circle cx="28" cy="28" r="22" fill="#24456b"></circle><circle cx="36" cy="20" r="5" fill="#e8c873"></circle></svg><span class="disp" style="font-size: 22px;">Pauta Pronta</span><span class="mono" style="margin-left: 18px; font-size: 13px; color: #6b665d;">Documento de validação · pedido d74f882a</span></div>
+    <div class="disp" style="position: absolute; left: 60px; top: 96px; font-size: 50px; letter-spacing: -1px;">Como o post foi montado</div>
+    <div style="position: absolute; left: 60px; top: 176px; display: flex; gap: 14px;">
+      <div style="padding: 10px 16px; border-radius: 12px; background: #f7f3ec;"><span class="mono" style="font-size: 26px; letter-spacing: 0; color: #a8453a;">200</span><span class="mono" style="font-size: 11px; color: #6b665d; margin-left: 8px;">matérias avaliadas</span></div>
+      <div style="padding: 10px 16px; border-radius: 12px; background: #f7f3ec;"><span class="mono" style="font-size: 26px; letter-spacing: 0; color: #a8453a;">17</span><span class="mono" style="font-size: 11px; color: #6b665d; margin-left: 8px;">selecionadas</span></div>
+      <div style="padding: 10px 16px; border-radius: 12px; background: #f7f3ec;"><span class="mono" style="font-size: 26px; letter-spacing: 0; color: #a8453a;">13</span><span class="mono" style="font-size: 11px; color: #6b665d; margin-left: 8px;">fontes no recorte</span></div>
+      <div style="padding: 10px 16px; border-radius: 12px; background: #f7f3ec;"><span class="mono" style="font-size: 20px; letter-spacing: 0; color: #a8453a;">29/08 → 25/09</span><span class="mono" style="font-size: 11px; color: #6b665d; margin-left: 8px;">período</span></div>
+    </div>
+    <div class="mono" style="position: absolute; left: 60px; top: 262px; font-size: 12px; color: #6b665d;">Legenda pra publicar</div>
+    <div class="disp" style="position: absolute; left: 60px; top: 290px; width: 800px; padding: 24px 28px; box-sizing: border-box; border-left: 4px solid #a8453a; background: #fbf8f2; border-radius: 0 14px 14px 0; font-size: 30px; line-height: 1.45;">Em setembro de 2026, o governo confirmou a intenção de distribuir as canetas pelo SUS, mas sem data de início.<br><br>Segundo a <span style="background: linear-gradient(#e8c873, #e8c873) no-repeat 0 88% / {{v.hl0}}% 42%;">Folha de S.Paulo</span><sup class="mono" style="font-size: 14px; color: #24456b; letter-spacing: 0; opacity: {{v.sup0}};">[2]</sup>, a <span style="background: linear-gradient(#e8c873, #e8c873) no-repeat 0 88% / {{v.hl1}}% 42%;">Gazeta do Povo</span><sup class="mono" style="font-size: 14px; color: #24456b; letter-spacing: 0; opacity: {{v.sup1}};">[5]</sup> e <span style="background: linear-gradient(#e8c873, #e8c873) no-repeat 0 88% / {{v.hl2}}% 42%;">A Tarde</span><sup class="mono" style="font-size: 14px; color: #24456b; letter-spacing: 0; opacity: {{v.sup2}};">[3]</sup>, a oferta depende da Conitec e de decisão do Ministério da Saúde.</div>
+    <svg width="840" height="420" viewBox="0 0 840 420" aria-hidden="true" style="position: absolute; left: 40px; top: 270px; overflow: visible; opacity: {{v.vbO}};"><path d="M{{v.vb.x0}} {{v.vb.y0}} h40 M{{v.vb.x0}} {{v.vb.y0}} v40 M{{v.vb.x1}} {{v.vb.y0}} h-40 M{{v.vb.x1}} {{v.vb.y0}} v40 M{{v.vb.x0}} {{v.vb.y1}} h40 M{{v.vb.x0}} {{v.vb.y1}} v-40 M{{v.vb.x1}} {{v.vb.y1}} h-40 M{{v.vb.x1}} {{v.vb.y1}} v-40" fill="none" stroke="#24456b" stroke-width="4" stroke-linecap="round"></path></svg>
+    <div class="mono" style="position: absolute; left: 920px; top: 262px; font-size: 12px; color: #6b665d;">Citações na legenda</div>
+    <div style="position: absolute; left: 920px; top: 292px; width: 520px; padding: 18px 22px; box-sizing: border-box; border-radius: 16px; background: #f7f3ec; border: 2px solid #0a0a0a; box-shadow: 6px 6px 0 #0a0a0a; opacity: {{v.cc0.o}}; transform: {{v.cc0.t}};"><div style="font-size: 21px; line-height: 1.3;"><b class="mono" style="letter-spacing: 0; color: #24456b;">[2]</b> Governo avalia levar ao SUS caneta emagrecedora prometida por Lula</div><div class="mono" style="font-size: 12px; color: #6b665d; margin-top: 8px;">Folha de S.Paulo · 18/09/2026 · ver matéria ↗</div></div>
+    <div style="position: absolute; left: 920px; top: 440px; width: 520px; padding: 18px 22px; box-sizing: border-box; border-radius: 16px; background: #f7f3ec; border: 2px solid #0a0a0a; box-shadow: 6px 6px 0 #0a0a0a; opacity: {{v.cc1.o}}; transform: {{v.cc1.t}};"><div style="font-size: 21px; line-height: 1.3;"><b class="mono" style="letter-spacing: 0; color: #24456b;">[5]</b> Lula promete canetas emagrecedoras, mas não sabe quanto custará</div><div class="mono" style="font-size: 12px; color: #6b665d; margin-top: 8px;">Gazeta do Povo · 24/09/2026 · ver matéria ↗</div></div>
+    <div style="position: absolute; left: 920px; top: 588px; width: 520px; padding: 18px 22px; box-sizing: border-box; border-radius: 16px; background: #f7f3ec; border: 2px solid #0a0a0a; box-shadow: 6px 6px 0 #0a0a0a; opacity: {{v.cc2.o}}; transform: {{v.cc2.t}};"><div style="font-size: 21px; line-height: 1.3;"><b class="mono" style="letter-spacing: 0; color: #24456b;">[3]</b> Canetas de graça no SUS ainda dependem de três etapas</div><div class="mono" style="font-size: 12px; color: #6b665d; margin-top: 8px;">A Tarde · 18/09/2026 · ver matéria ↗</div></div>
+    <div class="hand" style="position: absolute; left: 90px; top: 700px; font-size: 56px; font-weight: 700; color: #a8453a; transform: rotate(-3deg);"><span style="display: inline-block; clip-path: {{v.note}};">cada fato → sua fonte ✓</span></div>
+  </div>
+
+  <!-- ░░ S16 · end card (light) -->
+  <div style="position: absolute; inset: 0; opacity: {{v.s16.o}};">
+    <svg width="1920" height="1080" viewBox="0 0 1920 1080" aria-hidden="true" style="position: absolute; inset: 0;">
+      <path d="M-40 820 C 420 600, 700 1100, 1180 760 S 1760 520, 1980 700" fill="none" stroke="#e8c873" stroke-width="5" stroke-dasharray="2600" stroke-dashoffset="{{v.ln0}}" stroke-linecap="round"></path>
+      <path d="M-40 260 C 380 420, 760 40, 1100 300 S 1700 520, 1980 180" fill="none" stroke="#24456b" stroke-width="2.5" stroke-dasharray="2600" stroke-dashoffset="{{v.ln1}}" stroke-linecap="round" opacity=".6"></path>
+      <path d="M240 1120 C 520 860, 900 980, 1060 1120" fill="none" stroke="#24456b" stroke-width="2" stroke-dasharray="1200" stroke-dashoffset="{{v.ln2}}" opacity=".35"></path>
+    </svg>
     <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-      <div style="display: flex; align-items: center; gap: 20px; opacity: {{v.ea.o}}; transform: {{v.ea.t}}; filter: {{v.ea.f}};">
-        <svg width="96" height="96" viewBox="4 4 54 54" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="#1a1610"></circle><circle cx="28" cy="28" r="22" fill="#24456b"></circle><circle cx="36" cy="20" r="{{v.dotR}}" fill="#e8c873"></circle></svg>
-        <div><div class="disp" style="font-size: 104px; line-height: .92; letter-spacing: -2.5px;">Pauta Pronta</div><div class="disp" style="font-size: 30px; font-style: italic; color: #6b665d;">by REP</div></div>
+      <div style="display: flex; align-items: center; gap: 24px;">
+        <svg width="120" height="120" viewBox="4 4 54 54" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="#1a1610" opacity="{{v.eFill}}"></circle><circle cx="28" cy="28" r="22" fill="#24456b" fill-opacity="{{v.eFill}}" stroke="#24456b" stroke-width="1.6" stroke-dasharray="139" stroke-dashoffset="{{v.eStroke}}" transform="rotate(-90 28 28)"></circle><circle cx="36" cy="20" r="{{v.eDot}}" fill="#e8c873"></circle></svg>
+        <div style="clip-path: {{v.eWord}};"><div class="disp" style="font-size: 124px; line-height: .92; letter-spacing: -3px;">Pauta Pronta</div><div class="disp" style="font-size: 32px; font-style: italic; color: #6b665d;">by REP</div></div>
       </div>
-      <div class="disp" style="margin-top: 38px; font-size: 46px; letter-spacing: -.5px; opacity: {{v.eb.o}}; transform: {{v.eb.t}}; filter: {{v.eb.f}};">Seu próximo post nasce da <span style="font-style: italic; color: #24456b;">cobertura real.</span></div>
-      <div style="margin-top: 46px; padding: 22px 40px; background: #24456b; color: #f7f3ec; font-weight: 700; font-size: 32px; border-radius: 100px; border: 1.5px solid #24456b; box-shadow: 8px 8px 0 #0a0a0a; opacity: {{v.ec.o}}; transform: {{v.ec.t}};">Teste grátis <span style="color: #e8c873;">· uma pauta, sem cartão</span></div>
-      <div class="mono" style="margin-top: 36px; font-size: 28px; letter-spacing: .2em; opacity: {{v.ed.o}}; transform: {{v.ed.t}};">pautapronta.com</div>
+      <div style="margin-top: 50px; padding: 24px 44px; border-radius: 100px; background: #24456b; color: #f7f3ec; font-size: 34px; font-weight: 700; border: 1.5px solid #24456b; box-shadow: 8px 8px 0 #0a0a0a, 0 0 70px rgba(232,200,115,.4); opacity: {{v.eCta.o}}; transform: {{v.eCta.t}};">Teste grátis <span style="color: #e8c873;">· uma pauta, sem cartão</span></div>
+      <div class="mono" style="margin-top: 34px; padding: 12px 26px; border-radius: 100px; background: #0a0a0a; color: #f7f3ec; font-size: 24px; letter-spacing: .14em; opacity: {{v.eUrl.o}}; transform: {{v.eUrl.t}};">pautapronta.com</div>
     </div>
   </div>
 
-  <!-- ░ film grain + vignette -->
-  <div style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 100% at 50% 45%, transparent 60%, rgba(26,22,16,.10));"></div>
+  <!-- ░░ flash + vignette -->
+  <div style="position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen; background: radial-gradient(circle at 50% 55%, #fffaf0, rgba(232,200,115,.7) 40%, transparent 72%); opacity: {{v.flash}};"></div>
+  <div style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 100% at 50% 45%, transparent 58%, rgba(5,10,18,{{v.vig}}));"></div>
 
   <!-- soundtrack: music + clicks + typing + effects, mixed to this exact timeline -->
-  <video ref="{{setAudio}}" src="/_blob/cd4a17cf69570ffaa950dd83ed6a2247" preload="auto" playsInline="{{yes}}" style="display: none;"></video>
+  <video ref="{{setAudio}}" src="/_blob/9c436b5ac6f6ec57f0e0d1664b8037df" preload="auto" playsInline="{{yes}}" style="display: none;"></video>
 
   <sc-if value="{{showStart}}" hint-placeholder-val="{{ true }}">
     <div style="position: absolute; left: 0; right: 0; bottom: 110px; display: flex; justify-content: center;">
@@ -303,256 +254,224 @@ a{color:#24456b}a:hover{color:#1a3350}
       </button>
     </div>
   </sc-if>
-  <div style="position: absolute; right: 30px; bottom: 26px; display: flex; gap: 12px; align-items: center; opacity: {{ctlO}};">
-    <div class="mono" style="font-size: 14px; letter-spacing: .06em; color: #6b665d; padding: 0 6px;">{{v.clock}}</div>
+  <div style="position: absolute; right: 30px; bottom: 26px; display: flex; gap: 10px; align-items: center; opacity: {{ctlO}};">
+    <div class="mono" style="font-size: 13px; letter-spacing: .06em; color: {{v.clockCol}}; padding: 0 6px;">{{v.clock}}</div>
     <button type="button" class="pp-ctl" onClick="{{toggle}}" aria-label="{{toggleLabel}}">
-      <sc-if value="{{playing}}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="#0a0a0a" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1"></rect><rect x="14" y="4" width="5" height="16" rx="1"></rect></svg></sc-if>
-      <sc-if value="{{paused}}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="#0a0a0a" aria-hidden="true"><path d="M7 4.5 L19 12 L7 19.5 Z"></path></svg></sc-if>
+      <sc-if value="{{playing}}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1"></rect><rect x="14" y="4" width="5" height="16" rx="1"></rect></svg></sc-if>
+      <sc-if value="{{paused}}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5 L19 12 L7 19.5 Z"></path></svg></sc-if>
     </button>
     <button type="button" class="pp-ctl" onClick="{{restart}}" aria-label="Recomeçar">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.5-5.8"></path><path d="M4 4v5h5"></path></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.5-5.8"></path><path d="M4 4v5h5"></path></svg>
     </button>
   </div>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1920,"height":1080}}'>
-// Pauta Pronta — launch film (48 s). Every scene shows the product doing the thing its caption says.
-// Real content from pedido d74f882a ("Canetas emagrecedoras no SUS"); UI rebuilt with the site's own tokens.
+// Pauta Pronta — launch film v4 (48 s). Language: problem hook → brand → kinetic lines between
+// tilted 3D close-ups of the product, dark/light alternation, scanner brackets, loading ring, 3D carousel.
+// Content is the real pauta "Canetas emagrecedoras no SUS" (pedido d74f882a).
 var DUR = 48;
 
-// ── easing & motion primitives ─────────────────────────────────────────────
+// ── motion primitives ──────────────────────────────────────────────────────
 function cl(x, a, b) { return Math.max(a, Math.min(b, x)); }
 function lin(t, a, b) { return cl((t - a) / (b - a), 0, 1); }
+function f2(x) { return (+x).toFixed(2); }
 function eOut(x) { return 1 - Math.pow(1 - x, 3); }
-function eOutQ(x) { return 1 - Math.pow(1 - x, 5); }
+function eOut5(x) { return 1 - Math.pow(1 - x, 5); }
 function eIn(x) { return x * x * x; }
 function eIO(x) { return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
 function spring(dt, k) { k = k || 1; return dt <= 0 ? 0 : 1 - Math.exp(-6.5 * dt * k) * Math.cos(8 * dt * k); }
-function f2(x) { return (+x).toFixed(2); }
-// Masked, blur-to-sharp entrance (the house reveal).
-function rise(t, at, dy, dur) {
-  dy = dy == null ? 26 : dy; dur = dur || .7;
-  var k = eOutQ(lin(t, at, at + dur));
-  return { o: f2(k), t: 'translateY(' + f2((1 - k) * dy) + 'px)', f: 'blur(' + f2((1 - k) * 8) + 'px)' };
-}
-// Pop-in with overshoot (chips, badges, cards).
-function pop(t, at, from) {
-  var k = cl(spring(t - at, 1.1), 0, 1.12), o = cl((t - at) / .18, 0, 1);
-  from = from == null ? .85 : from;
-  return { o: f2(o), t: 'scale(' + f2(from + (1 - from) * k) + ')', f: 'blur(' + f2((1 - cl(k, 0, 1)) * 4) + 'px)' };
-}
-// Scene container: soft focus-pull in, gentle lift out. No camera shake, no zoom rides.
-function scene(t, a, b) {
-  var i = eOut(lin(t, a, a + .55)), o = eIn(lin(t, b - .45, b));
-  if (t < a || t > b) return { o: 0, t: 'none', f: 'none' };
-  return { o: f2(i * (1 - o)), t: 'translateY(' + f2((1 - i) * 22 - o * 18) + 'px) scale(' + (0.985 + .015 * i + .01 * o).toFixed(4) + ')', f: 'blur(' + f2((1 - i) * 10 + o * 8) + 'px)' };
-}
-function typed(s, t, a, b) { var n = Math.round(s.length * lin(t, a, b)); return s.slice(0, n); }
+function blink(t) { return Math.floor(t * 2.6) % 2 === 0 ? 1 : 0; }
+function typed(s, t, a, b) { return s.slice(0, Math.round(s.length * lin(t, a, b))); }
 function words(s, t, a, b) { var w = s.split(' '), n = Math.round(w.length * lin(t, a, b)); return n <= 0 ? '' : w.slice(0, n).join(' '); }
-function blink(t) { return Math.floor(t * 2.4) % 2 === 0 ? 1 : 0; }
-function press(t, at) { var d = t - at; return d < -.06 || d > .28 ? 0 : d < 0 ? (d + .06) / .06 : 1 - d / .28; }
-// Buttons press like the site's stamp: sink into the shadow.
-function stampBtn(t, at, base) {
-  var p = press(t, at), s = base || 6;
-  return { sh: f2(s * (1 - p)) + 'px ' + f2(s * (1 - p)) + 'px 0 #0a0a0a', t: 'translate(' + f2(p * s) + 'px, ' + f2(p * s) + 'px)' };
+function press(t, at) { var d = t - at; return d < -.06 || d > .3 ? 0 : d < 0 ? (d + .06) / .06 : 1 - d / .3; }
+function stampBtn(t, at, s) { var p = press(t, at); return { sh: f2(s * (1 - p)) + 'px ' + f2(s * (1 - p)) + 'px 0 #0a0a0a', t: 'translate(' + f2(p * s) + 'px, ' + f2(p * s) + 'px)' }; }
+// A word arriving out of focus (rack-focus in).
+function word(t, at) {
+  var k = eOut5(lin(t, at, at + .55));
+  return { o: f2(k), f: 'blur(' + f2((1 - k) * 18) + 'px)', t: 'translateY(' + f2((1 - k) * 36) + 'px) scale(' + f2(1.08 - .08 * k) + ')' };
 }
-
-// ── script: what happens when (seconds) ────────────────────────────────────
-var S = { hookEnd: 3.8, s1: [4.0, 8.7], s2: [8.5, 15.7], s3: [15.5, 19.7], s4: [19.5, 26.2], s5: [26.0, 30.1], s6: [35.4, 42.1], end: 42 };
-var CLICK = { focus: 4.65, criar: 7.3, ta: 10.85, send: 13.4, buscar: 15.2, card1: 22.4, carrossel: 23.6, ilustracao: 24.2, explicador: 24.8, gerar: 25.6 };
-var TXT = {
-  input: 'Canetas emagrecedoras',
-  a1: 'Entendi: canetas emagrecedoras. O que mais te interessa destacar — eficácia e segurança, o impacto no mercado, os preços e o acesso, ou a regulação no Brasil?',
-  reply: 'Preços e acesso: quem pode receber pelo SUS, quando começa e o que muda pra quem paga caro hoje.',
-  a2: 'Boa, esse é um recorte forte. Vou fechar a pauta nesse caminho.',
-  cap: 'Em setembro de 2026, o governo confirmou a intenção de distribuir as canetas emagrecedoras pelo SUS, mas sem data de início: a oferta não será imediata.'
-};
-var CHIPS = [
-  [4.0, 8.4, '01', 'Conte sua ideia', 'um tema, um link ou um ponto de vista'],
-  [8.6, 15.4, '02', 'Converse com o editor', 'ele pergunta e afina o recorte com você'],
-  [15.6, 19.4, '03', 'A redação cruza a cobertura', 'matérias reais da imprensa brasileira'],
-  [19.6, 23.2, '04', 'Escolha o ângulo', 'cada caminho sustentado por fontes'],
-  [23.3, 25.95, '05', 'Formato, estilo e tom', 'carrossel · ilustração · explicador'],
-  [26.1, 29.8, '06', 'A redação trabalha a pauta', 'texto, arte e checagem'],
-  [35.6, 41.6, '07', 'Documento de validação', 'pra você conferir antes de publicar']
-];
-// Cursor path in window coordinates (window = 1540×880 at 190,110).
-var CUR = [[3.9, 910, 690], [4.55, 500, 405], [6.5, 500, 405], [7.15, 770, 576], [9.2, 770, 576], [10.75, 500, 656], [13.1, 560, 656], [13.3, 1180, 726], [14.7, 1180, 726], [15.12, 1100, 803],
-  [19.8, 1000, 700], [20.5, 520, 486], [21.3, 520, 626], [22.25, 520, 276], [23.45, 1355, 206], [24.05, 1200, 472], [24.65, 1249, 573], [25.45, 1200, 806]];
-var CUR_ON = [[3.9, 15.5], [19.8, 26.0]];
-var CLICK_POS = [[CLICK.focus, 500, 405], [CLICK.criar, 770, 576], [CLICK.ta, 500, 656], [CLICK.send, 1180, 726], [CLICK.buscar, 1100, 803], [CLICK.card1, 520, 276], [CLICK.carrossel, 1355, 206], [CLICK.ilustracao, 1200, 472], [CLICK.explicador, 1249, 573], [CLICK.gerar, 1200, 806]];
-var STEP_W = [120, 140, 150, 130, 140];
-// Slides: generation tile rects (screen coords) → hero fan → validation thumbnails.
-var TILE = [[870, 326], [1070, 326], [1270, 326], [1470, 326]];     // 180×225 each
-var FAN = [[-560, 40, -7], [-188, -12, -2.2], [188, -12, 2.2], [560, 40, 7]];
-var THUMB = [[250, 336], [412, 336], [574, 336], [736, 336]];      // 150×187 each
-var PART = [];
-(function () { var seed = 11; function r() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
-  for (var i = 0; i < 18; i++) PART.push({ a: r() * Math.PI * 2, sp: 380 + r() * 620, s: 8 + r() * 12, rot: r() * 720 - 360, c: ['#e8c873', '#24456b', '#a8453a', '#0a0a0a'][i % 4] }); })();
-
-function curPos(t) {
-  var K = CUR, i = 0;
+// Container for a timed block: fades with a slow push.
+function block(t, a, b, push) {
+  if (t < a - .01 || t > b + .01) return { o: 0, t: 'none', f: 'none' };
+  var i = eOut(lin(t, a, a + .35)), o = eIn(lin(t, b - .3, b)), p = lin(t, a, b);
+  return { o: f2(i * (1 - o)), t: 'scale(' + (1 + (push || 0) * p).toFixed(4) + ')', f: 'blur(' + f2(o * 10 + (1 - i) * 6) + 'px)' };
+}
+// Keyframed 3D camera for a UI panel: [t, tx, ty, rotX, rotY, rotZ, scale].
+function cam3(t, K, a, b) {
+  if (t < a - .01 || t > b + .01) return { o: 0, t: 'none' };
+  var i = 0; while (i < K.length - 2 && t > K[i + 1][0]) i++;
+  var A = K[i], B = K[i + 1], u = eIO(lin(t, A[0], B[0])), g = [];
+  for (var j = 1; j < 7; j++) g.push(A[j] + (B[j] - A[j]) * u);
+  var inK = eOut(lin(t, a, a + .4)), outK = eIn(lin(t, b - .35, b));
+  return { o: f2(inK * (1 - outK)), t: 'perspective(1700px) translate(' + f2(g[0]) + 'px, ' + f2(g[1]) + 'px) rotateX(' + f2(g[2]) + 'deg) rotateY(' + f2(g[3]) + 'deg) rotateZ(' + f2(g[4]) + 'deg) scale(' + g[5].toFixed(4) + ')' };
+}
+function path(t, K) {
   if (t <= K[0][0]) return [K[0][1], K[0][2]];
   if (t >= K[K.length - 1][0]) return [K[K.length - 1][1], K[K.length - 1][2]];
-  while (t > K[i + 1][0]) i++;
+  var i = 0; while (t > K[i + 1][0]) i++;
   var u = eIO(lin(t, K[i][0], K[i + 1][0]));
   return [K[i][1] + (K[i + 1][1] - K[i][1]) * u, K[i][2] + (K[i + 1][2] - K[i][2]) * u];
 }
+function hand(t, K, clicks, a, b) {
+  var p = path(t, K), pr = 0; clicks.forEach(function (c) { pr = Math.max(pr, press(t, c)); });
+  return { x: f2(p[0] - 26), y: f2(p[1] - 3), o: t >= a && t <= b ? f2(Math.min(lin(t, a, a + .25), 1 - lin(t, b - .2, b))) : 0, s: f2(1 - .16 * pr) };
+}
+
+// ── the script ─────────────────────────────────────────────────────────────
+var DARK = [[0, 9.45], [17.2, 22.2], [26.35, 30.0]];
+var HOOK = { l1: 'Ainda começa cada post', l2a: 'com um ', l2b: 'prompt em branco?' };
+var A1 = 'Entendi: canetas emagrecedoras. O que mais te interessa destacar — eficácia, mercado, preços e acesso, ou regulação?';
+var REPLY = 'Preços e acesso: quem pode receber pelo SUS e o que muda pra quem paga caro.';
+var A2 = 'Boa, recorte forte. Vou fechar a pauta nesse caminho.';
+var GEN = [[27.3, 'Lendo a cobertura'], [27.85, 'Escrevendo o texto'], [28.35, 'Direção visual'], [28.8, 'Gerando as artes'], [29.15, 'Checando as fontes']];
+var SRC = [[-700, -300, .8], [640, -320, .72], [-760, 20, 1], [700, 40, .86], [-620, 300, .74], [600, 310, .95]];
+var PART = [];
+(function () { var seed = 17; function r() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+  for (var i = 0; i < 18; i++) PART.push({ a: r() * Math.PI * 2, sp: 420 + r() * 640, s: 9 + r() * 12, rot: r() * 720 - 360, c: ['#e8c873', '#24456b', '#a8453a', '#0a0a0a'][i % 4] }); })();
 
 function frame(t) {
   var v = {};
-  v.gridT = 'translate(' + f2(Math.sin(t * .12) * 20) + 'px, ' + f2(t * 1.2 % 56) + 'px)';
-  v.glowX = f2(50 + Math.sin(t * .25) * 12);
+  // backgrounds
+  var dk = 0; DARK.forEach(function (d) { dk = Math.max(dk, Math.min(lin(t, d[0] - .25, d[0] + .05), 1 - lin(t, d[1] - .05, d[1] + .25))); });
+  if (t < .3) dk = 1;
+  v.dark = f2(dk); v.lgX = f2(50 + Math.sin(t * .3) * 14); v.dgX = f2(50 + Math.sin(t * .22 + 1) * 16);
+  v.vig = f2(.18 + dk * .35); v.clockCol = dk > .5 ? '#c9d2de' : '#6b665d';
 
-  // HOOK
-  var ho = eIn(lin(t, 3.05, S.hookEnd));
-  v.hook = { o: f2(1 - ho), t: 'scale(' + (1 - ho * .06).toFixed(4) + ')', f: 'blur(' + f2(ho * 12) + 'px)' };
-  v.hk0 = rise(t, .1, 30); v.hk1 = rise(t, .25, 120, .9); v.hk2 = rise(t, .55, 120, .9); v.hk3 = rise(t, 1.35, 70, .8);
-  v.hkHl = f2(eOutQ(lin(t, 1.0, 1.6)));
+  // S0 · hook (dark)
+  v.s0 = block(t, 0, 4.55, .05);
+  v.hb0 = f2(Math.sin(t * .8) * 12 - t * 6); v.hb1 = f2(Math.cos(t * .7) * 14 - t * 4); v.hb2 = f2(Math.sin(t * .5 + 1) * 10); v.hb3 = f2(Math.cos(t * .6) * 10);
+  v.hk1 = typed(HOOK.l1, t, .35, 1.55);
+  var l2 = (HOOK.l2a + HOOK.l2b), n2 = Math.round(l2.length * lin(t, 1.75, 3.0));
+  v.hk2a = l2.slice(0, Math.min(n2, HOOK.l2a.length)); v.hk2b = n2 > HOOK.l2a.length ? l2.slice(HOOK.l2a.length, n2) : '';
+  v.hkc1 = t < 1.6 ? blink(t) : 0; v.hkc2 = t >= 1.6 && t < 4.2 ? blink(t) : 0;
+  var wx = lin(t, 4.25, 4.75); v.whipX = f2(-1000 + wx * 3000); v.whipO = t > 4.25 && t < 4.75 ? f2(Math.sin(wx * Math.PI) * .9) : 0;
 
-  // step chip
-  var ch = null; CHIPS.forEach(function (c) { if (t >= c[0] - .05 && t <= c[1] + .4) ch = c; });
-  if (ch) {
-    var ci = eOutQ(lin(t, ch[0], ch[0] + .6)), co = eIn(lin(t, ch[1], ch[1] + .35));
-    v.chip = { o: f2(ci * (1 - co)), t: 'translateY(' + f2((1 - ci) * 60 - co * 40) + 'px)', f: 'blur(' + f2((1 - ci) * 6 + co * 6) + 'px)' };
-    v.chipN = ch[2]; v.chipTitle = ch[3]; v.chipSub = ch[4];
-  } else { v.chip = { o: 0, t: 'none', f: 'none' }; v.chipN = ''; v.chipTitle = ''; v.chipSub = ''; }
+  // S1 · brand
+  v.s1 = block(t, 4.6, 7.65, .03);
+  v.bGlow = f2(.6 + .5 * eOut(lin(t, 4.6, 6.0)) + Math.sin(t * 2) * .03);
+  var lg = cl(spring(t - 4.7, .9), 0, 1.1); v.bLogo = { o: f2(cl(lg, 0, 1)), f: 'blur(' + f2((1 - cl(lg, 0, 1)) * 12) + 'px)', t: 'scale(' + f2(.7 + .3 * lg) + ')' };
+  v.bDot = f2(5 * cl(spring(t - 5.1, 1.3), 0, 1.35)); v.bRing = f2(5 + 16 * eOut(lin(t, 5.15, 5.9))); v.bRingO = f2(1 - lin(t, 5.15, 5.9));
+  v.bWord = 'inset(0 ' + f2((1 - eOut5(lin(t, 5.0, 5.7))) * 100) + '% 0 0)';
+  var pk = cl(spring(t - 5.6, 1), 0, 1.1); v.pill = { o: f2(cl(pk, 0, 1)), t: 'translateY(' + f2((1 - pk) * 30) + 'px)' };
+  var pw = eIO(lin(t, 6.3, 6.8)); v.pillW = f2(220 + (1020 - 220) * pw); v.pillA = f2(1 - lin(t, 6.3, 6.5)); v.pillB = f2(lin(t, 6.55, 6.85));
 
-  // window: enters after the hook, recedes for the drop, returns for validation, leaves for the end card
-  var we = spring(t - 3.55, .9), wx = eIn(lin(t, 41.6, 42.25));
-  var dropIn = eOut(lin(t, 29.85, 30.35)), dropOut = eOut(lin(t, 35.1, 35.7)), recede = dropIn * (1 - dropOut);
-  v.win = { o: t < 3.5 ? 0 : f2(cl(we, 0, 1) * (1 - wx) * (1 - recede * .75)),
-    t: 'perspective(2400px) translateY(' + f2((1 - cl(we, 0, 1.1)) * 140 + wx * 50) + 'px) rotateX(' + f2((1 - cl(we, 0, 1)) * 14) + 'deg) scale(' + (0.9 + .1 * we - recede * .06 - wx * .04).toFixed(4) + ')',
-    f: 'blur(' + f2(recede * 12 + wx * 6) + 'px)' };
+  // kinetic lines
+  function K(name, a, b, starts) { v[name] = block(t, a, b, .06); starts.forEach(function (s, i) { v[name + 'w' + i] = word(t, s); }); }
+  K('k1', 7.6, 9.45, [7.7, 7.85, 8.0, 8.3, 8.45, 8.65]);
+  K('k2', 12.35, 13.8, [12.45, 12.6, 12.85, 13.0, 13.15]);
+  K('k3', 17.2, 18.4, [17.3, 17.45, 17.7, 17.9]);
+  K('k4', 22.2, 23.3, [22.3, 22.42, 22.54, 22.7]);
+  K('k5', 26.35, 27.25, [26.45, 26.65]);
+  K('k6', 34.95, 36.05, [35.05, 35.35]);
+  K('k7', 40.55, 42.1, [40.65, 41.05]);
+  v.starR = f2((t - 35) * 160); v.starS = f2(cl(spring(t - 35.2, 1.1), 0, 1.2));
 
-  // stepper
-  var st = t < 8.5 ? 0 : t < 15.5 ? 1 : t < 19.5 ? 2 : t < 26 ? 3 : 4;
-  var x0 = 0, acc = [0]; for (var q = 0; q < 5; q++) acc.push(acc[q] + STEP_W[q]);
-  var prevSt = cl(st - 1, 0, 4), bnd = [0, 8.5, 15.5, 19.5, 26][st], mv = eIO(lin(t, bnd, bnd + .5));
-  v.stepX = f2(acc[prevSt] + (acc[st] - acc[prevSt]) * mv); v.stepW = f2(STEP_W[prevSt] + (STEP_W[st] - STEP_W[prevSt]) * mv);
-  for (var q2 = 0; q2 < 5; q2++) v['sc' + q2] = q2 === st && mv > .5 ? '#f7f3ec' : (q2 < st ? '#24456b' : '#6b665d');
+  // S3 · input close-up
+  var C3 = [[9.4, 120, 120, 18, -26, 4, 1.02], [9.95, 40, 30, 12, -18, 2.5, 1.18], [11.3, -20, -30, 8, -11, 1.5, 1.32], [11.95, 0, -120, 5, -6, 1, 1.5], [12.35, 0, -520, 0, 0, 0, 2.6]];
+  v.p3 = cam3(t, C3, 9.4, 12.35);
+  v.inTxt = typed('Canetas emagrecedoras', t, 10.1, 11.15); v.inPh = v.inTxt.length ? 0 : 1; v.inCount = v.inTxt.length;
+  v.inCaret = t > 10.0 && t < 11.8 ? blink(t) : 0;
+  v.inSh = t > 10.0 ? '8px 8px 0 #24456b, 0 0 0 4px rgba(232,200,115,.35)' : '8px 8px 0 #0a0a0a';
+  v.b3 = stampBtn(t, 11.75, 7); var r3 = lin(t, 11.75, 12.3); v.b3r = { o: r3 > 0 && r3 < 1 ? f2(1 - r3) : 0, s: f2(1 + r3 * 40) };
+  v.h3 = hand(t, [[9.6, 1150, 620], [10.0, 520, 340], [11.25, 520, 340], [11.65, 700, 520]], [10.0, 11.75], 9.6, 12.2);
 
-  // ▸ SCENE 1 · input
-  v.s1 = scene(t, S.s1[0], S.s1[1]);
-  v.i0 = rise(t, 4.05); v.i1 = rise(t, 4.12, 40); v.i2 = rise(t, 4.25); v.i3 = rise(t, 4.3, 30); v.i4 = rise(t, 4.4, 30);
-  v.i5 = rise(t, 4.5); v.i6 = rise(t, 4.58); v.i7 = rise(t, 4.66);
-  v.inTxt = typed(TXT.input, t, 4.8, 6.3); v.inPh = v.inTxt.length ? 0 : 1;
-  v.inCaret = t > CLICK.focus && t < 7.4 ? blink(t) : 0; v.inCount = v.inTxt.length;
-  v.inBoxSh = t > CLICK.focus ? '6px 6px 0 #24456b' : '6px 6px 0 #0a0a0a';
-  var b1 = stampBtn(t, CLICK.criar, 6); v.btn1Sh = b1.sh; v.btn1T = b1.t;
-  v.btn1Bg = v.inTxt.length ? '#24456b' : '#8b9bb0';
-
-  // ▸ SCENE 2 · chat
-  v.s2 = scene(t, S.s2[0], S.s2[1]);
-  v.live = f2(4 + Math.sin(t * 5) * 2);
-  v.chatState = t < 14.7 ? 'Pronto pra conversar' : 'Recorte fechado';
-  v.b1 = pop(t, 8.8, .9); v.b2 = pop(t, 9.1, .92); v.b3 = pop(t, 13.5, .9); v.b4 = pop(t, 13.85, .92);
-  v.a1 = words(TXT.a1, t, 9.6, 10.75); v.a2 = words(TXT.a2, t, 14.15, 14.65);
+  // S5 · chat close-up
+  var C5 = [[13.75, -120, 100, 14, 22, -3, 1.05], [14.4, -40, 40, 10, 14, -2, 1.16], [15.9, 60, -60, 7, 9, -1, 1.26], [17.25, 120, -120, 5, 6, 0, 1.34]];
+  v.p5 = cam3(t, C5, 13.75, 17.25);
+  v.live = f2(4 + Math.sin(t * 5) * 2); v.chatState = t < 16.95 ? 'Pronto pra conversar' : 'Recorte fechado';
+  var pp = function (at) { var k = cl(spring(t - at, 1.2), 0, 1.12); return { o: f2(cl((t - at) / .15, 0, 1)), t: 'scale(' + f2(.9 + .1 * k) + ') translateY(' + f2((1 - cl(k, 0, 1)) * 14) + 'px)' }; };
+  v.c1 = pp(13.9); v.c2 = pp(16.55); v.c3 = pp(16.7);
   v.dots = ['·', '··', '···'][Math.floor(t * 6) % 3];
-  v.d1 = t >= 9.1 && t < 9.6 ? 1 : 0; v.d2 = t >= 13.85 && t < 14.15 ? 1 : 0;
-  v.reply = t < 13.4 ? typed(TXT.reply, t, 11.0, 13.1) : '';
-  v.taPh = v.reply.length ? 0 : 1; v.taCount = v.reply.length;
-  v.taCaret = t > CLICK.ta && t < 13.4 ? blink(t) : 0;
-  v.taBorder = t > CLICK.ta && t < 13.4 ? '#24456b' : '#cfc6b3';
-  var sb = stampBtn(t, CLICK.send, 4); v.sendSh = sb.sh; v.sendT = sb.t;
-  v.hint = f2(1 - lin(t, 14.6, 14.9));
-  var bus = pop(t, 14.8, .7), bb = stampBtn(t, CLICK.buscar, 6);
-  v.bus = { o: bus.o, t: bus.t + ' ' + bb.t }; v.buscarSh = bb.sh; v.buscarBg = '#24456b';
+  v.a1 = words(A1, t, 14.15, 14.95); v.d1 = t >= 13.9 && t < 14.15 ? 1 : 0;
+  v.a2 = words(A2, t, 16.85, 17.15); v.d2 = t >= 16.7 && t < 16.85 ? 1 : 0;
+  v.reply = t < 16.45 ? typed(REPLY, t, 15.2, 16.25) : ''; v.taPh = v.reply.length ? 0 : 1;
+  v.taCaret = t > 15.05 && t < 16.45 ? blink(t) : 0; v.taBd = t > 15.05 && t < 16.45 ? '#24456b' : '#cfc6b3';
+  v.b5 = stampBtn(t, 16.45, 5);
+  v.h5 = hand(t, [[14.9, 900, 700], [15.05, 420, 612], [16.25, 520, 612], [16.4, 1130, 612]], [15.05, 16.45], 14.9, 17.0);
 
-  // ▸ SCENE 3 · research
-  v.s3 = scene(t, S.s3[0], S.s3[1]);
-  v.spin = f2(t * 360 % 360);
-  v.r0 = rise(t, 15.65, 36); v.r1 = rise(t, 15.85); v.r2 = rise(t, 15.9); v.r3 = rise(t, 16.0); v.r4 = rise(t, 16.1);
-  v.n1 = Math.round(200 * eOut(lin(t, 16.0, 18.6)));
-  v.n2 = Math.round(17 * eOut(lin(t, 16.6, 18.8)));
-  v.n3 = Math.round(13 * eOut(lin(t, 17.0, 19.0)));
+  // S7 · research (dark)
+  v.s7 = block(t, 18.35, 22.2, 0);
+  var focus = eIO(lin(t, 20.5, 21.1));
   for (var s = 0; s < 6; s++) {
-    var at = 16.2 + s * .3, k = cl(spring(t - at, 1), 0, 1.1), o = cl((t - at) / .2, 0, 1);
-    v['src' + s] = { o: f2(o), t: 'translate(' + f2((1 - k) * 90) + 'px, ' + f2((1 - k) * 20) + 'px) rotate(' + f2((1 - k) * 3) + 'deg)', f: 'blur(' + f2((1 - cl(k, 0, 1)) * 6) + 'px)' };
-    v['scan' + s] = f2(-110 + 220 * eIO(lin(t, at + .35, at + 1.05)));
-    v['ok' + s] = pop(t, at + 1.0, .5);
+    var at = 18.45 + s * .16, k = eOut5(lin(t, at, at + .9)), P = SRC[s], z = P[2];
+    var dx = Math.sin(t * .4 + s) * 10, dy = Math.cos(t * .35 + s * 2) * 8;
+    var x = 960 + P[0] - 220 + dx, y = 540 + P[1] - 80 + dy, sc = z * (0.3 + .7 * k), bl = (1 - k) * 16 + (1 - z) * 10, o = k * (0.4 + .6 * z);
+    if (s === 0) { x = x + (420 - x) * focus; y = y + (380 - y) * focus; sc = sc + (1.5 - sc) * focus; bl = bl * (1 - focus); o = o + (1 - o) * focus; }
+    else { bl = bl + focus * 8; o = o * (1 - .55 * focus); }
+    v['sc' + s] = { x: f2(x), y: f2(y), o: f2(o), f: 'blur(' + f2(bl) + 'px)', t: 'scale(' + f2(sc) + ')' };
+  }
+  var rk = cl(spring(t - 18.5, .9), 0, 1.1); v.ring = { o: f2(cl(rk, 0, 1)), t: 'scale(' + f2(.6 + .4 * rk) + ')' };
+  v.ringX = f2(960 + 420 * focus);
+  var cp = eOut(lin(t, 18.6, 20.4)); v.cnt = Math.round(200 * cp); v.ringOff = f2(1257 * (1 - cp));
+  v.nB = f2(lin(t, 21.2, 21.45)); v.nA = f2(1 - lin(t, 21.1, 21.3));
+  v.brO = f2(lin(t, 20.9, 21.1) * (1 - lin(t, 21.9, 22.1))); v.brX = f2(420 - 50 - 44); v.brY = f2(380 - 40 - 30 + 30);
+  v.scanY = f2(12 + ((t - 20.9) * 260) % 276);
+
+  // S9 · angles & recipe
+  var C9 = [[23.25, 0, 120, 30, -12, 2, .96], [23.8, 0, 60, 24, -9, 1.5, 1.02], [24.6, 0, 20, 12, -5, 1, 1.08], [26.4, 0, -40, 6, -2, 0, 1.12]];
+  v.p9 = cam3(t, C9, 23.25, 26.4);
+  var sel = t >= 24.55, hv0 = t > 23.75 && t < 24.15, hv2 = t > 24.15 && t < 24.5, lift = eOut(lin(t, 24.55, 25.0));
+  function side(hv, at) { var k = cl(spring(t - at, 1), 0, 1.1);
+    return { o: f2(cl((t - at) / .2, 0, 1) * (1 - .6 * lift)), f: 'blur(' + f2(lift * 3) + 'px)', bd: hv ? '#24456b' : '#cfc6b3',
+      sh: hv ? '6px 6px 0 #0a0a0a' : '0 20px 40px -20px rgba(10,20,34,.3)', t: 'translateY(' + f2((1 - cl(k, 0, 1)) * 60 + (hv ? -14 : 0) + lift * 20) + 'px) scale(' + f2(1 - .06 * lift) + ')' }; }
+  v.ag0 = side(hv0, 23.35); v.ag2 = side(hv2, 23.55);
+  var km = cl(spring(t - 23.45, 1), 0, 1.1);
+  v.ag1 = { o: f2(cl((t - 23.45) / .2, 0, 1)), bd: sel ? '#24456b' : '#0a0a0a', sh: sel ? '10px 10px 0 #24456b, 0 0 70px rgba(232,200,115,.45)' : '6px 6px 0 #0a0a0a',
+    t: 'translateY(' + f2((1 - cl(km, 0, 1)) * 60 - lift * 40 + press(t, 24.55) * 8) + 'px) scale(' + f2(1 + .1 * lift) + ')' };
+  v.agC = { o: f2(lin(t, 24.6, 24.7)), t: 'scale(' + f2(cl(spring(t - 24.6, 1.4), 0, 1.3)) + ')' };
+  var qk = eOut5(lin(t, 24.75, 25.25)); v.agQ = { o: f2(qk), t: 'translateY(' + f2((1 - qk) * 12) + 'px)' };
+  function pill(at, clickAt) { var k = cl(spring(t - at, 1.1), 0, 1.12), on = t >= clickAt, p = press(t, clickAt);
+    return { o: f2(cl((t - at) / .15, 0, 1)), t: 'translateY(' + f2((1 - cl(k, 0, 1)) * 50) + 'px) scale(' + f2((.8 + .2 * k) * (1 - .05 * p)) + ')', bg: on ? '#24456b' : '#f7f3ec', fg: on ? '#f7f3ec' : '#0a0a0a', c: on ? 1 : 0 }; }
+  v.pl0 = pill(25.05, 25.3); v.pl1 = pill(25.15, 25.55); v.pl2 = pill(25.25, 25.8);
+  var gk = cl(spring(t - 25.85, 1.1), 0, 1.12); v.b9o = f2(cl((t - 25.85) / .15, 0, 1)); v.b9 = stampBtn(t, 26.2, 7); v.b9.t = v.b9.t + ' scale(' + f2(.85 + .15 * gk) + ')';
+  v.h9 = hand(t, [[23.5, 750, 760], [23.8, 250, 280], [24.15, 1250, 280], [24.45, 750, 300], [25.2, 420, 596], [25.45, 690, 596], [25.7, 930, 596], [26.1, 750, 722]], [24.55, 25.3, 25.55, 25.8, 26.2], 23.5, 26.35);
+
+  // S11 · generation ring (dark)
+  v.s11 = block(t, 27.2, 30.02, 0);
+  var gp = eIO(lin(t, 27.3, 29.3)); v.grOff = f2(1068 * (1 - gp)); v.grPct = Math.round(100 * gp);
+  v.grPctO = f2(1 - lin(t, 29.3, 29.45)); v.grChk = f2(190 * (1 - eOut(lin(t, 29.35, 29.65))));
+  v.gr = { t: 'scale(' + f2(.85 + .15 * cl(spring(t - 27.25, 1), 0, 1.1) + (t > 29.35 ? .06 * Math.sin(lin(t, 29.35, 29.8) * Math.PI) : 0)) + ')' };
+  var gi = 0; GEN.forEach(function (g, i) { if (t >= g[0]) gi = i; });
+  var gs = GEN[gi], gk2 = eOut5(lin(t, gs[0], gs[0] + .3)), gOut = lin(t, 29.3, 29.45);
+  v.gsTxt = gs[1]; v.gs = { o: f2(gk2 * (1 - gOut)), f: 'blur(' + f2((1 - gk2) * 10) + 'px)', t: 'translateY(' + f2((1 - gk2) * 26) + 'px)' };
+  var dk2 = eOut5(lin(t, 29.4, 29.8)); v.gd = { o: f2(dk2), f: 'blur(' + f2((1 - dk2) * 12) + 'px)', t: 'translateY(' + f2((1 - dk2) * 26) + 'px)' };
+  for (var oi = 0; oi < 4; oi++) {
+    var ang = (t - 27.3) * .9 + oi * Math.PI / 2, ox = 960 + Math.cos(ang) * 520 - 90, oy = 470 + Math.sin(ang) * 150 - 112, depth = (Math.sin(ang) + 1) / 2;
+    v['o' + oi] = { x: f2(ox), y: f2(oy), o: f2((.25 + .55 * gp) * (.5 + .5 * depth)), f: 'blur(' + f2((1 - gp) * 14 + (1 - depth) * 4) + 'px) saturate(' + f2(.3 + .7 * gp) + ')', t: 'scale(' + f2(.7 + .35 * depth) + ')' };
   }
 
-  // ▸ SCENE 4 · angles & format
-  v.s4 = scene(t, S.s4[0], S.s4[1]);
-  var sel = t >= CLICK.card1;
-  var hov1 = t > 20.4 && t < 21.2, hov2 = t > 21.2 && t < 22.1;
-  var a0 = pop(t, 19.75, .94), a1 = pop(t, 19.9, .94), a2 = pop(t, 20.05, .94), sp0 = cl(spring(t - CLICK.card1, 1.2), 0, 1.1);
-  v.ac0 = { o: a0.o, t: a0.t + ' translate(' + f2(-press(t, CLICK.card1) * 4) + 'px, 0)', bd: sel ? '2.5px solid #24456b' : '2px solid #0a0a0a', sh: sel ? f2(6 + 2 * sp0) + 'px ' + f2(6 + 2 * sp0) + 'px 0 #24456b' : '4px 4px 0 #0a0a0a' };
-  v.ac1 = { o: f2(a1.o * (sel ? .55 : 1)), t: a1.t + (hov1 ? ' translateX(6px)' : ''), bd: hov1 ? '2px solid #24456b' : '1.5px solid #cfc6b3', bg: hov1 ? '#efe7d8' : '#f7f3ec', sh: hov1 ? '4px 4px 0 #0a0a0a' : 'none' };
-  v.ac2 = { o: f2(a2.o * (sel ? .55 : 1)), t: a2.t + (hov2 ? ' translateX(6px)' : ''), bd: hov2 ? '2px solid #24456b' : '1.5px solid #cfc6b3', bg: hov2 ? '#efe7d8' : '#f7f3ec', sh: hov2 ? '4px 4px 0 #0a0a0a' : 'none' };
-  v.chk0 = pop(t, CLICK.card1 + .05, .2); v.quote = rise(t, CLICK.card1 + .25, 16);
-  v.fp = rise(t, 20.3, 30);
-  function choice(at) { var on = t >= at, k = cl(spring(t - at, 1.3), 0, 1.1), p = press(t, at);
-    return { bd: on ? '2px solid #24456b' : '1.5px solid #cfc6b3', bg: on ? '#efe7d8' : '#f7f3ec', sh: on ? '4px 4px 0 #0a0a0a' : 'none', t: 'scale(' + f2(1 - p * .04 + (on ? (k - 1) * .5 + .0 : 0) * .06) + ')', c: on ? f2(cl(k, 0, 1)) : 0 }; }
-  v.f1 = choice(CLICK.carrossel); v.f2 = choice(CLICK.ilustracao);
-  var ex = choice(CLICK.explicador); v.f3 = { bdc: t >= CLICK.explicador ? '#0a0a0a' : '#cfc6b3', bg: t >= CLICK.explicador ? '#0a0a0a' : '#f7f3ec', fg: t >= CLICK.explicador ? '#f7f3ec' : '#0a0a0a', t: ex.t };
-  var gb = stampBtn(t, CLICK.gerar, 6); v.genSh = gb.sh; v.genT = gb.t; v.genBg = '#24456b';
-
-  // cursor + ripple (window coords)
-  var on = false; CUR_ON.forEach(function (r) { if (t >= r[0] && t <= r[1]) on = true; });
-  var cp = curPos(t), pr = 0, rip = null;
-  CLICK_POS.forEach(function (c) { pr = Math.max(pr, press(t, c[0])); var d = t - c[0]; if (d >= 0 && d <= .55) rip = { k: d / .55, x: c[1], y: c[2] }; });
-  v.cx = f2(cp[0] - 3); v.cy = f2(cp[1] - 2); v.cS = f2(1 - .18 * pr);
-  v.cO = on ? f2(Math.min(lin(t, 3.9, 4.2), 1)) : 0;
-  v.rx = rip ? f2(rip.x - 36) : -300; v.ry = rip ? f2(rip.y - 36) : -300; v.rO = rip ? f2(1 - eOut(rip.k)) : 0; v.rS = rip ? f2(.3 + eOut(rip.k)) : .3;
-
-  // ▸ SCENE 5 · generation
-  v.s5 = scene(t, S.s5[0], S.s5[1]);
-  var TK = [26.45, 26.95, 27.45, 27.95, 28.45, 28.95, 29.5];
-  TK.forEach(function (tk, i) {
-    var done = eOutQ(lin(t, tk, tk + .35)), act = t > tk - .5;
-    v['g' + i] = { fill: done > .05 ? '#24456b' : 'transparent', dash: f2(24 * (1 - done)), c: done > .05 ? '#0a0a0a' : act ? '#24456b' : '#a39d90' };
-  });
-  v.shim = f2(-120 + ((t * 90) % 240));
-  for (var ti = 0; ti < 4; ti++) {
-    var ta = 28.4 + ti * .3, rv = eOutQ(lin(t, ta, ta + .6));
-    v['tl' + ti] = { o: f2(cl(rv * 1.4, 0, 1)), f: 'blur(' + f2((1 - rv) * 14) + 'px) saturate(' + f2(.4 + .6 * rv) + ')', c: 'inset(' + f2((1 - rv) * 100) + '% 0 0 0)' };
-  }
-  v.cap = words(TXT.cap, t, 27.3, 29.4); v.capCaret = t > 27.2 && t < 29.8 ? blink(t) : 0;
-  v.prog = f2(4 + 96 * eIO(lin(t, 26.2, 29.9)));
-
-  // ▸ DROP 30 → 35.4 · slides travel tiles → fan → thumbnails
-  v.flash = f2(cl(t < 30 ? lin(t, 29.9, 30.0) * .8 : (1 - lin(t, 30.0, 30.5)) * .8, 0, .8));
-  v.dim = f2(recede);
-  v.dh = rise(t, 30.35, 50, .8); var dhOut = eIn(lin(t, 34.7, 35.2));
-  v.dh.o = f2(v.dh.o * (1 - dhOut)); v.dt = rise(t, 30.6, 20); v.dt.o = f2(v.dt.o * (1 - dhOut));
-  var fi = Math.floor((t - 31.2) / .8);
-  for (var j = 0; j < 4; j++) {
-    var kOut = cl(spring(t - (30.0 + j * .06), .95), 0, 1.08), kBack = eIO(lin(t, 34.85 + j * .05, 35.65 + j * .05));
-    var fw = 360, fh = 450, fx = 960 + FAN[j][0] - fw / 2, fy = 590 + FAN[j][1] - fh / 2;
-    var sx = TILE[j][0], sy = TILE[j][1], sw = 180, sh = 225;
-    var ex2 = THUMB[j][0], ey2 = THUMB[j][1], ew = 150, eh = 187;
-    var x = sx + (fx - sx) * kOut, y = sy + (fy - sy) * kOut, w = sw + (fw - sw) * kOut, h = sh + (fh - sh) * kOut;
-    x = x + (ex2 - x) * kBack; y = y + (ey2 - y) * kBack; w = w + (ew - w) * kBack; h = h + (eh - h) * kBack;
-    var foc = fi === j && t < 34.7 ? cl(spring(t - (31.2 + j * .8), 1.2), 0, 1.1) : 0;
-    var live = t >= 29.95 && t < 35.9;
-    var lt = ((t - 30) * 60 + j * 22) % 160 - 30;
-    v['fs' + j] = { x: f2(x), y: f2(y), w: f2(w), h: f2(h), r: f2(10 + 4 * kOut * (1 - kBack)), z: foc > .05 ? 20 : 10 + j,
-      o: live ? f2(t < 35.6 ? 1 : 1 - lin(t, 35.6, 35.9)) : 0,
-      t: 'perspective(1600px) rotateY(' + f2((1 - cl(kOut, 0, 1)) * (j < 2 ? -30 : 30)) + 'deg) rotate(' + f2(FAN[j][2] * cl(kOut, 0, 1) * (1 - kBack)) + 'deg) scale(' + f2(1 + .12 * foc) + ') translateY(' + f2(-22 * foc) + 'px)',
-      sh: f2(8 + 8 * foc) + 'px ' + f2(8 + 8 * foc) + 'px 0 #0a0a0a, 0 40px 80px -30px rgba(0,0,0,' + f2(.25 + .2 * foc) + ')',
-      l0: f2(lt - 25), l1: f2(lt - 10), l2: f2(lt + 5) };
-  }
+  // S12 · drop · carousel
+  v.s12 = block(t, 29.98, 35.05, 0);
+  v.flash = f2(cl(t < 30 ? lin(t, 29.9, 30.0) * .85 : (1 - lin(t, 30.0, 30.55)) * .85, 0, .85));
+  var ck = cl(spring(t - 30.0, .9), 0, 1.08);
+  var steps = 0; [31.2, 32.2, 33.2, 34.2].forEach(function (s0) { steps += eIO(lin(t, s0, s0 + .6)); });
+  v.car = 'translateY(' + f2((1 - ck) * 300) + 'px) rotateX(-6deg) rotateY(' + f2(-90 * steps + (1 - ck) * 120 - (t - 30) * 2) + 'deg) scale(' + f2(.6 + .4 * ck) + ')';
+  var hk = eOut5(lin(t, 30.25, 30.9)); v.dh = { o: f2(hk), f: 'blur(' + f2((1 - hk) * 14) + 'px)', t: 'translateY(' + f2((1 - hk) * 40) + 'px)' };
+  var tk = eOut5(lin(t, 30.6, 31.1)); v.dt = { o: f2(tk), t: 'translateY(' + f2((1 - tk) * 20) + 'px)' };
   for (var pi = 0; pi < PART.length; pi++) {
-    var P = PART[pi], dtp = t - 30.0, life = lin(t, 30.0, 31.8);
-    var px = 960 + Math.cos(P.a) * P.sp * dtp * (1 - .35 * dtp), py = 560 + Math.sin(P.a) * P.sp * dtp * .8 + 420 * dtp * dtp;
-    v['p' + pi] = { x: f2(px), y: f2(py), s: f2(P.s), c: P.c, r: f2(P.rot * dtp), o: t < 30 || t > 31.9 ? 0 : f2(1 - eIn(life)) };
+    var Q = PART[pi], dtp = t - 30.0, life = lin(t, 30.0, 32.0);
+    v['q' + pi] = { x: f2(960 + Math.cos(Q.a) * Q.sp * dtp * (1 - .3 * dtp)), y: f2(560 + Math.sin(Q.a) * Q.sp * dtp * .8 + 440 * dtp * dtp), s: f2(Q.s), c: Q.c, r: f2(Q.rot * dtp), o: t < 30 || t > 32 ? 0 : f2(1 - eIn(life)) };
   }
 
-  // ▸ SCENE 6 · validation
-  v.s6 = scene(t, S.s6[0], S.s6[1]);
-  v.th = f2(lin(t, 35.55, 35.8));
-  var CT = [37.2, 37.75, 38.3, 38.85, 39.4, 39.95];
-  CT.forEach(function (c, i) { var r = rise(t, 35.9 + i * .08, 20); var hl = eOutQ(lin(t, c, c + .45)) * (1 - eIn(lin(t, c + .9, c + 1.3)) * .6);
-    v['ct' + i] = { o: r.o, t: r.t, w: f2(hl * 100) }; });
-  v.hlA = t > 37.2 ? 'rgba(232,200,115,.7)' : 'transparent'; v.hlB = t > 37.75 ? 'rgba(232,200,115,.7)' : 'transparent'; v.hlC = t > 38.3 ? 'rgba(232,200,115,.7)' : 'transparent';
-  v.note = { o: t > 40.4 ? 1 : 0, c: 'inset(0 ' + f2((1 - eOut(lin(t, 40.4, 41.3))) * 100) + '% 0 0)' };
+  // S14 · validation close-up
+  var C14 = [[35.95, 160, 120, 16, -18, 2.5, 1.0], [36.6, 60, 40, 11, -12, 1.5, 1.08], [38.6, -40, -10, 7, -7, .8, 1.14], [40.6, -80, -60, 4, -3, 0, 1.2]];
+  v.p14 = cam3(t, C14, 35.95, 40.6);
+  var row = eIO(lin(t, 36.5, 37.4));
+  v.vb = { x0: f2(10), x1: f2(830), y0: f2(10 + row * 150), y1: f2(170 + row * 150) }; v.vbO = f2(lin(t, 36.45, 36.6) * (1 - lin(t, 37.4, 37.6)));
+  v.hl0 = f2(100 * eOut(lin(t, 37.5, 37.85))); v.hl1 = f2(100 * eOut(lin(t, 38.05, 38.4))); v.hl2 = f2(100 * eOut(lin(t, 38.6, 38.9)));
+  v.sup0 = f2(lin(t, 37.8, 37.95)); v.sup1 = f2(lin(t, 38.35, 38.5)); v.sup2 = f2(lin(t, 38.85, 39.0));
+  function cc(at) { var k = cl(spring(t - at, 1.1), 0, 1.12); return { o: f2(cl((t - at) / .15, 0, 1)), t: 'translateX(' + f2((1 - cl(k, 0, 1)) * 80) + 'px) scale(' + f2(.9 + .1 * k) + ')' }; }
+  v.cc0 = cc(37.85); v.cc1 = cc(38.4); v.cc2 = cc(38.95);
+  v.note = 'inset(0 ' + f2((1 - eOut(lin(t, 39.3, 40.2))) * 100) + '% 0 0)';
 
-  // END CARD
-  v.endO = t < S.end ? 0 : f2(1 - lin(t, 47.3, 48));
-  v.ea = rise(t, 42.15, 40, .9); v.eb = rise(t, 42.55, 30); v.ec = pop(t, 43.0, .8); v.ed = rise(t, 43.4, 16);
-  v.dotR = f2(5 * cl(spring(t - 42.3, 1.2), 0, 1.3));
+  // S16 · end card
+  v.s16 = block(t, 42.05, 48.2, 0); if (t > 47.3) v.s16.o = f2(1 - lin(t, 47.3, 48));
+  v.ln0 = f2(2600 * (1 - eIO(lin(t, 42.1, 43.6)))); v.ln1 = f2(2600 * (1 - eIO(lin(t, 42.3, 43.9)))); v.ln2 = f2(1200 * (1 - eIO(lin(t, 42.5, 43.8))));
+  v.eStroke = f2(139 * (1 - eIO(lin(t, 42.25, 42.9)))); v.eFill = f2(lin(t, 42.8, 43.1)); v.eDot = f2(5 * cl(spring(t - 43.0, 1.3), 0, 1.35));
+  v.eWord = 'inset(0 ' + f2((1 - eOut5(lin(t, 42.9, 43.6))) * 100) + '% 0 0)';
+  var ek = cl(spring(t - 43.5, 1), 0, 1.1); v.eCta = { o: f2(cl(ek, 0, 1)), t: 'translateY(' + f2((1 - ek) * 30) + 'px) scale(' + f2(.92 + .08 * ek) + ')' };
+  var uk = cl(spring(t - 43.9, 1), 0, 1.1); v.eUrl = { o: f2(cl(uk, 0, 1)), t: 'translateY(' + f2((1 - uk) * 20) + 'px)' };
 
   var mm = Math.floor(t / 60), ss = Math.floor(t % 60);
   v.clock = mm + ':' + (ss < 10 ? '0' : '') + ss + ' / 0:48';
@@ -562,7 +481,7 @@ function frame(t) {
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { t: 2.9, playing: false, started: false };
+    this.state = { t: 6.9, playing: false, started: false };
     this.audio = null; this.raf = 0; this.t0 = 0;
     var self = this;
     this.setAudio = function (el) { self.audio = el; };
@@ -588,7 +507,7 @@ class Component extends DCLogic {
     var self = this;
     return {
       v: frame(this.state.t), yes: true,
-      ctlO: this.state.playing ? .3 : 1,
+      ctlO: this.state.playing ? .25 : 1,
       playing: this.state.playing, paused: !this.state.playing, showStart: !this.state.started,
       toggleLabel: this.state.playing ? 'Pausar' : 'Tocar',
       setAudio: this.setAudio,
