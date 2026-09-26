@@ -1,1 +1,256 @@
-{"v":3,"createdOnFiles":{"v":1,"at":"2026-09-26T01:05:00Z"},"title":"Vídeo Pauta Pronta","launch":{"view":"focused","file":"Main.dc.html"},"pages":[],"boards":{"Main.dc.html":{"x":0,"y":0,"w":1920,"h":1080,"title":"Filme de lançamento · 16:9","is_interactive":true}},"order":["Main.dc.html"],"notes":{},"designSystems":[]}
+{
+ "v": 3,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-09-26T01:05:00Z"
+ },
+ "title": "Vídeo Pauta Pronta",
+ "launch": {
+  "view": "canvas",
+  "page": "storyboard"
+ },
+ "pages": [
+  {
+   "id": "storyboard",
+   "name": "Storyboard"
+  },
+  {
+   "id": "filme",
+   "name": "Filme v4"
+  }
+ ],
+ "boards": {
+  "Main.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1920,
+   "h": 1080,
+   "title": "Filme de lançamento · 16:9",
+   "is_interactive": true,
+   "page": "filme"
+  },
+  "sb/01-abertura.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1280,
+   "h": 720,
+   "title": "01 · Abertura — o excesso",
+   "page": "storyboard"
+  },
+  "sb/02-marca.dc.html": {
+   "x": 1840,
+   "y": 0,
+   "w": 1280,
+   "h": 720,
+   "title": "02 · Marca",
+   "page": "storyboard"
+  },
+  "sb/03-tema.dc.html": {
+   "x": 0,
+   "y": 840,
+   "w": 1280,
+   "h": 720,
+   "title": "03 · Tema",
+   "page": "storyboard"
+  },
+  "sb/04-editor.dc.html": {
+   "x": 1840,
+   "y": 840,
+   "w": 1280,
+   "h": 720,
+   "title": "04 · Recorte com o editor",
+   "page": "storyboard"
+  },
+  "sb/05-pesquisa.dc.html": {
+   "x": 0,
+   "y": 1680,
+   "w": 1280,
+   "h": 720,
+   "title": "05 · Pesquisa (coração)",
+   "page": "storyboard"
+  },
+  "sb/06-analise.dc.html": {
+   "x": 1840,
+   "y": 1680,
+   "w": 1280,
+   "h": 720,
+   "title": "06 · Análise",
+   "page": "storyboard"
+  },
+  "sb/07-angulos.dc.html": {
+   "x": 0,
+   "y": 2520,
+   "w": 1280,
+   "h": 720,
+   "title": "07 · Ângulos",
+   "page": "storyboard"
+  },
+  "sb/08-formato.dc.html": {
+   "x": 1840,
+   "y": 2520,
+   "w": 1280,
+   "h": 720,
+   "title": "08 · Formato, estilo e tom",
+   "page": "storyboard"
+  },
+  "sb/09-entrega.dc.html": {
+   "x": 0,
+   "y": 3360,
+   "w": 1280,
+   "h": 720,
+   "title": "09 · Entrega",
+   "page": "storyboard"
+  },
+  "sb/10-validacao.dc.html": {
+   "x": 1840,
+   "y": 3360,
+   "w": 1280,
+   "h": 720,
+   "title": "10 · Documento de validação",
+   "page": "storyboard"
+  },
+  "sb/11-fecho.dc.html": {
+   "x": 0,
+   "y": 4200,
+   "w": 1280,
+   "h": 720,
+   "title": "11 · Fecho + CTA",
+   "page": "storyboard"
+  }
+ },
+ "order": [
+  "Main.dc.html",
+  "sb/01-abertura.dc.html",
+  "sb/02-marca.dc.html",
+  "sb/03-tema.dc.html",
+  "sb/04-editor.dc.html",
+  "sb/05-pesquisa.dc.html",
+  "sb/06-analise.dc.html",
+  "sb/07-angulos.dc.html",
+  "sb/08-formato.dc.html",
+  "sb/09-entrega.dc.html",
+  "sb/10-validacao.dc.html",
+  "sb/11-fecho.dc.html"
+ ],
+ "notes": {
+  "title": {
+   "x": 0,
+   "y": -300,
+   "text": "Storyboard · ~73s · pesquisa e análise no centro",
+   "kind": "title1",
+   "maxW": 3520,
+   "page": "storyboard"
+  },
+  "n01": {
+   "x": 1320,
+   "y": 0,
+   "w": 400,
+   "maxH": 720,
+   "text": "0:00–0:06 (6s)\n\nTela: manchetes reais espalhadas, com sombra carimbada. Texto: “Todo dia, milhares de matérias.”\n\nMovimento: cartões entram devagar, empilham e se acumulam; câmera parada.\n\nSom: pad suave + papel/tecla leve.",
+   "fill": "orange",
+   "size": "s",
+   "page": "storyboard"
+  },
+  "n02": {
+   "x": 3160,
+   "y": 0,
+   "w": 400,
+   "maxH": 720,
+   "text": "0:06–0:11 (5s)\n\nTela: faixas nas cores do site (navy, manteiga, rosa, verde, azul, creme) + logo Pauta Pronta by REP. Texto: “Inteligência editorial que vira post.”\n\nMovimento: faixas varrem da esquerda e revelam o logo.\n\nSom: whoosh macio + acorde.",
+   "fill": "orange",
+   "size": "s",
+   "page": "storyboard"
+  },
+  "n03": {
+   "x": 1320,
+   "y": 840,
+   "w": 400,
+   "maxH": 720,
+   "text": "0:11–0:16 (5s)\n\nTela: card /criar. Digita “Canetas emagrecedoras” letra por letra.\n\nMovimento: cursor clica, texto aparece de verdade.\n\nSom: teclado sutil + clique.",
+   "fill": "orange",
+   "size": "s",
+   "page": "storyboard"
+  },
+  "n04": {
+   "x": 3160,
+   "y": 840,
+   "w": 400,
+   "maxH": 720,
+   "text": "0:16–0:23 (7s)\n\nTela: chat do orquestrador com as mensagens reais (pergunta → resposta digitada).\n\nMovimento: mensagens sobem uma a uma, com tempo de leitura.\n\nSom: pop discreto por mensagem.",
+   "fill": "orange",
+   "size": "s",
+   "page": "storyboard"
+  },
+  "n05": {
+   "x": 1320,
+   "y": 1680,
+   "w": 400,
+   "maxH": 720,
+   "text": "0:23–0:32 (9s)\n\nTela: contadores 200 matérias → 17 selecionadas → 13 fontes; período 29/08–25/09; lista de veículos com ✓ LIDA / LENDO…\n\nMovimento: números sobem; lista marca cada fonte como lida.\n\nSom: ticks leves de contagem.",
+   "fill": "orange",
+   "size": "s",
+   "page": "storyboard"
+  },
+  "n06": {
+   "x": 3160,
+   "y": 1680,
+   "w": 400,
+   "maxH": 720,
+   "text": "0:32–0:40 (8s)\n\nTela: recorte proposto + blocos FATO (verde), CONTEXTO (azul), DIVERGÊNCIA (rosa).\n\nMovimento: trechos das matérias voam e se encaixam em cada bloco.\n\nSom: encaixes suaves.",
+   "fill": "orange",
+   "size": "s",
+   "page": "storyboard"
+  },
+  "n07": {
+   "x": 1320,
+   "y": 2520,
+   "w": 400,
+   "maxH": 720,
+   "text": "0:40–0:48 (8s)\n\nTela: 3 ângulos reais com nº de matérias; “A promessa e sua execução” recomendado; trecho da Folha que apoia.\n\nMovimento: cards entram lado a lado, o recomendado sobe e ganha o ✓.\n\nSom: clique de seleção.",
+   "fill": "orange",
+   "size": "s",
+   "page": "storyboard"
+  },
+  "n08": {
+   "x": 3160,
+   "y": 2520,
+   "w": 400,
+   "maxH": 720,
+   "text": "0:48–0:53 (5s)\n\nTela: lista de formatos (carrossel em destaque), bloco manteiga com cards, pills Ilustração ✓ / Explicador ✓.\n\nMovimento: lista rola até carrossel; cards viram.\n\nSom: clique + whoosh curto.",
+   "fill": "orange",
+   "size": "s",
+   "page": "storyboard"
+  },
+  "n09": {
+   "x": 1320,
+   "y": 3360,
+   "w": 400,
+   "maxH": 720,
+   "text": "0:53–1:00 (7s)\n\nTela: slides reais do carrossel + legenda + botões de ajuste.\n\nMovimento: slides deslizam como no Instagram; legenda se escreve.\n\nSom: swipe suave.",
+   "fill": "orange",
+   "size": "s",
+   "page": "storyboard"
+  },
+  "n10": {
+   "x": 3160,
+   "y": 3360,
+   "w": 400,
+   "maxH": 720,
+   "text": "1:00–1:08 (8s)\n\nTela: trecho da legenda com [2][5][3] ligando às matérias de origem. Nota à mão: “você confere antes de publicar ✓”.\n\nMovimento: marca-texto passa, linha liga cada citação ao card da fonte.\n\nSom: marcador + check.",
+   "fill": "orange",
+   "size": "s",
+   "page": "storyboard"
+  },
+  "n11": {
+   "x": 1320,
+   "y": 4200,
+   "w": 400,
+   "maxH": 720,
+   "text": "1:08–1:13 (5s)\n\nTela: “Seu próximo post nasce da cobertura real.” + logo + “Teste grátis · uma pauta, sem cartão” + pautapronta.com\n\nMovimento: logo assenta, botão aparece com a sombra carimbada.\n\nSom: acorde final.",
+   "fill": "orange",
+   "size": "s",
+   "page": "storyboard"
+  }
+ },
+ "designSystems": []
+}
