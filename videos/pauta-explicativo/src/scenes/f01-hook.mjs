@@ -97,7 +97,7 @@ tl.fromTo(cnt, { v: 48 }, { v: 212, duration: 6.6, ease: 'power1.in', onUpdate: 
 // "Mil manchetes." → "Mil versões." (troca no lugar) + rosto preocupado
 tl.fromTo('#f01-roll', { yPercent: 0 }, { yPercent: -50, duration: 0.7, ease: 'power3.inOut' }, 3.25);
 tl.set('#f01-ana .pf-Blank', { opacity: 0 }, 3.4);
-tl.set('#f01-ana .pf-Solemn', { opacity: 1 }, 3.4);
+tl.set('#f01-ana .pf-Tired', { opacity: 1 }, 3.4);
 tl.fromTo('#f01-qa', { x: -50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }, 3.75);
 tl.fromTo('#f01-qb', { x: -50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }, 4.15);
 tl.fromTo('#f01-neq', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'power3.out' }, 4.55);

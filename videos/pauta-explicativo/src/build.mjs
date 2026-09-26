@@ -29,6 +29,8 @@ scenes.forEach((s, i) => {
   t += s.duration;
 });
 const total = +t.toFixed(2);
+const MUSIC = process.env.MUSIC || 'assets/music/trilha-1.mp3';
+if (fs.existsSync(new URL(MUSIC, ROOT))) audio.unshift(`    <audio id="bgm" src="${MUSIC}" data-start="0" data-duration="${total}" data-track-index="9" data-volume="0.45"></audio>`);
 
 fs.writeFileSync(new URL('index.html', ROOT), `<!doctype html>
 <html lang="pt-BR">
