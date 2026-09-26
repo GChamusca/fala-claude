@@ -78,3 +78,31 @@ window.__timelines["${id}"] = tl;
 </html>
 `;
 }
+
+// ---- peças reutilizadas pelas cenas ----
+// Cabeçalho da cena: rótulo mono + frase com a parte final em itálico navy.
+export const header = (p, eyebrow, a, b, top = 92) => `<div id="${p}-eyebrow" class="mono" style="position:absolute;left:120px;top:${top}px;font-size:24px;color:${C.navy};">${eyebrow}</div>
+<div id="${p}-title" class="display" style="position:absolute;left:112px;top:${top + 38}px;font-size:84px;line-height:1.05;white-space:nowrap;">${words(a)} <em>${words(b)}</em></div>`;
+export const headerJs = (p, t = 0.25) => `tl.fromTo('#${p}-eyebrow', { x: -24, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, ${t});
+tl.fromTo('#${p}-title .w', { yPercent: 160 }, { yPercent: 0, duration: 0.8, ease: 'power3.out', stagger: 0.07 }, ${t + 0.15});`;
+
+// Disco de cor + personagem ancorado embaixo.
+export const cast = (p, name, { left, top, size, bg, h, dx = -40, dy = -40 }) => `<div id="${p}-disc" style="position:absolute;left:${left}px;top:${top}px;width:${size}px;height:${size}px;border-radius:50%;background:${bg};border:3px solid ${C.ink};box-shadow:10px 10px 0 ${C.ink};"></div>
+<div id="${p}-peep" style="position:absolute;left:${left + dx}px;top:${top + dy}px;height:${h}px;">${peep(name, `${p}-peep-svg`)}</div>`;
+export const castJs = (p, t = 0.3) => `tl.fromTo('#${p}-disc', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.9, ease: 'expo.out' }, ${t});
+tl.fromTo('#${p}-peep', { y: 900 }, { y: 0, duration: 1.1, ease: 'power3.out' }, ${t + 0.1});
+gsap.set('#${p}-peep .peep-head', { svgOrigin: '610 900' });`;
+// troca de expressão e piscada (EyesClosed por 0,14s)
+export const faceJs = (p, from, to, t) => `tl.set('#${p}-peep .pf-${from}', { opacity: 0 }, ${t}); tl.set('#${p}-peep .pf-${to}', { opacity: 1 }, ${t});`;
+export const blinkJs = (p, cur, t) => `${faceJs(p, cur, 'EyesClosed', t)} ${faceJs(p, 'EyesClosed', cur, t + 0.14)}`;
+export const nodJs = (p, t, d = 1.6, a = 3) => `tl.to('#${p}-peep .peep-head', { rotation: -${a}, duration: ${d / 2}, ease: 'sine.inOut' }, ${t}); tl.to('#${p}-peep .peep-head', { rotation: 0, duration: ${d / 2}, ease: 'sine.inOut' }, ${t + d / 2});`;
+
+// Cursor de mão.
+export const HAND = (id) => `<svg id="${id}" width="58" height="64" viewBox="0 0 34 38" style="position:absolute;left:0;top:0;overflow:visible;" aria-hidden="true"><path d="M14 4.5c0-1.4 1.1-2.5 2.5-2.5S19 3.1 19 4.5V15l.9-.3c1.2-.4 2.5.2 2.9 1.4l.1.3 1-.2c1.3-.2 2.5.6 2.8 1.9l.1.4.7-.1c1.4-.2 2.6.8 2.7 2.2l.3 5.6c.2 3.4-1.4 6.6-4.2 8.5l-.6.4c-1 .7-2.2 1-3.4 1h-4.8c-2 0-3.9-1-5-2.7l-5-7.5c-.8-1.2-.5-2.8.7-3.6 1.1-.7 2.5-.5 3.3.5L14 22V4.5z" fill="#ffffff" stroke="${C.ink}" stroke-width="1.8" stroke-linejoin="round"></path></svg>`;
+
+// Cortina de faixas nas cores da marca (transição F01→F02).
+export const STRIPE_COLORS = [C.navy, C.butter, C.rose, C.grass, C.sky, C.cream];
+export const stripes = (p) => `<div id="${p}-stripes" style="position:absolute;inset:0;display:flex;">${STRIPE_COLORS.map((c) => `<div class="${p}-st" style="flex:1;height:100%;background:${c};"></div>`).join('')}</div>`;
+
+// Texto quebrado em letras (para digitação).
+export const chars = (text, cls) => [...text].map((ch) => `<span class="${cls}">${ch === ' ' ? '&nbsp;' : ch}</span>`).join('');

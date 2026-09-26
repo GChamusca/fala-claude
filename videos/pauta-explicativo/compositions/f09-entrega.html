@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8" /><title>f09-entrega</title></head>
+<body>
+<template>
+<style>
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:200 800;font-display:block;src:url('assets/fonts/newsreader-v26-cY9AfjOCX1hbuyalUrK4397yjA.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:200 800;font-display:block;src:url('assets/fonts/newsreader-v26-cY9AfjOCX1hbuyalUrK439DyjJBG.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Newsreader';font-style:italic;font-weight:200 800;font-display:block;src:url('assets/fonts/newsreader-v26-cY9CfjOCX1hbuyalUrK439vCjohC.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Newsreader';font-style:italic;font-weight:200 800;font-display:block;src:url('assets/fonts/newsreader-v26-cY9CfjOCX1hbuyalUrK439vCgIhCFpY.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:200 800;font-display:block;src:url('assets/fonts/bricolagegrotesque-v9-3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInE.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:200 800;font-display:block;src:url('assets/fonts/bricolagegrotesque-v9-3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGGInHEVA.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:block;src:url('assets/fonts/jetbrainsmono-v24-tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:block;src:url('assets/fonts/jetbrainsmono-v24-tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx7cwhsk.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:400 700;font-display:block;src:url('assets/fonts/caveat-Wnz6HAc5bAfYB2Q7ZjYY.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:400 700;font-display:block;src:url('assets/fonts/caveat-Wnz6HAc5bAfYB2Q7aDYYmg8.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+#root{position:absolute;inset:0;overflow:hidden;background:#f7f3ec;color:#0a0a0a;font-family:'Bricolage Grotesque',sans-serif;}
+#root .grain{position:absolute;inset:0;mix-blend-mode:multiply;opacity:.55;pointer-events:none;}
+#root .wm{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .04em .12em;margin:0 -.04em -.12em;}
+#root .w{display:inline-block;}
+#root .mono{font-family:'JetBrains Mono',monospace;font-weight:500;text-transform:uppercase;letter-spacing:.16em;}
+#root .display{font-family:'Newsreader',serif;font-weight:400;letter-spacing:-.02em;}
+#root .display em{font-style:italic;color:#24456b;}
+#root .peep-svg{display:block;height:100%;width:auto;overflow:visible;}
+
+#f09-phone{position:absolute;left:200px;top:250px;width:440px;height:800px;box-sizing:border-box;border:5px solid #0a0a0a;border-radius:60px;background:#0a0a0a;box-shadow:12px 12px 0 #d3ae4f;overflow:hidden;}
+#f09-screen{position:absolute;left:14px;top:14px;right:14px;bottom:14px;border-radius:46px;background:#fffdf8;overflow:hidden;}
+#f09-top{display:flex;align-items:center;gap:12px;padding:40px 22px 14px;font-weight:700;font-size:22px;}
+#f09-view{position:relative;width:412px;height:515px;overflow:hidden;background:#efe7d8;}
+#f09-strip{display:flex;width:1648px;height:100%;}
+#f09-strip img{width:412px;height:100%;object-fit:cover;display:block;}
+#f09-dots{display:flex;justify-content:center;gap:8px;padding:14px;}
+#f09-dots i{display:block;width:9px;height:9px;border-radius:50%;background:#cfc6b3;}
+#f09-dots i.on{background:#24456b;}
+#f09-bars{padding:0 22px;}
+#f09-bars b{display:block;height:10px;border-radius:5px;background:#e6dcc7;margin-top:10px;}
+#f09-prog{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:#efe7d8;}
+#f09-ring{width:210px;height:210px;}
+#f09-pct{position:absolute;top:calc(50% - 60px);font-family:'Newsreader',serif;font-size:62px;}
+#f09-plab{margin-top:150px;font-size:18px;color:#6b665d;text-align:center;}
+#f09-cap{position:absolute;left:760px;top:300px;width:1040px;box-sizing:border-box;padding:34px 40px;border:3px solid #0a0a0a;border-radius:26px;background:#f7f3ec;box-shadow:10px 10px 0 #0a0a0a;}
+#f09-cap .mono{font-size:19px;color:#6b665d;}
+#f09-cap p{margin:14px 0 0;font-family:'Newsreader',serif;font-size:33px;line-height:1.38;}
+#f09-acts{position:absolute;left:760px;top:862px;display:flex;gap:16px;}
+.f09-a{padding:18px 30px;border:3px solid #0a0a0a;border-radius:999px;background:#f7f3ec;font-size:26px;font-weight:700;}
+.f09-a.pri{background:#24456b;color:#f7f3ec;box-shadow:5px 5px 0 #0a0a0a;}
+</style>
+<div id="root" data-composition-id="f09-entrega" data-width="1920" data-height="1080">
+
+
+<div id="f09-eyebrow" class="mono" style="position:absolute;left:120px;top:92px;font-size:24px;color:#24456b;">07 · Entrega</div>
+<div id="f09-title" class="display" style="position:absolute;left:112px;top:130px;font-size:84px;line-height:1.05;white-space:nowrap;"><span class="wm"><span class="w">Texto,</span></span> <span class="wm"><span class="w">arte</span></span> <span class="wm"><span class="w">e</span></span> <span class="wm"><span class="w">legenda.</span></span> <em><span class="wm"><span class="w">Prontos</span></span> <span class="wm"><span class="w">pra</span></span> <span class="wm"><span class="w">revisar.</span></span></em></div>
+<div id="f09-phone"><div id="f09-screen">
+  <div id="f09-top"><svg width="34" height="34" viewBox="4 4 54 54" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="#0a0a0a"></circle><circle cx="28" cy="28" r="22" fill="#24456b"></circle><circle cx="36" cy="20" r="5" fill="#e8c873"></circle></svg>pautapronta</div>
+  <div id="f09-view"><div id="f09-strip"><img src="assets/slides/slide-1.jpg" alt="Slide 1 do carrossel"><img src="assets/slides/slide-2.jpg" alt="Slide 2 do carrossel"><img src="assets/slides/slide-3.jpg" alt="Slide 3 do carrossel"><img src="assets/slides/slide-4.jpg" alt="Slide 4 do carrossel"></div></div>
+  <div id="f09-dots"><i id="f09-dot0" class="on"></i><i id="f09-dot1"></i><i id="f09-dot2"></i><i id="f09-dot3"></i></div>
+  <div id="f09-bars"><b style="width:92%"></b><b style="width:70%"></b></div>
+  <div id="f09-prog"><svg id="f09-ring" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="#e6dcc7" stroke-width="10"></circle><circle id="f09-arc" cx="60" cy="60" r="52" fill="none" stroke="#24456b" stroke-width="10" stroke-linecap="round" transform="rotate(-90 60 60)"></circle></svg><div id="f09-pct">0%</div><div id="f09-plab" class="mono">Montando sua<br>publicação</div></div>
+</div></div>
+<div id="f09-cap"><span class="mono">Legenda editorial</span><p id="f09-p0">Em setembro de 2026, o governo confirmou a intenção de distribuir as canetas emagrecedoras pelo SUS, mas sem data de início: a oferta não será imediata.</p><p id="f09-p1">Segundo a Folha de S.Paulo, a Gazeta do Povo e A Tarde, a oferta depende de análise da Conitec, de decisão do Ministério da Saúde e de definição de protocolo e financiamento.</p></div>
+<div id="f09-acts"><div class="f09-a">Mais curta</div><div class="f09-a">Mais detalhada</div><div class="f09-a pri">Pedir um ajuste</div></div>
+
+</div>
+<script>
+(function(){
+const tl = gsap.timeline({ paused: true });
+
+tl.fromTo('#f09-eyebrow', { x: -24, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, 0.1);
+tl.fromTo('#f09-title .w', { yPercent: 160 }, { yPercent: 0, duration: 0.8, ease: 'power3.out', stagger: 0.07 }, 0.25);
+tl.fromTo('#f09-phone', { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 0.3);
+// progresso 0 → 100%
+const arc = document.querySelector('#f09-arc'), AL = 2 * Math.PI * 52, pct = document.querySelector('#f09-pct'), o = { v: 0 };
+tl.fromTo(arc, { strokeDasharray: AL, strokeDashoffset: AL }, { strokeDashoffset: 0, duration: 2.2, ease: 'power1.inOut' }, 0.8);
+tl.fromTo(o, { v: 0 }, { v: 100, duration: 2.2, ease: 'power1.inOut', onUpdate: () => { pct.textContent = Math.round(o.v) + '%'; } }, 0.8);
+tl.to('#f09-prog', { opacity: 0, duration: 0.5, ease: 'power2.out' }, 3.2);
+// slides deslizam como no Instagram
+for (let i = 1; i < 4; i++) {
+  const t = 3.4 + i * 1.3;
+  tl.to('#f09-strip', { x: -412 * i, duration: 0.6, ease: 'power3.inOut' }, t);
+  tl.set('#f09-dot' + (i - 1), { backgroundColor: '#cfc6b3' }, t + 0.3);
+  tl.set('#f09-dot' + i, { backgroundColor: '#24456b' }, t + 0.3);
+}
+// legenda e botões de ajuste
+tl.fromTo('#f09-cap', { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 3.6);
+tl.fromTo('#f09-p0', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }, 4.1);
+tl.fromTo('#f09-p1', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }, 5.4);
+tl.fromTo('.f09-a', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out', stagger: 0.15 }, 7.6);
+
+window.__timelines["f09-entrega"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

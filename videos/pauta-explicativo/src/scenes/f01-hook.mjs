@@ -1,5 +1,5 @@
 // Frame 1 — Mil manchetes (hook). overwhelm-surround (Adapt) + kinetic-type-beats.
-import { C, peep, words, GRAIN } from '../lib.mjs';
+import { C, peep, words, GRAIN, stripes } from '../lib.mjs';
 
 // Manchetes reais da cobertura usada na pauta de exemplo (veículo · data · título).
 const NEWS = [
@@ -58,7 +58,7 @@ export default {
 <div id="f01-persp"><div id="f01-plane"><div id="f01-drift">${tiles}</div></div></div>
 <div id="f01-veil"></div>
 <div id="f01-vig"></div>
-${GRAIN('f01-grain')}
+
 <div id="f01-eyebrow" class="mono">O dia a dia de quem publica</div>
 <div id="f01-l1" class="display"><span class="wm"><span class="w">Mil</span></span> <span class="wm"><span class="w"><span id="f01-slot"><span id="f01-roll"><em>manchetes.</em><em>versões.</em></span></span></span></span></div>
 <div id="f01-l2" class="display"><span class="ln">${words('Qual vira')}</span><span class="ln">${words('o seu')} <span class="wm"><span class="w"><em>post?</em></span></span></span></div>
@@ -70,6 +70,7 @@ ${GRAIN('f01-grain')}
 <div id="f01-ca" class="f01-chip mono"><i style="background:${C.navy}"></i><span id="f01-count">+48</span>&nbsp;matérias novas</div>
 <div id="f01-cb" class="f01-chip mono"><i style="background:${C.rose}"></i>Atualização · 14:02</div>
 <svg id="f01-q-mark" viewBox="0 0 120 170" aria-hidden="true"><path id="f01-q-path" d="M22 48 C 20 14, 96 6, 98 44 C 100 76, 58 78, 58 112" fill="none" stroke="${C.navy}" stroke-width="11" stroke-linecap="round"></path><circle id="f01-q-dot" cx="58" cy="150" r="9" fill="${C.navy}"></circle></svg>
+${stripes('f01')}
 `,
   js: `
 const R = '#root';
@@ -78,7 +79,7 @@ tl.fromTo('#f01-drift .t', { opacity: 0, scale: 0.72 }, { opacity: 1, scale: 1, 
 tl.fromTo('#f01-drift', { x: 0, y: 0 }, { x: -300, y: 120, duration: 8.5, ease: 'none' }, 0);
 // texto
 tl.fromTo('#f01-eyebrow', { x: -24, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, 0.35);
-tl.fromTo('#f01-l1 .w', { yPercent: 115 }, { yPercent: 0, duration: 0.85, ease: 'power3.out', stagger: 0.14 }, 0.55);
+tl.fromTo('#f01-l1 .w', { yPercent: 160 }, { yPercent: 0, duration: 0.85, ease: 'power3.out', stagger: 0.14 }, 0.55);
 tl.set('#f01-l2', { opacity: 0 }, 0);
 // Ana entra
 tl.fromTo('#f01-disc', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.0, ease: 'expo.out' }, 0.7);
@@ -105,13 +106,14 @@ tl.fromTo('#f01-neq', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration
 tl.to('#f01-l1', { y: -70, opacity: 0, duration: 0.45, ease: 'power3.in' }, 5.55);
 tl.to(['#f01-qa', '#f01-qb', '#f01-neq'], { y: 50, opacity: 0, duration: 0.45, ease: 'power3.in', stagger: 0.05 }, 5.55);
 tl.set('#f01-l2', { opacity: 1 }, 5.85);
-tl.fromTo('#f01-l2 .w', { yPercent: 115 }, { yPercent: 0, duration: 0.85, ease: 'power3.out', stagger: 0.1 }, 5.85);
+tl.fromTo('#f01-l2 .w', { yPercent: 160 }, { yPercent: 0, duration: 0.85, ease: 'power3.out', stagger: 0.1 }, 5.85);
 // "?" desenhado à mão ao lado da cabeça
 const qp = document.querySelector('#f01-q-path'); const L = qp.getTotalLength();
 tl.set(qp, { opacity: 0 }, 0);
 tl.set(qp, { opacity: 1 }, 6.35);
 tl.fromTo(qp, { strokeDasharray: L, strokeDashoffset: L }, { strokeDashoffset: 0, duration: 0.8, ease: 'power2.out' }, 6.35);
+tl.fromTo('.f01-st', { scaleX: 0, transformOrigin: '0% 50%' }, { scaleX: 1, duration: 0.45, ease: 'power3.inOut', stagger: 0.05 }, 7.95);
 tl.fromTo('#f01-q-dot', { scale: 0, opacity: 0, transformOrigin: '50% 50%' }, { scale: 1, opacity: 1, duration: 0.3, ease: 'power3.out' }, 7.1);
 `,
-  sfx: [['whoosh', 0.0, 0.35], ['pop', 1.6, 0.5], ['pop', 2.15, 0.5], ['click-soft', 3.25, 0.6], ['whoosh-short', 5.55, 0.45]],
+  sfx: [['whoosh', 0.0, 0.35], ['pop', 1.6, 0.5], ['pop', 2.15, 0.5], ['click-soft', 3.25, 0.6], ['whoosh-short', 5.55, 0.45], ['whoosh', 7.95, 0.5]],
 };

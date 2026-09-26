@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8" /><title>f08-formato</title></head>
+<body>
+<template>
+<style>
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:200 800;font-display:block;src:url('assets/fonts/newsreader-v26-cY9AfjOCX1hbuyalUrK4397yjA.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:200 800;font-display:block;src:url('assets/fonts/newsreader-v26-cY9AfjOCX1hbuyalUrK439DyjJBG.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Newsreader';font-style:italic;font-weight:200 800;font-display:block;src:url('assets/fonts/newsreader-v26-cY9CfjOCX1hbuyalUrK439vCjohC.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Newsreader';font-style:italic;font-weight:200 800;font-display:block;src:url('assets/fonts/newsreader-v26-cY9CfjOCX1hbuyalUrK439vCgIhCFpY.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:200 800;font-display:block;src:url('assets/fonts/bricolagegrotesque-v9-3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInE.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:200 800;font-display:block;src:url('assets/fonts/bricolagegrotesque-v9-3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGGInHEVA.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:block;src:url('assets/fonts/jetbrainsmono-v24-tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:block;src:url('assets/fonts/jetbrainsmono-v24-tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx7cwhsk.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:400 700;font-display:block;src:url('assets/fonts/caveat-Wnz6HAc5bAfYB2Q7ZjYY.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:400 700;font-display:block;src:url('assets/fonts/caveat-Wnz6HAc5bAfYB2Q7aDYYmg8.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+#root{position:absolute;inset:0;overflow:hidden;background:#f7f3ec;color:#0a0a0a;font-family:'Bricolage Grotesque',sans-serif;}
+#root .grain{position:absolute;inset:0;mix-blend-mode:multiply;opacity:.55;pointer-events:none;}
+#root .wm{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .04em .12em;margin:0 -.04em -.12em;}
+#root .w{display:inline-block;}
+#root .mono{font-family:'JetBrains Mono',monospace;font-weight:500;text-transform:uppercase;letter-spacing:.16em;}
+#root .display{font-family:'Newsreader',serif;font-weight:400;letter-spacing:-.02em;}
+#root .display em{font-style:italic;color:#24456b;}
+#root .peep-svg{display:block;height:100%;width:auto;overflow:visible;}
+
+.f08-opt{position:absolute;left:120px;width:580px;height:120px;box-sizing:border-box;padding:18px 30px;display:flex;flex-direction:column;justify-content:center;border:3px solid #0a0a0a;border-radius:22px;background:#f7f3ec;box-shadow:8px 8px 0 #0a0a0a;}
+.f08-opt .mono{font-size:19px;color:#6b665d;}
+.f08-opt b{font-family:'Newsreader',serif;font-weight:400;font-size:50px;line-height:1.05;}
+.f08-opt i{position:absolute;right:26px;top:36px;width:44px;height:44px;border-radius:50%;background:#24456b;color:#f7f3ec;font-style:normal;font-size:24px;line-height:44px;text-align:center;}
+#f08-lines{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:visible;}
+#f08-phone{position:absolute;left:1300px;top:170px;width:420px;height:840px;box-sizing:border-box;border:5px solid #0a0a0a;border-radius:60px;background:#0a0a0a;box-shadow:12px 12px 0 #d3ae4f;overflow:hidden;}
+#f08-screen{position:absolute;left:14px;top:14px;right:14px;bottom:14px;border-radius:46px;background:#efe7d8;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+#f08-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+#f08-wait{font-size:20px;color:#6b665d;}
+</style>
+<div id="root" data-composition-id="f08-formato" data-width="1920" data-height="1080">
+
+
+<div id="f08-eyebrow" class="mono" style="position:absolute;left:120px;top:92px;font-size:24px;color:#24456b;">06 · Formato, estilo e tom</div>
+<div id="f08-title" class="display" style="position:absolute;left:112px;top:130px;font-size:84px;line-height:1.05;white-space:nowrap;"><span class="wm"><span class="w">No</span></span> <span class="wm"><span class="w">seu</span></span> <span class="wm"><span class="w">formato.</span></span> <em><span class="wm"><span class="w">No</span></span> <span class="wm"><span class="w">seu</span></span> <span class="wm"><span class="w">tom.</span></span></em></div>
+<div id="f08-o0" class="f08-opt" style="top:370px;"><span class="mono">Formato</span><b>Carrossel</b><i>✓</i></div><div id="f08-o1" class="f08-opt" style="top:560px;"><span class="mono">Estilo</span><b>Ilustração</b><i>✓</i></div><div id="f08-o2" class="f08-opt" style="top:750px;"><span class="mono">Tom</span><b>Explicador</b><i>✓</i></div>
+<svg id="f08-lines" viewBox="0 0 1920 1080" aria-hidden="true"><path id="f08-l0" d="M 700 430 C 980 430, 1040 590, 1294 590" fill="none" stroke="#0a0a0a" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"></path><path id="f08-d0" d="M 700 430 C 980 430, 1040 590, 1294 590" fill="none" stroke="#24456b" stroke-width="16" stroke-linecap="round"></path><path id="f08-l1" d="M 700 620 C 980 620, 1040 590, 1294 590" fill="none" stroke="#0a0a0a" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"></path><path id="f08-d1" d="M 700 620 C 980 620, 1040 590, 1294 590" fill="none" stroke="#24456b" stroke-width="16" stroke-linecap="round"></path><path id="f08-l2" d="M 700 810 C 980 810, 1040 590, 1294 590" fill="none" stroke="#0a0a0a" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"></path><path id="f08-d2" d="M 700 810 C 980 810, 1040 590, 1294 590" fill="none" stroke="#24456b" stroke-width="16" stroke-linecap="round"></path></svg>
+<div id="f08-phone"><div id="f08-screen"><span id="f08-wait" class="mono">montando…</span><img id="f08-img" src="assets/slides/slide-1.jpg" alt="Slide 1 do carrossel"></div></div>
+
+</div>
+<script>
+(function(){
+const tl = gsap.timeline({ paused: true });
+
+tl.fromTo('#f08-eyebrow', { x: -24, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, 0.1);
+tl.fromTo('#f08-title .w', { yPercent: 160 }, { yPercent: 0, duration: 0.8, ease: 'power3.out', stagger: 0.07 }, 0.25);
+tl.fromTo('.f08-opt', { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, ease: 'power3.out', stagger: 0.25 }, 0.5);
+tl.fromTo('.f08-opt i', { scale: 0 }, { scale: 1, duration: 0.35, ease: 'power3.out', stagger: 0.25 }, 1.1);
+tl.fromTo('#f08-phone', { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 0.8);
+// linhas pontilhadas se desenham e um ponto percorre cada uma até o celular
+for (let i = 0; i < 3; i++) {
+  const l = document.querySelector('#f08-l' + i), d = document.querySelector('#f08-d' + i), L = d.getTotalLength();
+  tl.fromTo(l, { opacity: 0 }, { opacity: 1, duration: 0.4 }, 2.0 + i * 0.15);
+  tl.set(d, { strokeDasharray: '0.1 ' + (L + 40), strokeDashoffset: 0, opacity: 0 }, 0);
+  tl.set(d, { opacity: 1 }, 2.4 + i * 0.3);
+  tl.to(d, { strokeDashoffset: -L, duration: 1.1, ease: 'power2.inOut' }, 2.4 + i * 0.3);
+  tl.set(d, { opacity: 0 }, 3.5 + i * 0.3);
+}
+tl.fromTo('#f08-img', { opacity: 0, scale: 1.08 }, { opacity: 1, scale: 1, duration: 0.8, ease: 'power3.out' }, 4.2);
+tl.to('#f08-phone', { scale: 1.02, duration: 0.25, ease: 'power2.out' }, 4.2);
+tl.to('#f08-phone', { scale: 1, duration: 0.35, ease: 'power2.inOut' }, 4.45);
+
+window.__timelines["f08-formato"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8" /><title>f02-promessa</title></head>
+<body>
+<template>
+<style>
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:200 800;font-display:block;src:url('assets/fonts/newsreader-v26-cY9AfjOCX1hbuyalUrK4397yjA.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:200 800;font-display:block;src:url('assets/fonts/newsreader-v26-cY9AfjOCX1hbuyalUrK439DyjJBG.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Newsreader';font-style:italic;font-weight:200 800;font-display:block;src:url('assets/fonts/newsreader-v26-cY9CfjOCX1hbuyalUrK439vCjohC.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Newsreader';font-style:italic;font-weight:200 800;font-display:block;src:url('assets/fonts/newsreader-v26-cY9CfjOCX1hbuyalUrK439vCgIhCFpY.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:200 800;font-display:block;src:url('assets/fonts/bricolagegrotesque-v9-3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInE.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:200 800;font-display:block;src:url('assets/fonts/bricolagegrotesque-v9-3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGGInHEVA.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:block;src:url('assets/fonts/jetbrainsmono-v24-tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:block;src:url('assets/fonts/jetbrainsmono-v24-tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx7cwhsk.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:400 700;font-display:block;src:url('assets/fonts/caveat-Wnz6HAc5bAfYB2Q7ZjYY.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:400 700;font-display:block;src:url('assets/fonts/caveat-Wnz6HAc5bAfYB2Q7aDYYmg8.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+#root{position:absolute;inset:0;overflow:hidden;background:#f7f3ec;color:#0a0a0a;font-family:'Bricolage Grotesque',sans-serif;}
+#root .grain{position:absolute;inset:0;mix-blend-mode:multiply;opacity:.55;pointer-events:none;}
+#root .wm{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .04em .12em;margin:0 -.04em -.12em;}
+#root .w{display:inline-block;}
+#root .mono{font-family:'JetBrains Mono',monospace;font-weight:500;text-transform:uppercase;letter-spacing:.16em;}
+#root .display{font-family:'Newsreader',serif;font-weight:400;letter-spacing:-.02em;}
+#root .display em{font-style:italic;color:#24456b;}
+#root .peep-svg{display:block;height:100%;width:auto;overflow:visible;}
+
+#f02-lock{position:absolute;left:0;right:0;top:300px;display:flex;justify-content:center;align-items:center;gap:36px;}
+#f02-mark{width:170px;height:170px;}
+#f02-name{font-size:170px;line-height:.9;letter-spacing:-4px;}
+#f02-by{font-family:'Newsreader',serif;font-style:italic;font-size:44px;color:#6b665d;margin-top:10px;}
+#f02-line{position:absolute;left:0;right:0;top:640px;text-align:center;font-size:64px;line-height:1.2;color:#2a2622;}
+#f02-hl{background:linear-gradient(#e8c873,#e8c873) no-repeat 0 88%/0% 46%;padding:0 6px;font-style:italic;color:#24456b;}
+#f02-sub{position:absolute;left:0;right:0;top:800px;text-align:center;font-size:24px;color:#6b665d;}
+</style>
+<div id="root" data-composition-id="f02-promessa" data-width="1920" data-height="1080">
+
+
+<div id="f02-lock"><svg id="f02-mark" width="170" height="170" viewBox="4 4 54 54" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="#0a0a0a"></circle><circle cx="28" cy="28" r="22" fill="#24456b"></circle><circle cx="36" cy="20" r="5" fill="#e8c873"></circle></svg><div><div id="f02-name" class="display"><span class="wm"><span class="w">Pauta</span></span> <span class="wm"><span class="w">Pronta</span></span></div><div id="f02-by"><span class="wm"><span class="w">by REP</span></span></div></div></div>
+<div id="f02-line" class="display"><span class="wm"><span class="w">Pesquisa,</span></span> <span class="wm"><span class="w">analisa</span></span> <span class="wm"><span class="w">e</span></span> <span class="wm"><span class="w">entrega</span></span> <span class="wm"><span class="w">o</span></span> <span class="wm"><span class="w">post</span></span> <span class="wm"><span class="w">pronto.</span></span> <span class="wm"><span class="w"><span id="f02-hl">Com fonte.</span></span></span></div>
+<div id="f02-sub" class="mono">Inteligência editorial que vira post</div>
+<div id="f02-stripes" style="position:absolute;inset:0;display:flex;"><div class="f02-st" style="flex:1;height:100%;background:#24456b;"></div><div class="f02-st" style="flex:1;height:100%;background:#e8c873;"></div><div class="f02-st" style="flex:1;height:100%;background:#a8453a;"></div><div class="f02-st" style="flex:1;height:100%;background:#5a7d3f;"></div><div class="f02-st" style="flex:1;height:100%;background:#4b88a6;"></div><div class="f02-st" style="flex:1;height:100%;background:#efe7d8;"></div></div>
+
+</div>
+<script>
+(function(){
+const tl = gsap.timeline({ paused: true });
+
+// faixas (vindas da cena 1) se recolhem para a direita
+tl.fromTo('.f02-st', { scaleX: 1, transformOrigin: '100% 50%' }, { scaleX: 0, duration: 0.6, ease: 'power3.inOut', stagger: 0.05 }, 0.25);
+tl.fromTo('#f02-mark', { scale: 0, rotation: -90, transformOrigin: '50% 50%' }, { scale: 1, rotation: 0, duration: 0.9, ease: 'expo.out' }, 0.8);
+tl.fromTo('#f02-name .w', { yPercent: 160 }, { yPercent: 0, duration: 0.8, ease: 'power3.out', stagger: 0.1 }, 1.05);
+tl.fromTo('#f02-by .w', { yPercent: 160 }, { yPercent: 0, duration: 0.6, ease: 'power3.out' }, 1.5);
+tl.fromTo('#f02-line .w', { yPercent: 160 }, { yPercent: 0, duration: 0.7, ease: 'power3.out', stagger: 0.07 }, 2.2);
+tl.fromTo('#f02-hl', { backgroundSize: '0% 46%' }, { backgroundSize: '100% 46%', duration: 0.6, ease: 'power2.out' }, 3.3);
+tl.fromTo('#f02-sub', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 3.8);
+
+window.__timelines["f02-promessa"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

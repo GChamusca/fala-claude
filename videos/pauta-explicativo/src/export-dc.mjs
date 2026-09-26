@@ -9,7 +9,8 @@ const FONTS = 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz
 
 // No canvas o grão de papel (filtro SVG) fica de fora; o resto é a mesma cena do vídeo.
 const dcCss = (css) => (BASE_CSS + css).replace(FONT_FACES, '').replace(/#root\{position:absolute;inset:0;/, '#root{position:relative;width:1920px;height:1080px;');
-const dcHtml = (html) => html.replace(/<svg id="[^"]*" class="grain"[\s\S]*?<\/svg>/g, '');
+const BLOBS = JSON.parse(process.env.DC_BLOBS || '{}'); // caminho local → id do asset no canvas
+const dcHtml = (html) => html.replace(/<svg id="[^"]*" class="grain"[\s\S]*?<\/svg>/g, '').replace(/src="(assets\/[^"]+)"/g, (m, p) => (BLOBS[p] ? `src="/_blob/${BLOBS[p]}"` : m));
 
 fs.mkdirSync(outDir, { recursive: true });
 for (const id of ids) {

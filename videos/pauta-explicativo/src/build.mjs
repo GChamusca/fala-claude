@@ -1,11 +1,12 @@
 // Gera compositions/*.html (sub-composições HyperFrames) e index.html a partir de src/scenes.
 // Uso: node src/build.mjs [id-da-cena ...]   (sem argumentos = filme inteiro)
 import fs from 'node:fs';
-import { subcomp, C } from './lib.mjs';
+import { subcomp, C, GRAIN } from './lib.mjs';
 
 const ROOT = new URL('../', import.meta.url);
 const SFX_DIR = `${process.env.HOME}/.claude/skills/media-use/audio/assets/sfx`;
-const ORDER = ['f01-hook'];
+const ORDER = ['f01-hook', 'f02-promessa', 'f03-tema', 'f04-recorte', 'f05-pesquisa', 'f06-analise', 'f07-angulos', 'f08-formato', 'f09-entrega', 'f10-validacao', 'f11-convite']
+  .filter((id) => fs.existsSync(new URL(`scenes/${id}.mjs`, import.meta.url)));
 
 const only = process.argv.slice(2);
 const ids = only.length ? only : ORDER;
@@ -47,6 +48,7 @@ fs.writeFileSync(new URL('index.html', ROOT), `<!doctype html>
   <body>
     <div id="stage" data-composition-id="main" data-start="0" data-duration="${total}" data-width="1920" data-height="1080">
 ${hosts.join('\n')}
+    <div id="grain-layer" data-start="0" data-duration="${total}" data-track-index="8" style="position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.22;z-index:50;">${GRAIN('stage-grain')}</div>
 ${audio.join('\n')}
     </div>
     <script>
