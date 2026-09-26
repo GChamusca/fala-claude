@@ -333,6 +333,195 @@ tl.fromTo('#${p}-car', { opacity: 1 }, { opacity: 0, duration: 0.01, repeat: ${M
 tl.fromTo('#${p}-note', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'back.out(2)' }, ${(t0 + (t1 - t0) * 0.55).toFixed(2)});`,
   }),
 
+  // ——— séries REP e Redação ———
+
+  // REP: a sigla e o que ela faz
+  rep: (p) => ({
+    css: `#${p}-w{position:absolute;left:0;right:0;top:250px;text-align:center;font-family:'Newsreader',serif;font-size:400px;line-height:1;letter-spacing:-6px;color:${C.navy};text-shadow:14px 14px 0 ${C.butter};}
+#${p}-full{position:absolute;left:0;right:0;top:700px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:38px;letter-spacing:.2em;text-transform:uppercase;}
+#${p}-sub{position:absolute;left:120px;right:120px;top:800px;text-align:center;font-family:'Newsreader',serif;font-size:50px;line-height:1.15;}
+.${p}-l{display:inline-block;}`,
+    html: `<div id="${p}-w">${['R', 'E', 'P'].map((l) => `<span class="${p}-l">${l}</span>`).join('')}</div><div id="${p}-full">Radar de Eventos Públicos</div><div id="${p}-sub">o mapa de como os assuntos se formam na imprensa brasileira</div>`,
+    js: (t0, t1) => `tl.fromTo('.${p}-l', { y: 300, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'back.out(2)', stagger: 0.1 }, ${t0});
+tl.fromTo('#${p}-full', { opacity: 0, scaleX: 1.4 }, { opacity: 1, scaleX: 1, duration: 0.5, ease: 'power3.out' }, ${t0 + 0.4});
+tl.fromTo('#${p}-sub', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }, ${t0 + 0.8});`,
+  }),
+
+  // o acervo: 773.856 matérias, 102 veículos, 115 feeds (/api/stats de 26/set)
+  acervo: (p) => {
+    const outlets = ['G1', 'CNN Brasil', 'UOL', 'Folha', 'Estadão', 'Metrópoles', 'O Globo', 'Valor', 'O Antagonista', 'Gazeta do Povo'];
+    return {
+      css: `#${p}-big{position:absolute;left:0;right:0;top:200px;text-align:center;font-family:'Newsreader',serif;font-size:230px;line-height:1;color:${C.navy};letter-spacing:-8px;text-shadow:10px 10px 0 ${C.butter};}
+#${p}-lab{position:absolute;left:0;right:0;top:450px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:34px;letter-spacing:.16em;text-transform:uppercase;}
+#${p}-chips{position:absolute;left:60px;right:60px;top:560px;display:flex;flex-wrap:wrap;justify-content:center;gap:18px;}
+.${p}-o{padding:14px 24px;border-radius:999px;background:${C.paper};border:3px solid ${C.ink};box-shadow:5px 5px 0 ${C.ink};font-size:32px;font-weight:700;}
+.${p}-o.more{background:${C.rose};color:${C.paper};font-family:'JetBrains Mono',monospace;font-weight:600;}
+#${p}-stats{position:absolute;left:0;right:0;top:960px;display:flex;justify-content:center;gap:24px;}
+#${p}-stats span{padding:16px 26px;border:3px solid ${C.ink};border-radius:18px;background:${C.butter};font-family:'JetBrains Mono',monospace;font-size:30px;font-weight:600;box-shadow:6px 6px 0 ${C.ink};}`,
+      html: `<div id="${p}-big">0</div><div id="${p}-lab">matérias no acervo</div><div id="${p}-chips">${outlets.map((o) => `<span class="${p}-o">${o}</span>`).join('')}<span class="${p}-o more">+92</span></div><div id="${p}-stats"><span>102 veículos</span><span>115 feeds</span></div>`,
+      js: (t0, t1) => `const el = document.querySelector('#${p}-big'), o = { v: 0 };
+tl.fromTo(o, { v: 0 }, { v: 773856, duration: ${(t1 - t0 - 0.4).toFixed(2)}, ease: 'power3.out', onUpdate: () => { el.textContent = Math.round(o.v).toLocaleString('pt-BR'); } }, ${t0 + 0.1});
+tl.fromTo(['#${p}-big', '#${p}-lab'], { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'expo.out' }, ${t0});
+tl.fromTo('.${p}-o', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: 'back.out(2.5)', stagger: ${((t1 - t0 - 1.2) / 11).toFixed(3)} }, ${t0 + 0.4});
+tl.fromTo('#${p}-stats span', { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: 'back.out(2)', stagger: 0.12 }, ${(t1 - 0.8).toFixed(2)});`,
+    };
+  },
+
+  // uma matéria explode em etiquetas (campos reais dos agentes do REP)
+  etiquetas: (p) => {
+    const T = ['categoria', 'tipo de matéria', 'relevância', 'protagonista', 'ação principal', 'objeto', 'escopo', 'entidades', 'papel de cada ator', 'trecho de evidência', 'tópico canônico', 'subtema', 'âncora narrativa', 'matérias similares', 'confiança', 'categoria secundária'];
+    return {
+      css: `#${p}-card{position:absolute;left:170px;top:190px;width:740px;box-sizing:border-box;padding:26px 30px;border:4px solid ${C.ink};border-radius:20px;background:#fffdf8;box-shadow:10px 10px 0 ${C.ink};z-index:2;}
+#${p}-card i{display:block;font-style:normal;font-family:'JetBrains Mono',monospace;font-size:20px;letter-spacing:.1em;color:${C.navy};}
+#${p}-card b{display:block;margin-top:8px;font-family:'Newsreader',serif;font-weight:400;font-size:44px;line-height:1.1;}
+#${p}-grid{position:absolute;left:50px;right:50px;top:470px;display:flex;flex-wrap:wrap;justify-content:center;gap:16px;}
+.${p}-t{white-space:nowrap;padding:12px 20px;border-radius:999px;border:3px solid ${C.ink};background:${C.butter};font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:600;box-shadow:4px 4px 0 ${C.ink};}
+#${p}-n{position:absolute;left:0;right:0;top:1060px;text-align:center;font-family:'Newsreader',serif;font-size:84px;line-height:1;color:${C.navy};}`,
+      html: `<div id="${p}-card"><i>FOLHA DE S.PAULO</i><b>Governo avalia levar ao SUS caneta prometida por Lula</b></div><div id="${p}-grid">${T.map((t, i) => `<span class="${p}-t" style="${i % 3 === 1 ? `background:${C.paper};` : i % 3 === 2 ? `background:${C.sky};color:${C.paper};` : ''}">${t}</span>`).join('')}</div><div id="${p}-n">+30 classificações</div>`,
+      js: (t0, t1) => `tl.fromTo('#${p}-card', { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(2)' }, ${t0});
+tl.fromTo('.${p}-t', { y: -200, scale: 0, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(1.8)', stagger: ${((t1 - t0 - 1.1) / T.length).toFixed(3)} }, ${t0 + 0.3});
+tl.fromTo('#${p}-n', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(2.5)' }, ${(t1 - 0.7).toFixed(2)});`,
+    };
+  },
+
+  // matérias se conectando (análise cruzada)
+  cruza: (p) => {
+    let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const pts = Array.from({ length: 40 }, () => [100 + rnd() * 880, 220 + rnd() * 900]);
+    const edges = [];
+    pts.forEach((a, i) => { pts.forEach((b, j) => { if (j > i && Math.hypot(a[0] - b[0], a[1] - b[1]) < 230) edges.push([a, b]); }); });
+    return {
+      css: `#${p}-svg{position:absolute;left:0;top:0;width:1080px;height:1920px;}`,
+      html: `<svg id="${p}-svg" viewBox="0 0 1080 1920">${edges.map(([a, b]) => `<line class="${p}-e" x1="${a[0].toFixed(0)}" y1="${a[1].toFixed(0)}" x2="${b[0].toFixed(0)}" y2="${b[1].toFixed(0)}" stroke="${C.navy}" stroke-width="4" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>`).join('')}${pts.map(([x, y], i) => `<rect class="${p}-d" x="${(x - 26).toFixed(0)}" y="${(y - 17).toFixed(0)}" width="52" height="34" rx="7" fill="${i % 5 ? C.paper : C.butter}" stroke="${C.ink}" stroke-width="3"/>`).join('')}</svg>`,
+      js: (t0, t1) => `tl.fromTo('.${p}-d', { opacity: 0, scale: 0, transformOrigin: '50% 50%' }, { opacity: 1, scale: 1, duration: 0.25, ease: 'back.out(2)', stagger: { amount: 0.6, from: 'random' } }, ${t0});
+tl.to('.${p}-e', { strokeDashoffset: 0, duration: 0.4, ease: 'power2.out', stagger: { amount: ${(t1 - t0 - 1.2).toFixed(2)}, from: 'random' } }, ${t0 + 0.7});`,
+    };
+  },
+
+  // matriz de evidências: fato / declaração / hipótese / lacuna
+  matriz: (p) => {
+    const K = [['FATO', C.grass, 'Conitec analisa incorporação ao SUS'], ['DECLARAÇÃO', C.sky, 'Governo anuncia distribuição gratuita'], ['HIPÓTESE', C.butter, 'Preço pode cair com genéricos'], ['LACUNA', C.rose, 'Custo total ainda não divulgado']];
+    return {
+      css: `#${p}-t{position:absolute;left:0;right:0;top:190px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:28px;letter-spacing:.2em;color:${C.navy};}
+.${p}-r{position:absolute;left:80px;width:920px;height:190px;box-sizing:border-box;display:flex;align-items:center;gap:26px;padding:0 28px;border:4px solid ${C.ink};border-radius:24px;background:#fffdf8;box-shadow:8px 8px 0 ${C.ink};}
+.${p}-r b{flex:none;width:250px;padding:14px 0;text-align:center;border:3px solid ${C.ink};border-radius:14px;font-family:'JetBrains Mono',monospace;font-size:26px;letter-spacing:.08em;}
+.${p}-r span{font-family:'Newsreader',serif;font-size:40px;line-height:1.1;}`,
+      html: `<div id="${p}-t">MATRIZ DE EVIDÊNCIAS</div>${K.map(([k, c, s], i) => `<div class="${p}-r" style="top:${260 + i * 220}px;"><b style="background:${c};color:${c === C.butter ? C.ink : C.paper};">${k}</b><span>${s}</span></div>`).join('')}`,
+      js: (t0, t1) => `tl.fromTo('#${p}-t', { opacity: 0 }, { opacity: 1, duration: 0.3 }, ${t0});
+tl.fromTo('.${p}-r', { x: -1100 }, { x: 0, duration: 0.35, ease: 'expo.out', stagger: ${((t1 - t0 - 0.6) / 4).toFixed(2)} }, ${t0 + 0.1});`,
+    };
+  },
+
+  // teia de entidades: quem acusa, apoia, investiga
+  teia: (p) => {
+    const N = [['Governo', 540, 360, C.navy], ['Oposição', 200, 760, C.rose], ['Órgão de controle', 880, 760, C.grass], ['Setor privado', 540, 1060, C.sky]];
+    const E = [[1, 0, 'acusa'], [2, 0, 'investiga'], [3, 0, 'apoia'], [1, 3, 'negocia com']];
+    return {
+      css: `.${p}-n{position:absolute;width:250px;height:250px;margin:-125px 0 0 -125px;border-radius:50%;border:4px solid ${C.ink};box-shadow:8px 8px 0 ${C.ink};display:flex;align-items:center;justify-content:center;text-align:center;padding:0 24px;box-sizing:border-box;color:${C.paper};font-family:'Newsreader',serif;font-size:40px;line-height:1.05;z-index:2;}
+.${p}-lb{position:absolute;transform:translate(-50%,-50%);padding:10px 20px;border-radius:999px;border:3px solid ${C.ink};background:${C.butter};font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:600;box-shadow:4px 4px 0 ${C.ink};z-index:3;}
+#${p}-svg{position:absolute;left:0;top:0;width:1080px;height:1920px;}`,
+      html: `<svg id="${p}-svg" viewBox="0 0 1080 1920">${E.map(([a, b]) => `<line class="${p}-e" x1="${N[a][1]}" y1="${N[a][2]}" x2="${N[b][1]}" y2="${N[b][2]}" stroke="${C.ink}" stroke-width="6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>`).join('')}</svg>${N.map(([n, x, y, c]) => `<div class="${p}-n" style="left:${x}px;top:${y}px;background:${c};">${n}</div>`).join('')}${E.map(([a, b, r]) => `<span class="${p}-lb" style="left:${(N[a][1] + N[b][1]) / 2}px;top:${(N[a][2] + N[b][2]) / 2}px;">${r}</span>`).join('')}`,
+      js: (t0, t1) => `tl.fromTo('.${p}-n', { scale: 0 }, { scale: 1, duration: 0.3, ease: 'back.out(2)', stagger: 0.1 }, ${t0});
+${E.map((_, i) => `tl.to('.${p}-e:nth-child(${i + 1})', { strokeDashoffset: 0, duration: 0.3, ease: 'power2.out' }, ${(t0 + 0.4 + i * (t1 - t0 - 0.9) / 4).toFixed(2)});
+tl.fromTo('.${p}-lb:nth-of-type(${i + 1})', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: 'back.out(3)' }, ${(t0 + 0.6 + i * (t1 - t0 - 0.9) / 4).toFixed(2)});`).join('\n')}`,
+    };
+  },
+
+  // colar o link
+  link: (p) => ({
+    css: `#${p}-box{position:absolute;left:70px;top:420px;width:940px;box-sizing:border-box;padding:40px;border:3px solid ${C.ink};border-radius:30px;background:${C.paper};box-shadow:12px 12px 0 ${C.ink};}
+#${p}-q{font-family:'Newsreader',serif;font-size:52px;line-height:1.1;}
+#${p}-in{margin-top:28px;height:110px;box-sizing:border-box;padding:0 26px;display:flex;align-items:center;gap:16px;border:3px solid ${C.ink};border-radius:20px;background:#fffdf8;font-family:'JetBrains Mono',monospace;font-size:30px;overflow:hidden;white-space:nowrap;}
+#${p}-url{color:${C.sky};text-decoration:underline;}
+#${p}-paste{position:absolute;left:620px;top:300px;padding:14px 26px;border-radius:14px;background:${C.ink};color:${C.paper};font-family:'JetBrains Mono',monospace;font-size:30px;}
+#${p}-btn{margin-top:28px;display:inline-flex;padding:24px 36px;border-radius:999px;background:${C.navy};color:${C.paper};font-size:36px;font-weight:700;box-shadow:6px 6px 0 ${C.ink};}`,
+    html: `<div id="${p}-paste">⌘V colar</div><div id="${p}-box"><div id="${p}-q">Tema ou link da matéria</div><div id="${p}-in">🔗 <span id="${p}-url">folha.uol.com.br/…/caneta-no-sus</span></div><div id="${p}-btn">Criar pauta →</div></div><div id="${p}-hand" style="position:absolute;left:0;top:0;">${HAND(p + '-hs')}</div>`,
+    js: (t0, t1) => `tl.fromTo('#${p}-box', { y: 400, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'expo.out' }, ${t0});
+tl.fromTo('#${p}-paste', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: 'back.out(3)' }, ${t0 + 0.5});
+tl.to('#${p}-paste', { opacity: 0, duration: 0.15 }, ${t0 + 1.0});
+tl.fromTo('#${p}-url', { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.2, ease: 'power3.out' }, ${t0 + 0.9});
+tl.fromTo('#${p}-in', { backgroundColor: '#fffdf8' }, { backgroundColor: '${C.butter}', duration: 0.15, yoyo: true, repeat: 1 }, ${t0 + 0.9});
+tl.fromTo('#${p}-hand', { x: 900, y: 1300, opacity: 0 }, { x: 280, y: 800, opacity: 1, duration: 0.3, ease: 'power3.out' }, ${(t1 - 0.5).toFixed(2)});
+tl.to('#${p}-btn', { scale: 0.93, duration: 0.08, yoyo: true, repeat: 1 }, ${(t1 - 0.15).toFixed(2)});`,
+  }),
+
+  // o link consulta o acervo do REP
+  busca: (p) => {
+    const R = NEWS.map((n, i) => { const a = (i / NEWS.length) * Math.PI * 2 - Math.PI / 2; return [...n, 540 + Math.cos(a) * 330, 660 + Math.sin(a) * 400]; });
+    return {
+      css: `#${p}-c{position:absolute;left:340px;top:590px;width:400px;box-sizing:border-box;padding:22px;border:4px solid ${C.ink};border-radius:20px;background:${C.navy};color:${C.paper};box-shadow:8px 8px 0 ${C.ink};font-family:'JetBrains Mono',monospace;font-size:24px;text-align:center;z-index:2;}
+.${p}-n{position:absolute;width:250px;margin-left:-125px;margin-top:-50px;box-sizing:border-box;padding:10px 14px;border:3px solid ${C.ink};border-radius:12px;background:${C.paper};box-shadow:5px 5px 0 ${C.ink};font-family:'Newsreader',serif;font-size:20px;line-height:1.15;z-index:2;}
+.${p}-n i{display:block;font-style:normal;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:${C.navy};margin-bottom:4px;}
+#${p}-svg{position:absolute;left:0;top:0;width:1080px;height:1920px;}
+#${p}-lab{position:absolute;left:0;right:0;top:1130px;text-align:center;}
+#${p}-lab span{padding:14px 28px;border-radius:999px;background:${C.grass};color:${C.paper};border:3px solid ${C.ink};font-family:'JetBrains Mono',monospace;font-size:32px;box-shadow:6px 6px 0 ${C.ink};}`,
+      html: `<svg id="${p}-svg" viewBox="0 0 1080 1920">${R.map(([, , x, y]) => `<line class="${p}-e" x1="540" y1="660" x2="${x.toFixed(0)}" y2="${y.toFixed(0)}" stroke="${C.navy}" stroke-width="5" stroke-dasharray="1" stroke-dashoffset="1" pathLength="1"/>`).join('')}</svg><div id="${p}-c">🔗 link colado<br>↓<br>ACERVO REP</div>${R.map(([v, t, x, y]) => `<div class="${p}-n" style="left:${x.toFixed(0)}px;top:${y.toFixed(0)}px;"><i>${v}</i>${t}</div>`).join('')}<div id="${p}-lab"><span>24 matérias relacionadas</span></div>`,
+      js: (t0, t1) => `tl.fromTo('#${p}-c', { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(2)' }, ${t0});
+tl.to('.${p}-e', { strokeDashoffset: 0, duration: 0.3, ease: 'power2.out', stagger: 0.12 }, ${t0 + 0.3});
+tl.fromTo('.${p}-n', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: 'back.out(2)', stagger: 0.12 }, ${t0 + 0.5});
+tl.fromTo('#${p}-lab span', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(2.5)' }, ${(t1 - 0.8).toFixed(2)});`,
+    };
+  },
+
+  // uma matéria só: um lado
+  umlado: (p) => ({
+    css: `#${p}-card{position:absolute;left:140px;top:320px;width:800px;box-sizing:border-box;padding:40px;border:4px solid ${C.ink};border-radius:28px;background:#fffdf8;box-shadow:12px 12px 0 ${C.ink};overflow:hidden;}
+#${p}-card i{display:block;font-style:normal;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:.1em;color:${C.navy};}
+#${p}-card b{display:block;margin-top:14px;font-family:'Newsreader',serif;font-weight:400;font-size:62px;line-height:1.08;}
+#${p}-shade{position:absolute;left:50%;top:0;right:0;bottom:0;background:${C.creamDeep};}
+#${p}-tag{position:absolute;left:0;right:0;top:860px;text-align:center;font-family:'Caveat',cursive;font-weight:700;font-size:100px;color:${C.rose};transform:rotate(-3deg);}`,
+    html: `<div id="${p}-card"><i>GAZETA DO POVO</i><b>Lula promete canetas, mas não sabe quanto custará</b><div id="${p}-shade"></div></div><div id="${p}-tag">1 de 24 matérias</div>`,
+    js: (t0, t1) => `tl.fromTo('#${p}-card', { y: 300, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'expo.out' }, ${t0});
+tl.fromTo('#${p}-shade', { scaleX: 0, transformOrigin: '100% 50%' }, { scaleX: 1, duration: 0.4, ease: 'power3.inOut' }, ${t0 + 0.7});
+tl.fromTo('#${p}-tag', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'back.out(2)' }, ${t0 + 1.0});`,
+  }),
+
+  // a mesma história em vários veículos
+  cobertura: (p) => ({
+    css: `.${p}-k{position:absolute;left:90px;width:900px;box-sizing:border-box;padding:22px 28px;border:3px solid ${C.ink};border-radius:22px;background:${C.paper};box-shadow:7px 7px 0 ${C.ink};}
+.${p}-k i{display:block;font-style:normal;font-family:'JetBrains Mono',monospace;font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:${C.navy};}
+.${p}-k b{display:block;margin-top:6px;font-family:'Newsreader',serif;font-weight:400;font-size:38px;line-height:1.1;}`,
+    html: NEWS.slice(0, 5).map(([v, t], i) => `<div class="${p}-k" style="top:${190 + i * 195}px;transform:rotate(${[-1, 1, -0.5, 0.8, -1.2][i]}deg);"><i>${v}</i><b>${t}</b></div>`).join(''),
+    js: (t0, t1) => `tl.fromTo('.${p}-k', { x: (i) => (i % 2 ? 1100 : -1100) }, { x: 0, duration: 0.35, ease: 'expo.out', stagger: ${((t1 - t0 - 0.5) / 5).toFixed(2)} }, ${t0});`,
+  }),
+
+  // as quatro funções de uma redação
+  mesas: (p) => {
+    const M = [['analista', 'PESQUISA'], ['leitor', 'CHECAGEM'], ['editor', 'ANÁLISE'], ['ana_computer', 'TEXTO']];
+    return {
+      css: `.${p}-m{position:absolute;width:440px;height:470px;box-sizing:border-box;border:4px solid ${C.ink};border-radius:26px;background:${C.paper};box-shadow:8px 8px 0 ${C.ink};overflow:hidden;}
+.${p}-m .fig{position:absolute;left:50%;bottom:-10px;height:380px;transform:translateX(-50%);}
+.${p}-m b{position:absolute;left:0;right:0;top:18px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:30px;letter-spacing:.14em;}`,
+      html: M.map(([n, l], i) => `<div class="${p}-m" style="left:${i % 2 ? 580 : 60}px;top:${190 + Math.floor(i / 2) * 510}px;background:${[C.butter, C.paper, C.paper, C.butter][i]};"><b>${l}</b><div class="fig">${peep(n, `${p}-f${i}`)}</div></div>`).join(''),
+      js: (t0, t1) => `tl.fromTo('.${p}-m', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(1.8)', stagger: ${((t1 - t0 - 0.4) / 4).toFixed(2)} }, ${t0});`,
+    };
+  },
+
+  // a redação inteira: as quatro mesas se encolhem
+  redacao: (p) => {
+    const M = ['analista', 'leitor', 'editor', 'ana_computer'];
+    return {
+      css: `.${p}-m{position:absolute;width:440px;height:470px;box-sizing:border-box;border:4px solid ${C.ink};border-radius:26px;background:${C.paper};box-shadow:8px 8px 0 ${C.ink};overflow:hidden;}
+.${p}-m .fig{position:absolute;left:50%;bottom:-10px;height:380px;transform:translateX(-50%);}
+#${p}-big{position:absolute;left:0;right:0;top:560px;text-align:center;font-family:'Newsreader',serif;font-size:110px;line-height:1;color:${C.paper};text-shadow:6px 6px 0 ${C.ink};z-index:3;}
+#${p}-veil{position:absolute;inset:0;background:${C.navy};opacity:0;z-index:2;}`,
+      html: `${M.map((n, i) => `<div class="${p}-m" style="left:${i % 2 ? 580 : 60}px;top:${190 + Math.floor(i / 2) * 510}px;"><div class="fig">${peep(n, `${p}-f${i}`)}</div></div>`).join('')}<div id="${p}-veil"></div><div id="${p}-big">1 redação<br>inteira</div>`,
+      js: (t0, t1) => `tl.fromTo('#${p}-veil', { opacity: 0 }, { opacity: 0.85, duration: 0.3 }, ${t0 + 0.2});
+tl.fromTo('#${p}-big', { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'back.out(2)' }, ${t0 + 0.3});
+tl.to('.${p}-m', { scale: 0.92, duration: ${(t1 - t0).toFixed(2)}, ease: 'none' }, ${t0});`,
+    };
+  },
+
+  // tudo cabe no celular
+  mao: (p) => ({
+    css: `.${p}-row{display:flex;align-items:center;gap:14px;margin:18px 22px 0;padding:18px 20px;border:3px solid ${C.ink};border-radius:18px;background:${C.paper};font-size:30px;font-weight:700;}
+.${p}-row i{font-style:normal;margin-left:auto;padding:4px 12px;border-radius:999px;background:${C.grass};color:${C.paper};font-family:'JetBrains Mono',monospace;font-size:20px;}`,
+    html: `${disc(p + '-disc', 190, 330, 700, C.butter)}${phone(p + '-ph', 250, 220, 580, 930, `<div style="padding:30px 26px 6px;display:flex;align-items:center;gap:12px;font-weight:700;font-size:26px;">${LOGO_MARK(38)}pautapronta</div>${['Pesquisa', 'Checagem', 'Análise', 'Texto'].map((l) => `<div class="${p}-row">${l}<i>✓ pronto</i></div>`).join('')}`)}`,
+    js: (t0, t1) => `tl.fromTo('#${p}-disc', { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'expo.out' }, ${t0});
+tl.fromTo('#${p}-ph', { y: 600, rotation: 8 }, { y: 0, rotation: 0, duration: 0.45, ease: 'expo.out' }, ${t0});
+tl.fromTo('.${p}-row', { x: 400, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: 'back.out(2)', stagger: 0.14 }, ${t0 + 0.35});`,
+  }),
+
   // fecho: logo + CTA
   fecho: (p) => ({
     css: `#${p}-lock{position:absolute;left:0;right:0;top:360px;display:flex;flex-direction:column;align-items:center;gap:20px;}

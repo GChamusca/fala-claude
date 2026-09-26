@@ -9,7 +9,9 @@ const [id = 'p1', music = 'promo-1'] = process.argv.slice(2);
 const ROOT = new URL('../', import.meta.url);
 const S = SCRIPTS[id];
 const V = JSON.parse(fs.readFileSync(new URL(`assets/voice/${id}.json`, ROOT), 'utf8'));
-const DUR = 15, VO = 0.35;
+const VO = 0.35;
+// até 15s; roteiros curtos terminam ~2,6s depois da última palavra (fecho sem tempo morto)
+const DUR = Math.min(15, Math.ceil(VO + V.words.at(-1).e + 2.6));
 const HL = S.hl || /quinhentas|abas|duzentas|minutos|fonte|origem|ontem|explodiu|crescendo|clique|inventa|achismo|publicar|revisar|poste|mais\.|melhor|assim|agora|tema/i;
 
 // distribui as palavras da narração pelas linhas do roteiro
@@ -22,7 +24,7 @@ const P = (i) => `${id}s${i}`;
 const shots = lines.map((l, i) => SHOTS[l.shot](P(i)));
 const esc = (w) => w.replace(/&/g, '&amp;').replace(/</g, '&lt;');
 
-const caption = lines.map((l, i) => `<div class="cap" id="${id}-cap${i}">${l.ws.map((w, j) => `<span class="cw${HL.test(w.w) ? ' hl' : ''}" id="${id}-w${i}-${j}">${esc(w.w)}</span>`).join(' ')}</div>`).join('');
+const caption = lines.map((l, i) => `<div class="cap" id="${id}-cap${i}">${l.say.split(/\s+/).map((w, j) => `<span class="cw${HL.test(w) ? ' hl' : ''}" id="${id}-w${i}-${j}">${esc(w)}</span>`).join(' ')}</div>`).join('');
 
 const css = `${FONT_FACES}
 #root{position:absolute;inset:0;overflow:hidden;background:${C.paper};color:${C.ink};font-family:'Bricolage Grotesque',sans-serif;}

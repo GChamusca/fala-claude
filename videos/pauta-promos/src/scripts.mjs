@@ -1,7 +1,8 @@
 // Roteiros dos promos de 15s (conversão). Cada linha: o que a voz fala e a "cena" que a acompanha.
 // As palavras entre *asteriscos* ganham destaque manteiga na legenda.
 export const SIGN = { say: 'Poste mais. Poste melhor. Pauta Pronta.', shot: 'fecho' };
-export const SIGN_I = { say: 'Pauta Pronta. A apuração vem antes do post.', shot: 'fecho' };
+export const SIGN_R = { say: 'Pauta Pronta. Com a inteligência do REP.', shot: 'fecho' };
+export const SIGN_I ={ say: 'Pauta Pronta. A apuração vem antes do post.', shot: 'fecho' };
 
 export const SCRIPTS = {
   p1: {
@@ -89,6 +90,60 @@ export const SCRIPTS = {
       { say: 'A IA genérica inventa o resto.', shot: 'inventa' },
       { say: 'No Pauta Pronta, seu próximo post nasce da cobertura real.', shot: 'leitura' },
       { say: 'Não de um prompt em branco. Pauta Pronta.', shot: 'fecho' },
+    ],
+  },
+
+  // Série "Quem está por trás": o REP (números de /api/stats e agentes do repo rep-brasil).
+  e1: {
+    title: 'O motor: REP',
+    hl: /REP|setecentas|mil|cem|trinta|classificações|inteligência/i,
+    lines: [
+      { say: 'Por trás do Pauta Pronta existe o REP.', shot: 'rep' },
+      { say: 'Mais de setecentas mil matérias, de mais de cem veículos.', shot: 'acervo' },
+      { say: 'Cada uma ganha mais de trinta classificações.', shot: 'etiquetas' },
+      SIGN_R,
+    ],
+  },
+  e2: {
+    title: 'A análise cruzada',
+    hl: /cruza|fato|declaração|hipótese|lacuna|acusa|apoia|investiga|inteligência/i,
+    lines: [
+      { say: 'O REP não só lê as matérias. Ele cruza.', shot: 'cruza' },
+      { say: 'Separa fato de declaração, de hipótese e de lacuna.', shot: 'matriz' },
+      { say: 'Mostra quem acusa, quem apoia, quem investiga.', shot: 'teia' },
+      SIGN_R,
+    ],
+  },
+
+  // Série "A redação na sua mão".
+  r1: {
+    title: 'Do link ao post',
+    hl: /link|REP|pauta|crédito|apurou|inteligência/i,
+    lines: [
+      { say: 'Achou uma matéria boa? Cola o link.', shot: 'link' },
+      { say: 'O Pauta Pronta lê, confere no REP e monta a pauta.', shot: 'busca' },
+      { say: 'Texto, arte e legenda, com crédito pra quem apurou.', shot: 'entrega' },
+      SIGN_R,
+    ],
+  },
+  r2: {
+    title: 'Uma matéria é só um lado',
+    hl: /lado|link|veículos|cobriram|acervo|REP|inteligência/i,
+    lines: [
+      { say: 'Uma matéria é só um lado da história.', shot: 'umlado' },
+      { say: 'Cola o link e veja como os outros veículos cobriram.', shot: 'cobertura' },
+      { say: 'Tudo no acervo do REP.', shot: 'acervo' },
+      SIGN_R,
+    ],
+  },
+  r3: {
+    title: 'A redação na sua mão',
+    hl: /pesquisa|checagem|análise|texto|redação|mão|inteligência/i,
+    lines: [
+      { say: 'Pesquisa, checagem, análise e texto.', shot: 'mesas' },
+      { say: 'Antes, isso era uma redação inteira.', shot: 'redacao' },
+      { say: 'Agora cabe na sua mão.', shot: 'mao' },
+      SIGN_R,
     ],
   },
 };

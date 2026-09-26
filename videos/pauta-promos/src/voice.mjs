@@ -14,7 +14,8 @@ fs.mkdirSync(new URL('assets/voice/', ROOT), { recursive: true });
 
 for (const [id, s] of Object.entries(SCRIPTS)) {
   if (only.length && !only.includes(id)) continue;
-  const text = s.lines.map((l) => l.say).join(' ');
+  // pronúncia: a sigla REP é falada como palavra (a legenda continua mostrando REP)
+  const text = s.lines.map((l) => l.say).join(' ').replace(/\bREP\b/g, 'Rép');
   const r = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${VOICES[voice]}/with-timestamps?output_format=mp3_44100_128`, {
     method: 'POST',
     headers: { 'xi-api-key': KEY, 'content-type': 'application/json' },
