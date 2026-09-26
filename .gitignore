@@ -2,3 +2,9 @@ __pycache__/
 *.pyc
 .env
 *.wav
+
+# pacotes de entrega (vídeos renderizados, grandes demais para o git)
+videos/entregas-pauta-pronta/
+videos/entregas-pauta-pronta.zip
+videos/promos-15-20s-leve.zip
+videos/leve/
