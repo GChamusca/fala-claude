@@ -1,220 +1,259 @@
-// Anúncio "Primeiro e certo" — plantão contra o relógio (1080×1920, ~23,5 s).
-// Tudo o que aparece do produto é gravação/arquivo real de 27/09/2026 (pauta A2ADDE, MP das bets).
+// Anúncio "Primeiro e certo" v2 — plantão contra o relógio (1080×1920, ~39 s).
+// Tudo o que aparece do produto é real: pauta A2ADDE (MP das bets, 27/09/2026) e regravações das telas.
 // Cronômetro = tempo real do caminho limpo: 6 min 08 s (geração 5 min 07 s; a 1ª tentativa de
-// pesquisa, que falhou, ficou fora da conta).
+// pesquisa, que falhou, ficou fora da conta). Toques: posição exata gravada no navegador.
 import fs from 'node:fs';
 import { C, FONT_FACES } from '../../pauta-explicativo/src/lib.mjs';
 
 const ROOT = new URL('../', import.meta.url);
-const R = { bg: '#111820', panel: '#18212b', ink: '#f0eadf', ink2: '#aaa79e', gold: '#b19a60', goldBri: '#c6b278', red: '#ce8277', alarm: '#e0483e' };
+const R = { bg: '#0b1420', ink: '#f0eadf', ink2: '#aab3bf', gold: '#c6b278', butter: '#e8c873', alarm: '#ff5a4e', navy: '#24456b' };
 const RS = "Georgia,'Liberation Serif',serif";
-const DUR = 23.5;
 
-// ——— tempos (s) ———
-const RS0 = 2.4;                                   // começa a corrida
-const SEG = [0, 1.5, 2.3, 2.9, 3.7, 5.3, 7.0, 8.4]; // fronteiras no vídeo pp-jornada.mp4
-const CLK = [0, 2, 4, 6, 13, 61, 368, 368];        // cronômetro real (s) em cada fronteira
-const WIN = RS0 + 7.0;                             // 9,4 s: post pronto
-const RES = 10.6, PROOF = 13.6, END = 18.2;
-const STEP = ['RADAR · 162 MATÉRIAS · 40 VEÍCULOS', 'GERAR PAUTA', 'COMPLEMENTAR COM O ACERVO REP', 'PESQUISA · 13 FONTES', 'ÂNGULO · TOM · FORMATO', 'A REDAÇÃO ESCREVENDO · AO VIVO', 'CARROSSEL PRONTO'];
-// toques gravados (tempo no vídeo, x/y em px CSS do celular de 360 px)
-const TAPS = [[0.63, 181, 375], [1.58, 180, 473], [2.41, 247, 592], [4.41, 82, 515], [4.48, 249, 390], [4.54, 127, 390], [5.23, 180, 390]];
+// ——— linha do tempo (s) ———
+const CS = 7.8;                 // começa a jornada real
+const JD = 18.7;                // duração do clipe pp-jornada2.mp4
+const WINc = 17.367, WIN = CS + WINc;
+const CAR = CS + JD, PROOF = CAR + 2.8, END = PROOF + 4.6, DUR = +(END + 4.9).toFixed(2);
+// toques (tempo no clipe, x/y em px CSS do celular de 360 px) — gravados
+const TAPS = [[1.38, 177, 376, 'Toque na bolha'], [3.79, 180, 473, 'Gerar pauta'], [6.0, 247, 592, 'Confirmar'],
+  [10.13, 82, 347, 'Jornalístico'], [11.70, 249, 316, 'Carrossel'], [13.28, 127, 330, 'Editorial'], [14.53, 180, 322, 'Gerar minha versão']];
+// cronômetro real: [tempo no clipe, segundos]
+const CLK = [[1.38, 0], [6.0, 6], [9.533, 13], [14.733, 61], [WINc, 368]];
+const STEPS = [[0, 'RADAR · EM ALTA AGORA'], [3.79, 'GERAR PAUTA'], [6.0, 'COMPLEMENTAR COM O ACERVO REP'], [7.0, 'PESQUISA NA COBERTURA · 13 FONTES'], [9.533, 'ÂNGULO · TOM · FORMATO'], [14.733, 'A REDAÇÃO ESCREVENDO · AO VIVO'], [WINc, 'PRONTO PARA PUBLICAR']];
+// narração (arquivo, início no anúncio, legenda)
+const VO = [['v1', 0.25, 'O assunto explodiu. Você precisa postar agora… e não pode errar.'], ['v2', 5.0, 'Abrir aba por aba? Não dá tempo.'],
+  ['v3', CS + 0.2, 'No Pauta Pronta, você toca no assunto que está em alta no Radar…'], ['v4', CS + 7.1, 'a redação pesquisa a cobertura inteira…'],
+  ['v5', CS + 9.7, 'você escolhe o ângulo e o formato…'], ['v6', CS + 14.8, 'e ela escreve por você. Com fonte.'], ['v7', WIN + 0.35, 'Seis minutos. Pronto.'],
+  ['v8', PROOF + 0.2, 'E cada fato leva direto à matéria de origem.'], ['v9', END + 0.3, 'Pauta Pronta. Chegue primeiro. Chegue certo.']];
+const VLEN = Object.fromEntries(VO.map(([k]) => [k, +fs.readFileSync(new URL(`assets/voice/${k}-t.dur`, ROOT), 'utf8')]));
 
-// ——— layout da corrida ———
-const PH = { x: 500, y: 300, w: 540, pad: 12 };   // celular da direita (Pauta Pronta)
+// ——— celular grande ———
+const PH = { w: 700, pad: 12, top: 330 }; PH.left = (1080 - PH.w) / 2;
 const VW = PH.w - 2 * PH.pad, VH = Math.round(VW * 2340 / 1080), K = VW / 360;
-const LP = { x: 45, y: 430, w: 420, h: 880 };     // celular da esquerda (jeito de sempre)
-const TABS = [
-  ['Agência Brasil', 'Bets que continuarem no ar após prazo serão bloqueadas, diz Durigan'],
-  ['Sul21', 'MP proíbe bets no Brasil e determina devolução de saldo ao apostador'],
-  ['ND Mais', 'Governo oficializa fim das bets e Desenrola 3.0 em edição extra do Diário Oficial'],
-  ['Folha de S.Paulo', 'Governo precisará compensar perda de R$ 6,8 bi em receitas com bets até 2027'],
-  ['O Globo', 'Fazenda estima R$ 1,7 bilhão depositado nas bets que poderão ser devolvidos'],
-  ['Poder360', 'Entenda o plano de Lula que proíbe bets e lança Desenrola 3.0'],
-  ['Metrópoles', 'Além das bets, jogos como o "Jogo do Tigrinho" estão proibidos no Brasil'],
-  ['Jornal do Commercio', 'Não se pode mais colocar dinheiro em sites de apostas, diz ministro'],
-];
-const mmss = (s) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+const pt = (x, y) => [PH.left + PH.pad + x * K, PH.top + PH.pad + y * K];   // ponto na tela
+const ZOOM = 1.55, FOCUS = [540, 980];
+const TABS = [['Agência Brasil', 'Bets que continuarem no ar após prazo serão bloqueadas'], ['Folha de S.Paulo', 'Governo precisará compensar perda de R$ 6,8 bi em receitas com bets'],
+  ['O Globo', 'Fazenda estima R$ 1,7 bilhão depositado nas bets'], ['Poder360', 'Entenda o plano de Lula que proíbe bets e lança Desenrola 3.0'],
+  ['Metrópoles', 'Além das bets, jogos como o "Jogo do Tigrinho" estão proibidos'], ['Sul21', 'MP proíbe bets e determina devolução de saldo ao apostador']];
 
 const css = `${FONT_FACES}
-#root{position:absolute;inset:0;overflow:hidden;background:${R.bg};color:${R.ink};font-family:'Bricolage Grotesque',sans-serif;}
+#root{position:absolute;inset:0;overflow:hidden;background:radial-gradient(120% 80% at 50% 45%, #1b3150 0%, #0e1a2b 55%, ${R.bg} 100%);color:${R.ink};font-family:'Bricolage Grotesque',sans-serif;}
 .sc{position:absolute;inset:0;opacity:0;}
-.mono{font-family:'JetBrains Mono',monospace;}
+#glowR{position:absolute;inset:0;background:radial-gradient(60% 40% at 50% 38%, rgba(255,90,78,.28), rgba(255,90,78,0) 70%);opacity:0;}
 /* gancho */
-#notif{position:absolute;left:60px;right:60px;top:150px;padding:26px 30px;border-radius:34px;background:rgba(240,234,223,.94);color:#111;display:flex;gap:22px;align-items:flex-start;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);}
-#notif i{flex:none;width:84px;height:84px;border-radius:20px;background:${R.alarm};color:#fff;font-style:normal;display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:22px;letter-spacing:.04em;}
-#notif b{display:block;font-size:30px;letter-spacing:.06em;}
-#notif span{display:block;margin-top:6px;font-size:38px;line-height:1.18;font-weight:600;}
-#notif em{position:absolute;right:34px;top:26px;font-style:normal;font-size:26px;color:#666;}
-#h1{position:absolute;left:70px;right:70px;top:700px;font-weight:800;font-size:112px;line-height:1.02;letter-spacing:-2px;}
-#h2{position:absolute;left:70px;right:70px;top:980px;font-weight:800;font-size:76px;line-height:1.08;letter-spacing:-1px;color:${R.ink2};}
-#h2 b{color:${R.ink};}
-/* corrida */
-#plantao{position:absolute;left:0;right:0;top:62px;display:flex;justify-content:center;gap:16px;align-items:center;font-family:'JetBrains Mono',monospace;font-size:26px;letter-spacing:.2em;color:${R.ink2};z-index:6;}
-#plantao i{font-style:normal;padding:6px 14px;background:${R.alarm};color:#fff;letter-spacing:.14em;}
-#clock{position:absolute;left:0;right:0;top:100px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:170px;line-height:1.1;letter-spacing:-4px;color:${R.alarm};z-index:6;font-variant-numeric:tabular-nums;}
-#ph{position:absolute;left:${PH.x}px;top:${PH.y}px;width:${PH.w}px;height:${VH + 2 * PH.pad}px;box-sizing:border-box;padding:${PH.pad}px;border-radius:64px;background:#05070a;box-shadow:0 0 0 3px #2a3542, 0 40px 80px -30px #000;z-index:3;transform-origin:50% 0%;}
-#ph .scr{position:relative;width:${VW}px;height:${VH}px;border-radius:52px;overflow:hidden;background:#f7f3ec;}
-#ph video{position:absolute;left:0;top:0;width:${VW}px;height:${VH}px;}
-.tap{position:absolute;width:74px;height:74px;margin:-37px 0 0 -37px;border-radius:50%;border:5px solid ${C.navy};background:rgba(36,69,107,.2);opacity:0;}
-#lp{position:absolute;left:${LP.x}px;top:${LP.y}px;width:${LP.w}px;height:${LP.h}px;box-sizing:border-box;padding:10px;border-radius:52px;background:#05070a;box-shadow:0 0 0 3px #2a3542;filter:grayscale(1);z-index:2;}
-#lp .scr{position:relative;width:100%;height:100%;border-radius:42px;overflow:hidden;background:#e9e9e9;}
-#lp .bar{position:absolute;left:0;right:0;top:0;height:92px;background:#d5d5d5;display:flex;align-items:flex-end;padding:0 18px 12px;gap:8px;z-index:2;}
-#lp .bar span{flex:1;height:40px;border-radius:10px 10px 0 0;background:#c2c2c2;font-family:'JetBrains Mono',monospace;font-size:13px;color:#555;overflow:hidden;white-space:nowrap;padding:12px 8px 0;box-sizing:border-box;}
-#lp .bar span.on{background:#fafafa;color:#222;}
-#lp .page{position:absolute;left:0;right:0;top:92px;padding:26px 24px;}
-#lp .page b{display:block;font-family:'JetBrains Mono',monospace;font-size:16px;letter-spacing:.12em;color:#666;text-transform:uppercase;}
-#lp .page h3{margin:12px 0 18px;font-family:${RS};font-weight:400;font-size:34px;line-height:1.12;color:#222;}
-#lp .page p{height:14px;margin:0 0 14px;border-radius:7px;background:#cfcfcf;}
-#abas{position:absolute;left:0;right:0;bottom:26px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:24px;color:#444;z-index:3;}
-.lab{position:absolute;top:${PH.y + VH + 2 * PH.pad + 26}px;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:.16em;text-align:center;}
-#labL{left:${LP.x}px;width:${LP.w}px;color:#7d828a;top:${LP.y + LP.h + 26}px;}
-#labR{left:${PH.x}px;width:${PH.w}px;color:${R.goldBri};}
-#step{position:absolute;left:60px;right:60px;top:1600px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:34px;letter-spacing:.08em;color:${R.ink};}
+#notif{position:absolute;left:54px;right:54px;top:130px;padding:28px 32px;border-radius:36px;background:rgba(245,242,236,.96);color:#111;display:flex;gap:24px;box-shadow:0 30px 70px -20px rgba(0,0,0,.7);}
+#notif i{flex:none;width:88px;height:88px;border-radius:22px;background:${R.alarm};color:#fff;font-style:normal;display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:22px;line-height:1.1;text-align:center;}
+#notif b{display:block;font-size:30px;letter-spacing:.08em;color:${R.alarm};}
+#notif span{display:block;margin-top:6px;font-size:40px;line-height:1.16;font-weight:700;}
+#notif em{position:absolute;right:34px;top:28px;font-style:normal;font-size:26px;color:#777;}
+#h1{position:absolute;left:66px;right:66px;top:640px;font-weight:800;font-size:132px;line-height:.98;letter-spacing:-3px;}
+#h1 span{display:inline-block;}
+#h2{position:absolute;left:66px;right:66px;top:1000px;font-weight:800;font-size:78px;line-height:1.06;letter-spacing:-1px;color:${R.ink2};}
+#h2 b{color:${R.butter};}
+/* jeito de sempre */
+.tab{position:absolute;left:90px;width:900px;box-sizing:border-box;padding:28px 32px;border-radius:26px;background:#e6e6e6;color:#222;filter:grayscale(1);box-shadow:0 20px 40px -20px rgba(0,0,0,.6);}
+.tab small{display:block;font-family:'JetBrains Mono',monospace;font-size:22px;letter-spacing:.12em;text-transform:uppercase;color:#666;}
+.tab b{display:block;margin-top:8px;font-family:${RS};font-weight:400;font-size:42px;line-height:1.12;}
+#aba{position:absolute;left:0;right:0;top:1420px;text-align:center;font-weight:800;font-size:120px;letter-spacing:-3px;}
+#strike{position:absolute;left:170px;top:1500px;width:740px;height:14px;background:${R.alarm};transform-origin:0 50%;}
+#nodt{position:absolute;left:0;right:0;top:1580px;text-align:center;font-weight:800;font-size:74px;color:${R.alarm};}
+/* HUD */
+#hud{position:absolute;left:0;right:0;top:0;height:330px;z-index:8;opacity:0;background:linear-gradient(${R.bg} 0%, rgba(11,20,32,.92) 70%, rgba(11,20,32,0) 100%);}
+#rec{position:absolute;left:0;right:0;top:54px;display:flex;justify-content:center;gap:14px;align-items:center;font-family:'JetBrains Mono',monospace;font-size:26px;letter-spacing:.2em;color:${R.ink2};}
+#rec i{width:18px;height:18px;border-radius:50%;background:${R.alarm};box-shadow:0 0 16px ${R.alarm};}
+#clock{position:absolute;left:0;right:0;top:86px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:150px;line-height:1.05;letter-spacing:-4px;color:#fff;text-shadow:0 0 40px rgba(255,90,78,.45);}
+#step{position:absolute;left:40px;right:40px;top:262px;height:40px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:30px;letter-spacing:.14em;color:${R.butter};}
 #step span{position:absolute;left:0;right:0;opacity:0;}
-#pronto{position:absolute;left:0;right:0;top:1700px;text-align:center;opacity:0;}
-#pronto span{display:inline-block;padding:14px 30px;border:4px solid ${R.goldBri};color:${R.goldBri};font-family:'JetBrains Mono',monospace;font-weight:600;font-size:40px;letter-spacing:.2em;}
+/* câmera + celular */
+#cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0;}
+#halo{position:absolute;left:${PH.left - 160}px;top:${PH.top + 120}px;width:${PH.w + 320}px;height:${VH - 100}px;border-radius:50%;background:radial-gradient(closest-side, rgba(232,200,115,.30), rgba(232,200,115,0));}
+#ph{position:absolute;left:${PH.left}px;top:${PH.top}px;width:${PH.w}px;height:${VH + 2 * PH.pad}px;box-sizing:border-box;padding:${PH.pad}px;border-radius:78px;background:#05070a;box-shadow:0 0 0 3px #3a4a5e, 0 50px 90px -30px #000;}
+#ph .scr{position:relative;width:${VW}px;height:${VH}px;border-radius:66px;overflow:hidden;background:#f7f3ec;}
+#ph video{position:absolute;left:0;top:0;width:${VW}px;height:${VH}px;}
+.touch{position:absolute;width:86px;height:86px;margin:-43px 0 0 -43px;border-radius:50%;background:rgba(255,255,255,.55);border:4px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,.35);opacity:0;z-index:5;}
+.rip{position:absolute;width:86px;height:86px;margin:-43px 0 0 -43px;border-radius:50%;border:6px solid ${R.butter};opacity:0;z-index:5;}
+.tlab{position:absolute;padding:10px 20px;border-radius:999px;background:${R.butter};color:#111;font-weight:800;font-size:30px;white-space:nowrap;opacity:0;z-index:6;box-shadow:0 8px 20px rgba(0,0,0,.35);}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:9;}
+#stamp{position:absolute;left:0;right:0;top:1640px;text-align:center;opacity:0;z-index:7;}
+#stamp span{display:inline-block;padding:18px 40px;border-radius:999px;background:${R.gold};color:${R.bg};font-family:'JetBrains Mono',monospace;font-weight:600;font-size:44px;letter-spacing:.12em;box-shadow:0 0 50px rgba(198,178,120,.6);}
+/* legenda da narração */
+#subsbg{position:absolute;left:0;right:0;top:1770px;bottom:0;z-index:7;background:linear-gradient(rgba(11,20,32,0), rgba(11,20,32,.85) 45%);}
+#subs{position:absolute;left:60px;right:60px;top:1838px;height:60px;z-index:8;}
+#subs div{position:absolute;left:0;right:0;text-align:center;font-weight:700;font-size:34px;line-height:1.15;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.8);opacity:0;}
 /* resultado */
-#res{background:#f4efe6;color:#111;}
-#res h2,#proof h2{position:absolute;left:70px;right:70px;top:120px;margin:0;font-weight:800;font-size:74px;line-height:1.04;letter-spacing:-1px;}
-#res h2 em,#proof h2 em{font-style:normal;color:${C.navy};}
-#rail{position:absolute;left:130px;top:430px;display:flex;gap:40px;}
-#rail img{width:820px;height:1025px;display:block;border-radius:10px;box-shadow:0 30px 60px -30px rgba(0,0,0,.45);}
-#res .meta{position:absolute;left:0;right:0;top:1500px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:28px;letter-spacing:.12em;color:#555;}
+#res{background:linear-gradient(#f6f1e8,#ece4d6);color:#111;}
+#res h2,#proof h2{position:absolute;left:70px;right:70px;top:110px;margin:0;font-weight:800;font-size:80px;line-height:1.02;letter-spacing:-2px;}
+#res h2 em{font-style:normal;color:${C.navy};}
+#fan{position:absolute;left:0;top:420px;width:1080px;height:1200px;}
+#fan img{position:absolute;left:180px;top:0;width:720px;height:900px;border-radius:14px;box-shadow:0 40px 70px -30px rgba(0,0,0,.55);transform-origin:50% 100%;}
+#res .meta{position:absolute;left:0;right:0;top:1480px;display:flex;justify-content:center;gap:14px;}
+#res .meta span{padding:12px 22px;border-radius:999px;background:#111;color:#fff;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:.08em;}
 /* prova */
-#proof{background:#f4efe6;color:#111;}
+#proof{background:linear-gradient(#f6f1e8,#ece4d6);color:#111;}
 #s1{position:absolute;left:40px;top:-230px;width:1000px;border-radius:12px;box-shadow:0 30px 60px -30px rgba(0,0,0,.4);}
-#mk{position:absolute;left:112px;top:690px;width:610px;height:50px;background:rgba(232,200,115,.55);mix-blend-mode:multiply;transform-origin:0 50%;}
+#mk{position:absolute;left:112px;top:690px;width:610px;height:50px;background:rgba(232,200,115,.7);mix-blend-mode:multiply;transform-origin:0 50%;}
 #cit{position:absolute;left:50px;right:50px;top:900px;padding:34px 36px;background:#fffdf8;border:2px solid #111;border-radius:22px;box-shadow:10px 10px 0 #111;}
 #cit small{display:block;font-family:'JetBrains Mono',monospace;font-size:22px;letter-spacing:.16em;color:#666;}
 #cit p{margin:16px 0 0;font-size:36px;line-height:1.3;}
-#cit p b{font-family:'JetBrains Mono',monospace;}
-#cit a{color:#1a55c4;text-decoration:underline;font-weight:600;}
-#link{position:absolute;left:0;top:0;width:1080px;height:1920px;}
+#cit a{color:#1a55c4;text-decoration:underline;font-weight:700;}
 #jc{position:absolute;left:130px;top:250px;width:820px;height:1180px;border-radius:50px;overflow:hidden;box-shadow:0 0 0 14px #05070a, 0 40px 80px -30px rgba(0,0,0,.6);background:#fff;}
 #jc img{width:820px;display:block;}
-#proof .tag{position:absolute;left:0;right:0;top:1500px;text-align:center;}
-#proof .tag span{display:inline-block;padding:14px 28px;background:${C.grass};color:#fff;font-family:'JetBrains Mono',monospace;font-size:30px;letter-spacing:.1em;border:3px solid #111;box-shadow:6px 6px 0 #111;}
-.bot{position:absolute;left:60px;right:60px;top:1640px;text-align:center;font-weight:800;font-size:66px;line-height:1.08;letter-spacing:-1px;}
+#tapV{left:790px;top:1150px;}
+#proof .tag{position:absolute;left:0;right:0;top:1480px;text-align:center;}
+#proof .tag span{display:inline-block;padding:16px 30px;border-radius:999px;background:#3f7a3a;color:#fff;font-family:'JetBrains Mono',monospace;font-size:30px;letter-spacing:.1em;box-shadow:0 10px 30px rgba(63,122,58,.45);}
+.bot{position:absolute;left:60px;right:60px;top:1600px;text-align:center;font-weight:800;font-size:68px;line-height:1.06;letter-spacing:-1px;}
 /* fecho */
+#end{background:radial-gradient(100% 70% at 50% 40%, #16263a, ${R.bg});}
 #end .l1,#end .l2{position:absolute;left:0;right:0;text-align:center;font-family:${RS};font-size:136px;line-height:1;letter-spacing:-2px;}
-#end .l1{top:470px;} #end .l2{top:630px;color:${R.goldBri};}
-#end .brand{position:absolute;left:0;right:0;top:950px;display:flex;justify-content:center;align-items:center;gap:22px;font-family:'Newsreader',serif;font-size:74px;}
-#end .rep{position:absolute;left:0;right:0;top:1075px;display:flex;justify-content:center;align-items:center;gap:16px;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:.2em;color:${R.gold};}
+#end .l1{top:440px;} #end .l2{top:600px;color:${R.gold};}
+#end .rule{position:absolute;left:340px;right:340px;top:790px;height:3px;background:${R.gold};transform-origin:50% 50%;}
+#end .brand{position:absolute;left:0;right:0;top:900px;display:flex;justify-content:center;align-items:center;gap:22px;font-family:'Newsreader',serif;font-size:78px;}
+#end .rep{position:absolute;left:0;right:0;top:1030px;display:flex;justify-content:center;align-items:center;gap:16px;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:.2em;color:${R.gold};}
 #end .rep img{height:46px;} #end .rep b{font-family:Arial,sans-serif;font-size:34px;letter-spacing:0;color:${R.ink};}
-#end .cta{position:absolute;left:0;right:0;top:1230px;display:flex;justify-content:center;}
-#end .cta div{padding:34px 54px;border-radius:999px;background:${R.goldBri};color:${R.bg};text-align:center;font-weight:800;font-size:46px;line-height:1.15;}
+#end .cta{position:absolute;left:0;right:0;top:1200px;display:flex;justify-content:center;}
+#end .cta div{padding:36px 58px;border-radius:999px;background:linear-gradient(${R.butter},${R.gold});color:${R.bg};text-align:center;font-weight:800;font-size:48px;line-height:1.15;box-shadow:0 20px 60px -10px rgba(232,200,115,.45);}
 #end .cta small{display:block;font-size:30px;font-weight:600;}
-#end .url{position:absolute;left:0;right:0;top:1470px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:36px;letter-spacing:.2em;color:${R.ink2};}
+#end .url{position:absolute;left:0;right:0;top:1450px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:36px;letter-spacing:.2em;color:${R.ink2};}
 `;
 
 const logo = (s) => `<svg width="${s}" height="${s}" viewBox="4 4 54 54"><circle cx="32" cy="32" r="22" fill="#05070a"/><circle cx="28" cy="28" r="22" fill="${C.navy}"/><circle cx="36" cy="20" r="5" fill="${C.butter}"/></svg>`;
+const tapEls = TAPS.map((t, i) => { const [x, y] = pt(t[1], t[2]); return `<div class="rip" id="rp${i}" style="left:${x}px;top:${y}px"></div><div class="touch" id="tc${i}" style="left:${x}px;top:${y}px"></div><div class="tlab" id="tl${i}" style="left:${x}px;top:${y - 150}px;transform:translateX(-50%)">${t[3]}</div>`; }).join('');
 
 const html = `
+<div id="glowR"></div>
 <div class="sc" id="hook">
   <div id="notif"><i>AO<br>VIVO</i><div><b>URGENTE</b><span>Governo edita MP que proíbe as bets no Brasil</span></div><em>agora</em></div>
-  <div id="h1">O assunto explodiu.</div>
+  <div id="h1">${'O assunto explodiu.'.split(' ').map((w) => `<span>${w}</span>`).join(' ')}</div>
   <div id="h2">Você precisa postar.<br><b>E não pode errar.</b></div>
 </div>
-<div class="sc" id="race">
-  <div id="lp"><div class="scr"><div class="bar">${TABS.slice(0, 4).map((t, i) => `<span class="${i === 0 ? 'on' : ''}" id="tb${i}">${t[0]}</span>`).join('')}</div>
-    ${TABS.map((t, i) => `<div class="page" id="pg${i}" style="opacity:${i ? 0 : 1}"><b>${t[0]}</b><h3>${t[1]}</h3>${'<p></p>'.repeat(14)}</div>`).join('')}
-    <div id="abas">aba <span id="abaN">1</span> de 13</div></div></div>
-  <div id="ph"><div class="scr"><video class="clip" id="vid" src="assets/shots/pp-jornada.mp4" muted playsinline data-start="${RS0}" data-duration="${(SEG.at(-1)).toFixed(2)}" data-media-start="0"></video>
-    ${TAPS.map((t, i) => `<div class="tap" id="tap${i}" style="left:${Math.round(t[1] * K)}px;top:${Math.round(t[2] * K)}px"></div>`).join('')}</div></div>
-  <div class="lab" id="labL">DO JEITO DE SEMPRE</div>
-  <div class="lab" id="labR">COM O PAUTA PRONTA</div>
-  <div id="step">${STEP.map((s, i) => `<span id="st${i}">${s}</span>`).join('')}</div>
-  <div id="pronto"><span>PRONTO · ${mmss(368)}</span></div>
+<div class="sc" id="old">
+  ${TABS.map((t, i) => `<div class="tab" id="tab${i}" style="top:${120 + i * 190}px;transform:rotate(${[-2, 1.5, -1, 2, -1.5, 1][i]}deg)"><small>${t[0]}</small><b>${t[1]}</b></div>`).join('')}
+  <div id="aba">Aba por aba?</div><div id="strike"></div><div id="nodt">Não dá tempo.</div>
 </div>
-<div id="plantao"><i>PLANTÃO</i>MP DAS BETS · 27/09</div>
-<div id="clock">00:00</div>
+<div class="sc" id="journey">
+  <div id="cam"><div id="halo"></div>
+    <div id="ph"><div class="scr"><video class="clip" id="vid" src="assets/shots/pp-jornada2.mp4" muted playsinline data-start="${CS}" data-duration="${JD}" data-media-start="0"></video></div></div>
+    ${tapEls}
+  </div>
+  <div id="stamp"><span>PRONTO EM 06:08</span></div>
+</div>
+<div id="hud"><div id="rec"><i></i>PLANTÃO · MP DAS BETS</div><div id="clock">00:00</div><div id="step">${STEPS.map((s, i) => `<span id="st${i}">${s[1]}</span>`).join('')}</div></div>
 <div class="sc" id="res">
   <h2>Carrossel pronto.<br><em>Com fonte.</em></h2>
-  <div id="rail">${[1, 2, 3, 4].map((n) => `<img src="assets/shots/slide-${n}.png" alt="Slide ${n}">`).join('')}</div>
-  <div class="meta">4 SLIDES · LEGENDA · 13 FONTES · VALIDAÇÃO</div>
+  <div id="fan">${[4, 3, 2, 1].map((n) => `<img id="sl${n}" src="assets/shots/slide-${n}.png" alt="Slide ${n}">`).join('')}</div>
+  <div class="meta"><span>4 SLIDES</span><span>LEGENDA</span><span>13 FONTES</span><span>VALIDAÇÃO</span></div>
 </div>
 <div class="sc" id="proof">
   <img id="s1" src="assets/shots/slide-1.png" alt="Slide 1">
   <div id="mk"></div>
-  <div id="cit"><small>VALIDAÇÃO · CITAÇÕES NA LEGENDA</small><p><b>[8]</b> Não se pode mais colocar dinheiro em sites de apostas no Brasil, diz ministro da Fazenda — <b style="font-family:inherit">Jornal do Commercio</b> (25/09/2026) · <a id="ver">ver matéria</a></p></div>
+  <div id="cit"><small>VALIDAÇÃO · CITAÇÕES NA LEGENDA</small><p><b style="font-family:'JetBrains Mono',monospace">[8]</b> Não se pode mais colocar dinheiro em sites de apostas no Brasil, diz ministro da Fazenda — <b>Jornal do Commercio</b> (25/09/2026) · <a>ver matéria</a></p></div>
   <div id="jc"><img src="assets/shots/jc.png" alt="Matéria do Jornal do Commercio"></div>
-  <div class="tap" id="tapV" style="left:790px;top:1150px"></div>
+  <div class="rip" id="rpV" style="left:790px;top:1150px"></div><div class="touch" id="tcV" style="left:790px;top:1150px"></div>
   <div class="tag" id="tagP"><span>✓ FATO CONFERIDO NA ORIGEM</span></div>
   <div class="bot" id="botP">Cada fato leva à<br>matéria de origem.</div>
 </div>
 <div class="sc" id="end">
-  <div class="l1">Chegue primeiro.</div>
-  <div class="l2">Chegue certo.</div>
-  <div class="brand">${logo(84)}<span>Pauta Pronta</span></div>
+  <div class="l1">Chegue primeiro.</div><div class="l2">Chegue certo.</div><div class="rule"></div>
+  <div class="brand">${logo(88)}<span>Pauta Pronta</span></div>
   <div class="rep">COM A INTELIGÊNCIA DO <img src="assets/rep/crow-creme.png" alt=""><b>REP</b></div>
   <div class="cta"><div>Teste com o assunto de hoje<small>1 pauta grátis · sem cartão</small></div></div>
   <div class="url">pautapronta.com</div>
-</div>`;
+</div>
+<div id="subsbg"></div><div id="subs">${VO.map(([k, , s]) => `<div id="sub-${k}">${s}</div>`).join('')}</div>
+<div id="flash"></div>`;
 
-// cronômetro: segmentos lineares sincronizados com a gravação
-const clockJs = SEG.slice(0, -1).map((s, i) => `tl.fromTo(clk, { v: ${CLK[i]} }, { v: ${CLK[i + 1]}, duration: ${(SEG[i + 1] - s).toFixed(2)}, ease: 'none', onUpdate: showClk }, ${(RS0 + s).toFixed(2)});`).join('\n');
-const stepJs = STEP.map((_, i) => `tl.set('#st${i}', { opacity: 1 }, ${(RS0 + SEG[i]).toFixed(2)});${i < STEP.length - 1 ? ` tl.set('#st${i}', { opacity: 0 }, ${(RS0 + SEG[i + 1]).toFixed(2)});` : ''}`).join('\n');
-const tapJs = TAPS.map((t, i) => `tl.fromTo('#tap${i}', { scale: 0.4, opacity: 0.9 }, { scale: 1.4, opacity: 0, duration: 0.45, ease: 'power2.out', immediateRender: false }, ${(RS0 + t[0]).toFixed(2)});`).join('\n');
-// esquerda: abas trocando devagar (o relógio corre, a leitura não)
-const tabJs = [1, 2, 3].map((i) => { const t = (RS0 + 1.6 + i * 1.8).toFixed(2); return `tl.set('#pg${i - 1}', { opacity: 0 }, ${t}); tl.set('#pg${i}', { opacity: 1 }, ${t}); tl.set('#tb${i - 1}', { backgroundColor: '#c2c2c2', color: '#555' }, ${t}); tl.set('#tb${i}', { backgroundColor: '#fafafa', color: '#222' }, ${t});`; }).join('\n') + `\ntl.fromTo(aba, { v: 1 }, { v: 4, duration: 5.4, ease: 'steps(3)', onUpdate: () => { abaEl.textContent = Math.round(aba.v); } }, ${(RS0 + 1.6 + 1.8).toFixed(2)} - 0.001 - 1.8);`;
+// câmera: aproxima em cada toque; toques próximos (<1,9 s) passam direto de um ao outro
+const camTo = (x, y, s) => ({ x: +(FOCUS[0] - x * s).toFixed(1), y: +(FOCUS[1] - y * s).toFixed(1), scale: s });
+let camJs = '';
+TAPS.forEach((t, i) => {
+  const T = CS + t[0], [x, y] = pt(t[1], t[2]), c = camTo(x, y, ZOOM), prev = TAPS[i - 1], next = TAPS[i + 1];
+  const from = prev && t[0] - prev[0] < 1.9 ? 0.55 : 0.6;
+  camJs += `tl.to('#cam', { x: ${c.x}, y: ${c.y}, scale: ${c.scale}, duration: ${from}, ease: 'power3.inOut' }, ${(T - from - 0.05).toFixed(2)});\n`;
+  if (!next || next[0] - t[0] >= 1.9) camJs += `tl.to('#cam', { x: 0, y: 0, scale: 1, duration: 0.6, ease: 'power3.inOut' }, ${(T + 0.7).toFixed(2)});\n`;
+  camJs += `tl.fromTo('#tc${i}', { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: 'power2.out', immediateRender: false }, ${(T - 0.3).toFixed(2)});
+tl.to('#tc${i}', { scale: 0.78, duration: 0.08, yoyo: true, repeat: 1 }, ${T.toFixed(2)});
+tl.to('#tc${i}', { opacity: 0, duration: 0.2 }, ${(T + 0.25).toFixed(2)});
+tl.fromTo('#rp${i}', { opacity: 1, scale: 0.6 }, { opacity: 0, scale: 2.6, duration: 0.55, ease: 'power2.out', immediateRender: false }, ${T.toFixed(2)});
+tl.fromTo('#tl${i}', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.2, immediateRender: false }, ${(T - 0.28).toFixed(2)});
+tl.to('#tl${i}', { opacity: 0, duration: 0.15 }, ${(T + 0.3).toFixed(2)});\n`;
+});
+const clkJs = `tl.fromTo(prog, { t: 0 }, { t: ${JD}, duration: ${JD}, ease: 'none', onUpdate: showClk, immediateRender: false }, ${CS});`;
+const stepJs = STEPS.map(([t], i) => `tl.set('#st${i}', { opacity: 1 }, ${(CS + t).toFixed(2)});${STEPS[i + 1] ? ` tl.set('#st${i}', { opacity: 0 }, ${(CS + STEPS[i + 1][0]).toFixed(2)});` : ''}`).join('\n');
+const subJs = VO.map(([k, t], i) => { const e = VO[i + 1] ? Math.min(t + VLEN[k] + 0.35, VO[i + 1][1] - 0.05) : t + VLEN[k] + 0.6; return `tl.fromTo('#sub-${k}', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.2, immediateRender: false }, ${t.toFixed(2)}); tl.to('#sub-${k}', { opacity: 0, duration: 0.15 }, ${e.toFixed(2)});`; }).join('\n');
 
 const js = `
-const clk = { v: 0 }, clkEl = document.querySelector('#clock'), aba = { v: 1 }, abaEl = document.querySelector('#abaN');
-const showClk = () => { const s = Math.floor(clk.v); clkEl.textContent = String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); };
+const prog = { t: 0 }, clkEl = document.querySelector('#clock'), CK = ${JSON.stringify(CLK)};
+const showClk = () => { const t = prog.t; let v = 0;
+  for (let i = 0; i < CK.length - 1; i++) { const [a, va] = CK[i], [b, vb] = CK[i + 1]; if (t >= a && t <= b) { let k = (t - a) / (b - a); if (i === CK.length - 2) k = k * k; v = va + (vb - va) * k; } }
+  if (t > CK[CK.length - 1][0]) v = CK[CK.length - 1][1];
+  const s = Math.floor(v); clkEl.textContent = String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); };
 // ——— gancho ———
 tl.set('#hook', { opacity: 1 }, 0);
-tl.fromTo('#notif', { y: -260, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, 0.15);
-tl.fromTo('#h1', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out' }, 0.75);
-tl.fromTo('#h2', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out' }, 1.35);
-tl.fromTo(['#plantao', '#clock'], { opacity: 0 }, { opacity: 1, duration: 0.2 }, 1.9);
-tl.to('#hook', { opacity: 0, duration: 0.2 }, ${RS0 - 0.1});
-// ——— corrida ———
-tl.set('#race', { opacity: 1 }, ${RS0 - 0.1});
-tl.fromTo('#ph', { x: 600 }, { x: 0, duration: 0.4, ease: 'power3.out' }, ${RS0 - 0.1});
-tl.fromTo('#lp', { x: -520 }, { x: 0, duration: 0.4, ease: 'power3.out' }, ${RS0 - 0.1});
-tl.fromTo('.lab', { opacity: 0 }, { opacity: 1, duration: 0.3 }, ${RS0 + 0.2});
-${clockJs}
+tl.fromTo('#notif', { y: -300, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: 'back.out(1.6)' }, 0.1);
+tl.fromTo('#glowR', { opacity: 0 }, { opacity: 1, duration: 0.3, yoyo: true, repeat: 5, ease: 'sine.inOut' }, 0.1);
+tl.fromTo('#h1 span', { y: 140, opacity: 0, rotation: 4 }, { y: 0, opacity: 1, rotation: 0, duration: 0.35, ease: 'power4.out', stagger: 0.22 }, 0.55);
+tl.fromTo('#h2', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' }, 2.2);
+tl.to('#hook', { opacity: 0, scale: 1.08, duration: 0.3, ease: 'power2.in' }, 4.7);
+// ——— jeito de sempre ———
+tl.set('#old', { opacity: 1 }, 4.9);
+tl.fromTo('.tab', { y: -900, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out', stagger: 0.18 }, 4.95);
+tl.fromTo('#aba', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(2)' }, 5.5);
+tl.fromTo('#strike', { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: 'power2.inOut' }, 6.55);
+tl.fromTo('#nodt', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25 }, 6.6);
+tl.to('.tab', { x: (i) => (i % 2 ? 1200 : -1200), rotation: (i) => (i % 2 ? 12 : -12), duration: 0.45, ease: 'power3.in', stagger: 0.03 }, ${CS - 0.5});
+tl.to('#old', { opacity: 0, duration: 0.2 }, ${CS - 0.1});
+// ——— jornada real ———
+tl.set('#journey', { opacity: 1 }, ${CS - 0.25});
+tl.fromTo('#ph', { y: 900, rotation: 6 }, { y: 0, rotation: 0, duration: 0.6, ease: 'expo.out' }, ${CS - 0.25});
+tl.fromTo('#halo', { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.8 }, ${CS - 0.1});
+tl.fromTo('#hud', { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }, ${CS - 0.2});
+tl.to('#rec i', { opacity: 0.25, duration: 0.4, yoyo: true, repeat: ${Math.floor((WIN - CS) / 0.4)}, ease: 'none' }, ${CS});
+${camJs}
+${clkJs}
 ${stepJs}
-${tapJs}
-${tabJs}
-tl.to('#lp .page', { y: -120, duration: ${(WIN - RS0).toFixed(2)}, ease: 'none' }, ${RS0});
-// ——— vitória: o relógio trava em dourado ———
-tl.to('#clock', { color: '${R.goldBri}', scale: 1.08, duration: 0.12, ease: 'power2.out' }, ${WIN});
-tl.to('#clock', { scale: 1, duration: 0.3, ease: 'power2.out' }, ${WIN + 0.12});
-tl.to(['#lp', '#labL'], { opacity: 0.25, duration: 0.3 }, ${WIN});
-tl.fromTo('#pronto', { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: 'power4.in' }, ${WIN + 0.05});
-tl.to('#ph', { x: -230, scale: 1.08, duration: 0.6, ease: 'power3.inOut' }, ${WIN + 0.25});
-tl.to(['#lp', '#labL', '#labR', '#step'], { opacity: 0, duration: 0.3 }, ${WIN + 0.25});
-tl.to('#race', { opacity: 0, duration: 0.25 }, ${RES - 0.2});
-tl.to(['#plantao', '#clock'], { opacity: 0, duration: 0.2 }, ${RES - 0.2});
-// ——— resultado real ———
-tl.set('#res', { opacity: 1 }, ${RES - 0.05});
-tl.fromTo('#res h2', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out' }, ${RES});
-tl.fromTo('#rail', { y: 300, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'expo.out' }, ${RES});
-tl.to('#rail', { x: -860, duration: 0.45, ease: 'power3.inOut' }, ${RES + 1.1});
-tl.to('#rail', { x: -1720, duration: 0.45, ease: 'power3.inOut' }, ${RES + 2.0});
-tl.fromTo('#res .meta', { opacity: 0 }, { opacity: 1, duration: 0.3 }, ${RES + 0.6});
+// geração acelerada: câmera se afasta e o relógio dispara
+tl.to('#cam', { scale: 0.94, x: 32, y: 40, duration: ${(WINc - 14.733).toFixed(2)}, ease: 'none' }, ${(CS + 14.733).toFixed(2)});
+// ——— vitória ———
+tl.fromTo('#flash', { opacity: 0.7 }, { opacity: 0, duration: 0.35, immediateRender: false }, ${WIN});
+tl.to('#clock', { color: '${R.gold}', textShadow: '0 0 50px rgba(198,178,120,.8)', scale: 1.12, duration: 0.15 }, ${WIN});
+tl.to('#clock', { scale: 1, duration: 0.35, ease: 'back.out(3)' }, ${WIN + 0.15});
+tl.to('#rec i', { background: '${R.gold}', boxShadow: '0 0 16px ${R.gold}', opacity: 1, duration: 0.1 }, ${WIN});
+tl.to('#cam', { scale: 1, x: 0, y: -40, duration: 0.5, ease: 'back.out(1.6)' }, ${WIN});
+tl.to('#halo', { scale: 1.3, opacity: 1, duration: 0.6 }, ${WIN});
+tl.fromTo('#stamp', { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'power4.in' }, ${WIN + 0.1});
+tl.to(['#journey', '#hud'], { opacity: 0, duration: 0.25 }, ${CAR - 0.2});
+// ——— carrossel real em leque ———
+tl.set('#res', { opacity: 1 }, ${CAR - 0.05});
+tl.fromTo('#res h2', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' }, ${CAR});
+${[1, 2, 3, 4].map((n, i) => `tl.fromTo('#sl${n}', { y: 900, rotation: 0 }, { y: ${i * 12}, x: ${[0, 150, 290, 420][i] - 0}, rotation: ${[0, 6, 12, 18][i]}, scale: ${[1, 0.94, 0.88, 0.82][i]}, duration: 0.6, ease: 'expo.out' }, ${(CAR + 0.1 + i * 0.12).toFixed(2)});`).join('\n')}
+tl.to('#sl1', { x: -420, rotation: -14, scale: 0.86, duration: 0.5, ease: 'power3.inOut' }, ${CAR + 1.3});
+tl.to('#sl2', { x: 0, rotation: 0, scale: 1, duration: 0.5, ease: 'power3.inOut' }, ${CAR + 1.3});
+tl.fromTo('#res .meta span', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, stagger: 0.08 }, ${CAR + 0.7});
 tl.to('#res', { opacity: 0, duration: 0.2 }, ${PROOF - 0.1});
-// ——— prova: frase do post -> citação -> matéria real ———
+// ——— prova ———
 tl.set('#proof', { opacity: 1 }, ${PROOF - 0.1});
 tl.fromTo('#s1', { scale: 0.85, y: 200 }, { scale: 1, y: 0, duration: 0.6, ease: 'expo.out' }, ${PROOF});
 tl.fromTo('#mk', { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: 'power2.out' }, ${PROOF + 0.6});
 tl.fromTo('#cit', { y: 500, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'expo.out' }, ${PROOF + 1.1});
-tl.fromTo('#tapV', { scale: 0.4, opacity: 0.9 }, { scale: 1.5, opacity: 0, duration: 0.5, ease: 'power2.out', immediateRender: false }, ${PROOF + 2.1});
+tl.fromTo('#tcV', { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, immediateRender: false }, ${PROOF + 1.8});
+tl.to('#tcV', { scale: 0.78, duration: 0.08, yoyo: true, repeat: 1 }, ${PROOF + 2.1});
+tl.to('#tcV', { opacity: 0, duration: 0.2 }, ${PROOF + 2.4});
+tl.fromTo('#rpV', { opacity: 1, scale: 0.6 }, { opacity: 0, scale: 2.6, duration: 0.55, immediateRender: false }, ${PROOF + 2.1});
 tl.fromTo('#jc', { y: 1900 }, { y: 0, duration: 0.6, ease: 'expo.out' }, ${PROOF + 2.3});
-tl.to('#jc img', { y: -120, duration: 1.6, ease: 'sine.inOut' }, ${PROOF + 2.9});
-tl.fromTo('#tagP', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(2.5)' }, ${PROOF + 3.0});
+tl.to('#jc img', { y: -120, duration: 1.8, ease: 'sine.inOut' }, ${PROOF + 2.9});
+tl.fromTo('#tagP', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'back.out(2.5)' }, ${PROOF + 3.0});
 tl.fromTo('#botP', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out' }, ${PROOF + 0.9});
 tl.to('#proof', { opacity: 0, duration: 0.25 }, ${END - 0.15});
-// ——— fecho REP ———
+// ——— fecho ———
 tl.set('#end', { opacity: 1 }, ${END - 0.1});
-tl.fromTo('#end .l1', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, ${END + 0.15});
-tl.fromTo('#end .l2', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, ${END + 0.95});
-tl.fromTo(['#end .brand', '#end .rep'], { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out', stagger: 0.15 }, ${END + 1.9});
-tl.fromTo('#end .cta div', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(2)' }, ${END + 2.4});
-tl.fromTo('#end .url', { opacity: 0 }, { opacity: 1, duration: 0.3 }, ${END + 2.8});
-tl.to('#end .cta div', { scale: 1.05, duration: 0.35, ease: 'sine.inOut', yoyo: true, repeat: 3 }, ${END + 3.2});
+tl.fromTo('#end .l1', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' }, ${END + 1.3});
+tl.fromTo('#end .l2', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' }, ${END + 2.0});
+tl.fromTo('#end .rule', { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: 'power3.inOut' }, ${END + 2.3});
+tl.fromTo(['#end .brand', '#end .rep'], { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out', stagger: 0.15 }, ${END + 0.2});
+tl.fromTo('#end .cta div', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: 'back.out(2)' }, ${END + 2.8});
+tl.fromTo('#end .url', { opacity: 0 }, { opacity: 1, duration: 0.3 }, ${END + 3.1});
+tl.to('#end .cta div', { scale: 1.05, duration: 0.35, ease: 'sine.inOut', yoyo: true, repeat: 3 }, ${END + 3.4});
+${subJs}
 `;
 
 fs.mkdirSync(new URL('compositions/', ROOT), { recursive: true });
@@ -236,22 +275,21 @@ window.__timelines["anuncio"] = tl;
 </body></html>
 `);
 
-// ——— som: tique que acelera, sem música até a vitória ———
-const ticks = []; for (let t = RS0 - 0.4, gap = 0.5; t < WIN - 0.05; t += gap, gap = Math.max(0.085, gap * 0.9)) ticks.push(+t.toFixed(2));
-const a = (id, src, start, vol, extra = '') => `    <audio id="${id}" src="assets/${src}" data-start="${start}" data-volume="${vol}"${extra}></audio>`;
+// ——— som: música de tensão até a vitória, virada confiante depois; narração por cima ———
+const a = (id, src, start, vol, extra = '') => `    <audio id="${id}" src="assets/${src}" data-start="${(+start).toFixed(2)}" data-volume="${vol}"${extra}></audio>`;
 const audio = [
-  a('ping', 'sfx/ping.mp3', 0.15, 0.7),
-  a('tension', 'sfx/tension.mp3', 1.9, 0.5, ` data-duration="${(WIN - 1.9).toFixed(2)}" data-fade-in="0.6"`),
-  ...ticks.map((t, i) => a(`tk${i}`, 'sfx/tick.mp3', t, (0.35 + 0.35 * i / ticks.length).toFixed(2))),
-  ...TAPS.map((t, i) => a(`tp${i}`, 'sfx/click.mp3', (RS0 + t[0]).toFixed(2), 0.3)),
-  a('hit', 'sfx/hit.mp3', WIN, 0.9),
-  a('win', 'sfx/win.mp3', (WIN + 0.1).toFixed(2), 0.45),
-  a('bed', 'sfx/resolve.mp3', (WIN + 0.8).toFixed(2), 0.4, ` data-duration="${(DUR - WIN - 0.8).toFixed(2)}" data-fade-in="1.2" data-fade-out="1.5"`),
-  a('w1', 'sfx/whoosh-short.mp3', RES - 0.15, 0.3),
+  a('ping', 'sfx/ping.mp3', 0.1, 0.8),
+  a('mus1', 'sfx/tension-music.mp3', 0, 0.42, ` data-duration="${(WIN + 0.05).toFixed(2)}" data-fade-in="0.4" data-fade-out="0.15"`),
+  a('mus2', 'sfx/resolve.mp3', WIN - 0.05, 0.5, ` data-duration="${(DUR - WIN + 0.05).toFixed(2)}" data-fade-out="1.6"`),
+  a('hit', 'sfx/hit.mp3', WIN, 0.85),
+  a('win', 'sfx/win.mp3', WIN + 0.1, 0.35),
+  ...TAPS.map((t, i) => a(`tp${i}`, 'sfx/click.mp3', CS + t[0], 0.45)),
+  a('tpV', 'sfx/click.mp3', PROOF + 2.1, 0.45),
+  a('w0', 'sfx/whoosh-short.mp3', CS - 0.4, 0.35),
+  a('w1', 'sfx/whoosh-short.mp3', CAR - 0.15, 0.3),
   a('w2', 'sfx/whoosh-short.mp3', PROOF - 0.15, 0.3),
-  a('clickV', 'sfx/click.mp3', PROOF + 2.1, 0.45),
   a('w3', 'sfx/whoosh-short.mp3', END - 0.15, 0.3),
-  a('vo', 'voice/fecho.mp3', END + 0.15, 1),
+  ...VO.map(([k, t]) => a(`vo-${k}`, `voice/${k}-t.mp3`, t, 1)),
 ].map((l, i) => l.replace('<audio ', `<audio data-track-index="${10 + i}" `)).join('\n');
 
 fs.writeFileSync(new URL('index.html', ROOT), `<!doctype html>
@@ -272,4 +310,4 @@ ${audio}
   </body>
 </html>
 `);
-console.log('ok', DUR, 'ticks', ticks.length);
+console.log('ok', { DUR, WIN: WIN.toFixed(2), CAR: CAR.toFixed(2), PROOF: PROOF.toFixed(2), END: END.toFixed(2) });

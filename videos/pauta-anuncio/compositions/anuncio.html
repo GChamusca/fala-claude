@@ -11,199 +11,274 @@
 @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:block;src:url('assets/fonts/jetbrainsmono-v24-tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx7cwhsk.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
 @font-face{font-family:'Caveat';font-style:normal;font-weight:400 700;font-display:block;src:url('assets/fonts/caveat-Wnz6HAc5bAfYB2Q7ZjYY.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
 @font-face{font-family:'Caveat';font-style:normal;font-weight:400 700;font-display:block;src:url('assets/fonts/caveat-Wnz6HAc5bAfYB2Q7aDYYmg8.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
-#root{position:absolute;inset:0;overflow:hidden;background:#111820;color:#f0eadf;font-family:'Bricolage Grotesque',sans-serif;}
+#root{position:absolute;inset:0;overflow:hidden;background:radial-gradient(120% 80% at 50% 45%, #1b3150 0%, #0e1a2b 55%, #0b1420 100%);color:#f0eadf;font-family:'Bricolage Grotesque',sans-serif;}
 .sc{position:absolute;inset:0;opacity:0;}
-.mono{font-family:'JetBrains Mono',monospace;}
+#glowR{position:absolute;inset:0;background:radial-gradient(60% 40% at 50% 38%, rgba(255,90,78,.28), rgba(255,90,78,0) 70%);opacity:0;}
 /* gancho */
-#notif{position:absolute;left:60px;right:60px;top:150px;padding:26px 30px;border-radius:34px;background:rgba(240,234,223,.94);color:#111;display:flex;gap:22px;align-items:flex-start;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);}
-#notif i{flex:none;width:84px;height:84px;border-radius:20px;background:#e0483e;color:#fff;font-style:normal;display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:22px;letter-spacing:.04em;}
-#notif b{display:block;font-size:30px;letter-spacing:.06em;}
-#notif span{display:block;margin-top:6px;font-size:38px;line-height:1.18;font-weight:600;}
-#notif em{position:absolute;right:34px;top:26px;font-style:normal;font-size:26px;color:#666;}
-#h1{position:absolute;left:70px;right:70px;top:700px;font-weight:800;font-size:112px;line-height:1.02;letter-spacing:-2px;}
-#h2{position:absolute;left:70px;right:70px;top:980px;font-weight:800;font-size:76px;line-height:1.08;letter-spacing:-1px;color:#aaa79e;}
-#h2 b{color:#f0eadf;}
-/* corrida */
-#plantao{position:absolute;left:0;right:0;top:62px;display:flex;justify-content:center;gap:16px;align-items:center;font-family:'JetBrains Mono',monospace;font-size:26px;letter-spacing:.2em;color:#aaa79e;z-index:6;}
-#plantao i{font-style:normal;padding:6px 14px;background:#e0483e;color:#fff;letter-spacing:.14em;}
-#clock{position:absolute;left:0;right:0;top:100px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:170px;line-height:1.1;letter-spacing:-4px;color:#e0483e;z-index:6;font-variant-numeric:tabular-nums;}
-#ph{position:absolute;left:500px;top:300px;width:540px;height:1142px;box-sizing:border-box;padding:12px;border-radius:64px;background:#05070a;box-shadow:0 0 0 3px #2a3542, 0 40px 80px -30px #000;z-index:3;transform-origin:50% 0%;}
-#ph .scr{position:relative;width:516px;height:1118px;border-radius:52px;overflow:hidden;background:#f7f3ec;}
-#ph video{position:absolute;left:0;top:0;width:516px;height:1118px;}
-.tap{position:absolute;width:74px;height:74px;margin:-37px 0 0 -37px;border-radius:50%;border:5px solid #24456b;background:rgba(36,69,107,.2);opacity:0;}
-#lp{position:absolute;left:45px;top:430px;width:420px;height:880px;box-sizing:border-box;padding:10px;border-radius:52px;background:#05070a;box-shadow:0 0 0 3px #2a3542;filter:grayscale(1);z-index:2;}
-#lp .scr{position:relative;width:100%;height:100%;border-radius:42px;overflow:hidden;background:#e9e9e9;}
-#lp .bar{position:absolute;left:0;right:0;top:0;height:92px;background:#d5d5d5;display:flex;align-items:flex-end;padding:0 18px 12px;gap:8px;z-index:2;}
-#lp .bar span{flex:1;height:40px;border-radius:10px 10px 0 0;background:#c2c2c2;font-family:'JetBrains Mono',monospace;font-size:13px;color:#555;overflow:hidden;white-space:nowrap;padding:12px 8px 0;box-sizing:border-box;}
-#lp .bar span.on{background:#fafafa;color:#222;}
-#lp .page{position:absolute;left:0;right:0;top:92px;padding:26px 24px;}
-#lp .page b{display:block;font-family:'JetBrains Mono',monospace;font-size:16px;letter-spacing:.12em;color:#666;text-transform:uppercase;}
-#lp .page h3{margin:12px 0 18px;font-family:Georgia,'Liberation Serif',serif;font-weight:400;font-size:34px;line-height:1.12;color:#222;}
-#lp .page p{height:14px;margin:0 0 14px;border-radius:7px;background:#cfcfcf;}
-#abas{position:absolute;left:0;right:0;bottom:26px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:24px;color:#444;z-index:3;}
-.lab{position:absolute;top:1468px;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:.16em;text-align:center;}
-#labL{left:45px;width:420px;color:#7d828a;top:1336px;}
-#labR{left:500px;width:540px;color:#c6b278;}
-#step{position:absolute;left:60px;right:60px;top:1600px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:34px;letter-spacing:.08em;color:#f0eadf;}
+#notif{position:absolute;left:54px;right:54px;top:130px;padding:28px 32px;border-radius:36px;background:rgba(245,242,236,.96);color:#111;display:flex;gap:24px;box-shadow:0 30px 70px -20px rgba(0,0,0,.7);}
+#notif i{flex:none;width:88px;height:88px;border-radius:22px;background:#ff5a4e;color:#fff;font-style:normal;display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:22px;line-height:1.1;text-align:center;}
+#notif b{display:block;font-size:30px;letter-spacing:.08em;color:#ff5a4e;}
+#notif span{display:block;margin-top:6px;font-size:40px;line-height:1.16;font-weight:700;}
+#notif em{position:absolute;right:34px;top:28px;font-style:normal;font-size:26px;color:#777;}
+#h1{position:absolute;left:66px;right:66px;top:640px;font-weight:800;font-size:132px;line-height:.98;letter-spacing:-3px;}
+#h1 span{display:inline-block;}
+#h2{position:absolute;left:66px;right:66px;top:1000px;font-weight:800;font-size:78px;line-height:1.06;letter-spacing:-1px;color:#aab3bf;}
+#h2 b{color:#e8c873;}
+/* jeito de sempre */
+.tab{position:absolute;left:90px;width:900px;box-sizing:border-box;padding:28px 32px;border-radius:26px;background:#e6e6e6;color:#222;filter:grayscale(1);box-shadow:0 20px 40px -20px rgba(0,0,0,.6);}
+.tab small{display:block;font-family:'JetBrains Mono',monospace;font-size:22px;letter-spacing:.12em;text-transform:uppercase;color:#666;}
+.tab b{display:block;margin-top:8px;font-family:Georgia,'Liberation Serif',serif;font-weight:400;font-size:42px;line-height:1.12;}
+#aba{position:absolute;left:0;right:0;top:1420px;text-align:center;font-weight:800;font-size:120px;letter-spacing:-3px;}
+#strike{position:absolute;left:170px;top:1500px;width:740px;height:14px;background:#ff5a4e;transform-origin:0 50%;}
+#nodt{position:absolute;left:0;right:0;top:1580px;text-align:center;font-weight:800;font-size:74px;color:#ff5a4e;}
+/* HUD */
+#hud{position:absolute;left:0;right:0;top:0;height:330px;z-index:8;opacity:0;background:linear-gradient(#0b1420 0%, rgba(11,20,32,.92) 70%, rgba(11,20,32,0) 100%);}
+#rec{position:absolute;left:0;right:0;top:54px;display:flex;justify-content:center;gap:14px;align-items:center;font-family:'JetBrains Mono',monospace;font-size:26px;letter-spacing:.2em;color:#aab3bf;}
+#rec i{width:18px;height:18px;border-radius:50%;background:#ff5a4e;box-shadow:0 0 16px #ff5a4e;}
+#clock{position:absolute;left:0;right:0;top:86px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:150px;line-height:1.05;letter-spacing:-4px;color:#fff;text-shadow:0 0 40px rgba(255,90,78,.45);}
+#step{position:absolute;left:40px;right:40px;top:262px;height:40px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:30px;letter-spacing:.14em;color:#e8c873;}
 #step span{position:absolute;left:0;right:0;opacity:0;}
-#pronto{position:absolute;left:0;right:0;top:1700px;text-align:center;opacity:0;}
-#pronto span{display:inline-block;padding:14px 30px;border:4px solid #c6b278;color:#c6b278;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:40px;letter-spacing:.2em;}
+/* câmera + celular */
+#cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0;}
+#halo{position:absolute;left:30px;top:450px;width:1020px;height:1365px;border-radius:50%;background:radial-gradient(closest-side, rgba(232,200,115,.30), rgba(232,200,115,0));}
+#ph{position:absolute;left:190px;top:330px;width:700px;height:1489px;box-sizing:border-box;padding:12px;border-radius:78px;background:#05070a;box-shadow:0 0 0 3px #3a4a5e, 0 50px 90px -30px #000;}
+#ph .scr{position:relative;width:676px;height:1465px;border-radius:66px;overflow:hidden;background:#f7f3ec;}
+#ph video{position:absolute;left:0;top:0;width:676px;height:1465px;}
+.touch{position:absolute;width:86px;height:86px;margin:-43px 0 0 -43px;border-radius:50%;background:rgba(255,255,255,.55);border:4px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,.35);opacity:0;z-index:5;}
+.rip{position:absolute;width:86px;height:86px;margin:-43px 0 0 -43px;border-radius:50%;border:6px solid #e8c873;opacity:0;z-index:5;}
+.tlab{position:absolute;padding:10px 20px;border-radius:999px;background:#e8c873;color:#111;font-weight:800;font-size:30px;white-space:nowrap;opacity:0;z-index:6;box-shadow:0 8px 20px rgba(0,0,0,.35);}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:9;}
+#stamp{position:absolute;left:0;right:0;top:1640px;text-align:center;opacity:0;z-index:7;}
+#stamp span{display:inline-block;padding:18px 40px;border-radius:999px;background:#c6b278;color:#0b1420;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:44px;letter-spacing:.12em;box-shadow:0 0 50px rgba(198,178,120,.6);}
+/* legenda da narração */
+#subsbg{position:absolute;left:0;right:0;top:1770px;bottom:0;z-index:7;background:linear-gradient(rgba(11,20,32,0), rgba(11,20,32,.85) 45%);}
+#subs{position:absolute;left:60px;right:60px;top:1838px;height:60px;z-index:8;}
+#subs div{position:absolute;left:0;right:0;text-align:center;font-weight:700;font-size:34px;line-height:1.15;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.8);opacity:0;}
 /* resultado */
-#res{background:#f4efe6;color:#111;}
-#res h2,#proof h2{position:absolute;left:70px;right:70px;top:120px;margin:0;font-weight:800;font-size:74px;line-height:1.04;letter-spacing:-1px;}
-#res h2 em,#proof h2 em{font-style:normal;color:#24456b;}
-#rail{position:absolute;left:130px;top:430px;display:flex;gap:40px;}
-#rail img{width:820px;height:1025px;display:block;border-radius:10px;box-shadow:0 30px 60px -30px rgba(0,0,0,.45);}
-#res .meta{position:absolute;left:0;right:0;top:1500px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:28px;letter-spacing:.12em;color:#555;}
+#res{background:linear-gradient(#f6f1e8,#ece4d6);color:#111;}
+#res h2,#proof h2{position:absolute;left:70px;right:70px;top:110px;margin:0;font-weight:800;font-size:80px;line-height:1.02;letter-spacing:-2px;}
+#res h2 em{font-style:normal;color:#24456b;}
+#fan{position:absolute;left:0;top:420px;width:1080px;height:1200px;}
+#fan img{position:absolute;left:180px;top:0;width:720px;height:900px;border-radius:14px;box-shadow:0 40px 70px -30px rgba(0,0,0,.55);transform-origin:50% 100%;}
+#res .meta{position:absolute;left:0;right:0;top:1480px;display:flex;justify-content:center;gap:14px;}
+#res .meta span{padding:12px 22px;border-radius:999px;background:#111;color:#fff;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:.08em;}
 /* prova */
-#proof{background:#f4efe6;color:#111;}
+#proof{background:linear-gradient(#f6f1e8,#ece4d6);color:#111;}
 #s1{position:absolute;left:40px;top:-230px;width:1000px;border-radius:12px;box-shadow:0 30px 60px -30px rgba(0,0,0,.4);}
-#mk{position:absolute;left:112px;top:690px;width:610px;height:50px;background:rgba(232,200,115,.55);mix-blend-mode:multiply;transform-origin:0 50%;}
+#mk{position:absolute;left:112px;top:690px;width:610px;height:50px;background:rgba(232,200,115,.7);mix-blend-mode:multiply;transform-origin:0 50%;}
 #cit{position:absolute;left:50px;right:50px;top:900px;padding:34px 36px;background:#fffdf8;border:2px solid #111;border-radius:22px;box-shadow:10px 10px 0 #111;}
 #cit small{display:block;font-family:'JetBrains Mono',monospace;font-size:22px;letter-spacing:.16em;color:#666;}
 #cit p{margin:16px 0 0;font-size:36px;line-height:1.3;}
-#cit p b{font-family:'JetBrains Mono',monospace;}
-#cit a{color:#1a55c4;text-decoration:underline;font-weight:600;}
-#link{position:absolute;left:0;top:0;width:1080px;height:1920px;}
+#cit a{color:#1a55c4;text-decoration:underline;font-weight:700;}
 #jc{position:absolute;left:130px;top:250px;width:820px;height:1180px;border-radius:50px;overflow:hidden;box-shadow:0 0 0 14px #05070a, 0 40px 80px -30px rgba(0,0,0,.6);background:#fff;}
 #jc img{width:820px;display:block;}
-#proof .tag{position:absolute;left:0;right:0;top:1500px;text-align:center;}
-#proof .tag span{display:inline-block;padding:14px 28px;background:#5a7d3f;color:#fff;font-family:'JetBrains Mono',monospace;font-size:30px;letter-spacing:.1em;border:3px solid #111;box-shadow:6px 6px 0 #111;}
-.bot{position:absolute;left:60px;right:60px;top:1640px;text-align:center;font-weight:800;font-size:66px;line-height:1.08;letter-spacing:-1px;}
+#tapV{left:790px;top:1150px;}
+#proof .tag{position:absolute;left:0;right:0;top:1480px;text-align:center;}
+#proof .tag span{display:inline-block;padding:16px 30px;border-radius:999px;background:#3f7a3a;color:#fff;font-family:'JetBrains Mono',monospace;font-size:30px;letter-spacing:.1em;box-shadow:0 10px 30px rgba(63,122,58,.45);}
+.bot{position:absolute;left:60px;right:60px;top:1600px;text-align:center;font-weight:800;font-size:68px;line-height:1.06;letter-spacing:-1px;}
 /* fecho */
+#end{background:radial-gradient(100% 70% at 50% 40%, #16263a, #0b1420);}
 #end .l1,#end .l2{position:absolute;left:0;right:0;text-align:center;font-family:Georgia,'Liberation Serif',serif;font-size:136px;line-height:1;letter-spacing:-2px;}
-#end .l1{top:470px;} #end .l2{top:630px;color:#c6b278;}
-#end .brand{position:absolute;left:0;right:0;top:950px;display:flex;justify-content:center;align-items:center;gap:22px;font-family:'Newsreader',serif;font-size:74px;}
-#end .rep{position:absolute;left:0;right:0;top:1075px;display:flex;justify-content:center;align-items:center;gap:16px;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:.2em;color:#b19a60;}
+#end .l1{top:440px;} #end .l2{top:600px;color:#c6b278;}
+#end .rule{position:absolute;left:340px;right:340px;top:790px;height:3px;background:#c6b278;transform-origin:50% 50%;}
+#end .brand{position:absolute;left:0;right:0;top:900px;display:flex;justify-content:center;align-items:center;gap:22px;font-family:'Newsreader',serif;font-size:78px;}
+#end .rep{position:absolute;left:0;right:0;top:1030px;display:flex;justify-content:center;align-items:center;gap:16px;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:.2em;color:#c6b278;}
 #end .rep img{height:46px;} #end .rep b{font-family:Arial,sans-serif;font-size:34px;letter-spacing:0;color:#f0eadf;}
-#end .cta{position:absolute;left:0;right:0;top:1230px;display:flex;justify-content:center;}
-#end .cta div{padding:34px 54px;border-radius:999px;background:#c6b278;color:#111820;text-align:center;font-weight:800;font-size:46px;line-height:1.15;}
+#end .cta{position:absolute;left:0;right:0;top:1200px;display:flex;justify-content:center;}
+#end .cta div{padding:36px 58px;border-radius:999px;background:linear-gradient(#e8c873,#c6b278);color:#0b1420;text-align:center;font-weight:800;font-size:48px;line-height:1.15;box-shadow:0 20px 60px -10px rgba(232,200,115,.45);}
 #end .cta small{display:block;font-size:30px;font-weight:600;}
-#end .url{position:absolute;left:0;right:0;top:1470px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:36px;letter-spacing:.2em;color:#aaa79e;}
+#end .url{position:absolute;left:0;right:0;top:1450px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:36px;letter-spacing:.2em;color:#aab3bf;}
 </style>
 <div id="root" data-composition-id="anuncio" data-width="1080" data-height="1920">
 
+<div id="glowR"></div>
 <div class="sc" id="hook">
   <div id="notif"><i>AO<br>VIVO</i><div><b>URGENTE</b><span>Governo edita MP que proíbe as bets no Brasil</span></div><em>agora</em></div>
-  <div id="h1">O assunto explodiu.</div>
+  <div id="h1"><span>O</span> <span>assunto</span> <span>explodiu.</span></div>
   <div id="h2">Você precisa postar.<br><b>E não pode errar.</b></div>
 </div>
-<div class="sc" id="race">
-  <div id="lp"><div class="scr"><div class="bar"><span class="on" id="tb0">Agência Brasil</span><span class="" id="tb1">Sul21</span><span class="" id="tb2">ND Mais</span><span class="" id="tb3">Folha de S.Paulo</span></div>
-    <div class="page" id="pg0" style="opacity:1"><b>Agência Brasil</b><h3>Bets que continuarem no ar após prazo serão bloqueadas, diz Durigan</h3><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div><div class="page" id="pg1" style="opacity:0"><b>Sul21</b><h3>MP proíbe bets no Brasil e determina devolução de saldo ao apostador</h3><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div><div class="page" id="pg2" style="opacity:0"><b>ND Mais</b><h3>Governo oficializa fim das bets e Desenrola 3.0 em edição extra do Diário Oficial</h3><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div><div class="page" id="pg3" style="opacity:0"><b>Folha de S.Paulo</b><h3>Governo precisará compensar perda de R$ 6,8 bi em receitas com bets até 2027</h3><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div><div class="page" id="pg4" style="opacity:0"><b>O Globo</b><h3>Fazenda estima R$ 1,7 bilhão depositado nas bets que poderão ser devolvidos</h3><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div><div class="page" id="pg5" style="opacity:0"><b>Poder360</b><h3>Entenda o plano de Lula que proíbe bets e lança Desenrola 3.0</h3><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div><div class="page" id="pg6" style="opacity:0"><b>Metrópoles</b><h3>Além das bets, jogos como o "Jogo do Tigrinho" estão proibidos no Brasil</h3><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div><div class="page" id="pg7" style="opacity:0"><b>Jornal do Commercio</b><h3>Não se pode mais colocar dinheiro em sites de apostas, diz ministro</h3><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div>
-    <div id="abas">aba <span id="abaN">1</span> de 13</div></div></div>
-  <div id="ph"><div class="scr"><video class="clip" id="vid" src="assets/shots/pp-jornada.mp4" muted playsinline data-start="2.4" data-duration="8.40" data-media-start="0"></video>
-    <div class="tap" id="tap0" style="left:259px;top:538px"></div><div class="tap" id="tap1" style="left:258px;top:678px"></div><div class="tap" id="tap2" style="left:354px;top:849px"></div><div class="tap" id="tap3" style="left:118px;top:738px"></div><div class="tap" id="tap4" style="left:357px;top:559px"></div><div class="tap" id="tap5" style="left:182px;top:559px"></div><div class="tap" id="tap6" style="left:258px;top:559px"></div></div></div>
-  <div class="lab" id="labL">DO JEITO DE SEMPRE</div>
-  <div class="lab" id="labR">COM O PAUTA PRONTA</div>
-  <div id="step"><span id="st0">RADAR · 162 MATÉRIAS · 40 VEÍCULOS</span><span id="st1">GERAR PAUTA</span><span id="st2">COMPLEMENTAR COM O ACERVO REP</span><span id="st3">PESQUISA · 13 FONTES</span><span id="st4">ÂNGULO · TOM · FORMATO</span><span id="st5">A REDAÇÃO ESCREVENDO · AO VIVO</span><span id="st6">CARROSSEL PRONTO</span></div>
-  <div id="pronto"><span>PRONTO · 06:08</span></div>
+<div class="sc" id="old">
+  <div class="tab" id="tab0" style="top:120px;transform:rotate(-2deg)"><small>Agência Brasil</small><b>Bets que continuarem no ar após prazo serão bloqueadas</b></div><div class="tab" id="tab1" style="top:310px;transform:rotate(1.5deg)"><small>Folha de S.Paulo</small><b>Governo precisará compensar perda de R$ 6,8 bi em receitas com bets</b></div><div class="tab" id="tab2" style="top:500px;transform:rotate(-1deg)"><small>O Globo</small><b>Fazenda estima R$ 1,7 bilhão depositado nas bets</b></div><div class="tab" id="tab3" style="top:690px;transform:rotate(2deg)"><small>Poder360</small><b>Entenda o plano de Lula que proíbe bets e lança Desenrola 3.0</b></div><div class="tab" id="tab4" style="top:880px;transform:rotate(-1.5deg)"><small>Metrópoles</small><b>Além das bets, jogos como o "Jogo do Tigrinho" estão proibidos</b></div><div class="tab" id="tab5" style="top:1070px;transform:rotate(1deg)"><small>Sul21</small><b>MP proíbe bets e determina devolução de saldo ao apostador</b></div>
+  <div id="aba">Aba por aba?</div><div id="strike"></div><div id="nodt">Não dá tempo.</div>
 </div>
-<div id="plantao"><i>PLANTÃO</i>MP DAS BETS · 27/09</div>
-<div id="clock">00:00</div>
+<div class="sc" id="journey">
+  <div id="cam"><div id="halo"></div>
+    <div id="ph"><div class="scr"><video class="clip" id="vid" src="assets/shots/pp-jornada2.mp4" muted playsinline data-start="7.8" data-duration="18.7" data-media-start="0"></video></div></div>
+    <div class="rip" id="rp0" style="left:534.3666666666667px;top:1048.0444444444445px"></div><div class="touch" id="tc0" style="left:534.3666666666667px;top:1048.0444444444445px"></div><div class="tlab" id="tl0" style="left:534.3666666666667px;top:898.0444444444445px;transform:translateX(-50%)">Toque na bolha</div><div class="rip" id="rp1" style="left:540px;top:1230.1888888888889px"></div><div class="touch" id="tc1" style="left:540px;top:1230.1888888888889px"></div><div class="tlab" id="tl1" style="left:540px;top:1080.1888888888889px;transform:translateX(-50%)">Gerar pauta</div><div class="rip" id="rp2" style="left:665.8111111111111px;top:1453.6444444444444px"></div><div class="touch" id="tc2" style="left:665.8111111111111px;top:1453.6444444444444px"></div><div class="tlab" id="tl2" style="left:665.8111111111111px;top:1303.6444444444444px;transform:translateX(-50%)">Confirmar</div><div class="rip" id="rp3" style="left:355.97777777777776px;top:993.5888888888888px"></div><div class="touch" id="tc3" style="left:355.97777777777776px;top:993.5888888888888px"></div><div class="tlab" id="tl3" style="left:355.97777777777776px;top:843.5888888888888px;transform:translateX(-50%)">Jornalístico</div><div class="rip" id="rp4" style="left:669.5666666666666px;top:935.3777777777777px"></div><div class="touch" id="tc4" style="left:669.5666666666666px;top:935.3777777777777px"></div><div class="tlab" id="tl4" style="left:669.5666666666666px;top:785.3777777777777px;transform:translateX(-50%)">Carrossel</div><div class="rip" id="rp5" style="left:440.47777777777776px;top:961.6666666666666px"></div><div class="touch" id="tc5" style="left:440.47777777777776px;top:961.6666666666666px"></div><div class="tlab" id="tl5" style="left:440.47777777777776px;top:811.6666666666666px;transform:translateX(-50%)">Editorial</div><div class="rip" id="rp6" style="left:540px;top:946.6444444444444px"></div><div class="touch" id="tc6" style="left:540px;top:946.6444444444444px"></div><div class="tlab" id="tl6" style="left:540px;top:796.6444444444444px;transform:translateX(-50%)">Gerar minha versão</div>
+  </div>
+  <div id="stamp"><span>PRONTO EM 06:08</span></div>
+</div>
+<div id="hud"><div id="rec"><i></i>PLANTÃO · MP DAS BETS</div><div id="clock">00:00</div><div id="step"><span id="st0">RADAR · EM ALTA AGORA</span><span id="st1">GERAR PAUTA</span><span id="st2">COMPLEMENTAR COM O ACERVO REP</span><span id="st3">PESQUISA NA COBERTURA · 13 FONTES</span><span id="st4">ÂNGULO · TOM · FORMATO</span><span id="st5">A REDAÇÃO ESCREVENDO · AO VIVO</span><span id="st6">PRONTO PARA PUBLICAR</span></div></div>
 <div class="sc" id="res">
   <h2>Carrossel pronto.<br><em>Com fonte.</em></h2>
-  <div id="rail"><img src="assets/shots/slide-1.png" alt="Slide 1"><img src="assets/shots/slide-2.png" alt="Slide 2"><img src="assets/shots/slide-3.png" alt="Slide 3"><img src="assets/shots/slide-4.png" alt="Slide 4"></div>
-  <div class="meta">4 SLIDES · LEGENDA · 13 FONTES · VALIDAÇÃO</div>
+  <div id="fan"><img id="sl4" src="assets/shots/slide-4.png" alt="Slide 4"><img id="sl3" src="assets/shots/slide-3.png" alt="Slide 3"><img id="sl2" src="assets/shots/slide-2.png" alt="Slide 2"><img id="sl1" src="assets/shots/slide-1.png" alt="Slide 1"></div>
+  <div class="meta"><span>4 SLIDES</span><span>LEGENDA</span><span>13 FONTES</span><span>VALIDAÇÃO</span></div>
 </div>
 <div class="sc" id="proof">
   <img id="s1" src="assets/shots/slide-1.png" alt="Slide 1">
   <div id="mk"></div>
-  <div id="cit"><small>VALIDAÇÃO · CITAÇÕES NA LEGENDA</small><p><b>[8]</b> Não se pode mais colocar dinheiro em sites de apostas no Brasil, diz ministro da Fazenda — <b style="font-family:inherit">Jornal do Commercio</b> (25/09/2026) · <a id="ver">ver matéria</a></p></div>
+  <div id="cit"><small>VALIDAÇÃO · CITAÇÕES NA LEGENDA</small><p><b style="font-family:'JetBrains Mono',monospace">[8]</b> Não se pode mais colocar dinheiro em sites de apostas no Brasil, diz ministro da Fazenda — <b>Jornal do Commercio</b> (25/09/2026) · <a>ver matéria</a></p></div>
   <div id="jc"><img src="assets/shots/jc.png" alt="Matéria do Jornal do Commercio"></div>
-  <div class="tap" id="tapV" style="left:790px;top:1150px"></div>
+  <div class="rip" id="rpV" style="left:790px;top:1150px"></div><div class="touch" id="tcV" style="left:790px;top:1150px"></div>
   <div class="tag" id="tagP"><span>✓ FATO CONFERIDO NA ORIGEM</span></div>
   <div class="bot" id="botP">Cada fato leva à<br>matéria de origem.</div>
 </div>
 <div class="sc" id="end">
-  <div class="l1">Chegue primeiro.</div>
-  <div class="l2">Chegue certo.</div>
-  <div class="brand"><svg width="84" height="84" viewBox="4 4 54 54"><circle cx="32" cy="32" r="22" fill="#05070a"/><circle cx="28" cy="28" r="22" fill="#24456b"/><circle cx="36" cy="20" r="5" fill="#e8c873"/></svg><span>Pauta Pronta</span></div>
+  <div class="l1">Chegue primeiro.</div><div class="l2">Chegue certo.</div><div class="rule"></div>
+  <div class="brand"><svg width="88" height="88" viewBox="4 4 54 54"><circle cx="32" cy="32" r="22" fill="#05070a"/><circle cx="28" cy="28" r="22" fill="#24456b"/><circle cx="36" cy="20" r="5" fill="#e8c873"/></svg><span>Pauta Pronta</span></div>
   <div class="rep">COM A INTELIGÊNCIA DO <img src="assets/rep/crow-creme.png" alt=""><b>REP</b></div>
   <div class="cta"><div>Teste com o assunto de hoje<small>1 pauta grátis · sem cartão</small></div></div>
   <div class="url">pautapronta.com</div>
 </div>
+<div id="subsbg"></div><div id="subs"><div id="sub-v1">O assunto explodiu. Você precisa postar agora… e não pode errar.</div><div id="sub-v2">Abrir aba por aba? Não dá tempo.</div><div id="sub-v3">No Pauta Pronta, você toca no assunto que está em alta no Radar…</div><div id="sub-v4">a redação pesquisa a cobertura inteira…</div><div id="sub-v5">você escolhe o ângulo e o formato…</div><div id="sub-v6">e ela escreve por você. Com fonte.</div><div id="sub-v7">Seis minutos. Pronto.</div><div id="sub-v8">E cada fato leva direto à matéria de origem.</div><div id="sub-v9">Pauta Pronta. Chegue primeiro. Chegue certo.</div></div>
+<div id="flash"></div>
 </div>
 <script>
 (function(){
 const tl = gsap.timeline({ paused: true });
 
-const clk = { v: 0 }, clkEl = document.querySelector('#clock'), aba = { v: 1 }, abaEl = document.querySelector('#abaN');
-const showClk = () => { const s = Math.floor(clk.v); clkEl.textContent = String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); };
+const prog = { t: 0 }, clkEl = document.querySelector('#clock'), CK = [[1.38,0],[6,6],[9.533,13],[14.733,61],[17.367,368]];
+const showClk = () => { const t = prog.t; let v = 0;
+  for (let i = 0; i < CK.length - 1; i++) { const [a, va] = CK[i], [b, vb] = CK[i + 1]; if (t >= a && t <= b) { let k = (t - a) / (b - a); if (i === CK.length - 2) k = k * k; v = va + (vb - va) * k; } }
+  if (t > CK[CK.length - 1][0]) v = CK[CK.length - 1][1];
+  const s = Math.floor(v); clkEl.textContent = String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); };
 // ——— gancho ———
 tl.set('#hook', { opacity: 1 }, 0);
-tl.fromTo('#notif', { y: -260, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, 0.15);
-tl.fromTo('#h1', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out' }, 0.75);
-tl.fromTo('#h2', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out' }, 1.35);
-tl.fromTo(['#plantao', '#clock'], { opacity: 0 }, { opacity: 1, duration: 0.2 }, 1.9);
-tl.to('#hook', { opacity: 0, duration: 0.2 }, 2.3);
-// ——— corrida ———
-tl.set('#race', { opacity: 1 }, 2.3);
-tl.fromTo('#ph', { x: 600 }, { x: 0, duration: 0.4, ease: 'power3.out' }, 2.3);
-tl.fromTo('#lp', { x: -520 }, { x: 0, duration: 0.4, ease: 'power3.out' }, 2.3);
-tl.fromTo('.lab', { opacity: 0 }, { opacity: 1, duration: 0.3 }, 2.6);
-tl.fromTo(clk, { v: 0 }, { v: 2, duration: 1.50, ease: 'none', onUpdate: showClk }, 2.40);
-tl.fromTo(clk, { v: 2 }, { v: 4, duration: 0.80, ease: 'none', onUpdate: showClk }, 3.90);
-tl.fromTo(clk, { v: 4 }, { v: 6, duration: 0.60, ease: 'none', onUpdate: showClk }, 4.70);
-tl.fromTo(clk, { v: 6 }, { v: 13, duration: 0.80, ease: 'none', onUpdate: showClk }, 5.30);
-tl.fromTo(clk, { v: 13 }, { v: 61, duration: 1.60, ease: 'none', onUpdate: showClk }, 6.10);
-tl.fromTo(clk, { v: 61 }, { v: 368, duration: 1.70, ease: 'none', onUpdate: showClk }, 7.70);
-tl.fromTo(clk, { v: 368 }, { v: 368, duration: 1.40, ease: 'none', onUpdate: showClk }, 9.40);
-tl.set('#st0', { opacity: 1 }, 2.40); tl.set('#st0', { opacity: 0 }, 3.90);
-tl.set('#st1', { opacity: 1 }, 3.90); tl.set('#st1', { opacity: 0 }, 4.70);
-tl.set('#st2', { opacity: 1 }, 4.70); tl.set('#st2', { opacity: 0 }, 5.30);
-tl.set('#st3', { opacity: 1 }, 5.30); tl.set('#st3', { opacity: 0 }, 6.10);
-tl.set('#st4', { opacity: 1 }, 6.10); tl.set('#st4', { opacity: 0 }, 7.70);
-tl.set('#st5', { opacity: 1 }, 7.70); tl.set('#st5', { opacity: 0 }, 9.40);
-tl.set('#st6', { opacity: 1 }, 9.40);
-tl.fromTo('#tap0', { scale: 0.4, opacity: 0.9 }, { scale: 1.4, opacity: 0, duration: 0.45, ease: 'power2.out', immediateRender: false }, 3.03);
-tl.fromTo('#tap1', { scale: 0.4, opacity: 0.9 }, { scale: 1.4, opacity: 0, duration: 0.45, ease: 'power2.out', immediateRender: false }, 3.98);
-tl.fromTo('#tap2', { scale: 0.4, opacity: 0.9 }, { scale: 1.4, opacity: 0, duration: 0.45, ease: 'power2.out', immediateRender: false }, 4.81);
-tl.fromTo('#tap3', { scale: 0.4, opacity: 0.9 }, { scale: 1.4, opacity: 0, duration: 0.45, ease: 'power2.out', immediateRender: false }, 6.81);
-tl.fromTo('#tap4', { scale: 0.4, opacity: 0.9 }, { scale: 1.4, opacity: 0, duration: 0.45, ease: 'power2.out', immediateRender: false }, 6.88);
-tl.fromTo('#tap5', { scale: 0.4, opacity: 0.9 }, { scale: 1.4, opacity: 0, duration: 0.45, ease: 'power2.out', immediateRender: false }, 6.94);
-tl.fromTo('#tap6', { scale: 0.4, opacity: 0.9 }, { scale: 1.4, opacity: 0, duration: 0.45, ease: 'power2.out', immediateRender: false }, 7.63);
-tl.set('#pg0', { opacity: 0 }, 5.80); tl.set('#pg1', { opacity: 1 }, 5.80); tl.set('#tb0', { backgroundColor: '#c2c2c2', color: '#555' }, 5.80); tl.set('#tb1', { backgroundColor: '#fafafa', color: '#222' }, 5.80);
-tl.set('#pg1', { opacity: 0 }, 7.60); tl.set('#pg2', { opacity: 1 }, 7.60); tl.set('#tb1', { backgroundColor: '#c2c2c2', color: '#555' }, 7.60); tl.set('#tb2', { backgroundColor: '#fafafa', color: '#222' }, 7.60);
-tl.set('#pg2', { opacity: 0 }, 9.40); tl.set('#pg3', { opacity: 1 }, 9.40); tl.set('#tb2', { backgroundColor: '#c2c2c2', color: '#555' }, 9.40); tl.set('#tb3', { backgroundColor: '#fafafa', color: '#222' }, 9.40);
-tl.fromTo(aba, { v: 1 }, { v: 4, duration: 5.4, ease: 'steps(3)', onUpdate: () => { abaEl.textContent = Math.round(aba.v); } }, 5.80 - 0.001 - 1.8);
-tl.to('#lp .page', { y: -120, duration: 7.00, ease: 'none' }, 2.4);
-// ——— vitória: o relógio trava em dourado ———
-tl.to('#clock', { color: '#c6b278', scale: 1.08, duration: 0.12, ease: 'power2.out' }, 9.4);
-tl.to('#clock', { scale: 1, duration: 0.3, ease: 'power2.out' }, 9.52);
-tl.to(['#lp', '#labL'], { opacity: 0.25, duration: 0.3 }, 9.4);
-tl.fromTo('#pronto', { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: 'power4.in' }, 9.450000000000001);
-tl.to('#ph', { x: -230, scale: 1.08, duration: 0.6, ease: 'power3.inOut' }, 9.65);
-tl.to(['#lp', '#labL', '#labR', '#step'], { opacity: 0, duration: 0.3 }, 9.65);
-tl.to('#race', { opacity: 0, duration: 0.25 }, 10.4);
-tl.to(['#plantao', '#clock'], { opacity: 0, duration: 0.2 }, 10.4);
-// ——— resultado real ———
-tl.set('#res', { opacity: 1 }, 10.549999999999999);
-tl.fromTo('#res h2', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out' }, 10.6);
-tl.fromTo('#rail', { y: 300, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'expo.out' }, 10.6);
-tl.to('#rail', { x: -860, duration: 0.45, ease: 'power3.inOut' }, 11.7);
-tl.to('#rail', { x: -1720, duration: 0.45, ease: 'power3.inOut' }, 12.6);
-tl.fromTo('#res .meta', { opacity: 0 }, { opacity: 1, duration: 0.3 }, 11.2);
-tl.to('#res', { opacity: 0, duration: 0.2 }, 13.5);
-// ——— prova: frase do post -> citação -> matéria real ———
-tl.set('#proof', { opacity: 1 }, 13.5);
-tl.fromTo('#s1', { scale: 0.85, y: 200 }, { scale: 1, y: 0, duration: 0.6, ease: 'expo.out' }, 13.6);
-tl.fromTo('#mk', { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: 'power2.out' }, 14.2);
-tl.fromTo('#cit', { y: 500, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'expo.out' }, 14.7);
-tl.fromTo('#tapV', { scale: 0.4, opacity: 0.9 }, { scale: 1.5, opacity: 0, duration: 0.5, ease: 'power2.out', immediateRender: false }, 15.7);
-tl.fromTo('#jc', { y: 1900 }, { y: 0, duration: 0.6, ease: 'expo.out' }, 15.899999999999999);
-tl.to('#jc img', { y: -120, duration: 1.6, ease: 'sine.inOut' }, 16.5);
-tl.fromTo('#tagP', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(2.5)' }, 16.6);
-tl.fromTo('#botP', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out' }, 14.5);
-tl.to('#proof', { opacity: 0, duration: 0.25 }, 18.05);
-// ——— fecho REP ———
-tl.set('#end', { opacity: 1 }, 18.099999999999998);
-tl.fromTo('#end .l1', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, 18.349999999999998);
-tl.fromTo('#end .l2', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, 19.15);
-tl.fromTo(['#end .brand', '#end .rep'], { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out', stagger: 0.15 }, 20.099999999999998);
-tl.fromTo('#end .cta div', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(2)' }, 20.599999999999998);
-tl.fromTo('#end .url', { opacity: 0 }, { opacity: 1, duration: 0.3 }, 21);
-tl.to('#end .cta div', { scale: 1.05, duration: 0.35, ease: 'sine.inOut', yoyo: true, repeat: 3 }, 21.4);
+tl.fromTo('#notif', { y: -300, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: 'back.out(1.6)' }, 0.1);
+tl.fromTo('#glowR', { opacity: 0 }, { opacity: 1, duration: 0.3, yoyo: true, repeat: 5, ease: 'sine.inOut' }, 0.1);
+tl.fromTo('#h1 span', { y: 140, opacity: 0, rotation: 4 }, { y: 0, opacity: 1, rotation: 0, duration: 0.35, ease: 'power4.out', stagger: 0.22 }, 0.55);
+tl.fromTo('#h2', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' }, 2.2);
+tl.to('#hook', { opacity: 0, scale: 1.08, duration: 0.3, ease: 'power2.in' }, 4.7);
+// ——— jeito de sempre ———
+tl.set('#old', { opacity: 1 }, 4.9);
+tl.fromTo('.tab', { y: -900, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out', stagger: 0.18 }, 4.95);
+tl.fromTo('#aba', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(2)' }, 5.5);
+tl.fromTo('#strike', { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: 'power2.inOut' }, 6.55);
+tl.fromTo('#nodt', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25 }, 6.6);
+tl.to('.tab', { x: (i) => (i % 2 ? 1200 : -1200), rotation: (i) => (i % 2 ? 12 : -12), duration: 0.45, ease: 'power3.in', stagger: 0.03 }, 7.3);
+tl.to('#old', { opacity: 0, duration: 0.2 }, 7.7);
+// ——— jornada real ———
+tl.set('#journey', { opacity: 1 }, 7.55);
+tl.fromTo('#ph', { y: 900, rotation: 6 }, { y: 0, rotation: 0, duration: 0.6, ease: 'expo.out' }, 7.55);
+tl.fromTo('#halo', { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.8 }, 7.7);
+tl.fromTo('#hud', { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }, 7.6);
+tl.to('#rec i', { opacity: 0.25, duration: 0.4, yoyo: true, repeat: 43, ease: 'none' }, 7.8);
+tl.to('#cam', { x: -288.3, y: -644.5, scale: 1.55, duration: 0.6, ease: 'power3.inOut' }, 8.53);
+tl.to('#cam', { x: 0, y: 0, scale: 1, duration: 0.6, ease: 'power3.inOut' }, 9.88);
+tl.fromTo('#tc0', { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: 'power2.out', immediateRender: false }, 8.88);
+tl.to('#tc0', { scale: 0.78, duration: 0.08, yoyo: true, repeat: 1 }, 9.18);
+tl.to('#tc0', { opacity: 0, duration: 0.2 }, 9.43);
+tl.fromTo('#rp0', { opacity: 1, scale: 0.6 }, { opacity: 0, scale: 2.6, duration: 0.55, ease: 'power2.out', immediateRender: false }, 9.18);
+tl.fromTo('#tl0', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.2, immediateRender: false }, 8.90);
+tl.to('#tl0', { opacity: 0, duration: 0.15 }, 9.48);
+tl.to('#cam', { x: -297, y: -926.8, scale: 1.55, duration: 0.6, ease: 'power3.inOut' }, 10.94);
+tl.to('#cam', { x: 0, y: 0, scale: 1, duration: 0.6, ease: 'power3.inOut' }, 12.29);
+tl.fromTo('#tc1', { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: 'power2.out', immediateRender: false }, 11.29);
+tl.to('#tc1', { scale: 0.78, duration: 0.08, yoyo: true, repeat: 1 }, 11.59);
+tl.to('#tc1', { opacity: 0, duration: 0.2 }, 11.84);
+tl.fromTo('#rp1', { opacity: 1, scale: 0.6 }, { opacity: 0, scale: 2.6, duration: 0.55, ease: 'power2.out', immediateRender: false }, 11.59);
+tl.fromTo('#tl1', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.2, immediateRender: false }, 11.31);
+tl.to('#tl1', { opacity: 0, duration: 0.15 }, 11.89);
+tl.to('#cam', { x: -492, y: -1273.1, scale: 1.55, duration: 0.6, ease: 'power3.inOut' }, 13.15);
+tl.to('#cam', { x: 0, y: 0, scale: 1, duration: 0.6, ease: 'power3.inOut' }, 14.50);
+tl.fromTo('#tc2', { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: 'power2.out', immediateRender: false }, 13.50);
+tl.to('#tc2', { scale: 0.78, duration: 0.08, yoyo: true, repeat: 1 }, 13.80);
+tl.to('#tc2', { opacity: 0, duration: 0.2 }, 14.05);
+tl.fromTo('#rp2', { opacity: 1, scale: 0.6 }, { opacity: 0, scale: 2.6, duration: 0.55, ease: 'power2.out', immediateRender: false }, 13.80);
+tl.fromTo('#tl2', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.2, immediateRender: false }, 13.52);
+tl.to('#tl2', { opacity: 0, duration: 0.15 }, 14.10);
+tl.to('#cam', { x: -11.8, y: -560.1, scale: 1.55, duration: 0.6, ease: 'power3.inOut' }, 17.28);
+tl.fromTo('#tc3', { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: 'power2.out', immediateRender: false }, 17.63);
+tl.to('#tc3', { scale: 0.78, duration: 0.08, yoyo: true, repeat: 1 }, 17.93);
+tl.to('#tc3', { opacity: 0, duration: 0.2 }, 18.18);
+tl.fromTo('#rp3', { opacity: 1, scale: 0.6 }, { opacity: 0, scale: 2.6, duration: 0.55, ease: 'power2.out', immediateRender: false }, 17.93);
+tl.fromTo('#tl3', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.2, immediateRender: false }, 17.65);
+tl.to('#tl3', { opacity: 0, duration: 0.15 }, 18.23);
+tl.to('#cam', { x: -497.8, y: -469.8, scale: 1.55, duration: 0.55, ease: 'power3.inOut' }, 18.90);
+tl.fromTo('#tc4', { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: 'power2.out', immediateRender: false }, 19.20);
+tl.to('#tc4', { scale: 0.78, duration: 0.08, yoyo: true, repeat: 1 }, 19.50);
+tl.to('#tc4', { opacity: 0, duration: 0.2 }, 19.75);
+tl.fromTo('#rp4', { opacity: 1, scale: 0.6 }, { opacity: 0, scale: 2.6, duration: 0.55, ease: 'power2.out', immediateRender: false }, 19.50);
+tl.fromTo('#tl4', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.2, immediateRender: false }, 19.22);
+tl.to('#tl4', { opacity: 0, duration: 0.15 }, 19.80);
+tl.to('#cam', { x: -142.7, y: -510.6, scale: 1.55, duration: 0.55, ease: 'power3.inOut' }, 20.48);
+tl.fromTo('#tc5', { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: 'power2.out', immediateRender: false }, 20.78);
+tl.to('#tc5', { scale: 0.78, duration: 0.08, yoyo: true, repeat: 1 }, 21.08);
+tl.to('#tc5', { opacity: 0, duration: 0.2 }, 21.33);
+tl.fromTo('#rp5', { opacity: 1, scale: 0.6 }, { opacity: 0, scale: 2.6, duration: 0.55, ease: 'power2.out', immediateRender: false }, 21.08);
+tl.fromTo('#tl5', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.2, immediateRender: false }, 20.80);
+tl.to('#tl5', { opacity: 0, duration: 0.15 }, 21.38);
+tl.to('#cam', { x: -297, y: -487.3, scale: 1.55, duration: 0.55, ease: 'power3.inOut' }, 21.73);
+tl.to('#cam', { x: 0, y: 0, scale: 1, duration: 0.6, ease: 'power3.inOut' }, 23.03);
+tl.fromTo('#tc6', { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: 'power2.out', immediateRender: false }, 22.03);
+tl.to('#tc6', { scale: 0.78, duration: 0.08, yoyo: true, repeat: 1 }, 22.33);
+tl.to('#tc6', { opacity: 0, duration: 0.2 }, 22.58);
+tl.fromTo('#rp6', { opacity: 1, scale: 0.6 }, { opacity: 0, scale: 2.6, duration: 0.55, ease: 'power2.out', immediateRender: false }, 22.33);
+tl.fromTo('#tl6', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.2, immediateRender: false }, 22.05);
+tl.to('#tl6', { opacity: 0, duration: 0.15 }, 22.63);
+
+tl.fromTo(prog, { t: 0 }, { t: 18.7, duration: 18.7, ease: 'none', onUpdate: showClk, immediateRender: false }, 7.8);
+tl.set('#st0', { opacity: 1 }, 7.80); tl.set('#st0', { opacity: 0 }, 11.59);
+tl.set('#st1', { opacity: 1 }, 11.59); tl.set('#st1', { opacity: 0 }, 13.80);
+tl.set('#st2', { opacity: 1 }, 13.80); tl.set('#st2', { opacity: 0 }, 14.80);
+tl.set('#st3', { opacity: 1 }, 14.80); tl.set('#st3', { opacity: 0 }, 17.33);
+tl.set('#st4', { opacity: 1 }, 17.33); tl.set('#st4', { opacity: 0 }, 22.53);
+tl.set('#st5', { opacity: 1 }, 22.53); tl.set('#st5', { opacity: 0 }, 25.17);
+tl.set('#st6', { opacity: 1 }, 25.17);
+// geração acelerada: câmera se afasta e o relógio dispara
+tl.to('#cam', { scale: 0.94, x: 32, y: 40, duration: 2.63, ease: 'none' }, 22.53);
+// ——— vitória ———
+tl.fromTo('#flash', { opacity: 0.7 }, { opacity: 0, duration: 0.35, immediateRender: false }, 25.167);
+tl.to('#clock', { color: '#c6b278', textShadow: '0 0 50px rgba(198,178,120,.8)', scale: 1.12, duration: 0.15 }, 25.167);
+tl.to('#clock', { scale: 1, duration: 0.35, ease: 'back.out(3)' }, 25.317);
+tl.to('#rec i', { background: '#c6b278', boxShadow: '0 0 16px #c6b278', opacity: 1, duration: 0.1 }, 25.167);
+tl.to('#cam', { scale: 1, x: 0, y: -40, duration: 0.5, ease: 'back.out(1.6)' }, 25.167);
+tl.to('#halo', { scale: 1.3, opacity: 1, duration: 0.6 }, 25.167);
+tl.fromTo('#stamp', { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'power4.in' }, 25.267000000000003);
+tl.to(['#journey', '#hud'], { opacity: 0, duration: 0.25 }, 26.3);
+// ——— carrossel real em leque ———
+tl.set('#res', { opacity: 1 }, 26.45);
+tl.fromTo('#res h2', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' }, 26.5);
+tl.fromTo('#sl1', { y: 900, rotation: 0 }, { y: 0, x: 0, rotation: 0, scale: 1, duration: 0.6, ease: 'expo.out' }, 26.60);
+tl.fromTo('#sl2', { y: 900, rotation: 0 }, { y: 12, x: 150, rotation: 6, scale: 0.94, duration: 0.6, ease: 'expo.out' }, 26.72);
+tl.fromTo('#sl3', { y: 900, rotation: 0 }, { y: 24, x: 290, rotation: 12, scale: 0.88, duration: 0.6, ease: 'expo.out' }, 26.84);
+tl.fromTo('#sl4', { y: 900, rotation: 0 }, { y: 36, x: 420, rotation: 18, scale: 0.82, duration: 0.6, ease: 'expo.out' }, 26.96);
+tl.to('#sl1', { x: -420, rotation: -14, scale: 0.86, duration: 0.5, ease: 'power3.inOut' }, 27.8);
+tl.to('#sl2', { x: 0, rotation: 0, scale: 1, duration: 0.5, ease: 'power3.inOut' }, 27.8);
+tl.fromTo('#res .meta span', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, stagger: 0.08 }, 27.2);
+tl.to('#res', { opacity: 0, duration: 0.2 }, 29.2);
+// ——— prova ———
+tl.set('#proof', { opacity: 1 }, 29.2);
+tl.fromTo('#s1', { scale: 0.85, y: 200 }, { scale: 1, y: 0, duration: 0.6, ease: 'expo.out' }, 29.3);
+tl.fromTo('#mk', { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: 'power2.out' }, 29.900000000000002);
+tl.fromTo('#cit', { y: 500, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'expo.out' }, 30.400000000000002);
+tl.fromTo('#tcV', { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, immediateRender: false }, 31.1);
+tl.to('#tcV', { scale: 0.78, duration: 0.08, yoyo: true, repeat: 1 }, 31.400000000000002);
+tl.to('#tcV', { opacity: 0, duration: 0.2 }, 31.7);
+tl.fromTo('#rpV', { opacity: 1, scale: 0.6 }, { opacity: 0, scale: 2.6, duration: 0.55, immediateRender: false }, 31.400000000000002);
+tl.fromTo('#jc', { y: 1900 }, { y: 0, duration: 0.6, ease: 'expo.out' }, 31.6);
+tl.to('#jc img', { y: -120, duration: 1.8, ease: 'sine.inOut' }, 32.2);
+tl.fromTo('#tagP', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'back.out(2.5)' }, 32.3);
+tl.fromTo('#botP', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out' }, 30.2);
+tl.to('#proof', { opacity: 0, duration: 0.25 }, 33.75);
+// ——— fecho ———
+tl.set('#end', { opacity: 1 }, 33.8);
+tl.fromTo('#end .l1', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' }, 35.199999999999996);
+tl.fromTo('#end .l2', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' }, 35.9);
+tl.fromTo('#end .rule', { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: 'power3.inOut' }, 36.199999999999996);
+tl.fromTo(['#end .brand', '#end .rep'], { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out', stagger: 0.15 }, 34.1);
+tl.fromTo('#end .cta div', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: 'back.out(2)' }, 36.699999999999996);
+tl.fromTo('#end .url', { opacity: 0 }, { opacity: 1, duration: 0.3 }, 37);
+tl.to('#end .cta div', { scale: 1.05, duration: 0.35, ease: 'sine.inOut', yoyo: true, repeat: 3 }, 37.3);
+tl.fromTo('#sub-v1', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.2, immediateRender: false }, 0.25); tl.to('#sub-v1', { opacity: 0, duration: 0.15 }, 4.95);
+tl.fromTo('#sub-v2', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.2, immediateRender: false }, 5.00); tl.to('#sub-v2', { opacity: 0, duration: 0.15 }, 7.95);
+tl.fromTo('#sub-v3', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.2, immediateRender: false }, 8.00); tl.to('#sub-v3', { opacity: 0, duration: 0.15 }, 11.95);
+tl.fromTo('#sub-v4', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.2, immediateRender: false }, 14.90); tl.to('#sub-v4', { opacity: 0, duration: 0.15 }, 17.45);
+tl.fromTo('#sub-v5', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.2, immediateRender: false }, 17.50); tl.to('#sub-v5', { opacity: 0, duration: 0.15 }, 20.12);
+tl.fromTo('#sub-v6', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.2, immediateRender: false }, 22.60); tl.to('#sub-v6', { opacity: 0, duration: 0.15 }, 25.47);
+tl.fromTo('#sub-v7', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.2, immediateRender: false }, 25.52); tl.to('#sub-v7', { opacity: 0, duration: 0.15 }, 27.36);
+tl.fromTo('#sub-v8', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.2, immediateRender: false }, 29.50); tl.to('#sub-v8', { opacity: 0, duration: 0.15 }, 33.09);
+tl.fromTo('#sub-v9', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.2, immediateRender: false }, 34.20); tl.to('#sub-v9', { opacity: 0, duration: 0.15 }, 37.86);
 
 window.__timelines["anuncio"] = tl;
 })();
