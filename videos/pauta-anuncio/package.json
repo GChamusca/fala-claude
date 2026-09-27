@@ -1,0 +1,18 @@
+{
+  "name": "pauta-anuncio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes hyperframes@0.8.77 preview",
+    "check": "npx --yes hyperframes@0.8.77 check",
+    "render": "npx --yes hyperframes@0.8.77 render",
+    "publish": "npx --yes hyperframes@0.8.77 publish"
+  },
+  "devDependencies": {
+    "@opeepsfun/open-peeps": "^1.0.6",
+    "esbuild": "^0.28.2",
+    "playwright": "^1.63.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
